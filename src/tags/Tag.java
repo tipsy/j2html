@@ -1,6 +1,6 @@
-package j2html.tags;
+package j2html.src.tags;
 
-import j2html.attributes.Attr;
+import j2html.src.attributes.Attr;
 
 import java.util.ArrayList;
 import java.util.List;

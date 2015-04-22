@@ -1,4 +1,4 @@
-package j2html.attributes;
+package j2html.src.attributes;
 
 public class Attribute {
 	private String name;

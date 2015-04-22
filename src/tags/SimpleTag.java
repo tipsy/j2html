@@ -1,6 +1,6 @@
-package j2html.tags;
+package j2html.src.tags;
 
-import j2html.attributes.Attribute;
+import j2html.src.attributes.Attribute;
 
 public class SimpleTag extends BaseTag {
 

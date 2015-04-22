@@ -1,4 +1,4 @@
-package j2html.tags;
+package j2html.src.tags;
 
 
 public class TagCreator {

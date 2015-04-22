@@ -1,4 +1,4 @@
-package j2html.attributes;
+package j2html.src.attributes;
 
 public class Attr {
     public static String HIDDEN = "hidden";

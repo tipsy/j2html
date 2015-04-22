@@ -1,7 +1,7 @@
-package j2html.tags;
+package j2html.src.tags;
 
 import java.util.ArrayList;
-import j2html.attributes.Attribute;
+import j2html.src.attributes.Attribute;
 
 public abstract class BaseTag {
 
