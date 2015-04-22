@@ -47,7 +47,7 @@ public abstract class BaseTag {
         return this.render();
     }
 
-    protected String openTag() {
+    public String openTag() {
         StringBuilder b = new StringBuilder("<");
         b.append(tag);
         for (Attribute attr : attributes) {
@@ -57,7 +57,7 @@ public abstract class BaseTag {
         return b.toString();
     }
 
-    protected String closeTag() {
+    public String closeTag() {
         return "</" + tag + ">";
     }
 

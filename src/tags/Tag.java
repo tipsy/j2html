@@ -9,7 +9,7 @@ public class Tag extends BaseTag {
 
     public ArrayList<BaseTag> children;
 
-    protected Tag(String tagType) {
+    public Tag(String tagType) {
         super(tagType);
         this.children = new ArrayList<>();
     }
