@@ -81,14 +81,14 @@ public class Tag extends BaseTag {
         return b.toString();
     }
 
-    /** Methods below this point are convenience methods
-     *  that call attr with a predefined attribute.
-     */
-
     @Override
     public String toString() {
         return this.render();
     }
+
+    /** Methods below this point are convenience methods
+     *  that call attr with a predefined attribute.
+     */
 
     public Tag withId(String id) {
         return attr(Attr.ID, id);
@@ -111,7 +111,7 @@ public class Tag extends BaseTag {
     }
 
     public Tag isRequired() {
-        return attr(Attr.REQUIRED, "true");
+        return attr(Attr.REQUIRED, null);
     }
 
     public Tag withRel(String rel) {

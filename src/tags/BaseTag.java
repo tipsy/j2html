@@ -27,11 +27,14 @@ public abstract class BaseTag {
         if (value != null) {
             for (Attribute attribute : attributes) {
                 if (attribute.getName().equals(name)) {
+                    //if attribute exists we set the attribute value in stead of just adding a new attribute
                     attribute.setValue(value);
                     return;
                 }
             }
             attributes.add(new Attribute(name, value));
+        } else {
+            attributes.add(new Attribute(name));
         }
     }
 
