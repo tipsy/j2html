@@ -1,4 +1,4 @@
-package javaHtmlGenerator.attributes;
+package j2html.attributes;
 
 public class Attribute {
 	private String name;

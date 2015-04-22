@@ -1,6 +1,6 @@
-package javaHtmlGenerator.tags;
+package j2html.tags;
 
-import javaHtmlGenerator.attributes.Attr;
+import j2html.attributes.Attr;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package javaHtmlGenerator.tags;
+package j2html.tags;
 
 public class Text extends BaseTag {
 

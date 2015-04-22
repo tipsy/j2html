@@ -1,10 +1,9 @@
-package javaHtmlGenerator.tags;
+package j2html.tags;
 
 
 public class TagCreator {
 
     //SIMPLE TAGS
-    //TODO: remove writeclose for simpletags
     public static SimpleTag br() {
         return new SimpleTag("br");
     }
@@ -21,9 +20,12 @@ public class TagCreator {
         return new SimpleTag("hr");
     }
 
-    //TODO: fix text
     public static Text text(String text) {
         return new Text(text);
+    }
+
+    public static SimpleTag wbr() {
+        return new SimpleTag("wbr");
     }
 
     //TAGS
@@ -35,16 +37,24 @@ public class TagCreator {
         return new Tag("abbr");
     }
 
-    public static Tag acronym() {
-        return new Tag("acronym");
-    }
-
     public static Tag address() {
         return new Tag("address");
     }
 
     public static Tag area() {
         return new Tag("area");
+    }
+
+    public static Tag article() {
+        return new Tag("article");
+    }
+
+    public static Tag aside() {
+        return new Tag("aside");
+    }
+
+    public static Tag audio() {
+        return new Tag("audio");
     }
 
     public static Tag b() {
@@ -55,12 +65,12 @@ public class TagCreator {
         return new Tag("base");
     }
 
-    public static Tag bdo() {
-        return new Tag("bdo");
+    public static Tag bdi() {
+        return new Tag("bdi");
     }
 
-    public static Tag big() {
-        return new Tag("big");
+    public static Tag bdo() {
+        return new Tag("bdo");
     }
 
     public static Tag blockquote() {
@@ -73,6 +83,10 @@ public class TagCreator {
 
     public static Tag button() {
         return new Tag("button");
+    }
+
+    public static Tag canvas() {
+        return new Tag("canvas");
     }
 
     public static Tag caption() {
@@ -91,6 +105,10 @@ public class TagCreator {
         return new Tag("colgroup");
     }
 
+    public static Tag datalist() {
+        return new Tag("datalist");
+    }
+
     public static Tag dd() {
         return new Tag("dd");
     }
@@ -99,12 +117,16 @@ public class TagCreator {
         return new Tag("del");
     }
 
+    public static Tag details() {
+        return new Tag("details");
+    }
+
     public static Tag dfn() {
         return new Tag("dfn");
     }
 
-    public static Tag dir() {
-        return new Tag("dir");
+    public static Tag dialog() {
+        return new Tag("dialog");
     }
 
     public static Tag div() {
@@ -123,8 +145,24 @@ public class TagCreator {
         return new Tag("em");
     }
 
+    public static Tag embed() {
+        return new Tag("embed");
+    }
+
     public static Tag fieldset() {
         return new Tag("fieldset");
+    }
+
+    public static Tag figcaption() {
+        return new Tag("figcaption");
+    }
+
+    public static Tag figure() {
+        return new Tag("figure");
+    }
+
+    public static Tag footer() {
+        return new Tag("footer");
     }
 
     public static Tag form() {
@@ -159,6 +197,10 @@ public class TagCreator {
         return new Tag("head");
     }
 
+    public static Tag header() {
+        return new Tag("header");
+    }
+
     public static Tag html() {
         return new Tag("html");
     }
@@ -187,8 +229,16 @@ public class TagCreator {
         return new Tag("kbd");
     }
 
+    public static Tag keygen() {
+        return new Tag("keygen");
+    }
+
     public static Tag label() {
         return new Tag("label");
+    }
+
+    public static Tag legend() {
+        return new Tag("legend");
     }
 
     public static Tag li() {
@@ -199,12 +249,36 @@ public class TagCreator {
         return new Tag("link");
     }
 
+    public static Tag main() {
+        return new Tag("main");
+    }
+
     public static Tag map() {
         return new Tag("map");
     }
 
+    public static Tag mark() {
+        return new Tag("mark");
+    }
+
+    public static Tag menu() {
+        return new Tag("menu");
+    }
+
+    public static Tag menuitem() {
+        return new Tag("menuitem");
+    }
+
     public static Tag meta() {
         return new Tag("meta");
+    }
+
+    public static Tag meter() {
+        return new Tag("meter");
+    }
+
+    public static Tag nav() {
+        return new Tag("nav");
     }
 
     public static Tag noscript() {
@@ -227,6 +301,10 @@ public class TagCreator {
         return new Tag("option");
     }
 
+    public static Tag output() {
+        return new Tag("output");
+    }
+
     public static Tag p() {
         return new Tag("p");
     }
@@ -239,8 +317,24 @@ public class TagCreator {
         return new Tag("pre");
     }
 
+    public static Tag progress() {
+        return new Tag("progress");
+    }
+
     public static Tag q() {
         return new Tag("q");
+    }
+
+    public static Tag rp() {
+        return new Tag("rp");
+    }
+
+    public static Tag rt() {
+        return new Tag("rt");
+    }
+
+    public static Tag ruby() {
+        return new Tag("ruby");
     }
 
     public static Tag s() {
@@ -255,6 +349,10 @@ public class TagCreator {
         return new Tag("script");
     }
 
+    public static Tag section() {
+        return new Tag("section");
+    }
+
     public static Tag select() {
         return new Tag("select");
     }
@@ -263,12 +361,12 @@ public class TagCreator {
         return new Tag("small");
     }
 
-    public static Tag span() {
-        return new Tag("span");
+    public static Tag source() {
+        return new Tag("source");
     }
 
-    public static Tag strike() {
-        return new Tag("strike");
+    public static Tag span() {
+        return new Tag("span");
     }
 
     public static Tag strong() {
@@ -281,6 +379,10 @@ public class TagCreator {
 
     public static Tag sub() {
         return new Tag("sub");
+    }
+
+    public static Tag summary() {
+        return new Tag("summary");
     }
 
     public static Tag sup() {
@@ -315,6 +417,10 @@ public class TagCreator {
         return new Tag("thead");
     }
 
+    public static Tag time() {
+        return new Tag("time");
+    }
+
     public static Tag title() {
         return new Tag("title");
     }
@@ -323,8 +429,8 @@ public class TagCreator {
         return new Tag("tr");
     }
 
-    public static Tag tt() {
-        return new Tag("tt");
+    public static Tag track() {
+        return new Tag("track");
     }
 
     public static Tag u() {
@@ -339,5 +445,8 @@ public class TagCreator {
         return new Tag("var");
     }
 
+    public static Tag video() {
+        return new Tag("video");
+    }
 
 }

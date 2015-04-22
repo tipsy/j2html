@@ -1,4 +1,4 @@
-package javaHtmlGenerator.attributes;
+package j2html.attributes;
 
 public class Attr {
     public static String HIDDEN = "hidden";

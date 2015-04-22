@@ -1,6 +1,6 @@
-package javaHtmlGenerator.tags;
+package j2html.tags;
 
-import javaHtmlGenerator.attributes.Attribute;
+import j2html.attributes.Attribute;
 
 public class SimpleTag extends BaseTag {
 
