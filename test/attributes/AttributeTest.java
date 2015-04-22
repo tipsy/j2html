@@ -3,7 +3,7 @@ package j2html.test.attributes;
 import j2html.src.attributes.Attribute;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 public class AttributeTest {
 

@@ -1,10 +1,10 @@
 package j2html.test.tags;
 
-import j2html.src.attributes.Attr;
 import j2html.src.tags.Tag;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static j2html.src.tags.TagCreator.*;
+import static org.junit.Assert.assertTrue;
 
 public class BaseTagTest {
 
@@ -21,6 +21,10 @@ public class BaseTagTest {
         Tag testTag = new Tag("a");
         testTag.setAttribute("href", "http://example.com");
         assertTrue(testTag.render().equals("<a href=\"http://example.com\"></a>"));
+
+        Tag complexTestTag = html().with(body().with(header(), main().with(p().withText("Main stuff...")), footer()));
+        String expectedResult ="<html><body><header></header><main><p>Main stuff...</p></main><footer></footer></body></html>";
+        assertTrue(complexTestTag.render().equals(expectedResult));
     }
 
     @Test

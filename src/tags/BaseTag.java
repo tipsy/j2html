@@ -1,7 +1,8 @@
 package j2html.src.tags;
 
-import java.util.ArrayList;
 import j2html.src.attributes.Attribute;
+
+import java.util.ArrayList;
 
 public abstract class BaseTag {
 
@@ -48,13 +49,11 @@ public abstract class BaseTag {
     }
 
     public String openTag() {
-        StringBuilder b = new StringBuilder("<");
-        b.append(tag);
+        String allAttributes = "";
         for (Attribute attr : attributes) {
-            b.append(attr.render());
+            allAttributes += attr.render();
         }
-        b.append(">");
-        return b.toString();
+        return "<" + tag + allAttributes + ">";
     }
 
     public String closeTag() {
