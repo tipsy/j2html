@@ -24,41 +24,41 @@ public class MainTemplate {
 
 
 MainTemplate.render(
-	"Form test", //this is the "String title" parameter
-	//Everything below here goes into the "Tag... contentTags" parameter
-	// "..." means "varargs", which means you can add as many Tags as you like
-	h2().withText("Please log in"),
-	form().withMethod("post").with(
-			emailInput("Email"), //see below for these three fields
-			passwordInput("Password"),
-			submitButton("Log in")
+    "Form test", //this is the "String title" parameter
+    //Everything below here goes into the "Tag... contentTags" parameter
+    // "..." means "varargs", which means you can add as many Tags as you like
+    h2().withText("Please log in"),
+    form().withMethod("post").with(
+            emailInput("Email"), //see below for these three fields
+            passwordInput("Password"),
+            submitButton("Log in")
 )
 
 
 // you can create methods like these to return fully configured 
 // HTML input fields/buttons (or any other tag)
 public static Tag emailInput(String placeholder) {
-	return input()
-			.withType("email")
-			.withId("email")
-			.withName("email")
-			.withPlaceholder(placeholder)
-			.isRequired();
+    return input()
+            .withType("email")
+            .withId("email")
+            .withName("email")
+            .withPlaceholder(placeholder)
+            .isRequired();
 }
 
 public static Tag passwordInput(String placeholder) {
-	return input()
-			.withType("password")
-			.withId("password")
-			.withName("password")
-			.withPlaceholder(placeholder)
-			.isRequired();
+    return input()
+            .withType("password")
+            .withId("password")
+            .withName("password")
+            .withPlaceholder(placeholder)
+            .isRequired();
 }
 
 public static Tag submitButton(String text) {
-	return button()
-			.withType("submit")
-			.withText(text);
+    return button()
+            .withType("submit")
+            .withText(text);
 }
 
 //  OUTPUT
