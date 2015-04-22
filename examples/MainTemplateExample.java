@@ -14,7 +14,7 @@ public class MainTemplate {
                                 main().with(
                                         contentTags //content from other template
                                 ),
-                                footer().withText("Footing text"),
+                                footer().withText("Footer text"),
                                 script().withSrc("https://code.jquery.com/jquery-2.1.3.min.js")
                         )
                 ).render();
@@ -63,13 +63,13 @@ public static Tag submitButton(String text) {
 
 //  OUTPUT
 //  If you call MainTemplate.render with the above setup, it will return this: 
-//  <!DOCTYPE html><html><head><title>Form test</title><link rel="stylesheet" href="/css/main.css"></link></head><body><header><h1>Form test</h1></header><main><h2>Please log in</h2><form method="post"><input type="email" id="email" name="email" placeholder="Email" required></input><input type="password" id="password" name="password" placeholder="Password" required></input><button type="submit">Log in</button></form></main><footer>Footing text</footer><script src="https://code.jquery.com/jquery-2.1.3.min.js"></script></body></html>
+//  <!DOCTYPE html><html><head><title>Form test</title><link rel="stylesheet" href="/css/main.css"></link></head><body><header><h1>Form test</h1></header><main><h2>Please log in</h2><form method="post"><input type="email" id="email" name="email" placeholder="Email" required></input><input type="password" id="password" name="password" placeholder="Password" required></input><button type="submit">Log in</button></form></main><footer>Footer text</footer><script src="https://code.jquery.com/jquery-2.1.3.min.js"></script></body></html>
 
 //  Which unminified will look like this:
 //  <!DOCTYPE html>
 //  <html>
 //  <head>
-//      <title>Form test</title>
+//     <title>Form test</title>
 //     <link rel="stylesheet" href="/css/main.css"></link>
 //  </head>
 //  
@@ -85,7 +85,7 @@ public static Tag submitButton(String text) {
 //              <button type="submit">Log in</button>
 //          </form>
 //      </main>
-//      <footer>Footing text</footer>
+//      <footer>Footer text</footer>
 //      <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 //  </body>
 //  </html>
