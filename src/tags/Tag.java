@@ -90,16 +90,49 @@ public class Tag extends BaseTag {
      *  that call attr with a predefined attribute.
      */
 
-    public Tag withId(String id) {
-        return attr(Attr.ID, id);
+    //TODO: TEST ?
+    public Tag isAutoComplete() {
+        return attr(Attr.AUTOCOMPLETE, null);
+    }
+
+    public Tag isAutoFocus() {
+        return attr(Attr.AUTOFOCUS, null);
+    }
+
+    public Tag isHidden() {
+        return attr(Attr.HIDDEN, null);
+    }
+
+    public Tag isRequired() {
+        return attr(Attr.REQUIRED, null);
+    }
+
+    public Tag withAlt(String alt) {
+        return attr(Attr.ALT, alt);
+    }
+
+    public Tag withAction(String action) {
+        return attr(Attr.ACTION, action);
     }
 
     public Tag withClass(String className) {
         return attr(Attr.CLASS, className);
     }
 
-    public Tag withType(String type) {
-        return attr(Attr.TYPE, type);
+    public Tag withHref(String href) {
+        return attr(Attr.HREF, href);
+    }
+
+    public Tag withId(String id) {
+        return attr(Attr.ID, id);
+    }
+
+    public Tag withData(String dataAttr, String value) {
+        return attr(Attr.DATA + "-" + dataAttr, value);
+    }
+
+    public Tag withMethod(String method) {
+        return attr(Attr.METHOD, method);
     }
 
     public Tag withName(String name) {
@@ -110,24 +143,20 @@ public class Tag extends BaseTag {
         return attr(Attr.PLACEHOLDER, placeholder);
     }
 
-    public Tag isRequired() {
-        return attr(Attr.REQUIRED, null);
+    public Tag withType(String type) {
+        return attr(Attr.TYPE, type);
     }
 
     public Tag withRel(String rel) {
         return attr(Attr.REL, rel);
     }
 
-    public Tag withHref(String href) {
-        return attr(Attr.HREF, href);
-    }
-
     public Tag withSrc(String src) {
         return attr(Attr.SRC, src);
     }
 
-    public Tag withMethod(String method) {
-        return attr(Attr.METHOD, method);
+    public Tag withValue(String value) {
+        return attr(Attr.VALUE, value);
     }
 
 

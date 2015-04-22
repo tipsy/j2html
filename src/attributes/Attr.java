@@ -75,8 +75,6 @@ public class Attr {
     public static String CHECKED = "checked";
     public static String CITE = "cite";
     public static String CLASS = "class";
-    public static String CODE = "code";
-    public static String CODEBASE = "codebase";
     public static String COLOR = "color";
     public static String COLS = "cols";
     public static String COLSPAN = "colspan";
@@ -112,6 +110,5 @@ public class Attr {
     public static String AUTOFOCUS = "autofocus";
     public static String AUTOPLAY = "autoplay";
     public static String AUTOSAVE = "autosave";
-    public static String BGCOLOR = "bgcolor";
 
 }

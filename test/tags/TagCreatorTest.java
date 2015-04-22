@@ -9,8 +9,16 @@ public class TagCreatorTest {
 
     @Test
     public void testAllTags() throws Exception {
-        assertTrue(document().render().equals("<!DOCTYPE html>"));
         //yea, this is generated from http://www.w3schools.com/tags/
+
+        //simpletags
+        assertTrue(document().render().equals("<!DOCTYPE html>"));
+        assertTrue(br().render().equals("<br>"));
+        assertTrue(col().render().equals("<col>"));
+        assertTrue(hr().render().equals("<hr>"));
+        assertTrue(wbr().render().equals("<wbr>"));
+
+        //tags
         assertTrue(a().render().equals("<a></a>"));
         assertTrue(abbr().render().equals("<abbr></abbr>"));
         assertTrue(address().render().equals("<address></address>"));
@@ -24,13 +32,11 @@ public class TagCreatorTest {
         assertTrue(bdo().render().equals("<bdo></bdo>"));
         assertTrue(blockquote().render().equals("<blockquote></blockquote>"));
         assertTrue(body().render().equals("<body></body>"));
-        assertTrue(br().render().equals("<br>"));
         assertTrue(button().render().equals("<button></button>"));
         assertTrue(canvas().render().equals("<canvas></canvas>"));
         assertTrue(caption().render().equals("<caption></caption>"));
         assertTrue(cite().render().equals("<cite></cite>"));
         assertTrue(code().render().equals("<code></code>"));
-        assertTrue(col().render().equals("<col>"));
         assertTrue(colgroup().render().equals("<colgroup></colgroup>"));
         assertTrue(datalist().render().equals("<datalist></datalist>"));
         assertTrue(dd().render().equals("<dd></dd>"));
@@ -56,7 +62,6 @@ public class TagCreatorTest {
         assertTrue(h6().render().equals("<h6></h6>"));
         assertTrue(head().render().equals("<head></head>"));
         assertTrue(header().render().equals("<header></header>"));
-        assertTrue(hr().render().equals("<hr>"));
         assertTrue(html().render().equals("<html></html>"));
         assertTrue(i().render().equals("<i></i>"));
         assertTrue(iframe().render().equals("<iframe></iframe>"));
@@ -119,7 +124,6 @@ public class TagCreatorTest {
         assertTrue(ul().render().equals("<ul></ul>"));
         assertTrue(var().render().equals("<var></var>"));
         assertTrue(video().render().equals("<video></video>"));
-        assertTrue(wbr().render().equals("<wbr>"));
     }
 
 }
