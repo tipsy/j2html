@@ -3,450 +3,451 @@ package j2html.src.tags;
 
 public class TagCreator {
 
-    //SIMPLE TAGS
-    public static SimpleTag br() {
-        return new SimpleTag("br");
-    }
-
-    public static SimpleTag col() {
-        return new SimpleTag("col");
-    }
-
-    public static SimpleTag document() {
-        return new SimpleTag("!DOCTYPE html");
-    }
-
-    public static SimpleTag hr() {
-        return new SimpleTag("hr");
-    }
-
     public static Text text(String text) {
         return new Text(text);
     }
 
-    public static SimpleTag wbr() {
-        return new SimpleTag("wbr");
+    //Empty tags
+
+    public static EmptyTag area() {
+        return new EmptyTag("area");
+    }
+
+    public static EmptyTag base() {
+        return new EmptyTag("base");
+    }
+
+    public static EmptyTag br() {
+        return new EmptyTag("br");
+    }
+
+    public static EmptyTag col() {
+        return new EmptyTag("col");
+    }
+
+    public static EmptyTag document() {
+        return new EmptyTag("!DOCTYPE html");
     }
 
-    //TAGS
-    public static Tag a() {
-        return new Tag("a");
+    public static EmptyTag embed() {
+        return new EmptyTag("embed");
     }
 
-    public static Tag abbr() {
-        return new Tag("abbr");
+    public static EmptyTag hr() {
+        return new EmptyTag("hr");
     }
 
-    public static Tag address() {
-        return new Tag("address");
+    public static EmptyTag img() {
+        return new EmptyTag("img");
     }
 
-    public static Tag area() {
-        return new Tag("area");
+    public static EmptyTag input() {
+        return new EmptyTag("input");
     }
 
-    public static Tag article() {
-        return new Tag("article");
+    public static EmptyTag keygen() {
+        return new EmptyTag("keygen");
     }
 
-    public static Tag aside() {
-        return new Tag("aside");
+    public static EmptyTag link() {
+        return new EmptyTag("link");
     }
 
-    public static Tag audio() {
-        return new Tag("audio");
+    public static EmptyTag meta() {
+        return new EmptyTag("meta");
     }
 
-    public static Tag b() {
-        return new Tag("b");
+    public static EmptyTag param() {
+        return new EmptyTag("param");
     }
 
-    public static Tag base() {
-        return new Tag("base");
+    public static EmptyTag source() {
+        return new EmptyTag("source");
     }
 
-    public static Tag bdi() {
-        return new Tag("bdi");
+    public static EmptyTag track() {
+        return new EmptyTag("track");
     }
 
-    public static Tag bdo() {
-        return new Tag("bdo");
+    public static EmptyTag wbr() {
+        return new EmptyTag("wbr");
     }
 
-    public static Tag blockquote() {
-        return new Tag("blockquote");
+    //Container tags
+    public static ContainerTag a() {
+        return new ContainerTag("a");
     }
 
-    public static Tag body() {
-        return new Tag("body");
+    public static ContainerTag abbr() {
+        return new ContainerTag("abbr");
     }
 
-    public static Tag button() {
-        return new Tag("button");
+    public static ContainerTag address() {
+        return new ContainerTag("address");
     }
 
-    public static Tag canvas() {
-        return new Tag("canvas");
+    public static ContainerTag article() {
+        return new ContainerTag("article");
     }
 
-    public static Tag caption() {
-        return new Tag("caption");
+    public static ContainerTag aside() {
+        return new ContainerTag("aside");
     }
 
-    public static Tag cite() {
-        return new Tag("cite");
+    public static ContainerTag audio() {
+        return new ContainerTag("audio");
     }
 
-    public static Tag code() {
-        return new Tag("code");
+    public static ContainerTag b() {
+        return new ContainerTag("b");
     }
 
-    public static Tag colgroup() {
-        return new Tag("colgroup");
+    public static ContainerTag bdi() {
+        return new ContainerTag("bdi");
     }
 
-    public static Tag datalist() {
-        return new Tag("datalist");
+    public static ContainerTag bdo() {
+        return new ContainerTag("bdo");
     }
 
-    public static Tag dd() {
-        return new Tag("dd");
+    public static ContainerTag blockquote() {
+        return new ContainerTag("blockquote");
     }
 
-    public static Tag del() {
-        return new Tag("del");
+    public static ContainerTag body() {
+        return new ContainerTag("body");
     }
 
-    public static Tag details() {
-        return new Tag("details");
+    public static ContainerTag button() {
+        return new ContainerTag("button");
     }
 
-    public static Tag dfn() {
-        return new Tag("dfn");
+    public static ContainerTag canvas() {
+        return new ContainerTag("canvas");
     }
 
-    public static Tag dialog() {
-        return new Tag("dialog");
+    public static ContainerTag caption() {
+        return new ContainerTag("caption");
     }
 
-    public static Tag div() {
-        return new Tag("div");
+    public static ContainerTag cite() {
+        return new ContainerTag("cite");
     }
 
-    public static Tag dl() {
-        return new Tag("dl");
+    public static ContainerTag code() {
+        return new ContainerTag("code");
     }
 
-    public static Tag dt() {
-        return new Tag("dt");
+    public static ContainerTag colgroup() {
+        return new ContainerTag("colgroup");
     }
 
-    public static Tag em() {
-        return new Tag("em");
+    public static ContainerTag datalist() {
+        return new ContainerTag("datalist");
     }
 
-    public static Tag embed() {
-        return new Tag("embed");
+    public static ContainerTag dd() {
+        return new ContainerTag("dd");
     }
 
-    public static Tag fieldset() {
-        return new Tag("fieldset");
+    public static ContainerTag del() {
+        return new ContainerTag("del");
     }
 
-    public static Tag figcaption() {
-        return new Tag("figcaption");
+    public static ContainerTag details() {
+        return new ContainerTag("details");
     }
 
-    public static Tag figure() {
-        return new Tag("figure");
+    public static ContainerTag dfn() {
+        return new ContainerTag("dfn");
     }
 
-    public static Tag footer() {
-        return new Tag("footer");
+    public static ContainerTag dialog() {
+        return new ContainerTag("dialog");
     }
 
-    public static Tag form() {
-        return new Tag("form");
+    public static ContainerTag div() {
+        return new ContainerTag("div");
     }
 
-    public static Tag h1() {
-        return new Tag("h1");
+    public static ContainerTag dl() {
+        return new ContainerTag("dl");
     }
 
-    public static Tag h2() {
-        return new Tag("h2");
+    public static ContainerTag dt() {
+        return new ContainerTag("dt");
     }
 
-    public static Tag h3() {
-        return new Tag("h3");
+    public static ContainerTag em() {
+        return new ContainerTag("em");
     }
 
-    public static Tag h4() {
-        return new Tag("h4");
+    public static ContainerTag fieldset() {
+        return new ContainerTag("fieldset");
     }
 
-    public static Tag h5() {
-        return new Tag("h5");
+    public static ContainerTag figcaption() {
+        return new ContainerTag("figcaption");
     }
 
-    public static Tag h6() {
-        return new Tag("h6");
+    public static ContainerTag figure() {
+        return new ContainerTag("figure");
     }
 
-    public static Tag head() {
-        return new Tag("head");
+    public static ContainerTag footer() {
+        return new ContainerTag("footer");
     }
 
-    public static Tag header() {
-        return new Tag("header");
+    public static ContainerTag form() {
+        return new ContainerTag("form");
     }
 
-    public static Tag html() {
-        return new Tag("html");
+    public static ContainerTag h1() {
+        return new ContainerTag("h1");
     }
 
-    public static Tag i() {
-        return new Tag("i");
+    public static ContainerTag h2() {
+        return new ContainerTag("h2");
     }
 
-    public static Tag iframe() {
-        return new Tag("iframe");
+    public static ContainerTag h3() {
+        return new ContainerTag("h3");
     }
 
-    public static Tag img() {
-        return new Tag("img");
+    public static ContainerTag h4() {
+        return new ContainerTag("h4");
     }
 
-    public static Tag input() {
-        return new Tag("input");
+    public static ContainerTag h5() {
+        return new ContainerTag("h5");
     }
 
-    public static Tag ins() {
-        return new Tag("ins");
+    public static ContainerTag h6() {
+        return new ContainerTag("h6");
     }
 
-    public static Tag kbd() {
-        return new Tag("kbd");
+    public static ContainerTag head() {
+        return new ContainerTag("head");
     }
 
-    public static Tag keygen() {
-        return new Tag("keygen");
+    public static ContainerTag header() {
+        return new ContainerTag("header");
     }
 
-    public static Tag label() {
-        return new Tag("label");
+    public static ContainerTag html() {
+        return new ContainerTag("html");
     }
 
-    public static Tag legend() {
-        return new Tag("legend");
+    public static ContainerTag i() {
+        return new ContainerTag("i");
     }
 
-    public static Tag li() {
-        return new Tag("li");
+    public static ContainerTag iframe() {
+        return new ContainerTag("iframe");
     }
 
-    public static Tag link() {
-        return new Tag("link");
+    public static ContainerTag ins() {
+        return new ContainerTag("ins");
     }
 
-    public static Tag main() {
-        return new Tag("main");
+    public static ContainerTag kbd() {
+        return new ContainerTag("kbd");
     }
 
-    public static Tag map() {
-        return new Tag("map");
+    public static ContainerTag label() {
+        return new ContainerTag("label");
     }
 
-    public static Tag mark() {
-        return new Tag("mark");
+    public static ContainerTag legend() {
+        return new ContainerTag("legend");
     }
 
-    public static Tag menu() {
-        return new Tag("menu");
+    public static ContainerTag li() {
+        return new ContainerTag("li");
     }
 
-    public static Tag menuitem() {
-        return new Tag("menuitem");
+    public static ContainerTag main() {
+        return new ContainerTag("main");
     }
 
-    public static Tag meta() {
-        return new Tag("meta");
+    public static ContainerTag map() {
+        return new ContainerTag("map");
     }
 
-    public static Tag meter() {
-        return new Tag("meter");
+    public static ContainerTag mark() {
+        return new ContainerTag("mark");
     }
 
-    public static Tag nav() {
-        return new Tag("nav");
+    public static ContainerTag menu() {
+        return new ContainerTag("menu");
     }
 
-    public static Tag noscript() {
-        return new Tag("noscript");
+    public static ContainerTag menuitem() {
+        return new ContainerTag("menuitem");
     }
 
-    public static Tag object() {
-        return new Tag("object");
+    public static ContainerTag meter() {
+        return new ContainerTag("meter");
     }
 
-    public static Tag ol() {
-        return new Tag("ol");
+    public static ContainerTag nav() {
+        return new ContainerTag("nav");
     }
 
-    public static Tag optgroup() {
-        return new Tag("optgroup");
+    public static ContainerTag noscript() {
+        return new ContainerTag("noscript");
     }
 
-    public static Tag option() {
-        return new Tag("option");
+    public static ContainerTag object() {
+        return new ContainerTag("object");
     }
 
-    public static Tag output() {
-        return new Tag("output");
+    public static ContainerTag ol() {
+        return new ContainerTag("ol");
     }
 
-    public static Tag p() {
-        return new Tag("p");
+    public static ContainerTag optgroup() {
+        return new ContainerTag("optgroup");
     }
 
-    public static Tag param() {
-        return new Tag("param");
+    public static ContainerTag option() {
+        return new ContainerTag("option");
     }
 
-    public static Tag pre() {
-        return new Tag("pre");
+    public static ContainerTag output() {
+        return new ContainerTag("output");
     }
 
-    public static Tag progress() {
-        return new Tag("progress");
+    public static ContainerTag p() {
+        return new ContainerTag("p");
     }
 
-    public static Tag q() {
-        return new Tag("q");
+    public static ContainerTag pre() {
+        return new ContainerTag("pre");
     }
 
-    public static Tag rp() {
-        return new Tag("rp");
+    public static ContainerTag progress() {
+        return new ContainerTag("progress");
     }
 
-    public static Tag rt() {
-        return new Tag("rt");
+    public static ContainerTag q() {
+        return new ContainerTag("q");
     }
 
-    public static Tag ruby() {
-        return new Tag("ruby");
+    public static ContainerTag rp() {
+        return new ContainerTag("rp");
     }
 
-    public static Tag s() {
-        return new Tag("s");
+    public static ContainerTag rt() {
+        return new ContainerTag("rt");
     }
 
-    public static Tag samp() {
-        return new Tag("samp");
+    public static ContainerTag ruby() {
+        return new ContainerTag("ruby");
     }
 
-    public static Tag script() {
-        return new Tag("script");
+    public static ContainerTag s() {
+        return new ContainerTag("s");
     }
 
-    public static Tag section() {
-        return new Tag("section");
+    public static ContainerTag samp() {
+        return new ContainerTag("samp");
     }
 
-    public static Tag select() {
-        return new Tag("select");
+    public static ContainerTag script() {
+        return new ContainerTag("script");
     }
 
-    public static Tag small() {
-        return new Tag("small");
+    public static ContainerTag section() {
+        return new ContainerTag("section");
     }
 
-    public static Tag source() {
-        return new Tag("source");
+    public static ContainerTag select() {
+        return new ContainerTag("select");
     }
 
-    public static Tag span() {
-        return new Tag("span");
+    public static ContainerTag small() {
+        return new ContainerTag("small");
     }
 
-    public static Tag strong() {
-        return new Tag("strong");
+    public static ContainerTag span() {
+        return new ContainerTag("span");
     }
 
-    public static Tag style() {
-        return new Tag("style");
+    public static ContainerTag strong() {
+        return new ContainerTag("strong");
     }
 
-    public static Tag sub() {
-        return new Tag("sub");
+    public static ContainerTag style() {
+        return new ContainerTag("style");
     }
 
-    public static Tag summary() {
-        return new Tag("summary");
+    public static ContainerTag sub() {
+        return new ContainerTag("sub");
     }
 
-    public static Tag sup() {
-        return new Tag("sup");
+    public static ContainerTag summary() {
+        return new ContainerTag("summary");
     }
 
-    public static Tag table() {
-        return new Tag("table");
+    public static ContainerTag sup() {
+        return new ContainerTag("sup");
     }
 
-    public static Tag tbody() {
-        return new Tag("tbody");
+    public static ContainerTag table() {
+        return new ContainerTag("table");
     }
 
-    public static Tag td() {
-        return new Tag("td");
+    public static ContainerTag tbody() {
+        return new ContainerTag("tbody");
     }
 
-    public static Tag textarea() {
-        return new Tag("textarea");
+    public static ContainerTag td() {
+        return new ContainerTag("td");
     }
 
-    public static Tag tfoot() {
-        return new Tag("tfoot");
+    public static ContainerTag textarea() {
+        return new ContainerTag("textarea");
     }
 
-    public static Tag th() {
-        return new Tag("th");
+    public static ContainerTag tfoot() {
+        return new ContainerTag("tfoot");
     }
 
-    public static Tag thead() {
-        return new Tag("thead");
+    public static ContainerTag th() {
+        return new ContainerTag("th");
     }
 
-    public static Tag time() {
-        return new Tag("time");
+    public static ContainerTag thead() {
+        return new ContainerTag("thead");
     }
 
-    public static Tag title() {
-        return new Tag("title");
+    public static ContainerTag time() {
+        return new ContainerTag("time");
     }
 
-    public static Tag tr() {
-        return new Tag("tr");
+    public static ContainerTag title() {
+        return new ContainerTag("title");
     }
 
-    public static Tag track() {
-        return new Tag("track");
+    public static ContainerTag tr() {
+        return new ContainerTag("tr");
     }
 
-    public static Tag u() {
-        return new Tag("u");
+    public static ContainerTag u() {
+        return new ContainerTag("u");
     }
 
-    public static Tag ul() {
-        return new Tag("ul");
+    public static ContainerTag ul() {
+        return new ContainerTag("ul");
     }
 
-    public static Tag var() {
-        return new Tag("var");
+    public static ContainerTag var() {
+        return new ContainerTag("var");
     }
 
-    public static Tag video() {
-        return new Tag("video");
+    public static ContainerTag video() {
+        return new ContainerTag("video");
     }
 
 }

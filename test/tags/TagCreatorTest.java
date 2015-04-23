@@ -13,21 +13,31 @@ public class TagCreatorTest {
 
         //simpletags
         assertTrue(document().render().equals("<!DOCTYPE html>"));
+        assertTrue(area().render().equals("<area>"));
+        assertTrue(base().render().equals("<base>"));
         assertTrue(br().render().equals("<br>"));
         assertTrue(col().render().equals("<col>"));
+        assertTrue(embed().render().equals("<embed>"));
         assertTrue(hr().render().equals("<hr>"));
+        assertTrue(img().render().equals("<img>"));
+        assertTrue(input().render().equals("<input>"));
+        assertTrue(keygen().render().equals("<keygen>"));
+        assertTrue(link().render().equals("<link>"));
+        assertTrue(meta().render().equals("<meta>"));
+        assertTrue(param().render().equals("<param>"));
+        assertTrue(source().render().equals("<source>"));
+        assertTrue(track().render().equals("<track>"));
         assertTrue(wbr().render().equals("<wbr>"));
+
 
         //tags
         assertTrue(a().render().equals("<a></a>"));
         assertTrue(abbr().render().equals("<abbr></abbr>"));
         assertTrue(address().render().equals("<address></address>"));
-        assertTrue(area().render().equals("<area></area>"));
         assertTrue(article().render().equals("<article></article>"));
         assertTrue(aside().render().equals("<aside></aside>"));
         assertTrue(audio().render().equals("<audio></audio>"));
         assertTrue(b().render().equals("<b></b>"));
-        assertTrue(base().render().equals("<base></base>"));
         assertTrue(bdi().render().equals("<bdi></bdi>"));
         assertTrue(bdo().render().equals("<bdo></bdo>"));
         assertTrue(blockquote().render().equals("<blockquote></blockquote>"));
@@ -48,7 +58,6 @@ public class TagCreatorTest {
         assertTrue(dl().render().equals("<dl></dl>"));
         assertTrue(dt().render().equals("<dt></dt>"));
         assertTrue(em().render().equals("<em></em>"));
-        assertTrue(embed().render().equals("<embed></embed>"));
         assertTrue(fieldset().render().equals("<fieldset></fieldset>"));
         assertTrue(figcaption().render().equals("<figcaption></figcaption>"));
         assertTrue(figure().render().equals("<figure></figure>"));
@@ -65,21 +74,16 @@ public class TagCreatorTest {
         assertTrue(html().render().equals("<html></html>"));
         assertTrue(i().render().equals("<i></i>"));
         assertTrue(iframe().render().equals("<iframe></iframe>"));
-        assertTrue(img().render().equals("<img></img>"));
-        assertTrue(input().render().equals("<input></input>"));
         assertTrue(ins().render().equals("<ins></ins>"));
         assertTrue(kbd().render().equals("<kbd></kbd>"));
-        assertTrue(keygen().render().equals("<keygen></keygen>"));
         assertTrue(label().render().equals("<label></label>"));
         assertTrue(legend().render().equals("<legend></legend>"));
         assertTrue(li().render().equals("<li></li>"));
-        assertTrue(link().render().equals("<link></link>"));
         assertTrue(main().render().equals("<main></main>"));
         assertTrue(map().render().equals("<map></map>"));
         assertTrue(mark().render().equals("<mark></mark>"));
         assertTrue(menu().render().equals("<menu></menu>"));
         assertTrue(menuitem().render().equals("<menuitem></menuitem>"));
-        assertTrue(meta().render().equals("<meta></meta>"));
         assertTrue(meter().render().equals("<meter></meter>"));
         assertTrue(nav().render().equals("<nav></nav>"));
         assertTrue(noscript().render().equals("<noscript></noscript>"));
@@ -89,7 +93,6 @@ public class TagCreatorTest {
         assertTrue(option().render().equals("<option></option>"));
         assertTrue(output().render().equals("<output></output>"));
         assertTrue(p().render().equals("<p></p>"));
-        assertTrue(param().render().equals("<param></param>"));
         assertTrue(pre().render().equals("<pre></pre>"));
         assertTrue(progress().render().equals("<progress></progress>"));
         assertTrue(q().render().equals("<q></q>"));
@@ -102,7 +105,6 @@ public class TagCreatorTest {
         assertTrue(section().render().equals("<section></section>"));
         assertTrue(select().render().equals("<select></select>"));
         assertTrue(small().render().equals("<small></small>"));
-        assertTrue(source().render().equals("<source></source>"));
         assertTrue(span().render().equals("<span></span>"));
         assertTrue(strong().render().equals("<strong></strong>"));
         assertTrue(style().render().equals("<style></style>"));
@@ -119,7 +121,6 @@ public class TagCreatorTest {
         assertTrue(time().render().equals("<time></time>"));
         assertTrue(title().render().equals("<title></title>"));
         assertTrue(tr().render().equals("<tr></tr>"));
-        assertTrue(track().render().equals("<track></track>"));
         assertTrue(u().render().equals("<u></u>"));
         assertTrue(ul().render().equals("<ul></ul>"));
         assertTrue(var().render().equals("<var></var>"));

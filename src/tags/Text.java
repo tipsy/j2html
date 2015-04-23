@@ -1,6 +1,6 @@
 package j2html.src.tags;
 
-public class Text extends BaseTag {
+public class Text extends Tag {
 
 	public Text(String text) {
 		super(text);

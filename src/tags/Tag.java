@@ -1,84 +1,46 @@
 package j2html.src.tags;
 
-import j2html.src.attributes.Attr;
+import j2html.src.attributes.Attribute;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class Tag extends BaseTag {
+public abstract class Tag {
 
-    public ArrayList<BaseTag> children;
+    protected String tag;
+    protected ArrayList<Attribute> attributes;
+    protected Tag parent;
 
-    public Tag(String tagType) {
-        super(tagType);
-        this.children = new ArrayList<>();
+    protected Tag(String tagType) {
+        this.tag = tagType;
+        this.attributes = new ArrayList<Attribute>();
+    }
+
+    public void setParent(Tag parent) {
+        this.parent = parent;
     }
 
     /**
-     * Appends a node to the end of this element
-     * @param child node to be appended
-     * @return itself for easy chaining
+     * Sets an attribute on an element
+     * @param name  the attribute
+     * @param value the attribute value
      */
-    public Tag with(BaseTag child) {
-        if (this == child) {
-            throw new Error("Cannot append a node to itself.");
-        }
-        child.setParent(this);
-        children.add(child);
-        return this;
-    }
-
-    /**
-     * Appends a list of nodes to the end of this element
-     * @param children nodes to be appended
-     * @return itself for easy chaining
-     */
-    public Tag with(List<BaseTag> children) {
-        if (children != null) {
-            children.forEach(this::with);
-        }
-        return this;
-    }
-
-    /**
-     * Appends the nodes to the end of this element
-     * @param children nodes to be appended
-     * @return itself for easy chaining
-     */
-    public Tag with(BaseTag... children) {
-        for (BaseTag aChildren : children) {
-            with(aChildren);
-        }
-        return this;
-    }
-
-    public Tag attr(String attribute, String value) {
-        setAttribute(attribute, value);
-        return this;
-    }
-
-    /**
-     * Appends a text node to this element
-     * @param text the text to be appended
-     * @return itself for easy chaining
-     */
-    public Tag withText(String text) {
-        return with(new Text(text));
-    }
-
-    /**
-     * Render the node and its children
-     */
-    @Override
-    public String render() {
-        StringBuilder b = new StringBuilder(openTag());
-        if (children != null && children.size() > 0) {
-            for (BaseTag child : children) {
-                b.append(child.render());
+    public void setAttribute(String name, String value) {
+        if (value != null) {
+            for (Attribute attribute : attributes) {
+                if (attribute.getName().equals(name)) {
+                    //if attribute exists we set the attribute value in stead of just adding a new attribute
+                    attribute.setValue(value);
+                    return;
+                }
             }
+            attributes.add(new Attribute(name, value));
+        } else {
+            attributes.add(new Attribute(name));
         }
-        b.append(closeTag());
-        return b.toString();
+    }
+
+    public String render() {
+        return renderOpenTag() + renderCloseTag();
     }
 
     @Override
@@ -86,78 +48,16 @@ public class Tag extends BaseTag {
         return this.render();
     }
 
-    /** Methods below this point are convenience methods
-     *  that call attr with a predefined attribute.
-     */
-
-    //TODO: TEST ?
-    public Tag isAutoComplete() {
-        return attr(Attr.AUTOCOMPLETE, null);
+    public String renderOpenTag() {
+        String allAttributes = "";
+        for (Attribute attr : attributes) {
+            allAttributes += attr.render();
+        }
+        return "<" + tag + allAttributes + ">";
     }
 
-    public Tag isAutoFocus() {
-        return attr(Attr.AUTOFOCUS, null);
+    public String renderCloseTag() {
+        return "</" + tag + ">";
     }
-
-    public Tag isHidden() {
-        return attr(Attr.HIDDEN, null);
-    }
-
-    public Tag isRequired() {
-        return attr(Attr.REQUIRED, null);
-    }
-
-    public Tag withAlt(String alt) {
-        return attr(Attr.ALT, alt);
-    }
-
-    public Tag withAction(String action) {
-        return attr(Attr.ACTION, action);
-    }
-
-    public Tag withClass(String className) {
-        return attr(Attr.CLASS, className);
-    }
-
-    public Tag withHref(String href) {
-        return attr(Attr.HREF, href);
-    }
-
-    public Tag withId(String id) {
-        return attr(Attr.ID, id);
-    }
-
-    public Tag withData(String dataAttr, String value) {
-        return attr(Attr.DATA + "-" + dataAttr, value);
-    }
-
-    public Tag withMethod(String method) {
-        return attr(Attr.METHOD, method);
-    }
-
-    public Tag withName(String name) {
-        return attr(Attr.NAME, name);
-    }
-
-    public Tag withPlaceholder(String placeholder) {
-        return attr(Attr.PLACEHOLDER, placeholder);
-    }
-
-    public Tag withType(String type) {
-        return attr(Attr.TYPE, type);
-    }
-
-    public Tag withRel(String rel) {
-        return attr(Attr.REL, rel);
-    }
-
-    public Tag withSrc(String src) {
-        return attr(Attr.SRC, src);
-    }
-
-    public Tag withValue(String value) {
-        return attr(Attr.VALUE, value);
-    }
-
 
 }
