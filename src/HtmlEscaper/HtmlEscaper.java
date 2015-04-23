@@ -1,4 +1,4 @@
-package j2html.src.HtmlEscaper;
+package j2html.src.htmlEscaper;
 
 public class HtmlEscaper {
 

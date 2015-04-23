@@ -57,6 +57,10 @@ public class EmptyTag extends Tag {
         return attr(Attr.ACTION, action);
     }
 
+    public EmptyTag withCharset(String charset) {
+        return attr(Attr.CHARSET, charset);
+    }
+
     public EmptyTag withClass(String className) {
         return attr(Attr.CLASS, className);
     }

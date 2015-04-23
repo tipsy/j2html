@@ -119,6 +119,10 @@ public class ContainerTag extends Tag {
         return attr(Attr.CLASS, className);
     }
 
+    public ContainerTag withCharset(String charset) {
+        return attr(Attr.CHARSET, charset);
+    }
+
     public ContainerTag withHref(String href) {
         return attr(Attr.HREF, href);
     }
