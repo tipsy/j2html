@@ -1,6 +1,6 @@
 public class MainTemplate {
 
-    public static String render(String title, Tag... contentTags) {
+    public static String render(String title, Tag... tags) {
         return document().render() +
                 html().with(
                         head().with(
@@ -12,7 +12,7 @@ public class MainTemplate {
                                         h1().withText(title)
                                 ),
                                 main().with(
-                                        contentTags //content from other template
+                                        tags //content from other template
                                 ),
                                 footer().withText("Footer text"),
                                 script().withSrc("https://code.jquery.com/jquery-2.1.3.min.js")
@@ -25,7 +25,7 @@ public class MainTemplate {
 
 MainTemplate.render(
     "Form test", //this is the "String title" parameter
-    //Everything below here goes into the "Tag... contentTags" parameter
+    //Everything below here goes into the "Tag... tags" parameter
     // "..." means "varargs", which means you can add as many Tags as you like
     h2().withText("Please log in"),
     form().withMethod("post").with(
@@ -36,7 +36,7 @@ MainTemplate.render(
 
 
 // you can create methods like these to return fully configured 
-// HTML input fields/buttons (or any other tag)
+// HTML input fields/buttons (or any other kind of Tag)
 public static Tag emailInput(String placeholder) {
     return input()
             .withType("email")
@@ -61,16 +61,13 @@ public static Tag submitButton(String text) {
             .withText(text);
 }
 
-//  OUTPUT
-//  If you call MainTemplate.render with the above setup, it will return this: 
-//  <!DOCTYPE html><html><head><title>Form test</title><link rel="stylesheet" href="/css/main.css"></link></head><body><header><h1>Form test</h1></header><main><h2>Please log in</h2><form method="post"><input type="email" id="email" name="email" placeholder="Email" required></input><input type="password" id="password" name="password" placeholder="Password" required></input><button type="submit">Log in</button></form></main><footer>Footer text</footer><script src="https://code.jquery.com/jquery-2.1.3.min.js"></script></body></html>
+//  OUTPUT (unminified):
 
-//  Which unminified will look like this:
 //  <!DOCTYPE html>
 //  <html>
 //  <head>
 //     <title>Form test</title>
-//     <link rel="stylesheet" href="/css/main.css"></link>
+//     <link rel="stylesheet" href="/css/main.css">
 //  </head>
 //  
 //  <body>
@@ -80,8 +77,8 @@ public static Tag submitButton(String text) {
 //      <main>
 //          <h2>Please log in</h2>
 //          <form method="post">
-//              <input type="email" id="email" name="email" placeholder="Email" required></input>
-//              <input type="password" id="password" name="password" placeholder="Password" required></input>
+//              <input type="email" id="email" name="email" placeholder="Email" required>
+//              <input type="password" id="password" name="password" placeholder="Password" required>
 //              <button type="submit">Log in</button>
 //          </form>
 //      </main>
