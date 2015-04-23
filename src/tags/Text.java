@@ -1,5 +1,7 @@
 package j2html.src.tags;
 
+import static j2html.src.HtmlEscaper.HtmlEscaper.escape;
+
 public class Text extends Tag {
 
 	public Text(String text) {
@@ -8,12 +10,14 @@ public class Text extends Tag {
 	
 	@Override
 	public String render(){
-		return tag;
+		return escape(tag);
 	}
 	
 	@Override
 	public String toString(){
 		return this.render();
 	}
+
+
 	
 }

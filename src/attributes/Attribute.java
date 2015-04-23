@@ -1,12 +1,14 @@
 package j2html.src.attributes;
 
+import static j2html.src.HtmlEscaper.HtmlEscaper.escape;
+
 public class Attribute {
     private String name;
     private String value;
 
     public Attribute(String name, String value) {
         this.name = name;
-        this.value = value;
+        this.value = escape(value);
     }
 
     public Attribute(String name) {
