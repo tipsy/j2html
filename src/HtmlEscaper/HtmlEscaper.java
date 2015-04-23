@@ -3,6 +3,8 @@ package j2html.src.htmlEscaper;
 public class HtmlEscaper {
 
     public static String escape(String s) {
+        if("".equals(s)){ return ""; }
+        if(s == null) { return null; }
         StringBuilder out = new StringBuilder(Math.max(16, s.length()));
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
