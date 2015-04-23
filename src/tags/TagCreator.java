@@ -7,8 +7,7 @@ public class TagCreator {
         return new Text(text);
     }
 
-    //Empty tags
-
+    //EmptyTags
     public static EmptyTag area() {
         return new EmptyTag("area");
     }
@@ -73,7 +72,7 @@ public class TagCreator {
         return new EmptyTag("wbr");
     }
 
-    //Container tags
+    //ContainerTags
     public static ContainerTag a() {
         return new ContainerTag("a");
     }

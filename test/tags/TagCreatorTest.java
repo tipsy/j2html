@@ -11,7 +11,7 @@ public class TagCreatorTest {
     public void testAllTags() throws Exception {
         //yea, this is generated from http://www.w3schools.com/tags/
 
-        //simpletags
+        //EmptyTags
         assertTrue(document().render().equals("<!DOCTYPE html>"));
         assertTrue(area().render().equals("<area>"));
         assertTrue(base().render().equals("<base>"));
@@ -29,8 +29,7 @@ public class TagCreatorTest {
         assertTrue(track().render().equals("<track>"));
         assertTrue(wbr().render().equals("<wbr>"));
 
-
-        //tags
+        //ContainerTags
         assertTrue(a().render().equals("<a></a>"));
         assertTrue(abbr().render().equals("<abbr></abbr>"));
         assertTrue(address().render().equals("<address></address>"));

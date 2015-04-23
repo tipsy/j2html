@@ -49,11 +49,11 @@ public abstract class Tag {
     }
 
     public String renderOpenTag() {
-        String allAttributes = "";
-        for (Attribute attr : attributes) {
-            allAttributes += attr.render();
+        String tagAttributes = "";
+        for (Attribute attribute : attributes) {
+            tagAttributes += attribute.render();
         }
-        return "<" + tag + allAttributes + ">";
+        return "<" + tag + tagAttributes + ">";
     }
 
     public String renderCloseTag() {
