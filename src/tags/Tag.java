@@ -24,19 +24,15 @@ public abstract class Tag {
      * @param name  the attribute
      * @param value the attribute value
      */
-    public void setAttribute(String name, String value) {
-        if (value != null) {
-            for (Attribute attribute : attributes) {
-                if (attribute.getName().equals(name)) {
-                    //if attribute exists we set the attribute value in stead of just adding a new attribute
-                    attribute.setValue(value);
-                    return;
-                }
+    public boolean setAttribute(String name, String value) {
+        if (value == null) { return attributes.add(new Attribute(name)); }
+        for (Attribute attribute : attributes) {
+            if (attribute.getName().equals(name)) {
+                attribute.setValue(value); //update with new value
+                return true;
             }
-            attributes.add(new Attribute(name, value));
-        } else {
-            attributes.add(new Attribute(name));
         }
+        return attributes.add(new Attribute(name, value));
     }
 
     public String render() {

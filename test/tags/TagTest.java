@@ -9,14 +9,6 @@ import static org.junit.Assert.assertTrue;
 public class TagTest {
 
     @Test
-    public void testSetAttribute() throws Exception {
-        ContainerTag testTag = new ContainerTag("a");
-        testTag.setAttribute("href", "http://example.com");
-        testTag.setAttribute("href", "http://example.org");
-        assertTrue(testTag.render().equals("<a href=\"http://example.org\"></a>"));
-    }
-
-    @Test
     public void testRender() throws Exception {
         ContainerTag testTag = new ContainerTag("a");
         testTag.setAttribute("href", "http://example.com");
