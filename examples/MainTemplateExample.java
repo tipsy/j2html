@@ -4,12 +4,12 @@ public class MainTemplate {
         return document().render() +
                 html().with(
                         head().with(
-                                title().withText(title),
+                                title(title),
                                 link().withRel("stylesheet").withHref("/css/main.css")
                         ),
                         body().with(
                                 header().with(
-                                        h1().withText(title)
+                                        h1(title)
                                 ),
                                 main().with(
                                         tags //content from other template
