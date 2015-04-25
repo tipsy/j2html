@@ -13,10 +13,10 @@ public class RenderSpeed {
                 ),
                 body().with(
                         header().with(
-                                h1().withText("Test Header")
+                                h1("Test Header")
                         ),
                         main().with(
-                                h2().withText("Test Form"),
+                                h2("Test Form"),
                                 div().with(
                                         input().withType("email").withName("email").withPlaceholder("Email"),
                                         input().withType("password").withName("password").withPlaceholder("Password"),
