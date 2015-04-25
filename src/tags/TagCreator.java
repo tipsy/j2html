@@ -50,6 +50,7 @@ public class TagCreator {
     public static ContainerTag colgroup()               { return new ContainerTag("colgroup"); }
     public static ContainerTag datalist()               { return new ContainerTag("datalist"); }
     public static ContainerTag dd()                     { return new ContainerTag("dd"); }
+    public static ContainerTag dd(String text)          { return new ContainerTag("dd").withText(text); }
     public static ContainerTag del()                    { return new ContainerTag("del"); }
     public static ContainerTag del(String text)         { return new ContainerTag("del").withText(text); }
     public static ContainerTag details()                { return new ContainerTag("details"); }
@@ -60,6 +61,7 @@ public class TagCreator {
     public static ContainerTag div()                    { return new ContainerTag("div"); }
     public static ContainerTag dl()                     { return new ContainerTag("dl"); }
     public static ContainerTag dt()                     { return new ContainerTag("dt"); }
+    public static ContainerTag dt(String text)          { return new ContainerTag("dt").withText(text); }
     public static ContainerTag em()                     { return new ContainerTag("em"); }
     public static ContainerTag em(String text)          { return new ContainerTag("em").withText(text); }
     public static ContainerTag fieldset()               { return new ContainerTag("fieldset"); }
