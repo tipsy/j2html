@@ -1,12 +1,12 @@
 //Java Code
 html().with(
     head().with(
-        title().withText("Title"),
+        title("Title"),
         link().withRel("stylesheet").withHref("/css/main.css")
     ),
     body().with(
         main().with(
-            h1().withText("Heading!")
+            h1("Heading!")
         )
     )
 ).render();
