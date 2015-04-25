@@ -31,14 +31,14 @@ public class RenderSpeed {
 
     @Test
     public void testRenderSpeed() {
+        int numberOfRenders = 100000;
         long startTime = System.nanoTime();
-        int pages = 100000;
-        for(int i = 0; i < pages; i++){
+        for (int i = 0; i < numberOfRenders; i++) {
             String testString = renderTest(i);
         }
         long endTime = System.nanoTime();
-        long duration = (endTime - startTime)/1000000;
-        System.out.print("Rendered 100000 pages in " + duration + "ms");
+        long timeInMs = (endTime - startTime) / 1000000;
+        System.out.print("Rendered " + numberOfRenders + " pages in " + timeInMs + "ms");
     }
 
 }
