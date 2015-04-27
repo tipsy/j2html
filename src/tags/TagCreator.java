@@ -3,6 +3,7 @@ package j2html.src.tags;
 public class TagCreator {
 
     public static Text text(String text)                { return new Text(text); }
+    public static UnescapedText unsafeHtml(String html) { return new UnescapedText(html); }
 
     //EmptyTags
     public static EmptyTag area()                       { return new EmptyTag("area"); }
