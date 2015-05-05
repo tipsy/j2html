@@ -129,25 +129,25 @@ public class ContainerTag extends Tag {
     public ContainerTag withSrc(String src)                       { return attr(Attr.SRC, src); }
     public ContainerTag withValue(String value)                   { return attr(Attr.VALUE, value); }
 
-    public ContainerTag withCondAutoComplete(boolean condition) { return condAttr(condition, Attr.AUTOCOMPLETE, null); }
-    public ContainerTag withCondAutoFocus(boolean condition) { return condAttr(condition, Attr.AUTOFOCUS, null); }
-    public ContainerTag withCondHidden(boolean condition) { return condAttr(condition, Attr.HIDDEN, null); }
-    public ContainerTag withCondRequired(boolean condition) { return condAttr(condition, Attr.REQUIRED, null); }
-    public ContainerTag withCondAlt(boolean condition, String alt)                     { return condAttr(condition, Attr.ALT, alt); }
-    public ContainerTag withCondAction(boolean condition, String action)               { return condAttr(condition, Attr.ACTION, action); }
-    public ContainerTag withCharset(boolean condition, String charset) { return condAttr(condition, Attr.CHARSET, charset); }
-    public ContainerTag withCondClass(boolean condition, String className)             { return condAttr(condition, Attr.CLASS, className); }
-    public ContainerTag withCondContent(boolean condition, String content)             { return condAttr(condition, Attr.CONTENT, content); }
-    public ContainerTag withCondHref(boolean condition, String href)                   { return condAttr(condition, Attr.HREF, href); }
-    public ContainerTag withCondId(boolean condition, String id)                       { return condAttr(condition, Attr.ID, id); }
-    public ContainerTag withCondData(boolean condition, String dataAttr, String value) { return condAttr(condition, Attr.DATA + "-" + dataAttr, value); }
-    public ContainerTag withCondMethod(boolean condition, String method)               { return condAttr(condition, Attr.METHOD, method); }
-    public ContainerTag withCondName(boolean condition, String name)                   { return condAttr(condition, Attr.NAME, name); }
-    public ContainerTag withCondPlaceholder(boolean condition, String placeholder)     { return condAttr(condition, Attr.PLACEHOLDER, placeholder); }
-    public ContainerTag withCondTarget(boolean condition, String target)               { return condAttr(condition, Attr.TARGET, target); }
-    public ContainerTag withCondType(boolean condition, String type)                   { return condAttr(condition, Attr.TYPE, type); }
-    public ContainerTag withCondRel(boolean condition, String rel)                     { return condAttr(condition, Attr.REL, rel); }
-    public ContainerTag withCondSrc(boolean condition, String src)                     { return condAttr(condition, Attr.SRC, src); }
-    public ContainerTag withCondValue(boolean condition, String value)                 { return condAttr(condition, Attr.VALUE, value); }
+    public ContainerTag withCondAutoComplete(boolean condition)                         { return condAttr(condition, Attr.AUTOCOMPLETE, null); }
+    public ContainerTag withCondAutoFocus(boolean condition)                            { return condAttr(condition, Attr.AUTOFOCUS, null); }
+    public ContainerTag withCondHidden(boolean condition)                               { return condAttr(condition, Attr.HIDDEN, null); }
+    public ContainerTag withCondRequired(boolean condition)                             { return condAttr(condition, Attr.REQUIRED, null); }
+    public ContainerTag withCondAlt(boolean condition, String alt)                      { return condAttr(condition, Attr.ALT, alt); }
+    public ContainerTag withCondAction(boolean condition, String action)                { return condAttr(condition, Attr.ACTION, action); }
+    public ContainerTag withCharset(boolean condition, String charset)                  { return condAttr(condition, Attr.CHARSET, charset); }
+    public ContainerTag withCondClass(boolean condition, String className)              { return condAttr(condition, Attr.CLASS, className); }
+    public ContainerTag withCondContent(boolean condition, String content)              { return condAttr(condition, Attr.CONTENT, content); }
+    public ContainerTag withCondHref(boolean condition, String href)                    { return condAttr(condition, Attr.HREF, href); }
+    public ContainerTag withCondId(boolean condition, String id)                        { return condAttr(condition, Attr.ID, id); }
+    public ContainerTag withCondData(boolean condition, String dataAttr, String value)  { return condAttr(condition, Attr.DATA + "-" + dataAttr, value); }
+    public ContainerTag withCondMethod(boolean condition, String method)                { return condAttr(condition, Attr.METHOD, method); }
+    public ContainerTag withCondName(boolean condition, String name)                    { return condAttr(condition, Attr.NAME, name); }
+    public ContainerTag withCondPlaceholder(boolean condition, String placeholder)      { return condAttr(condition, Attr.PLACEHOLDER, placeholder); }
+    public ContainerTag withCondTarget(boolean condition, String target)                { return condAttr(condition, Attr.TARGET, target); }
+    public ContainerTag withCondType(boolean condition, String type)                    { return condAttr(condition, Attr.TYPE, type); }
+    public ContainerTag withCondRel(boolean condition, String rel)                      { return condAttr(condition, Attr.REL, rel); }
+    public ContainerTag withCondSrc(boolean condition, String src)                      { return condAttr(condition, Attr.SRC, src); }
+    public ContainerTag withCondValue(boolean condition, String value)                  { return condAttr(condition, Attr.VALUE, value); }
 
 }
