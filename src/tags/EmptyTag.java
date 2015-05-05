@@ -50,26 +50,26 @@ public class EmptyTag extends Tag {
      */
 
     //TODO: TEST ?
-    public EmptyTag isAutoComplete()                          { return attr(Attr.AUTOCOMPLETE, null); }
-    public EmptyTag isAutoFocus()                             { return attr(Attr.AUTOFOCUS, null); }
-    public EmptyTag isHidden()                                { return attr(Attr.HIDDEN, null); }
-    public EmptyTag isRequired()                              { return attr(Attr.REQUIRED, null); }
-    public EmptyTag withAlt(String alt)                       { return attr(Attr.ALT, alt); }
-    public EmptyTag withAction(String action)                 { return attr(Attr.ACTION, action); }
-    public EmptyTag withCharset(String charset)               { return attr(Attr.CHARSET, charset); }
-    public EmptyTag withClass(String className)               { return attr(Attr.CLASS, className); }
-    public EmptyTag withContent(String content)               { return attr(Attr.CONTENT, content); }
-    public EmptyTag withHref(String href)                     { return attr(Attr.HREF, href); }
-    public EmptyTag withId(String id)                         { return attr(Attr.ID, id); }
-    public EmptyTag withData(String dataAttr, String value)   { return attr(Attr.DATA + "-" + dataAttr, value); }
-    public EmptyTag withMethod(String method)                 { return attr(Attr.METHOD, method); }
-    public EmptyTag withName(String name)                     { return attr(Attr.NAME, name); }
-    public EmptyTag withPlaceholder(String placeholder)       { return attr(Attr.PLACEHOLDER, placeholder); }
-    public EmptyTag withTarget(String target)                 { return attr(Attr.TARGET, target); }
-    public EmptyTag withType(String type)                     { return attr(Attr.TYPE, type); }
-    public EmptyTag withRel(String rel)                       { return attr(Attr.REL, rel); }
-    public EmptyTag withSrc(String src)                       { return attr(Attr.SRC, src); }
-    public EmptyTag withValue(String value)                   { return attr(Attr.VALUE, value); }
+    public EmptyTag isAutoComplete()                                                { return attr(Attr.AUTOCOMPLETE, null); }
+    public EmptyTag isAutoFocus()                                                   { return attr(Attr.AUTOFOCUS, null); }
+    public EmptyTag isHidden()                                                      { return attr(Attr.HIDDEN, null); }
+    public EmptyTag isRequired()                                                    { return attr(Attr.REQUIRED, null); }
+    public EmptyTag withAlt(String alt)                                             { return attr(Attr.ALT, alt); }
+    public EmptyTag withAction(String action)                                       { return attr(Attr.ACTION, action); }
+    public EmptyTag withCharset(String charset)                                     { return attr(Attr.CHARSET, charset); }
+    public EmptyTag withClass(String className)                                     { return attr(Attr.CLASS, className); }
+    public EmptyTag withContent(String content)                                     { return attr(Attr.CONTENT, content); }
+    public EmptyTag withHref(String href)                                           { return attr(Attr.HREF, href); }
+    public EmptyTag withId(String id)                                               { return attr(Attr.ID, id); }
+    public EmptyTag withData(String dataAttr, String value)                         { return attr(Attr.DATA + "-" + dataAttr, value); }
+    public EmptyTag withMethod(String method)                                       { return attr(Attr.METHOD, method); }
+    public EmptyTag withName(String name)                                           { return attr(Attr.NAME, name); }
+    public EmptyTag withPlaceholder(String placeholder)                             { return attr(Attr.PLACEHOLDER, placeholder); }
+    public EmptyTag withTarget(String target)                                       { return attr(Attr.TARGET, target); }
+    public EmptyTag withType(String type)                                           { return attr(Attr.TYPE, type); }
+    public EmptyTag withRel(String rel)                                             { return attr(Attr.REL, rel); }
+    public EmptyTag withSrc(String src)                                             { return attr(Attr.SRC, src); }
+    public EmptyTag withValue(String value)                                         { return attr(Attr.VALUE, value); }
 
     public EmptyTag withCondAutoComplete(boolean condition)                         { return condAttr(condition, Attr.AUTOCOMPLETE, null); }
     public EmptyTag withCondAutoFocus(boolean condition)                            { return condAttr(condition, Attr.AUTOFOCUS, null); }
