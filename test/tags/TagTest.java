@@ -35,4 +35,5 @@ public class TagTest {
         ContainerTag testTag = new ContainerTag("a");
         assertTrue(testTag.renderCloseTag().equals("</a>"));
     }
+
 }

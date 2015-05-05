@@ -11,6 +11,14 @@ public class TagCreatorTest {
     public void testAllTags() throws Exception {
         //yea, this is generated from http://www.w3schools.com/tags/
 
+        //Special Tags
+
+        assertTrue(tag("tagname").render().equals("<tagname></tagname>"));
+        assertTrue(emptyTag("tagname").render().equals("<tagname>"));
+        assertTrue(text("<script>").render().equals("&#60;script&#62;"));
+        assertTrue(unsafeHtml("<script>").render().equals("<script>"));
+        assertTrue(text("text").render().equals("text"));
+
         //EmptyTags
         assertTrue(document().render().equals("<!DOCTYPE html>"));
         assertTrue(area().render().equals("<area>"));
