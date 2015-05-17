@@ -2,7 +2,7 @@ package performancetester;
 
 import org.junit.Test;
 
-import static j2html.tags.TagCreator.*;
+import static j2html.TagCreator.*;
 
 public class RenderSpeed {
 

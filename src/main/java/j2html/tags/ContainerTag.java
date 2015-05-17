@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ContainerTag extends Tag {
 
-    public ArrayList<Tag> children;
+    public List<Tag> children;
 
     public ContainerTag(String tagType) {
         super(tagType);

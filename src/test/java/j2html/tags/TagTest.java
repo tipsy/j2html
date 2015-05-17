@@ -3,7 +3,7 @@ package j2html.tags;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
-import static j2html.tags.TagCreator.*;
+import static j2html.TagCreator.*;
 
 public class TagTest {
 

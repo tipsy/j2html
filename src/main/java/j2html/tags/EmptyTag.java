@@ -5,7 +5,7 @@ import j2html.attributes.Attribute;
 
 public class EmptyTag extends Tag {
 
-    protected EmptyTag(String tagType) {
+    public EmptyTag(String tagType) {
         super(tagType);
     }
 
