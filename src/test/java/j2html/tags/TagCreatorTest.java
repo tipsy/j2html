@@ -2,8 +2,8 @@ package j2html.tags;
 
 import org.junit.Test;
 
-import static junit.framework.Assert.assertEquals;
 import static j2html.TagCreator.*;
+import static junit.framework.Assert.assertEquals;
 
 public class TagCreatorTest {
 
