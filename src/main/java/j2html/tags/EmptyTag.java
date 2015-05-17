@@ -21,11 +21,8 @@ public class EmptyTag extends Tag {
     }
 
     /**
-     * Sets a custom attribute based on a condition
-     * @param condition the condition that decides if attribute should be set
-     * @param attribute the attribute name
-     * @param value the attribute value
-     * @return itself for easy chaining
+     * Call attr-method based on condition
+     * {@link #attr(String attribute, String value)}
      */
     public EmptyTag condAttr(boolean condition, String attribute, String value) {
         return condition ? attr(attribute, value) : this;
