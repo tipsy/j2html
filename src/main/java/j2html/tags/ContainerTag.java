@@ -1,6 +1,6 @@
-package j2html.src.tags;
+package j2html.tags;
 
-import j2html.src.attributes.Attr;
+import j2html.attributes.Attr;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +29,8 @@ public class ContainerTag extends Tag {
     }
 
     /**
-     * Appends a list of tags to the end of this element
-     * @param children tags to be appended
+     * Appends a list of j2html.tags to the end of this element
+     * @param children j2html.tags to be appended
      * @return itself for easy chaining
      */
     public ContainerTag with(List<Tag> children) {
@@ -41,8 +41,8 @@ public class ContainerTag extends Tag {
     }
 
     /**
-     * Appends the tags to the end of this element
-     * @param children tags to be appended
+     * Appends the j2html.tags to the end of this element
+     * @param children j2html.tags to be appended
      * @return itself for easy chaining
      */
     public ContainerTag with(Tag... children) {

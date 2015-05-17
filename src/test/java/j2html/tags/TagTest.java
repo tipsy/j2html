@@ -1,10 +1,9 @@
-package j2html.test.tags;
+package j2html.tags;
 
-import j2html.src.tags.ContainerTag;
 import org.junit.Test;
 
-import static j2html.src.tags.TagCreator.*;
 import static org.junit.Assert.assertTrue;
+import static j2html.tags.TagCreator.*;
 
 public class TagTest {
 

@@ -1,23 +1,21 @@
-package j2html.test.tags;
+package j2html.tags;
 
 import org.junit.Test;
 
-import static j2html.src.tags.TagCreator.*;
 import static junit.framework.Assert.assertTrue;
+import static j2html.tags.TagCreator.*;
 
 public class TagCreatorTest {
 
     @Test
     public void testAllTags() throws Exception {
-        //yea, this is generated from http://www.w3schools.com/tags/
 
         //Special Tags
-
         assertTrue(tag("tagname").render().equals("<tagname></tagname>"));
         assertTrue(emptyTag("tagname").render().equals("<tagname>"));
+        assertTrue(text("text").render().equals("text"));
         assertTrue(text("<script>").render().equals("&#60;script&#62;"));
         assertTrue(unsafeHtml("<script>").render().equals("<script>"));
-        assertTrue(text("text").render().equals("text"));
 
         //EmptyTags
         assertTrue(document().render().equals("<!DOCTYPE html>"));

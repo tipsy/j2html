@@ -1,6 +1,6 @@
-package j2html.src.attributes;
+package j2html.attributes;
 
-import static j2html.src.htmlEscaper.HtmlEscaper.escape;
+import static j2html.utils.SimpleHtmlEscaper.escape;
 
 public class Attribute {
     private String name;

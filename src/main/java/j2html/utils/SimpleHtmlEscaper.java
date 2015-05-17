@@ -1,7 +1,13 @@
-package j2html.src.htmlEscaper;
+package j2html.utils;
 
-public class HtmlEscaper {
+public class SimpleHtmlEscaper {
 
+    /**
+     * Simple approach from http://stackoverflow.com/a/25228492/4893160 ... good enough ?
+     * Apache StringEscapeUtils is extremely slow compared (probably because it's a lot safer!)
+     * @param s the string to be escaped
+     * @return the escaped string
+     */
     public static String escape(String s) {
         if("".equals(s)){ return ""; }
         if(s == null) { return null; }

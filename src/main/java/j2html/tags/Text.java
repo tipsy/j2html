@@ -1,6 +1,7 @@
-package j2html.src.tags;
+package j2html.tags;
 
-import static j2html.src.htmlEscaper.HtmlEscaper.escape;
+
+import static j2html.utils.SimpleHtmlEscaper.escape;
 
 public class Text extends Tag {
 

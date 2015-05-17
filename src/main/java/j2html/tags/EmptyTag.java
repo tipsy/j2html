@@ -1,7 +1,7 @@
-package j2html.src.tags;
+package j2html.tags;
 
-import j2html.src.attributes.Attr;
-import j2html.src.attributes.Attribute;
+import j2html.attributes.Attr;
+import j2html.attributes.Attribute;
 
 public class EmptyTag extends Tag {
 

@@ -1,17 +1,15 @@
-package j2html.test.tags;
+package performancetester;
 
 import org.junit.Test;
 
-import static j2html.src.tags.TagCreator.*;
-import static j2html.src.tags.TagCreator.script;
-import static org.junit.Assert.assertTrue;
+import static j2html.tags.TagCreator.*;
 
-public class ComplexRenderTest {
-    private String renderTest() {
-        return  document().render()+
-                html().with(
+public class RenderSpeed {
+
+    private String renderTest(int i) {
+        return html().with(
                 head().with(
-                        title().withText("Test")
+                        title().withText("Test " + i)
                 ),
                 body().with(
                         header().with(
@@ -32,8 +30,15 @@ public class ComplexRenderTest {
     }
 
     @Test
-    public void testComplexRender() {
-        String expectedResult = "<!DOCTYPE html><html><head><title>Test</title></head><body><header><h1>Test Header</h1></header><main><h2>Test Form</h2><div><input type=\"email\" name=\"email\" placeholder=\"Email\"><input type=\"password\" name=\"password\" placeholder=\"Password\"><button type=\"submit\">Login</button></div></main><footer>Test Footer</footer><script src=\"/testScript.js\"></script></body></html>";
-        assertTrue(renderTest().equals(expectedResult));
+    public void testRenderSpeed() {
+        int numberOfRenders = 100000;
+        long startTime = System.nanoTime();
+        for (int i = 0; i < numberOfRenders; i++) {
+            String testString = renderTest(i);
+        }
+        long endTime = System.nanoTime();
+        long timeInMs = (endTime - startTime) / 1000000;
+        System.out.print("Rendered " + numberOfRenders + " pages in " + timeInMs + "ms");
     }
+
 }

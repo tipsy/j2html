@@ -1,10 +1,9 @@
-package j2html.test.attributes;
+package j2html.attributes;
 
-import j2html.src.attributes.Attribute;
-import j2html.src.tags.ContainerTag;
 import org.junit.Test;
+import j2html.tags.ContainerTag;
 
-import static org.junit.Assert.assertTrue;
+import static junit.framework.Assert.assertTrue;
 
 public class AttributeTest {
 

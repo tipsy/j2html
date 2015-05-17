@@ -1,9 +1,9 @@
-package j2html.test.tags;
+package j2html.tags;
 
 import org.junit.Test;
 
-import static j2html.src.tags.TagCreator.*;
 import static junit.framework.Assert.assertTrue;
+import static j2html.tags.TagCreator.*;
 
 public class ConvenienceMethodTest {
 
