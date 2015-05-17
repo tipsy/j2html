@@ -45,6 +45,8 @@ public abstract class Tag {
     }
 
     public String renderOpenTag() {
+//        final String tagAttributes = attributes.stream().map(Attribute::render).collect(Collectors.joining());
+//        return "<" + tag + tagAttributes + ">"; //too slow
         String tagAttributes = "";
         for (Attribute attribute : attributes) {
             tagAttributes += attribute.render();

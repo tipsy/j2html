@@ -2,6 +2,8 @@ package performancetester;
 
 import org.junit.Test;
 
+import java.util.stream.IntStream;
+
 import static j2html.TagCreator.*;
 
 public class RenderSpeed {
@@ -33,9 +35,9 @@ public class RenderSpeed {
     public void testRenderSpeed() {
         int numberOfRenders = 100000;
         long startTime = System.nanoTime();
-        for (int i = 0; i < numberOfRenders; i++) {
-            String testString = renderTest(i);
-        }
+        IntStream.range(0, numberOfRenders).parallel().forEach(
+            this::renderTest
+        );
         long endTime = System.nanoTime();
         long timeInMs = (endTime - startTime) / 1000000;
         System.out.print("Rendered " + numberOfRenders + " pages in " + timeInMs + "ms");
