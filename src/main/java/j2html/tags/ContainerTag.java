@@ -29,6 +29,14 @@ public class ContainerTag extends Tag {
     }
 
     /**
+     * Call with-method based on condition
+     * {@link #with(Tag child)}
+     */
+    public ContainerTag condWith(boolean condition, Tag child) {
+        return condition ? this.with(child) : this;
+    }
+
+    /**
      * Appends a list of tags to the end of this element
      * @param children tags to be appended
      * @return itself for easy chaining
@@ -41,6 +49,14 @@ public class ContainerTag extends Tag {
     }
 
     /**
+     * Call with-method based on condition
+     * {@link #with(List children)}
+     */
+    public ContainerTag condWith(boolean condition, List<Tag> children) {
+        return condition ? this.with(children) : this;
+    }
+
+    /**
      * Appends the tags to the end of this element
      * @param children tags to be appended
      * @return itself for easy chaining
@@ -50,6 +66,14 @@ public class ContainerTag extends Tag {
             with(aChildren);
         }
         return this;
+    }
+
+    /**
+     * Call with-method based on condition
+     * {@link #with(Tag... children)}
+     */
+    public ContainerTag condWith(boolean condition, Tag... children) {
+        return condition ? this.with(children) : this;
     }
 
     /**
@@ -73,11 +97,8 @@ public class ContainerTag extends Tag {
     }
 
     /**
-     * Sets a custom attribute based on a condition
-     * @param condition the condition that decides if attribute should be set
-     * @param attribute the attribute name
-     * @param value the attribute value
-     * @return itself for easy chaining
+     * Call attr-method based on condition
+     * {@link #attr(String attribute, String value)}
      */
     public ContainerTag condAttr(boolean condition, String attribute, String value) {
         return condition ? attr(attribute, value) : this;

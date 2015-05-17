@@ -1,22 +1,22 @@
 package j2html.attributes;
 
-import org.junit.Test;
 import j2html.tags.ContainerTag;
+import org.junit.Test;
 
-import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.assertEquals;
 
 public class AttributeTest {
 
     @Test
     public void testRender() throws Exception {
         Attribute attributeWithValue = new Attribute("href", "http://example.com");
-        assertTrue(attributeWithValue.render().equals(" href=\"http://example.com\""));
+        assertEquals(attributeWithValue.render(), " href=\"http://example.com\"");
 
         Attribute attribute = new Attribute("required", null);
-        assertTrue(attribute.render().equals(" required"));
+        assertEquals(attribute.render(), " required");
 
         Attribute nullAttribute = new Attribute(null, null);
-        assertTrue(nullAttribute.render().equals(""));
+        assertEquals(nullAttribute.render(), "");
     }
 
     @Test
@@ -24,7 +24,7 @@ public class AttributeTest {
         ContainerTag testTag = new ContainerTag("a");
         testTag.setAttribute("href", "http://example.com");
         testTag.setAttribute("href", "http://example.org");
-        assertTrue(testTag.render().equals("<a href=\"http://example.org\"></a>"));
+        assertEquals(testTag.render(), "<a href=\"http://example.org\"></a>");
     }
 
 }
