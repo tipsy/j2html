@@ -19,6 +19,4 @@ public class Text extends Tag {
 		return this.render();
 	}
 
-
-	
 }
