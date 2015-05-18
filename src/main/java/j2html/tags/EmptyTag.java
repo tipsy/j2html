@@ -11,8 +11,9 @@ public class EmptyTag extends Tag {
 
     /**
      * Sets a custom attribute
+     *
      * @param attribute the attribute name
-     * @param value the attribute value
+     * @param value     the attribute value
      * @return itself for easy chaining
      */
     public EmptyTag attr(String attribute, String value) {
@@ -33,7 +34,7 @@ public class EmptyTag extends Tag {
         for (Attribute attribute : attributes) {
             tagAttributes += attribute;
         }
-        return "<"+tag+tagAttributes+">";
+        return "<" + tag + tagAttributes + ">";
     }
 
     @Override
@@ -42,8 +43,9 @@ public class EmptyTag extends Tag {
     }
 
 
-    /** Methods below this point are convenience methods
-     *  that call attr with a predefined attribute.
+    /**
+     * Methods below this point are convenience methods
+     * that call attr with a predefined attribute.
      */
 
     //TODO: TEST ?

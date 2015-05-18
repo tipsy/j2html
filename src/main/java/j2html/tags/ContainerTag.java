@@ -16,6 +16,7 @@ public class ContainerTag extends Tag {
 
     /**
      * Appends a tag to the end of this element
+     *
      * @param child tag to be appended
      * @return itself for easy chaining
      */
@@ -38,6 +39,7 @@ public class ContainerTag extends Tag {
 
     /**
      * Appends a list of tags to the end of this element
+     *
      * @param children tags to be appended
      * @return itself for easy chaining
      */
@@ -58,6 +60,7 @@ public class ContainerTag extends Tag {
 
     /**
      * Appends the tags to the end of this element
+     *
      * @param children tags to be appended
      * @return itself for easy chaining
      */
@@ -78,6 +81,7 @@ public class ContainerTag extends Tag {
 
     /**
      * Appends a text tag to this element
+     *
      * @param text the text to be appended
      * @return itself for easy chaining
      */
@@ -87,8 +91,9 @@ public class ContainerTag extends Tag {
 
     /**
      * Sets a custom attribute
+     *
      * @param attribute the attribute name
-     * @param value the attribute value
+     * @param value     the attribute value
      * @return itself for easy chaining
      */
     public ContainerTag attr(String attribute, String value) {
@@ -124,8 +129,9 @@ public class ContainerTag extends Tag {
         return this.render();
     }
 
-    /** Methods below this point are convenience methods
-     *  that call attr with a predefined attribute.
+    /**
+     * Methods below this point are convenience methods
+     * that call attr with a predefined attribute.
      */
 
     //TODO: TEST ?

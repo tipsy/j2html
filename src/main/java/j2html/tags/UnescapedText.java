@@ -7,12 +7,12 @@ public class UnescapedText extends Tag {
     }
 
     @Override
-    public String render(){
+    public String render() {
         return tag;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.render();
     }
 
