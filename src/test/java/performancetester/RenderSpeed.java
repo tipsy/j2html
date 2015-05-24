@@ -13,21 +13,26 @@ import static org.junit.Assert.assertEquals;
 
 public class RenderSpeed {
 
+    /**
+     * This test class is only used during development of j2html, to see if changes to data-types and rendering
+     * techniques have a positive or negative impact
+     */
+
     public int iterations = 100000;
     public int precision = 10;
 
     @Test
     public void testFullPageRenderSpeed() {
-        ContainerTag complexTestTag = html().with(body().with(header(),main().with(p("Main stuff...")),footer().condWith(1 == 1,p("Conditional with!"))));
-        String expectedResult ="<html><body><header></header><main><p>Main stuff...</p></main><footer><p>Conditional with!</p></footer></body></html>";
+        ContainerTag complexTestTag = html().with(body().with(header(), main().with(p("Main stuff...")), footer().condWith(1 == 1, p("Conditional with!"))));
+        String expectedResult = "<html><body><header></header><main><p>Main stuff...</p></main><footer><p>Conditional with!</p></footer></body></html>";
         assertEquals(complexTestTag.render(), (expectedResult));
-        String methodName = new Object() {}.getClass().getEnclosingMethod().getName();
+        String methodName = new Object(){}.getClass().getEnclosingMethod().getName();
         measureAvgMethodTime(this::fullPageRenderTest, iterations, precision, methodName);
     }
 
     @Test
     public void testAttributeRenderSpeed() {
-        String methodName = new Object() {}.getClass().getEnclosingMethod().getName();
+        String methodName = new Object(){}.getClass().getEnclosingMethod().getName();
         measureAvgMethodTime(this::attributeRenderTest, iterations, precision, methodName);
     }
 

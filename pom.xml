@@ -7,9 +7,10 @@
     <groupId>com.j2html</groupId>
     <artifactId>j2html</artifactId>
     <version>0.5.0</version>
-    <name>j2html</name>
 
-    <packaging>jar</packaging>
+    <name>j2html</name>
+    <description>Java to HTML builder with a fluent API</description>
+    <url>http://j2html.com</url>
 
     <properties>
         <jdk.version>1.8</jdk.version>
@@ -23,6 +24,8 @@
             <version>${junit.version}</version>
         </dependency>
     </dependencies>
+
+    <packaging>jar</packaging>
 
     <build>
         <plugins>
