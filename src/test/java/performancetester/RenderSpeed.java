@@ -1,5 +1,6 @@
 package performancetester;
 
+import j2html.tags.ContainerTag;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -8,14 +9,18 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 import static j2html.TagCreator.*;
+import static org.junit.Assert.assertEquals;
 
 public class RenderSpeed {
 
     public int iterations = 100000;
-    public int precision = 5;
+    public int precision = 10;
 
     @Test
     public void testFullPageRenderSpeed() {
+        ContainerTag complexTestTag = html().with(body().with(header(),main().with(p("Main stuff...")),footer().condWith(1 == 1,p("Conditional with!"))));
+        String expectedResult ="<html><body><header></header><main><p>Main stuff...</p></main><footer><p>Conditional with!</p></footer></body></html>";
+        assertEquals(complexTestTag.render(), (expectedResult));
         String methodName = new Object() {}.getClass().getEnclosingMethod().getName();
         measureAvgMethodTime(this::fullPageRenderTest, iterations, precision, methodName);
     }
@@ -70,7 +75,6 @@ public class RenderSpeed {
      * @param iterations the number of times to run the method
      * @param precision  the number of times to run the timer
      * @param methodName the name of the method (only used for output)
-     * @return avg runtime for the given amount of iterations
      */
     private void measureAvgMethodTime(IntConsumer method, int iterations, int precision, String methodName) {
         double averageTime = LongStream.range(0, precision).map(l -> measureMethodTime(method, iterations)).average().getAsDouble();
