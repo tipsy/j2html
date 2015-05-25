@@ -18,6 +18,29 @@
     <description>Java to HTML builder with a fluent API</description>
     <url>http://j2html.com</url>
 
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:git@github.com:tipsy/j2html.git</connection>
+        <developerConnection>scm:git:git@github.com:tipsy/j2html.git</developerConnection>
+        <url>https://github.com/tipsy/j2html.git</url>
+        <tag>HEAD</tag>
+    </scm>
+    <developers>
+        <developer>
+            <name>David Åse</name>
+        </developer>
+    </developers>
+    <issueManagement>
+        <system>GitHub Issue Tracker</system>
+        <url>https://github.com/tipsy/j2html/issues</url>
+    </issueManagement>
+
     <properties>
         <jdk.version>1.8</jdk.version>
         <junit.version>4.11</junit.version>
@@ -75,5 +98,35 @@
         </plugins>
 
     </build>
+
+    <profiles>
+        <profile>
+            <id>sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>sign</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
