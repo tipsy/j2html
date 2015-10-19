@@ -3,7 +3,7 @@ package j2html.attributes;
 import j2html.tags.ContainerTag;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class AttributeTest {
 

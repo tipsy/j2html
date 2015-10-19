@@ -3,7 +3,7 @@ package j2html.tags;
 import org.junit.Test;
 
 import static j2html.TagCreator.*;
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class ConvenienceMethodTest {
 
