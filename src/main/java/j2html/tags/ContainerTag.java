@@ -45,7 +45,9 @@ public class ContainerTag extends Tag {
      */
     public ContainerTag with(List<Tag> children) {
         if (children != null) {
-            children.forEach(this::with);
+            for (Tag child : children) {
+                this.with(child);
+            }
         }
         return this;
     }
@@ -114,17 +116,6 @@ public class ContainerTag extends Tag {
      */
     @Override
     public String render() {
-        //very slow
-//        return renderOpenTag() + children.stream().map(Tag::render).collect(Collectors.joining()) + renderCloseTag();
-
-        //pretty fast
-//        StringBuilder rendered = new StringBuilder(renderOpenTag());
-//        children.forEach(rendered::append);
-//        rendered.append(renderCloseTag());
-//        return rendered.toString();
-
-
-        //fastest
         StringBuilder rendered = new StringBuilder(renderOpenTag());
         if (children != null && children.size() > 0) {
             for (Tag child : children) {

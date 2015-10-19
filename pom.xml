@@ -40,7 +40,7 @@
     </issueManagement>
 
     <properties>
-        <jdk.version>1.8</jdk.version>
+        <jdk.version>1.7</jdk.version>
         <junit.version>4.12</junit.version>
         <commons-lang3.version>3.4</commons-lang3.version>
     </properties>
