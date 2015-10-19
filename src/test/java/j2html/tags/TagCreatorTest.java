@@ -14,7 +14,7 @@ public class TagCreatorTest {
         assertEquals(tag("tagname").render(), "<tagname></tagname>");
         assertEquals(emptyTag("tagname").render(), "<tagname>");
         assertEquals(text("text").render(), "text");
-        assertEquals(text("<script>").render(), "&#60;script&#62;");
+        assertEquals(text("<script> and \"<script>\"").render(), "&lt;script&gt; and &quot;&lt;script&gt;&quot;");
         assertEquals(unsafeHtml("<script>").render(), "<script>");
 
         //EmptyTags

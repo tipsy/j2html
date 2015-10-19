@@ -1,7 +1,6 @@
 package j2html.tags;
 
-
-import static j2html.utils.SimpleHtmlEscaper.escape;
+import static org.apache.commons.lang3.StringEscapeUtils.*;
 
 public class Text extends Tag {
 
@@ -11,7 +10,7 @@ public class Text extends Tag {
 
     @Override
     public String render() {
-        return escape(tag);
+        return escapeHtml4(tag);
     }
 
     @Override
