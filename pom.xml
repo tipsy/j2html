@@ -10,7 +10,7 @@
 
     <groupId>com.j2html</groupId>
     <artifactId>j2html</artifactId>
-    <version>0.5.1-SNAPSHOT</version>
+    <version>0.7-SNAPSHOT</version>
 
     <name>j2html</name>
     <description>Java to HTML builder with a fluent API</description>
@@ -39,22 +39,16 @@
         <url>https://github.com/tipsy/j2html/issues</url>
     </issueManagement>
 
-    <properties>
-        <jdk.version>1.7</jdk.version>
-        <junit.version>4.12</junit.version>
-        <commons-lang3.version>3.4</commons-lang3.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
+            <version>4.12</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
+            <version>3.4</version>
         </dependency>
         <dependency>
             <groupId>com.google.javascript</groupId>
@@ -72,8 +66,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.3</version>
                 <configuration>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                     <optimize>true</optimize>
                 </configuration>
             </plugin>
@@ -90,7 +84,7 @@
                         <configuration>
                             <rules>
                                 <requireJavaVersion>
-                                    <version>[${jdk.version},)</version>
+                                    <version>[1.7,)</version>
                                 </requireJavaVersion>
                             </rules>
                         </configuration>
