@@ -51,7 +51,7 @@
  * Repo: https://github.com/barryvan/CSSMin
  */
 
-package utils;
+package j2html.utils;
 
 import java.util.*;
 import java.util.regex.*;

@@ -2,7 +2,7 @@ package j2html.tags;
 
 import com.google.javascript.jscomp.*;
 import com.google.javascript.jscomp.Compiler;
-import utils.*;
+import j2html.utils.*;
 import java.nio.file.*;
 import static j2html.TagCreator.*;
 
