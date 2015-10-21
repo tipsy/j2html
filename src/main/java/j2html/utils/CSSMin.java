@@ -60,6 +60,8 @@ import java.lang.*;
 
 public class CSSMin {
 
+    //TODO: Stop using sout, srsly...
+
     protected static boolean bDebug = false;
 
     /**
