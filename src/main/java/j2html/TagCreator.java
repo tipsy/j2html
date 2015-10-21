@@ -16,7 +16,9 @@ public class TagCreator {
     public static ContainerTag inlineCssMin(String path)    { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.CSS_MIN); }
     public static ContainerTag inlineJsMin(String path)     { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.JS_MIN); }
 
-    public static UnescapedText fileAsString(String path)    { return new UnescapedText(InlineStaticResource.getFileAsString(path)); }
+    public static UnescapedText fileAsString(String path)   { return new UnescapedText(InlineStaticResource.getFileAsString(path)); }
+    public static Text fileAsEscapedString(String path)     { return new Text(InlineStaticResource.getFileAsString(path)); }
+
 
     //EmptyTags
     public static EmptyTag area()                           { return new EmptyTag("area"); }
@@ -35,6 +37,7 @@ public class TagCreator {
     public static EmptyTag source()                         { return new EmptyTag("source"); }
     public static EmptyTag track()                          { return new EmptyTag("track"); }
     public static EmptyTag wbr()                            { return new EmptyTag("wbr"); }
+
 
     //ContainerTags
     public static ContainerTag a()                          { return new ContainerTag("a"); }
