@@ -13,9 +13,10 @@ public class TagCreator {
 
     public static ContainerTag inlineCss(String path)       { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.CSS); }
     public static ContainerTag inlineJs(String path)        { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.JS); }
-
     public static ContainerTag inlineCssMin(String path)    { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.CSS_MIN); }
     public static ContainerTag inlineJsMin(String path)     { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.JS_MIN); }
+
+    public static UnescapedText fileAsString(String path)    { return new UnescapedText(InlineStaticResource.getFileAsString(path)); }
 
     //EmptyTags
     public static EmptyTag area()                           { return new EmptyTag("area"); }

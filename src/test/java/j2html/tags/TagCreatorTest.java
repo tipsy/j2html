@@ -18,6 +18,8 @@ public class TagCreatorTest {
         assertEquals(unsafeHtml("<script>").render(), "<script>");
         assertEquals(inlineCssMin("/test.css").render(), "<style>body{background:#daa520;margin-bottom:10px;margin-left:10px;margin-right:10px;margin-top:10px}</style>");
         assertEquals(inlineJsMin("/test.js").render(), "<script>(function(){console.log(15)})();</script>");
+        assertEquals(fileAsString("/test.html").render(), "<body>\r\n"+"    Any content\r\n"+"</body>\r\n");
+        assertEquals(fileAsString("/test.java").render(), "public class AnyContent{}\r\n");
 
         //EmptyTags
         assertEquals(document().render(), "<!DOCTYPE html>");
