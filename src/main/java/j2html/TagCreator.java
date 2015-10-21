@@ -11,11 +11,11 @@ public class TagCreator {
     public static Text text(String text)                    { return new Text(text); }
     public static UnescapedText unsafeHtml(String html)     { return new UnescapedText(html); }
 
-    public static ContainerTag inlineCss(String path)       { return InlineStaticResource.get(path, "css"); }
-    public static ContainerTag inlineJs(String path)        { return InlineStaticResource.get(path, "js"); }
+    public static ContainerTag inlineCss(String path)       { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.CSS); }
+    public static ContainerTag inlineJs(String path)        { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.JS); }
 
-    public static ContainerTag inlineCssMin(String path)    { return InlineStaticResource.get(path, "css.min"); }
-    public static ContainerTag inlineJsMin(String path)     { return InlineStaticResource.get(path, "js.min"); }
+    public static ContainerTag inlineCssMin(String path)    { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.CSS_MIN); }
+    public static ContainerTag inlineJsMin(String path)     { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.JS_MIN); }
 
     //EmptyTags
     public static EmptyTag area()                           { return new EmptyTag("area"); }
