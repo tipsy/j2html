@@ -6,12 +6,7 @@ import static j2html.TagCreator.*;
 
 public class InlineStaticResource {
 
-    public enum TargetFormat {
-        CSS_MIN,
-        CSS,
-        JS_MIN,
-        JS;
-    }
+    public enum TargetFormat { CSS_MIN, CSS, JS_MIN, JS; }
 
     public static ContainerTag get(String path, TargetFormat format) {
         ContainerTag errorTag = script().with(unsafeHtml("alert('Unable to read file. File: \"" + path + "\", Type: \"" + format + "\"')"));

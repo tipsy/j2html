@@ -53,16 +53,16 @@
 
 package j2html.utils;
 
-import java.util.*;
-import java.util.regex.*;
 import java.io.*;
-import java.lang.*;
+import java.util.*;
+import java.util.logging.*;
+import java.util.regex.*;
 
 public class CSSMin {
 
-    //TODO: Stop using sout, srsly...
+    private static final Logger LOG = Logger.getLogger(CSSMin.class.getName());
 
-    protected static boolean bDebug = false;
+    protected static boolean debugLogging = false;
 
     /**
      * Minify CSS from a reader to a printstream.
@@ -79,8 +79,8 @@ public class CSSMin {
             BufferedReader br = new BufferedReader(new StringReader(input));
             StringBuilder sb = new StringBuilder();
 
-            if (bDebug) {
-                System.err.println("Reading file into StringBuffer...");
+            if (debugLogging) {
+                LOG.info("Reading file into StringBuffer...");
             }
             String s;
             while ((s = br.readLine()) != null) {
@@ -88,8 +88,8 @@ public class CSSMin {
                 sb.append(s);
             }
 
-            if (bDebug) {
-                System.err.println("Removing comments...");
+            if (debugLogging) {
+                LOG.info("Removing comments...");
             }
             // Find the start of the comment
             n = 0;
@@ -104,13 +104,13 @@ public class CSSMin {
                 }
                 sb.delete(n, k + 2);
             }
-            if (bDebug) {
-                System.err.println(sb.toString());
-                System.err.println("\n\n");
+            if (debugLogging) {
+                LOG.info(sb.toString());
+                LOG.info("\n\n");
             }
 
-            if (bDebug) {
-                System.err.println("Parsing and processing selectors...");
+            if (debugLogging) {
+                LOG.info("Parsing and processing selectors...");
             }
             Vector<Selector> selectors = new Vector<>();
             n = 0;
@@ -128,9 +128,11 @@ public class CSSMin {
                         try {
                             selectors.addElement(new Selector(sb.substring(n, i + 1)));
                         } catch (UnterminatedSelectorException usex) {
-                            System.out.println("Unterminated selector: " + usex.getMessage());
+                            LOG.warning("Unterminated selector: " + usex.getMessage());
                         } catch (EmptySelectorBodyException ebex) {
-                            if (bDebug) System.out.println("Empty selector body: " + ebex.getMessage());
+                            if (debugLogging) {
+                                LOG.warning("Empty selector body: " + ebex.getMessage());
+                            }
                         }
                         n = i + 1;
                     }
@@ -143,19 +145,18 @@ public class CSSMin {
                 result.append(selector);
             }
 
-            if (bDebug) {
-                System.err.println("Process completed successfully.");
+            if (debugLogging) {
+                LOG.info("Process completed successfully.");
             }
 
             return result.toString();
 
         } catch (UnterminatedCommentException ucex) {
-            System.out.println("Unterminated comment.");
+            LOG.warning("Unterminated comment.");
         } catch (UnbalancedBracesException ubex) {
-            System.out.println("Unbalanced braces.");
+            LOG.warning("Unbalanced braces.");
         } catch (Exception ex) {
-            ex.printStackTrace(System.err);
-            System.out.println(ex.getMessage());
+            LOG.warning(ex.getMessage());
         }
 
         return null;
@@ -164,6 +165,9 @@ public class CSSMin {
 }
 
 class Selector {
+
+    private static final Logger LOG = Logger.getLogger(Selector.class.getName());
+
     private Property[] properties = null;
     private Vector<Selector> subSelectors = null;
     private String selector;
@@ -199,9 +203,9 @@ class Selector {
             }
         } else {
             String contents = parts[parts.length - 1].trim();
-            if (CSSMin.bDebug) {
-                System.err.println("Parsing selector: " + this.selector);
-                System.err.println("\t" + contents);
+            if (CSSMin.debugLogging) {
+                LOG.info("Parsing selector: " + this.selector);
+                LOG.info("\t" + contents);
             }
             if (contents.charAt(contents.length() - 1) != '}') { // Ensure that we have a leading and trailing brace.
                 throw new UnterminatedSelectorException(selector);
@@ -277,7 +281,7 @@ class Selector {
             try {
                 results.add(new Property(part));
             } catch (IncompletePropertyException ipex) {
-                System.out.println("Incomplete property in selector \"" + this.selector + "\": \"" + ipex.getMessage() + "\"");
+                LOG.warning("Incomplete property in selector \"" + this.selector + "\": \"" + ipex.getMessage() + "\"");
             }
         }
 
@@ -295,6 +299,9 @@ class Selector {
 }
 
 class Property implements Comparable<Property> {
+
+    private static final Logger LOG = Logger.getLogger(Property.class.getName());
+
     protected String property;
     protected Part[] parts;
 
@@ -311,8 +318,8 @@ class Property implements Comparable<Property> {
             boolean bCanSplit = true;
             int j = 0;
             String substr;
-            if (CSSMin.bDebug) {
-                System.err.println("\t\tExamining property: " + property);
+            if (CSSMin.debugLogging) {
+                LOG.info("\t\tExamining property: " + property);
             }
             for (int i = 0; i < property.length(); i++) {
                 if (!bCanSplit) { // If we're inside a string
@@ -357,8 +364,8 @@ class Property implements Comparable<Property> {
         }
         sb.deleteCharAt(sb.length() - 1); // Delete the trailing comma.
         sb.append(";");
-        if (CSSMin.bDebug) {
-            System.err.println(sb.toString());
+        if (CSSMin.debugLogging) {
+            LOG.info(sb.toString());
         }
         return sb.toString();
     }
@@ -402,7 +409,7 @@ class Property implements Comparable<Property> {
             try {
                 results[i] = new Part(parts[i], property);
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                LOG.warning(e.getMessage());
                 results[i] = null;
             }
         }
