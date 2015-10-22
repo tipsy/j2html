@@ -11,10 +11,10 @@ public class TagCreator {
     public static Text text(String text)                    { return new Text(text); }
     public static UnescapedText unsafeHtml(String html)     { return new UnescapedText(html); }
 
-    public static ContainerTag inlineCss(String path)       { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.CSS); }
-    public static ContainerTag inlineJs(String path)        { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.JS); }
-    public static ContainerTag inlineCssMin(String path)    { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.CSS_MIN); }
-    public static ContainerTag inlineJsMin(String path)     { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.JS_MIN); }
+    public static Tag styleWithInlineFile(String path)      { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.CSS); }
+    public static Tag scriptWithInlineFile(String path)     { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.JS); }
+    public static Tag styleWithInlineFile_min(String path)  { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.CSS_MIN); }
+    public static Tag scriptWithInlineFile_min(String path) { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.JS_MIN); }
 
     public static UnescapedText fileAsString(String path)   { return new UnescapedText(InlineStaticResource.getFileAsString(path)); }
     public static Text fileAsEscapedString(String path)     { return new Text(InlineStaticResource.getFileAsString(path)); }
