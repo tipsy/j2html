@@ -14,11 +14,12 @@ public class TagCreatorTest {
         assertEquals(tag("tagname").render(), "<tagname></tagname>");
         assertEquals(emptyTag("tagname").render(), "<tagname>");
         assertEquals(text("text").render(), "text");
-        assertEquals(text("<script> and \"<script>\"").render(), "&lt;script&gt; and &quot;&lt;script&gt;&quot;");
+        assertEquals(text("<script> and \"</script>\"").render(), "&lt;script&gt; and &quot;&lt;/script&gt;&quot;");
         assertEquals(unsafeHtml("<script>").render(), "<script>");
         assertEquals(styleWithInlineFile_min("/test.css").render(), "<style>body{background:#daa520;margin-bottom:10px;margin-left:10px;margin-right:10px;margin-top:10px}</style>");
         assertEquals(scriptWithInlineFile_min("/test.js").render(), "<script>(function(){console.log(15)})();</script>");
         assertEquals(fileAsString("/test.html").render(), "<body>\r\n"+"    Any content\r\n"+"</body>\r\n");
+        assertEquals(fileAsEscapedString("/test.html").render(), "&lt;body&gt;\r\n"+"    Any content\r\n"+"&lt;/body&gt;\r\n");
         assertEquals(fileAsString("/test.java").render(), "public class AnyContent{}\r\n");
 
         //EmptyTags
