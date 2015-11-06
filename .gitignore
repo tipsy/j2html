@@ -93,4 +93,9 @@ pom.xml.versionsBackup
 pom.xml.next
 release.properties
 dependency-reduced-pom.xml
+
+### Eclipse ###
+.classpath
+.project
+.settings/
 buildNumber.properties
