@@ -6,10 +6,10 @@ import static j2html.TagCreator.*;
 import static org.junit.Assert.assertEquals;
 
 public class TagCreatorTest {
-	/** system independent End Of Line */
-    private static final String EOL = System.getProperty("line.separator");
 
-	@Test
+    private static final String EOL = System.getProperty("line.separator"); //System independent End Of Line
+
+    @Test
     public void testAllTags() throws Exception {
 
         //Special Tags
@@ -20,9 +20,9 @@ public class TagCreatorTest {
         assertEquals(unsafeHtml("<script>").render(), "<script>");
         assertEquals(styleWithInlineFile_min("/test.css").render(), "<style>body{background:#daa520;margin-bottom:10px;margin-left:10px;margin-right:10px;margin-top:10px}</style>");
         assertEquals(scriptWithInlineFile_min("/test.js").render(), "<script>(function(){console.log(15)})();</script>");
-        assertEquals(fileAsString("/test.html").render(), "<body>"+ EOL+"    Any content"+ EOL+"</body>"+ EOL);
-        assertEquals(fileAsEscapedString("/test.html").render(), "&lt;body&gt;"+ EOL+"    Any content"+ EOL+"&lt;/body&gt;"+ EOL);
-        assertEquals(fileAsString("/test.java").render(), "public class AnyContent{}"+ EOL);
+        assertEquals(fileAsString("/test.html").render(), "<body>" + EOL + "    Any content" + EOL + "</body>" + EOL);
+        assertEquals(fileAsEscapedString("/test.html").render(), "&lt;body&gt;" + EOL + "    Any content" + EOL + "&lt;/body&gt;" + EOL);
+        assertEquals(fileAsString("/test.java").render(), "public class AnyContent{}" + EOL);
 
         //EmptyTags
         assertEquals(document().render(), "<!DOCTYPE html>");
