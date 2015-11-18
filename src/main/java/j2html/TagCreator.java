@@ -161,6 +161,7 @@ public class TagCreator {
     public static ContainerTag td()                         { return new ContainerTag("td"); }
     public static ContainerTag td(String text)              { return new ContainerTag("td").withText(text); }
     public static ContainerTag textarea()                   { return new ContainerTag("textarea"); }
+    public static ContainerTag textcontainer()              { return new TextContainer(); }
     public static ContainerTag tfoot()                      { return new ContainerTag("tfoot"); }
     public static ContainerTag th()                         { return new ContainerTag("th"); }
     public static ContainerTag th(String text)              { return new ContainerTag("th").withText(text); }
