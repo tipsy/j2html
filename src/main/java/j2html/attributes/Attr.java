@@ -110,5 +110,7 @@ public class Attr {
     public static String AUTOFOCUS = "autofocus";
     public static String AUTOPLAY = "autoplay";
     public static String AUTOSAVE = "autosave";
+    public static String FONT_FACE = "face";
+    
 
 }
