@@ -1,3 +1,7 @@
+![](https://img.shields.io/travis/tipsy/j2html.svg) 
+![](https://img.shields.io/github/license/tipsy/j2html.svg)
+![](https://img.shields.io/maven-central/v/com.j2html/j2html.svg)
+
 # j2html
 Java to HTML generator. Enjoy typesafe HTML generation.
 
