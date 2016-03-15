@@ -53,6 +53,7 @@ public class EmptyTag extends Tag {
     public EmptyTag isAutoFocus()                                                   { return attr(Attr.AUTOFOCUS, null); }
     public EmptyTag isHidden()                                                      { return attr(Attr.HIDDEN, null); }
     public EmptyTag isRequired()                                                    { return attr(Attr.REQUIRED, null); }
+    public EmptyTag isNgRequired()                                                  { return attr(Attr.NG_REQUIRED, null); }
     public EmptyTag withAlt(String alt)                                             { return attr(Attr.ALT, alt); }
     public EmptyTag withAction(String action)                                       { return attr(Attr.ACTION, action); }
     public EmptyTag withCharset(String charset)                                     { return attr(Attr.CHARSET, charset); }
@@ -63,6 +64,14 @@ public class EmptyTag extends Tag {
     public EmptyTag withData(String dataAttr, String value)                         { return attr(Attr.DATA + "-" + dataAttr, value); }
     public EmptyTag withMethod(String method)                                       { return attr(Attr.METHOD, method); }
     public EmptyTag withName(String name)                                           { return attr(Attr.NAME, name); }
+    public EmptyTag withNgChange(String method)                                     { return attr(Attr.NG_CHANGE, method); }
+    public EmptyTag withNgDisabled(String exp)                                      { return attr(Attr.NG_DISABLED, exp); }
+    public EmptyTag withNgHide(String exp)                                          { return attr(Attr.NG_HIDE, exp); }
+    public EmptyTag withNgModel(String value)                                       { return attr(Attr.NG_MODEL, value); }
+    public EmptyTag withNgMinLength(String value)                                   { return attr(Attr.NG_MINLENGTH, value); }
+    public EmptyTag withNgMaxLength(String value)                                   { return attr(Attr.NG_MAXLENGTH, value); }
+    public EmptyTag withNgShow(String exp)                                          { return attr(Attr.NG_SHOW, exp); }
+    public EmptyTag withNgTrim(String bool)                                         { return attr(Attr.NG_TRIM, bool); }
     public EmptyTag withPlaceholder(String placeholder)                             { return attr(Attr.PLACEHOLDER, placeholder); }
     public EmptyTag withTarget(String target)                                       { return attr(Attr.TARGET, target); }
     public EmptyTag withType(String type)                                           { return attr(Attr.TYPE, type); }

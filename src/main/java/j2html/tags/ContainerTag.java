@@ -141,6 +141,7 @@ public class ContainerTag extends Tag {
     public ContainerTag isAutoFocus()                                                   { return attr(Attr.AUTOFOCUS, null); }
     public ContainerTag isHidden()                                                      { return attr(Attr.HIDDEN, null); }
     public ContainerTag isRequired()                                                    { return attr(Attr.REQUIRED, null); }
+    public ContainerTag isNgRequired()                                                  { return attr(Attr.NG_REQUIRED, null); }
     public ContainerTag withAlt(String alt)                                             { return attr(Attr.ALT, alt); }
     public ContainerTag withAction(String action)                                       { return attr(Attr.ACTION, action); }
     public ContainerTag withCharset(String charset)                                     { return attr(Attr.CHARSET, charset); }
@@ -151,6 +152,23 @@ public class ContainerTag extends Tag {
     public ContainerTag withData(String dataAttr, String value)                         { return attr(Attr.DATA + "-" + dataAttr, value); }
     public ContainerTag withMethod(String method)                                       { return attr(Attr.METHOD, method); }
     public ContainerTag withName(String name)                                           { return attr(Attr.NAME, name); }
+    public ContainerTag withAngular(String app)                                         { return attr(Attr.NG_APP, app); }
+    public ContainerTag withNgController(String ctrl)                                   { return attr(Attr.NG_CONTROLLER, ctrl); }
+    public ContainerTag withNgBind(String exp)                                          { return attr(Attr.NG_BIND, exp); }
+    public ContainerTag withNgBindHtml(String exp)                                      { return attr(Attr.NG_BIND_HTML, exp); }
+    public ContainerTag withNgClick(String method)                                      { return attr(Attr.NG_CLICK, method); }
+    public ContainerTag withNgDisabled(String exp)                                      { return attr(Attr.NG_DISABLED, exp); }
+    public ContainerTag withNgHide(String exp)                                          { return attr(Attr.NG_HIDE, exp); }
+    public ContainerTag withNgHref(String href)                                         { return attr(Attr.NG_HREF, href); }
+    public ContainerTag withNgIf(String exp)                                            { return attr(Attr.NG_IF, exp); }
+    public ContainerTag withNgSubmit(String method)                                     { return attr(Attr.NG_SUBMIT, method); }
+    public ContainerTag withNgModel(String value)                                       { return attr(Attr.NG_MODEL, value); }
+    public ContainerTag withNgMinLength(String value)                                   { return attr(Attr.NG_MINLENGTH, value); }
+    public ContainerTag withNgMaxLength(String value)                                   { return attr(Attr.NG_MAXLENGTH, value); }
+    public ContainerTag withNgPattern(String pattern)                                   { return attr(Attr.NG_PATTERN, pattern); }
+    public ContainerTag withNgShow(String exp)                                          { return attr(Attr.NG_SHOW, exp); }
+    public ContainerTag withNgChange(String method)                                     { return attr(Attr.NG_CHANGE, method); }
+    public ContainerTag withNgTrim(String bool)                                         { return attr(Attr.NG_TRIM, bool); }
     public ContainerTag withPlaceholder(String placeholder)                             { return attr(Attr.PLACEHOLDER, placeholder); }
     public ContainerTag withTarget(String target)                                       { return attr(Attr.TARGET, target); }
     public ContainerTag withType(String type)                                           { return attr(Attr.TYPE, type); }

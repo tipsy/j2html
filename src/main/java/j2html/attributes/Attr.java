@@ -1,6 +1,8 @@
 package j2html.attributes;
 
 public class Attr {
+
+    //Regular attributes
     public static String HIDDEN = "hidden";
     public static String HIGH = "high";
     public static String HREF = "href";
@@ -110,5 +112,26 @@ public class Attr {
     public static String AUTOFOCUS = "autofocus";
     public static String AUTOPLAY = "autoplay";
     public static String AUTOSAVE = "autosave";
+
+    //Angular Attributes
+    public static String NG_APP = "ng-app";
+    public static String NG_CONTROLLER = "ng-controller";
+    public static String NG_BIND = "ng-bind";
+    public static String NG_BIND_HTML = "ng-bind-html";
+    public static String NG_CLICK = "ng-click";
+    public static String NG_DISABLED = "ng-disabled";
+    public static String NG_HIDE = "ng-hide";
+    public static String NG_HREF = "ng-href";
+    public static String NG_IF = "ng-if";
+    public static String NG_MODEL = "ng-model";
+    public static String NG_REQUIRED = "ng-required";
+    public static String NG_SHOW = "ng-show";
+    public static String NG_SUBMIT = "ng-submit";
+    public static String NG_MINLENGTH = "ng-minlength";
+    public static String NG_MAXLENGTH = "ng-maxlength";
+    public static String NG_PATTERN = "ng-pattern";
+    public static String NG_CHANGE = "ng-change";
+    public static String NG_TRIM = "ng-trim";
+
 
 }
