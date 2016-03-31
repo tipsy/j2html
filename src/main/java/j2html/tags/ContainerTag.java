@@ -155,6 +155,7 @@ public class ContainerTag extends Tag {
     public ContainerTag withTarget(String target)                                       { return attr(Attr.TARGET, target); }
     public ContainerTag withType(String type)                                           { return attr(Attr.TYPE, type); }
     public ContainerTag withRel(String rel)                                             { return attr(Attr.REL, rel); }
+    public ContainerTag withRole(String role)                                           { return attr(Attr.ROLE, role); }
     public ContainerTag withSrc(String src)                                             { return attr(Attr.SRC, src); }
     public ContainerTag withValue(String value)                                         { return attr(Attr.VALUE, value); }
 
