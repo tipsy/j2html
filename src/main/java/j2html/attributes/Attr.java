@@ -40,6 +40,7 @@ public class Attr {
     public static String REL = "rel";
     public static String REQUIRED = "required";
     public static String REVERSED = "reversed";
+    public static String ROLE = "role";
     public static String ROWS = "rows";
     public static String ROWSPAN = "rowspan";
     public static String SANDBOX = "sandbox";
