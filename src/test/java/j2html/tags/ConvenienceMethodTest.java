@@ -27,6 +27,7 @@ public class ConvenienceMethodTest {
         assertEquals(a().withTarget("_blank").render(), "<a target=\"_blank\"></a>");
         assertEquals(input().withType("email").render(), "<input type=\"email\">");
         assertEquals(link().withRel("stylesheet").render(), "<link rel=\"stylesheet\">");
+        assertEquals(link().withRole("role").render(), "<link role=\"role\">");
         assertEquals(img().withSrc("/img/test.png").render(), "<img src=\"/img/test.png\">");
         assertEquals(input().withValue("test-value").render(), "<input value=\"test-value\">");
     }

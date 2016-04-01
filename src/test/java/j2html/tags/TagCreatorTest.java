@@ -141,6 +141,7 @@ public class TagCreatorTest {
         assertEquals(rt().render(), "<rt></rt>");
         assertEquals(ruby().render(), "<ruby></ruby>");
         assertEquals(s().render(), "<s></s>");
+        assertEquals(s("Text").render(), "<s>Text</s>");
         assertEquals(samp().render(), "<samp></samp>");
         assertEquals(script().render(), "<script></script>");
         assertEquals(section().render(), "<section></section>");
@@ -169,6 +170,7 @@ public class TagCreatorTest {
         assertEquals(thead().render(), "<thead></thead>");
         assertEquals(time().render(), "<time></time>");
         assertEquals(title().render(), "<title></title>");
+        assertEquals(title("Text").render(), "<title>Text</title>");
         assertEquals(tr().render(), "<tr></tr>");
         assertEquals(u().render(), "<u></u>");
         assertEquals(u("Text").render(), "<u>Text</u>");
