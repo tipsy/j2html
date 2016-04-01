@@ -1,27 +1,27 @@
 /**
  * * CSSMin Copyright License Agreement (BSD License)
- *
+ * <p>
  * Copyright (c) 2011-2014, Barry van Oudtshoorn
  * All rights reserved.
- *
+ * <p>
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
- *
+ * <p>
  * - Redistributions of source code must retain the above
  * copyright notice, this list of conditions and the
  * following disclaimer.
- *
+ * <p>
  * - Redistributions in binary form must reproduce the above
  * copyright notice, this list of conditions and the
  * following disclaimer in the documentation and/or other
  * materials provided with the distribution.
- *
+ * <p>
  * - Neither the name of Barryvan nor the names of its
  * contributors may be used to endorse or promote products
  * derived from this software without specific prior
  * written permission.
- *
+ * <p>
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -33,17 +33,17 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
- *
+ * <p>
  * CSSMin takes in well-formed, human-readable CSS and reduces its size substantially.
  * It removes unnecessary whitespace and comments, and orders the contents of CSS
  * selectors alphabetically to enhance GZIP compression.
- *
+ * <p>
  * Originally by Barry van Oudtshoorn, with bug reports, fixes, and contributions by
  * <ul>
- *   <li>Kevin de Groote</li>
- *   <li>Pedro Pinheiro</li>
- *   <li>Asier Lostalé</li>
- *   <li>David Åse</li>
+ * <li>Kevin de Groote</li>
+ * <li>Pedro Pinheiro</li>
+ * <li>Asier Lostalé</li>
+ * <li>David Åse</li>
  * </ul>
  * Some code is based on the YUI CssCompressor code, by Julien Lecomte.
  *
@@ -62,7 +62,7 @@ public class CSSMin {
 
     private static final Logger LOG = Logger.getLogger(CSSMin.class.getName());
 
-    protected static boolean debugLogging = false;
+    static boolean debugLogging = false;
 
     /**
      * Minify CSS from a reader to a printstream.
@@ -178,7 +178,7 @@ class Selector {
      * @param selector The selector; for example, "div { border: solid 1px red; color: blue; }"
      * @throws IncompleteSelectorException, UnterminatedSelectorException, EmptySelectorBodyException If the selector is incomplete and cannot be parsed.
      */
-    public Selector(String selector) throws IncompleteSelectorException, UnterminatedSelectorException, EmptySelectorBodyException {
+    Selector(String selector) throws IncompleteSelectorException, UnterminatedSelectorException, EmptySelectorBodyException {
         String[] parts = selector.split("\\{"); // We have to escape the { with a \ for the regex, which itself requires escaping for the string. Sigh.
         if (parts.length < 2) {
             throw new IncompleteSelectorException(selector);
@@ -302,8 +302,8 @@ class Property implements Comparable<Property> {
 
     private static final Logger LOG = Logger.getLogger(Property.class.getName());
 
-    protected String property;
-    protected Part[] parts;
+    private String property;
+    private Part[] parts;
 
     /**
      * Creates a new Property using the supplied strings. Parses out the values of the property selector.
@@ -311,7 +311,7 @@ class Property implements Comparable<Property> {
      * @param property The property; for example, "border: solid 1px red;" or "-moz-box-shadow: 3px 3px 3px rgba(255, 255, 0, 0.5);".
      * @throws IncompletePropertyException If the property is incomplete and cannot be parsed.
      */
-    public Property(String property) throws IncompletePropertyException {
+    Property(String property) throws IncompletePropertyException {
         try {
             // Parse the property.
             ArrayList<String> parts = new ArrayList<>();
@@ -375,24 +375,17 @@ class Property implements Comparable<Property> {
      */
     public int compareTo(Property other) {
         // We can't just use String.compareTo(), because we need to sort properties that have hack prefixes last -- eg, *display should come after display.
-        String thisProp = this.property;
-        String thatProp = other.property;
+        return sort(this.property).compareTo(sort(other.property));
+    }
 
+    private String sort(String thisProp) {
         if (thisProp.charAt(0) == '-') {
             thisProp = thisProp.substring(1);
             thisProp = thisProp.substring(thisProp.indexOf('-') + 1);
         } else if (thisProp.charAt(0) < 65) {
             thisProp = thisProp.substring(1);
         }
-
-        if (thatProp.charAt(0) == '-') {
-            thatProp = thatProp.substring(1);
-            thatProp = thatProp.substring(thatProp.indexOf('-') + 1);
-        } else if (thatProp.charAt(0) < 65) {
-            thatProp = thatProp.substring(1);
-        }
-
-        return thisProp.compareTo(thatProp);
+        return thisProp;
     }
 
     /**
@@ -456,8 +449,8 @@ class Property implements Comparable<Property> {
 }
 
 class Part {
-    String contents;
-    String property;
+    private String contents;
+    private String property;
 
     /**
      * Create a new property by parsing the given string.
@@ -465,7 +458,7 @@ class Part {
      * @param contents The string to parse.
      * @throws Exception If the part cannot be parsed.
      */
-    public Part(String contents, String property) throws Exception {
+    Part(String contents, String property) throws Exception {
         // Many of these regular expressions are adapted from those used in the YUI CSS Compressor.
 
         // For simpler regexes.
@@ -615,14 +608,16 @@ class Part {
     }
 }
 
-class UnterminatedCommentException extends Exception {}
+class UnterminatedCommentException extends Exception {
+}
 
-class UnbalancedBracesException extends Exception {}
+class UnbalancedBracesException extends Exception {
+}
 
 class IncompletePropertyException extends Exception {
-    String message = null;
+    private String message = null;
 
-    public IncompletePropertyException(String message) {
+    IncompletePropertyException(String message) {
         this.message = message;
     }
 
@@ -632,9 +627,9 @@ class IncompletePropertyException extends Exception {
 }
 
 class EmptySelectorBodyException extends Exception {
-    String message = null;
+    private String message = null;
 
-    public EmptySelectorBodyException(String message) {
+    EmptySelectorBodyException(String message) {
         this.message = message;
     }
 
@@ -644,9 +639,9 @@ class EmptySelectorBodyException extends Exception {
 }
 
 class UnterminatedSelectorException extends Exception {
-    String message = null;
+    private String message = null;
 
-    public UnterminatedSelectorException(String message) {
+    UnterminatedSelectorException(String message) {
         this.message = message;
     }
 
@@ -656,9 +651,9 @@ class UnterminatedSelectorException extends Exception {
 }
 
 class IncompleteSelectorException extends Exception {
-    String message = null;
+    private String message = null;
 
-    public IncompleteSelectorException(String message) {
+    IncompleteSelectorException(String message) {
         this.message = message;
     }
 
@@ -668,8 +663,8 @@ class IncompleteSelectorException extends Exception {
 }
 
 class Constants {
-    static final String[] htmlColourNames  = { "aliceblue", "antiquewhite", "aqua", "aquamarine", "azure", "beige", "bisque", "black", "blanchedalmond", "blue", "blueviolet", "brown", "burlywood", "cadetblue", "chartreuse", "chocolate", "coral", "cornflowerblue", "cornsilk", "crimson", "cyan", "darkblue", "darkcyan", "darkgoldenrod", "darkgray", "darkgreen", "darkkhaki", "darkmagenta", "darkolivegreen", "darkorange", "darkorchid", "darkred", "darksalmon", "darkseagreen", "darkslateblue", "darkslategray", "darkturquoise", "darkviolet", "deeppink", "deepskyblue", "dimgray", "dodgerblue", "firebrick", "floralwhite", "forestgreen", "fuchsia", "gainsboro", "ghostwhite", "gold", "goldenrod", "gray", "green", "greenyellow", "honeydew", "hotpink", "indianred ", "indigo ", "ivory", "khaki", "lavender", "lavenderblush", "lawngreen", "lemonchiffon", "lightblue", "lightcoral", "lightcyan", "lightgoldenrodyellow", "lightgrey", "lightgreen", "lightpink", "lightsalmon", "lightseagreen", "lightskyblue", "lightslategray", "lightsteelblue", "lightyellow", "lime", "limegreen", "linen", "magenta", "maroon", "mediumaquamarine", "mediumblue", "mediumorchid", "mediumpurple", "mediumseagreen", "mediumslateblue", "mediumspringgreen", "mediumturquoise", "mediumvioletred", "midnightblue", "mintcream", "mistyrose", "moccasin", "navajowhite", "navy", "oldlace", "olive", "olivedrab", "orange", "orangered", "orchid", "palegoldenrod", "palegreen", "paleturquoise", "palevioletred", "papayawhip", "peachpuff", "peru", "pink", "plum", "powderblue", "purple", "red", "rosybrown", "royalblue", "saddlebrown", "salmon", "sandybrown", "seagreen", "seashell", "sienna", "silver", "skyblue", "slateblue", "slategray", "snow", "springgreen", "steelblue", "tan", "teal", "thistle", "tomato", "turquoise", "violet", "wheat", "white", "whitesmoke", "yellow", "yellowgreen" };
-    static final String[] htmlColourValues = { "#f0f8ff", "#faebd7", "#00ffff", "#7fffd4", "#f0ffff", "#f5f5dc", "#ffe4c4", "#000", "#ffebcd", "#00f", "#8a2be2", "#a52a2a", "#deb887", "#5f9ea0", "#7fff00", "#d2691e", "#ff7f50", "#6495ed", "#fff8dc", "#dc143c", "#0ff", "#00008b", "#008b8b", "#b8860b", "#a9a9a9", "#006400", "#bdb76b", "#8b008b", "#556b2f", "#ff8c00", "#9932cc", "#8b0000", "#e9967a", "#8fbc8f", "#483d8b", "#2f4f4f", "#00ced1", "#9400d3", "#ff1493", "#00bfff", "#696969", "#1e90ff", "#b22222", "#fffaf0", "#228b22", "#f0f", "#dcdcdc", "#f8f8ff", "#ffd700", "#daa520", "#808080", "#008000", "#adff2f", "#f0fff0", "#ff69b4", "#cd5c5c", "#4b0082", "#fffff0", "#f0e68c", "#e6e6fa", "#fff0f5", "#7cfc00", "#fffacd", "#add8e6", "#f08080", "#e0ffff", "#fafad2", "#d3d3d3", "#90ee90", "#ffb6c1", "#ffa07a", "#20b2aa", "#87cefa", "#789", "#b0c4de", "#ffffe0", "#0f0", "#32cd32", "#faf0e6", "#f0f", "#800000", "#66cdaa", "#0000cd", "#ba55d3", "#9370d8", "#3cb371", "#7b68ee", "#00fa9a", "#48d1cc", "#c71585", "#191970", "#f5fffa", "#ffe4e1", "#ffe4b5", "#ffdead", "#000080", "#fdf5e6", "#808000", "#6b8e23", "#ffa500", "#ff4500", "#da70d6", "#eee8aa", "#98fb98", "#afeeee", "#d87093", "#ffefd5", "#ffdab9", "#cd853f", "#ffc0cb", "#dda0dd", "#b0e0e6", "#800080", "#f00", "#bc8f8f", "#4169e1", "#8b4513", "#fa8072", "#f4a460", "#2e8b57", "#fff5ee", "#a0522d", "#c0c0c0", "#87ceeb", "#6a5acd", "#708090", "#fffafa", "#00ff7f", "#4682b4", "#d2b48c", "#008080", "#d8bfd8", "#ff6347", "#40e0d0", "#ee82ee", "#f5deb3", "#fff", "#f5f5f5", "#ff0", "#9acd32" };
-    static final String[] fontWeightNames  = { "normal", "bold", "bolder", "lighter" };
-    static final String[] fontWeightValues = { "400", "700", "900", "100" };
+    static final String[] htmlColourNames =  {"aliceblue", "antiquewhite", "aqua", "aquamarine", "azure", "beige", "bisque", "black", "blanchedalmond", "blue", "blueviolet", "brown", "burlywood", "cadetblue", "chartreuse", "chocolate", "coral", "cornflowerblue", "cornsilk", "crimson", "cyan", "darkblue", "darkcyan", "darkgoldenrod", "darkgray", "darkgreen", "darkkhaki", "darkmagenta", "darkolivegreen", "darkorange", "darkorchid", "darkred", "darksalmon", "darkseagreen", "darkslateblue", "darkslategray", "darkturquoise", "darkviolet", "deeppink", "deepskyblue", "dimgray", "dodgerblue", "firebrick", "floralwhite", "forestgreen", "fuchsia", "gainsboro", "ghostwhite", "gold", "goldenrod", "gray", "green", "greenyellow", "honeydew", "hotpink", "indianred ", "indigo ", "ivory", "khaki", "lavender", "lavenderblush", "lawngreen", "lemonchiffon", "lightblue", "lightcoral", "lightcyan", "lightgoldenrodyellow", "lightgrey", "lightgreen", "lightpink", "lightsalmon", "lightseagreen", "lightskyblue", "lightslategray", "lightsteelblue", "lightyellow", "lime", "limegreen", "linen", "magenta", "maroon", "mediumaquamarine", "mediumblue", "mediumorchid", "mediumpurple", "mediumseagreen", "mediumslateblue", "mediumspringgreen", "mediumturquoise", "mediumvioletred", "midnightblue", "mintcream", "mistyrose", "moccasin", "navajowhite", "navy", "oldlace", "olive", "olivedrab", "orange", "orangered", "orchid", "palegoldenrod", "palegreen", "paleturquoise", "palevioletred", "papayawhip", "peachpuff", "peru", "pink", "plum", "powderblue", "purple", "red", "rosybrown", "royalblue", "saddlebrown", "salmon", "sandybrown", "seagreen", "seashell", "sienna", "silver", "skyblue", "slateblue", "slategray", "snow", "springgreen", "steelblue", "tan", "teal", "thistle", "tomato", "turquoise", "violet", "wheat", "white", "whitesmoke", "yellow", "yellowgreen"};
+    static final String[] htmlColourValues = {"#f0f8ff", "#faebd7", "#00ffff", "#7fffd4", "#f0ffff", "#f5f5dc", "#ffe4c4", "#000", "#ffebcd", "#00f", "#8a2be2", "#a52a2a", "#deb887", "#5f9ea0", "#7fff00", "#d2691e", "#ff7f50", "#6495ed", "#fff8dc", "#dc143c", "#0ff", "#00008b", "#008b8b", "#b8860b", "#a9a9a9", "#006400", "#bdb76b", "#8b008b", "#556b2f", "#ff8c00", "#9932cc", "#8b0000", "#e9967a", "#8fbc8f", "#483d8b", "#2f4f4f", "#00ced1", "#9400d3", "#ff1493", "#00bfff", "#696969", "#1e90ff", "#b22222", "#fffaf0", "#228b22", "#f0f", "#dcdcdc", "#f8f8ff", "#ffd700", "#daa520", "#808080", "#008000", "#adff2f", "#f0fff0", "#ff69b4", "#cd5c5c", "#4b0082", "#fffff0", "#f0e68c", "#e6e6fa", "#fff0f5", "#7cfc00", "#fffacd", "#add8e6", "#f08080", "#e0ffff", "#fafad2", "#d3d3d3", "#90ee90", "#ffb6c1", "#ffa07a", "#20b2aa", "#87cefa", "#789", "#b0c4de", "#ffffe0", "#0f0", "#32cd32", "#faf0e6", "#f0f", "#800000", "#66cdaa", "#0000cd", "#ba55d3", "#9370d8", "#3cb371", "#7b68ee", "#00fa9a", "#48d1cc", "#c71585", "#191970", "#f5fffa", "#ffe4e1", "#ffe4b5", "#ffdead", "#000080", "#fdf5e6", "#808000", "#6b8e23", "#ffa500", "#ff4500", "#da70d6", "#eee8aa", "#98fb98", "#afeeee", "#d87093", "#ffefd5", "#ffdab9", "#cd853f", "#ffc0cb", "#dda0dd", "#b0e0e6", "#800080", "#f00", "#bc8f8f", "#4169e1", "#8b4513", "#fa8072", "#f4a460", "#2e8b57", "#fff5ee", "#a0522d", "#c0c0c0", "#87ceeb", "#6a5acd", "#708090", "#fffafa", "#00ff7f", "#4682b4", "#d2b48c", "#008080", "#d8bfd8", "#ff6347", "#40e0d0", "#ee82ee", "#f5deb3", "#fff", "#f5f5f5", "#ff0", "#9acd32"};
+    static final String[] fontWeightNames =  {"normal", "bold", "bolder", "lighter"};
+    static final String[] fontWeightValues = {"400", "700", "900", "100"};
 }
