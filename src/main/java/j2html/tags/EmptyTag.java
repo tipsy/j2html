@@ -67,6 +67,7 @@ public class EmptyTag extends Tag {
     public EmptyTag withTarget(String target)                                       { return attr(Attr.TARGET, target); }
     public EmptyTag withType(String type)                                           { return attr(Attr.TYPE, type); }
     public EmptyTag withRel(String rel)                                             { return attr(Attr.REL, rel); }
+    public EmptyTag withRole(String role)                                           { return attr(Attr.ROLE, role); }
     public EmptyTag withSrc(String src)                                             { return attr(Attr.SRC, src); }
     public EmptyTag withValue(String value)                                         { return attr(Attr.VALUE, value); }
 
