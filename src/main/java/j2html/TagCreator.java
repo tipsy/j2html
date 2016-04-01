@@ -87,6 +87,8 @@ public class TagCreator {
     public static ContainerTag figure()                     { return new ContainerTag("figure"); }
     public static ContainerTag footer()                     { return new ContainerTag("footer"); }
     public static ContainerTag form()                       { return new ContainerTag("form"); }
+    public static FontTag font()                            { return new FontTag(); }
+    public static FontTag font(String text)                 { return (FontTag) new FontTag().withText(text); }
     public static ContainerTag h1()                         { return new ContainerTag("h1"); }
     public static ContainerTag h1(String text)              { return new ContainerTag("h1").withText(text); }
     public static ContainerTag h2()                         { return new ContainerTag("h2"); }
@@ -161,6 +163,7 @@ public class TagCreator {
     public static ContainerTag td()                         { return new ContainerTag("td"); }
     public static ContainerTag td(String text)              { return new ContainerTag("td").withText(text); }
     public static ContainerTag textarea()                   { return new ContainerTag("textarea"); }
+    public static ContainerTag textcontainer()              { return new TextContainer(); }
     public static ContainerTag tfoot()                      { return new ContainerTag("tfoot"); }
     public static ContainerTag th()                         { return new ContainerTag("th"); }
     public static ContainerTag th(String text)              { return new ContainerTag("th").withText(text); }

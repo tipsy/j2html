@@ -98,4 +98,5 @@ dependency-reduced-pom.xml
 .classpath
 .project
 .settings/
+bin/
 buildNumber.properties
