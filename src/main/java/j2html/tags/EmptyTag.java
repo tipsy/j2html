@@ -1,7 +1,6 @@
 package j2html.tags;
 
-import j2html.attributes.Attr;
-import j2html.attributes.Attribute;
+import j2html.attributes.*;
 
 public class EmptyTag extends Tag {
 
@@ -42,13 +41,11 @@ public class EmptyTag extends Tag {
         return this.render();
     }
 
-
     /**
      * Methods below this point are convenience methods
      * that call attr with a predefined attribute.
      */
 
-    //TODO: TEST ?
     public EmptyTag isAutoComplete()                                                { return attr(Attr.AUTOCOMPLETE, null); }
     public EmptyTag isAutoFocus()                                                   { return attr(Attr.AUTOFOCUS, null); }
     public EmptyTag isHidden()                                                      { return attr(Attr.HIDDEN, null); }

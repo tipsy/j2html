@@ -1,9 +1,8 @@
 package j2html.attributes;
 
-import j2html.tags.ContainerTag;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
+import j2html.tags.*;
+import org.junit.*;
+import static org.junit.Assert.*;
 
 public class AttributeTest {
 

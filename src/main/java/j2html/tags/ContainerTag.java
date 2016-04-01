@@ -1,9 +1,7 @@
 package j2html.tags;
 
-import j2html.attributes.Attr;
-
-import java.util.ArrayList;
-import java.util.List;
+import j2html.attributes.*;
+import java.util.*;
 
 public class ContainerTag extends Tag {
 
@@ -136,7 +134,6 @@ public class ContainerTag extends Tag {
      * that call attr with a predefined attribute.
      */
 
-    //TODO: TEST ?
     public ContainerTag isAutoComplete()                                                { return attr(Attr.AUTOCOMPLETE, null); }
     public ContainerTag isAutoFocus()                                                   { return attr(Attr.AUTOFOCUS, null); }
     public ContainerTag isHidden()                                                      { return attr(Attr.HIDDEN, null); }

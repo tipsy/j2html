@@ -1,9 +1,8 @@
 package j2html.tags;
 
-import org.junit.Test;
-
+import org.junit.*;
 import static j2html.TagCreator.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class TagTest {
 
@@ -13,8 +12,8 @@ public class TagTest {
         testTag.setAttribute("href", "http://example.com");
         assertEquals(testTag.render(), "<a href=\"http://example.com\"></a>");
 
-        ContainerTag complexTestTag = html().with(body().with(header(),main().with(p("Main stuff...")),footer().condWith(1 == 1,p("Conditional with!"))));
-        String expectedResult ="<html><body><header></header><main><p>Main stuff...</p></main><footer><p>Conditional with!</p></footer></body></html>";
+        ContainerTag complexTestTag = html().with(body().with(header(), main().with(p("Main stuff...")), footer().condWith(1 == 1, p("Conditional with!"))));
+        String expectedResult = "<html><body><header></header><main><p>Main stuff...</p></main><footer><p>Conditional with!</p></footer></body></html>";
         assertEquals(complexTestTag.render(), (expectedResult));
     }
 

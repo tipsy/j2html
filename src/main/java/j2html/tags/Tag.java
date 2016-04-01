@@ -1,8 +1,7 @@
 package j2html.tags;
 
-import j2html.attributes.Attribute;
-
-import java.util.ArrayList;
+import j2html.attributes.*;
+import java.util.*;
 
 public abstract class Tag {
 
