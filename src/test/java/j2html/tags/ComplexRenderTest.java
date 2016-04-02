@@ -1,5 +1,6 @@
 package j2html.tags;
 
+import j2html.attributes.*;
 import org.junit.*;
 import static j2html.TagCreator.*;
 import static org.junit.Assert.*;
@@ -16,7 +17,9 @@ public class ComplexRenderTest {
                         ),
                         body().with(
                                 header().with(
-                                        h1("Test Header")
+                                        h1().with(
+                                                text("Test Header")
+                                        )
                                 ),
                                 main().with(
                                         h2("Test Form"),
@@ -29,7 +32,7 @@ public class ComplexRenderTest {
                                                 button().withType("submit").withText("Signup")
                                         )
                                 ),
-                                footer().withText("Test Footer"),
+                                footer().attr(Attr.CLASS, "footer").condAttr(1 == 1, Attr.ID, "id").withText("Test Footer"),
                                 script().withSrc("/testScript.js")
                         )
                 ).render();
@@ -37,7 +40,7 @@ public class ComplexRenderTest {
 
     @Test
     public void testComplexRender() {
-        String expectedResult = "<!DOCTYPE html><html><head><title>Test</title></head><body><header><h1>Test Header</h1></header><main><h2>Test Form</h2><div><input type=\"email\" name=\"email\" placeholder=\"Email\"><input type=\"password\" name=\"password\" placeholder=\"Password\"><button type=\"submit\">Login</button></div></main><footer>Test Footer</footer><script src=\"/testScript.js\"></script></body></html>";
+        String expectedResult = "<!DOCTYPE html><html><head><title>Test</title></head><body><header><h1>Test Header</h1></header><main><h2>Test Form</h2><div><input type=\"email\" name=\"email\" placeholder=\"Email\"><input type=\"password\" name=\"password\" placeholder=\"Password\"><button type=\"submit\">Login</button></div></main><footer class=\"footer\" id=\"id\">Test Footer</footer><script src=\"/testScript.js\"></script></body></html>";
         assertEquals(renderTest(), expectedResult);
     }
 }
