@@ -11,14 +11,13 @@ public class TagCreator {
     public static Text text(String text)                    { return new Text(text); }
     public static UnescapedText unsafeHtml(String html)     { return new UnescapedText(html); }
 
-    public static Tag styleWithInlineFile(String path)      { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.CSS); }
-    public static Tag scriptWithInlineFile(String path)     { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.JS); }
-    public static Tag styleWithInlineFile_min(String path)  { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.CSS_MIN); }
-    public static Tag scriptWithInlineFile_min(String path) { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.JS_MIN); }
+    public static Text fileAsEscapedString(String path)     { return text(InlineStaticResource.getFileAsString(path)); }
+    public static UnescapedText fileAsString(String path)   { return unsafeHtml(InlineStaticResource.getFileAsString(path)); }
 
-    public static UnescapedText fileAsString(String path)   { return new UnescapedText(InlineStaticResource.getFileAsString(path)); }
-    public static Text fileAsEscapedString(String path)     { return new Text(InlineStaticResource.getFileAsString(path)); }
-
+    public static ContainerTag styleWithInlineFile(String path)      { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.CSS); }
+    public static ContainerTag scriptWithInlineFile(String path)     { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.JS); }
+    public static ContainerTag styleWithInlineFile_min(String path)  { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.CSS_MIN); }
+    public static ContainerTag scriptWithInlineFile_min(String path) { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.JS_MIN); }
 
     //EmptyTags
     public static EmptyTag area()                           { return new EmptyTag("area"); }

@@ -21,8 +21,8 @@ public class AttributeTest {
     @Test
     public void testSetAttribute() throws Exception {
         ContainerTag testTag = new ContainerTag("a");
-        testTag.setAttribute("href", "http://example.com");
-        testTag.setAttribute("href", "http://example.org");
+        testTag.attr("href", "http://example.com");
+        testTag.attr("href", "http://example.org");
         assertEquals(testTag.render(), "<a href=\"http://example.org\"></a>");
     }
 
