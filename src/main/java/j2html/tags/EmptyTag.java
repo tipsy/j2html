@@ -8,6 +8,10 @@ public class EmptyTag extends Tag<EmptyTag> {
 
     @Override
     public String render() {
+        if (isDisabled()) {
+            return "";
+        }
+
         return renderOpenTag();
     }
 

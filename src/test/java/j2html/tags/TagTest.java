@@ -34,4 +34,27 @@ public class TagTest {
         assertEquals(testTag.renderCloseTag(), "</a>");
     }
 
+    @Test
+    public void testNotDisabled() throws Exception {
+        ContainerTag testTag = new ContainerTag("div");
+        assertEquals(testTag.render(), "<div></div>");
+    }
+
+    @Test
+    public void testDisabled() throws Exception {
+        ContainerTag testTag = new ContainerTag("div").disabled(true);
+        assertEquals(testTag.render(), "");
+    }
+
+    @Test
+    public void testDisabledWithNullBodyText() throws Exception {
+        ContainerTag testTag = new ContainerTag("title").withText(null).disabled(true);
+        assertEquals(testTag.render(), "");
+    }
+
+    @Test
+    public void testDisabledWithBody() throws Exception {
+        ContainerTag testTag = new ContainerTag("title").disabled(true).with(new ContainerTag("br"));
+        assertEquals(testTag.render(), "");
+    }
 }

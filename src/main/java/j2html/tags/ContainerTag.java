@@ -92,6 +92,10 @@ public class ContainerTag extends Tag<ContainerTag> {
      */
     @Override
     public String render() {
+        if (isDisabled()) {
+            return "";
+        }
+
         StringBuilder rendered = new StringBuilder(renderOpenTag());
         if (children != null && children.size() > 0) {
             for (DomContent child : children) {
