@@ -5,7 +5,7 @@
 # j2html
 Java to HTML generator. Enjoy typesafe HTML generation.
 
-The project webpage is [j2html.com](http://j2html.com)
+The project webpage is [j2html.com](http://j2html.com).
 
 ##Getting started
 ###Add the maven dependency
