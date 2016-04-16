@@ -34,4 +34,15 @@ public class TagTest {
         assertEquals(testTag.renderCloseTag(), "</a>");
     }
 
+    @Test
+    public void testVisible() throws Exception {
+        ContainerTag testTag = new ContainerTag("div");
+        assertEquals(testTag.render(), "<div></div>");
+    }
+
+    @Test
+    public void testNotVisible() throws Exception {
+        ContainerTag testTag = new ContainerTag("div").disabled(true);
+        assertEquals(testTag.render(), "");
+    }
 }

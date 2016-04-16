@@ -7,6 +7,7 @@ public abstract class Tag<T> extends DomContent {
 
     protected String tagName;
     private ArrayList<Attribute> attributes;
+    private boolean disabled;
 
     protected Tag(String tagName) {
         this.tagName = tagName;
@@ -14,6 +15,10 @@ public abstract class Tag<T> extends DomContent {
     }
 
     String renderOpenTag() {
+        if (disabled) {
+            return "";
+        }
+
         String tagAttributes = "";
         for (Attribute attribute : attributes) {
             tagAttributes += attribute.render();
@@ -22,6 +27,11 @@ public abstract class Tag<T> extends DomContent {
     }
 
     String renderCloseTag() {
+        if (disabled) {
+            return "";
+        }
+
+
         return "</" + tagName + ">";
     }
 
@@ -62,6 +72,15 @@ public abstract class Tag<T> extends DomContent {
      */
     public T condAttr(boolean condition, String attribute, String value) {
         return (condition ? attr(attribute, value) : (T) this);
+    }
+
+    public boolean isDisabled() {
+        return disabled;
+    }
+
+    public T disabled(boolean disabled) {
+        this.disabled = disabled;
+        return (T) this;
     }
 
     /**
