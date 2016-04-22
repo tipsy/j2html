@@ -93,7 +93,7 @@ public class ContainerTag extends Tag<ContainerTag> {
     @Override
     public String render() {
         StringBuilder rendered = new StringBuilder(renderOpenTag());
-        if (children != null && children.size() > 0) {
+        if (children != null && !children.isEmpty()) {
             for (DomContent child : children) {
                 rendered.append(child.render());
             }

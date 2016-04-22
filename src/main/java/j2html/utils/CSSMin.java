@@ -326,7 +326,7 @@ class Property implements Comparable<Property> {
                     bCanSplit = (property.charAt(i) == '"');
                 } else if (property.charAt(i) == '"') {
                     bCanSplit = false;
-                } else if (property.charAt(i) == ':' && parts.size() < 1) {
+                } else if (property.charAt(i) == ':' && parts.isEmpty()) {
                     substr = property.substring(j, i);
                     if (!(substr.trim().equals(""))) parts.add(substr);
                     j = i + 1;
@@ -503,26 +503,20 @@ class Part {
         StringBuilder newContents = new StringBuilder();
 
         String[] params = this.contents.split(" ");
-        if (params.length == 4) {
+        if (params.length == 4 && params[1].equalsIgnoreCase(params[3])) {
             // We can drop off the fourth item if the second and fourth items match
             // ie turn 3px 0 3px 0 into 3px 0 3px
-            if (params[1].equalsIgnoreCase(params[3])) {
-                params = Arrays.copyOf(params, 3);
-            }
+            params = Arrays.copyOf(params, 3);
         }
-        if (params.length == 3) {
+        if (params.length == 3 && params[0].equalsIgnoreCase(params[2])) {
             // We can drop off the third item if the first and third items match
             // ie turn 3px 0 3px into 3px 0
-            if (params[0].equalsIgnoreCase(params[2])) {
-                params = Arrays.copyOf(params, 2);
-            }
+            params = Arrays.copyOf(params, 2);
         }
-        if (params.length == 2) {
+        if (params.length == 2 && params[0].equalsIgnoreCase(params[1])) {
             // We can drop off the second item if the first and second items match
             // ie turn 3px 3px into 3px
-            if (params[0].equalsIgnoreCase(params[1])) {
-                params = Arrays.copyOf(params, 1);
-            }
+            params = Arrays.copyOf(params, 1);
         }
 
         for (String param : params) {
