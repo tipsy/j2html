@@ -59,6 +59,8 @@ import java.util.logging.*;
 import java.util.regex.*;
 
 public class CSSMin {
+    
+    private CSSMin() {}
 
     private static final Logger LOG = Logger.getLogger(CSSMin.class.getName());
 

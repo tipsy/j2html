@@ -3,6 +3,8 @@ package j2html;
 import j2html.tags.*;
 
 public class TagCreator {
+    
+    private TagCreator() {}
 
     //Special tags
     public static ContainerTag tag(String tagName)          { return new ContainerTag(tagName); }

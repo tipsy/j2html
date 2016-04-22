@@ -4,6 +4,8 @@ import com.google.javascript.jscomp.*;
 import com.google.javascript.jscomp.Compiler;
 
 public class JSMin {
+    
+    private JSMin() {}
 
     public static String compressJs(String code, String sourcePath) {
         com.google.javascript.jscomp.Compiler compiler = new Compiler();
