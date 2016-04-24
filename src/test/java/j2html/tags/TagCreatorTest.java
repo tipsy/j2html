@@ -1,12 +1,64 @@
 package j2html.tags;
 
 import org.junit.*;
+import java.util.*;
+import java.util.stream.*;
 import static j2html.TagCreator.*;
 import static org.junit.Assert.*;
 
 public class TagCreatorTest {
 
     private static final String EOL = System.getProperty("line.separator"); //System independent End Of Line
+
+    List<Employee> employees = Arrays.asList(new Employee(1, "Name 1", "Title 1"), new Employee(2, "Name 2", "Title 2"), new Employee(3, "Name 3", "Title 3"));
+
+    @Test
+    public void testEach() throws Exception {
+        String j2htmlMap = ul().with(
+                li("Begin list"),
+                each(employees, employee ->
+                        li().with(
+                                h2(employee.name),
+                                p(employee.title)
+                        )
+                )
+        ).render();
+        String javaMap = ul().with(
+                li("Begin list"),
+                unsafeHtml(employees.stream().map(employee ->
+                        li().with(
+                                h2(employee.name),
+                                p(employee.title)
+                        )
+                ).map(DomContent::render).collect(Collectors.joining()))
+        ).render();
+        assertEquals(j2htmlMap, javaMap);
+        assertEquals(j2htmlMap, "<ul><li>Begin list</li><li><h2>Name 1</h2><p>Title 1</p></li><li><h2>Name 2</h2><p>Title 2</p></li><li><h2>Name 3</h2><p>Title 3</p></li></ul>");
+    }
+
+    @Test
+    public void testFilter() throws Exception {
+        String j2htmlFilter = ul().with(
+                li("Begin list"),
+                each(filter(employees, e -> e.id % 2 == 1), e ->
+                        li().with(
+                                h2(e.name),
+                                p(e.title)
+                        )
+                )
+        ).render();
+        String javaFilter = ul().with(
+                li("Begin list"),
+                unsafeHtml(employees.stream().filter(e -> e.id % 2 == 1).map(e ->
+                        li().with(
+                                h2(e.name),
+                                p(e.title)
+                        )
+                ).map(DomContent::render).collect(Collectors.joining()))
+        ).render();
+        assertEquals(j2htmlFilter, javaFilter);
+        assertEquals(j2htmlFilter, "<ul><li>Begin list</li><li><h2>Name 1</h2><p>Title 1</p></li><li><h2>Name 3</h2><p>Title 3</p></li></ul>");
+    }
 
     @Test
     public void testAllTags() throws Exception {

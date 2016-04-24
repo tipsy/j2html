@@ -1,8 +1,35 @@
 package j2html;
 
 import j2html.tags.*;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
 public class TagCreator {
+
+    /**
+     * Creates a DomContent object containing HTML using a mapping function on a collection
+     * Intended usage: each(numbers, n -> li(n.toString()))
+     *
+     * @param collection the collection to iterate over, ex: a list of values "1, 2, 3"
+     * @param mapper     the mapping function, ex: "n -> li(n.toString())"
+     * @return unsafeHtml containing mapped data (ex. docs: <li>1</li><li>2</li><li>3</li>)
+     */
+    public static <T> DomContent each(Collection<T> collection, Function<? super T, DomContent> mapper) {
+        return unsafeHtml(collection.stream().map(mapper.andThen(DomContent::render)).collect(Collectors.joining()));
+    }
+
+    /**
+     * Filters a collection to a list, to be used with {@link j2html.TagCreator#each}
+     * Intended usage: each(filter(numbers, n -> n % 2 == 0), n -> li(n.toString()))
+     *
+     * @param collection the collection to filter, ex: a list of values "1, 2, 3"
+     * @param filter     the filter predicate, ex: "n -> n % 2 == 0"
+     * @return the filtered collection as a list (ex. docs: 2)
+     */
+    public static <T> List<T> filter(Collection<T> collection, Predicate<? super T> filter) {
+        return collection.stream().filter(filter).collect(Collectors.toList());
+    }
 
     //Special tags
     public static ContainerTag tag(String tagName)          { return new ContainerTag(tagName); }
