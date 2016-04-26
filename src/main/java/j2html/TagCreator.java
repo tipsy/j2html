@@ -6,6 +6,8 @@ import java.util.function.*;
 import java.util.stream.*;
 
 public class TagCreator {
+    
+    private TagCreator() {}
 
     /**
      * Creates a DomContent object containing HTML using a mapping function on a collection
