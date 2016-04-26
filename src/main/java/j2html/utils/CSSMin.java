@@ -617,7 +617,7 @@ class UnbalancedBracesException extends Exception {
 }
 
 class IncompletePropertyException extends Exception {
-    private String message = null;
+    private final String message;
 
     IncompletePropertyException(String message) {
         this.message = message;
@@ -629,7 +629,7 @@ class IncompletePropertyException extends Exception {
 }
 
 class EmptySelectorBodyException extends Exception {
-    private String message = null;
+    private final String message;
 
     EmptySelectorBodyException(String message) {
         this.message = message;
@@ -641,7 +641,7 @@ class EmptySelectorBodyException extends Exception {
 }
 
 class UnterminatedSelectorException extends Exception {
-    private String message = null;
+    private final String message;
 
     UnterminatedSelectorException(String message) {
         this.message = message;
@@ -653,7 +653,7 @@ class UnterminatedSelectorException extends Exception {
 }
 
 class IncompleteSelectorException extends Exception {
-    private String message = null;
+    private final String message;
 
     IncompleteSelectorException(String message) {
         this.message = message;
