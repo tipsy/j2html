@@ -3,7 +3,7 @@ package j2html.tags;
 import j2html.attributes.*;
 import java.util.*;
 
-public abstract class Tag<T> extends DomContent {
+public abstract class Tag<T extends Tag<T>> extends DomContent {
 
     protected String tagName;
     private ArrayList<Attribute> attributes;
@@ -14,11 +14,12 @@ public abstract class Tag<T> extends DomContent {
     }
 
     String renderOpenTag() {
-        String tagAttributes = "";
+        StringBuilder sb = new StringBuilder("<").append( tagName );
         for (Attribute attribute : attributes) {
-            tagAttributes += attribute.render();
+            sb.append( attribute.render() );
         }
-        return "<" + tagName + tagAttributes + ">";
+        sb.append( ">" );
+        return sb.toString();
     }
 
     String renderCloseTag() {
