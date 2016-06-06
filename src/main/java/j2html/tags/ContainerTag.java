@@ -39,7 +39,7 @@ public class ContainerTag extends Tag<ContainerTag> {
      * @param children DomContent-objects to be appended
      * @return itself for easy chaining
      */
-    public ContainerTag with(List<DomContent> children) {
+    public ContainerTag with(Iterable<DomContent> children) {
         if (children != null) {
             for (DomContent child : children) {
                 this.with(child);
@@ -52,7 +52,7 @@ public class ContainerTag extends Tag<ContainerTag> {
      * Call with-method based on condition
      * {@link #with(List children)}
      */
-    public ContainerTag condWith(boolean condition, List<DomContent> children) {
+    public ContainerTag condWith(boolean condition, Iterable<DomContent> children) {
         return condition ? this.with(children) : this;
     }
 
