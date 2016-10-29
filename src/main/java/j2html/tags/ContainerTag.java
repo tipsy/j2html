@@ -1,6 +1,7 @@
 package j2html.tags;
 
 import java.util.*;
+import java.io.IOException;
 
 public class ContainerTag extends Tag<ContainerTag> {
 
@@ -100,6 +101,17 @@ public class ContainerTag extends Tag<ContainerTag> {
         }
         rendered.append(renderCloseTag());
         return rendered.toString();
+    }
+    
+    @Override
+    public void render(Appendable writer) throws IOException {
+        writer.append(renderOpenTag());
+        if (children != null && !children.isEmpty()) {
+            for (DomContent child : children) {
+                child.render(writer);
+            }
+        }
+        writer.append(renderCloseTag());
     }
 
 }
