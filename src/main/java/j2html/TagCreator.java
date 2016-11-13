@@ -114,6 +114,8 @@ public class TagCreator {
     public static ContainerTag figcaption(String text)      { return new ContainerTag("figcaption").withText(text); }
     public static ContainerTag figure()                     { return new ContainerTag("figure"); }
     public static ContainerTag footer()                     { return new ContainerTag("footer"); }
+    public static ContainerTag font()                       { return new ContainerTag("font"); }
+    public static ContainerTag font(String text)            { return new ContainerTag("font").withText(text); }
     public static ContainerTag form()                       { return new ContainerTag("form"); }
     public static ContainerTag h1()                         { return new ContainerTag("h1"); }
     public static ContainerTag h1(String text)              { return new ContainerTag("h1").withText(text); }

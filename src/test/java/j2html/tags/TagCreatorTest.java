@@ -140,6 +140,8 @@ public class TagCreatorTest {
         assertEquals(figcaption("Text").render(), "<figcaption>Text</figcaption>");
         assertEquals(figure().render(), "<figure></figure>");
         assertEquals(footer().render(), "<footer></footer>");
+        assertEquals(font().render(), "<font></font>");
+        assertEquals(font("Text").render(), "<font>Text</font>");
         assertEquals(form().render(), "<form></form>");
         assertEquals(h1().render(), "<h1></h1>");
         assertEquals(h1("Text").render(), "<h1>Text</h1>");
