@@ -55,6 +55,7 @@
             <groupId>com.google.javascript</groupId>
             <artifactId>closure-compiler</artifactId>
             <version>v20151015</version>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
