@@ -66,10 +66,11 @@ public class CSSMin {
 
     static boolean debugLogging = false;
 
+    
     /**
-     * Minify CSS from a reader to a printstream.
-     *
-     * @param input Where to read the CSS from
+     * Minify supplied CSS.
+     * @param input the CSS
+     * @return the compressed version
      */
     public static String compress(String input) {
         try {
