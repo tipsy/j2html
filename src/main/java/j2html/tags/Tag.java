@@ -103,6 +103,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     public T withRel(String rel)                                             { return attr(Attr.REL, rel); }
     public T withRole(String role)                                           { return attr(Attr.ROLE, role); }
     public T withSrc(String src)                                             { return attr(Attr.SRC, src); }
+    public T withStyle(String style)                                         { return attr(Attr.STYLE, style); }
     public T withValue(String value)                                         { return attr(Attr.VALUE, value); }
 
     public T withCondAutoComplete(boolean condition)                         { return condAttr(condition, Attr.AUTOCOMPLETE, null); }
@@ -124,6 +125,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     public T withCondType(boolean condition, String type)                    { return condAttr(condition, Attr.TYPE, type); }
     public T withCondRel(boolean condition, String rel)                      { return condAttr(condition, Attr.REL, rel); }
     public T withCondSrc(boolean condition, String src)                      { return condAttr(condition, Attr.SRC, src); }
+    public T withCondStyle(boolean condition, String style)                  { return condAttr(condition, Attr.STYLE, style); }
     public T withCondValue(boolean condition, String value)                  { return condAttr(condition, Attr.VALUE, value); }
 
 }

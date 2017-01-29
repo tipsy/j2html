@@ -28,6 +28,7 @@ public class ConvenienceMethodTest {
         assertEquals(link().withRel("stylesheet").render(), "<link rel=\"stylesheet\">");
         assertEquals(link().withRole("role").render(), "<link role=\"role\">");
         assertEquals(img().withSrc("/img/test.png").render(), "<img src=\"/img/test.png\">");
+        assertEquals(div().withStyle("background:red;").render(), "<div style=\"background:red;\"></div>");
         assertEquals(input().withValue("test-value").render(), "<input value=\"test-value\">");
     }
 }
