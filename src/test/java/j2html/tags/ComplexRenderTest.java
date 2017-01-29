@@ -1,9 +1,26 @@
 package j2html.tags;
 
-import j2html.attributes.*;
-import org.junit.*;
-import static j2html.TagCreator.*;
-import static org.junit.Assert.*;
+import org.junit.Test;
+
+import j2html.attributes.Attr;
+
+import static j2html.TagCreator.a;
+import static j2html.TagCreator.body;
+import static j2html.TagCreator.button;
+import static j2html.TagCreator.div;
+import static j2html.TagCreator.document;
+import static j2html.TagCreator.footer;
+import static j2html.TagCreator.h1;
+import static j2html.TagCreator.h2;
+import static j2html.TagCreator.head;
+import static j2html.TagCreator.header;
+import static j2html.TagCreator.html;
+import static j2html.TagCreator.input;
+import static j2html.TagCreator.main;
+import static j2html.TagCreator.script;
+import static j2html.TagCreator.text;
+import static j2html.TagCreator.title;
+import static org.junit.Assert.assertEquals;
 
 public class ComplexRenderTest {
 
@@ -29,8 +46,7 @@ public class ComplexRenderTest {
                                                 input().withType("email").withName("email").withPlaceholder("Email"),
                                                 input().withType("password").withName("password").withPlaceholder("Password")
                                         ).condWith(USER_SHOULD_LOG_IN, button().withType("submit").withText("Login")
-                                        ).condWith(USER_SHOULD_SIGN_UP, button().withType("submit").withText("Signup")
-                                        )
+                                        ).condWith(USER_SHOULD_SIGN_UP, button().withType("submit").withText("Signup"))
                                 ),
                                 footer().attr(Attr.CLASS, "footer").condAttr(1 == 1, Attr.ID, "id").withText("Test Footer"),
                                 script().withSrc("/testScript.js")
