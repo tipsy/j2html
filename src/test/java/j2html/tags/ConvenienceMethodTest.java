@@ -1,34 +1,42 @@
 package j2html.tags;
 
-import org.junit.*;
-import static j2html.TagCreator.*;
-import static org.junit.Assert.*;
+import org.junit.Test;
+
+import static j2html.TagCreator.a;
+import static j2html.TagCreator.div;
+import static j2html.TagCreator.form;
+import static j2html.TagCreator.img;
+import static j2html.TagCreator.input;
+import static j2html.TagCreator.link;
+import static j2html.TagCreator.meta;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 public class ConvenienceMethodTest {
 
     @Test
     public void testAllConvenienceMethods() throws Exception {
-        assertEquals(input().isAutoComplete().render(), "<input autocomplete>");
-        assertEquals(input().isAutoFocus().render(), "<input autofocus>");
-        assertEquals(input().isHidden().render(), "<input hidden>");
-        assertEquals(input().isRequired().render(), "<input required>");
-        assertEquals(img().withAlt("An image").render(), "<img alt=\"An image\">");
-        assertEquals(form().withAction("post").render(), "<form action=\"post\"></form>");
-        assertEquals(meta().withCharset("UTF-8").render(), "<meta charset=\"UTF-8\">");
-        assertEquals(div().withClass("test-class").render(), "<div class=\"test-class\"></div>");
-        assertEquals(meta().withContent("Test Content").render(), "<meta content=\"Test Content\">");
-        assertEquals(a().withHref("http://example.com").render(), "<a href=\"http://example.com\"></a>");
-        assertEquals(div().withId("test-id").render(), "<div id=\"test-id\"></div>");
-        assertEquals(div().withData("testdata", "test").render(), "<div data-testdata=\"test\"></div>");
-        assertEquals(form().withMethod("get").render(), "<form method=\"get\"></form>");
-        assertEquals(input().withName("test-name").render(), "<input name=\"test-name\">");
-        assertEquals(input().withPlaceholder("test-placeholder").render(), "<input placeholder=\"test-placeholder\">");
-        assertEquals(a().withTarget("_blank").render(), "<a target=\"_blank\"></a>");
-        assertEquals(input().withType("email").render(), "<input type=\"email\">");
-        assertEquals(link().withRel("stylesheet").render(), "<link rel=\"stylesheet\">");
-        assertEquals(link().withRole("role").render(), "<link role=\"role\">");
-        assertEquals(img().withSrc("/img/test.png").render(), "<img src=\"/img/test.png\">");
-        assertEquals(div().withStyle("background:red;").render(), "<div style=\"background:red;\"></div>");
-        assertEquals(input().withValue("test-value").render(), "<input value=\"test-value\">");
+        assertThat(input().isAutoComplete().render(), is("<input autocomplete>"));
+        assertThat(input().isAutoFocus().render(), is("<input autofocus>"));
+        assertThat(input().isHidden().render(), is("<input hidden>"));
+        assertThat(input().isRequired().render(), is("<input required>"));
+        assertThat(img().withAlt("An image").render(), is("<img alt=\"An image\">"));
+        assertThat(form().withAction("post").render(), is("<form action=\"post\"></form>"));
+        assertThat(meta().withCharset("UTF-8").render(), is("<meta charset=\"UTF-8\">"));
+        assertThat(div().withClass("test-class").render(), is("<div class=\"test-class\"></div>"));
+        assertThat(meta().withContent("Test Content").render(), is("<meta content=\"Test Content\">"));
+        assertThat(a().withHref("http://example.com").render(), is("<a href=\"http://example.com\"></a>"));
+        assertThat(div().withId("test-id").render(), is("<div id=\"test-id\"></div>"));
+        assertThat(div().withData("testdata", "test").render(), is("<div data-testdata=\"test\"></div>"));
+        assertThat(form().withMethod("get").render(), is("<form method=\"get\"></form>"));
+        assertThat(input().withName("test-name").render(), is("<input name=\"test-name\">"));
+        assertThat(input().withPlaceholder("test-placeholder").render(), is("<input placeholder=\"test-placeholder\">"));
+        assertThat(a().withTarget("_blank").render(), is("<a target=\"_blank\"></a>"));
+        assertThat(input().withType("email").render(), is("<input type=\"email\">"));
+        assertThat(link().withRel("stylesheet").render(), is("<link rel=\"stylesheet\">"));
+        assertThat(link().withRole("role").render(), is("<link role=\"role\">"));
+        assertThat(img().withSrc("/img/test.png").render(), is("<img src=\"/img/test.png\">"));
+        assertThat(div().withStyle("background:red;").render(), is("<div style=\"background:red;\"></div>"));
+        assertThat(input().withValue("test-value").render(), is("<input value=\"test-value\">"));
     }
 }

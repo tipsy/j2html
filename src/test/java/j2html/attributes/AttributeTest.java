@@ -1,21 +1,24 @@
 package j2html.attributes;
 
-import j2html.tags.*;
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.junit.Test;
+
+import j2html.tags.ContainerTag;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 public class AttributeTest {
 
     @Test
     public void testRender() throws Exception {
         Attribute attributeWithValue = new Attribute("href", "http://example.com");
-        assertEquals(attributeWithValue.render(), " href=\"http://example.com\"");
+        assertThat(attributeWithValue.render(), is(" href=\"http://example.com\""));
 
         Attribute attribute = new Attribute("required", null);
-        assertEquals(attribute.render(), " required");
+        assertThat(attribute.render(), is(" required"));
 
         Attribute nullAttribute = new Attribute(null, null);
-        assertEquals(nullAttribute.render(), "");
+        assertThat(nullAttribute.render(), is(""));
     }
 
     @Test
@@ -23,7 +26,7 @@ public class AttributeTest {
         ContainerTag testTag = new ContainerTag("a");
         testTag.attr("href", "http://example.com");
         testTag.attr("href", "http://example.org");
-        assertEquals(testTag.render(), "<a href=\"http://example.org\"></a>");
+        assertThat(testTag.render(), is("<a href=\"http://example.org\"></a>"));
     }
 
 }
