@@ -20,21 +20,17 @@ public class TagCreatorTest {
     public void testEach() throws Exception {
         String j2htmlMap = ul().with(
                 li("Begin list"),
-                each(employees, employee ->
-                        li().with(
-                                h2(employee.name),
-                                p(employee.title)
-                        )
-                )
+                each(employees, employee -> li().with(
+                        h2(employee.name),
+                        p(employee.title)
+                ))
         ).render();
         String javaMap = ul().with(
                 li("Begin list"),
-                unsafeHtml(employees.stream().map(employee ->
-                                                          li().with(
-                                                                  h2(employee.name),
-                                                                  p(employee.title)
-                                                          )
-                ).map(DomContent::render).collect(Collectors.joining()))
+                rawHtml(employees.stream().map(employee -> li().with(
+                        h2(employee.name),
+                        p(employee.title)
+                )).map(DomContent::render).collect(Collectors.joining()))
         ).render();
         assertThat(j2htmlMap.equals(javaMap), is(true));
         assertThat(j2htmlMap, is("<ul><li>Begin list</li><li><h2>Name 1</h2><p>Title 1</p></li><li><h2>Name 2</h2><p>Title 2</p></li><li><h2>Name 3</h2><p>Title 3</p></li></ul>"));
@@ -44,21 +40,17 @@ public class TagCreatorTest {
     public void testFilter() throws Exception {
         String j2htmlFilter = ul().with(
                 li("Begin list"),
-                each(filter(employees, e -> e.id % 2 == 1), e ->
-                        li().with(
-                                h2(e.name),
-                                p(e.title)
-                        )
-                )
+                each(filter(employees, e -> e.id % 2 == 1), employee -> li().with(
+                        h2(employee.name),
+                        p(employee.title)
+                ))
         ).render();
         String javaFilter = ul().with(
                 li("Begin list"),
-                unsafeHtml(employees.stream().filter(e -> e.id % 2 == 1).map(e ->
-                        li().with(
-                                h2(e.name),
-                                p(e.title)
-                        )
-                ).map(DomContent::render).collect(Collectors.joining()))
+                rawHtml(employees.stream().filter(e -> e.id % 2 == 1).map(employee -> li().with(
+                        h2(employee.name),
+                        p(employee.title)
+                )).map(DomContent::render).collect(Collectors.joining()))
         ).render();
         assertThat(j2htmlFilter.equals(javaFilter), is(true));
         assertThat(j2htmlFilter, is("<ul><li>Begin list</li><li><h2>Name 1</h2><p>Title 1</p></li><li><h2>Name 3</h2><p>Title 3</p></li></ul>"));
@@ -72,7 +64,7 @@ public class TagCreatorTest {
         assertThat(emptyTag("tagname").render(), is("<tagname>"));
         assertThat(text("text").render(), is("text"));
         assertThat(text("<script> and \"</script>\"").render(), is("&lt;script&gt; and &quot;&lt;/script&gt;&quot;"));
-        assertThat(unsafeHtml("<script>").render(), is("<script>"));
+        assertThat(rawHtml("<script>").render(), is("<script>"));
         assertThat(styleWithInlineFile_min("/test.css").render(), is("<style>body{background:#daa520;margin-bottom:10px;margin-left:10px;margin-right:10px;margin-top:10px}</style>"));
         assertThat(scriptWithInlineFile_min("/test.js").render(), is("<script>(function(){var test=5;var tast=10;var testTast=test+tast;console.log(testTast);})();</script>"));
         assertThat(fileAsString("/test.html").render(), is("<body>" + EOL + "    Any content" + EOL + "</body>" + EOL));

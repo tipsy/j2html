@@ -8,21 +8,21 @@ import j2html.utils.JSMin;
 
 import static j2html.TagCreator.script;
 import static j2html.TagCreator.style;
-import static j2html.TagCreator.unsafeHtml;
+import static j2html.TagCreator.rawHtml;
 
 public class InlineStaticResource {
 
     public enum TargetFormat {CSS_MIN, CSS, JS_MIN, JS}
 
     public static ContainerTag get(String path, TargetFormat format) {
-        ContainerTag errorAlert = script().with(unsafeHtml("alert('Unable to read file. File: \"" + path + "\", Type: \"" + format + "\"')"));
+        ContainerTag errorAlert = script().with(rawHtml("alert('Unable to read file. File: \"" + path + "\", Type: \"" + format + "\"')"));
         String fileString = getFileAsString(path);
         if(fileString != null) {
             switch(format) {
-                case CSS_MIN : return style().with(unsafeHtml(compressCss(fileString)));
-                case JS_MIN  : return script().with(unsafeHtml(compressJs(fileString)));
-                case CSS     : return style().with(unsafeHtml(fileString));
-                case JS      : return script().with(unsafeHtml(fileString));
+                case CSS_MIN : return style().with(rawHtml(compressCss(fileString)));
+                case JS_MIN  : return script().with(rawHtml(compressJs(fileString)));
+                case CSS     : return style().with(rawHtml(fileString));
+                case JS      : return script().with(rawHtml(fileString));
                 default      : return errorAlert;
             }
         }

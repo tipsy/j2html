@@ -1,9 +1,17 @@
 package j2html;
 
-import j2html.tags.*;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import j2html.tags.ContainerTag;
+import j2html.tags.DomContent;
+import j2html.tags.EmptyTag;
+import j2html.tags.InlineStaticResource;
+import j2html.tags.Text;
+import j2html.tags.UnescapedText;
 
 public class TagCreator {
     
@@ -16,10 +24,10 @@ public class TagCreator {
      * @param <T> The derived generic parameter type
      * @param collection the collection to iterate over, ex: a list of values "1, 2, 3"
      * @param mapper     the mapping function, ex: {@literal "n -> li(n.toString())"}
-     * @return unsafeHtml containing mapped data {@literal (ex. docs: <li>1</li><li>2</li><li>3</li>)}
+     * @return rawHtml containing mapped data {@literal (ex. docs: <li>1</li><li>2</li><li>3</li>)}
      */
     public static <T> DomContent each(Collection<T> collection, Function<? super T, DomContent> mapper) {
-        return unsafeHtml(collection.stream().map(mapper.andThen(DomContent::render)).collect(Collectors.joining()));
+        return rawHtml(collection.stream().map(mapper.andThen(DomContent::render)).collect(Collectors.joining()));
     }
 
     /**
@@ -35,15 +43,32 @@ public class TagCreator {
         return collection.stream().filter(filter).collect(Collectors.toList());
     }
 
+    /**
+     * Wraps a String in an UnescapedText element
+     *
+     * @param html the input html
+     * @return the input html wrapped in an UnescapedText element
+     */
+    public static UnescapedText rawHtml(String html) {
+        return new UnescapedText(html);
+    }
+
+    /**
+     * Wraps a String in a Text element (does html-escaping)
+     *
+     * @param text the input string
+     * @return the input string, html-escaped
+     */
+    public static Text text(String text) {
+        return new Text(text);
+    }
+
     //Special tags
     public static ContainerTag tag(String tagName)          { return new ContainerTag(tagName); }
     public static EmptyTag emptyTag(String tagName)         { return new EmptyTag(tagName); }
 
-    public static Text text(String text)                    { return new Text(text); }
-    public static UnescapedText unsafeHtml(String html)     { return new UnescapedText(html); }
-
     public static Text fileAsEscapedString(String path)     { return text(InlineStaticResource.getFileAsString(path)); }
-    public static UnescapedText fileAsString(String path)   { return unsafeHtml(InlineStaticResource.getFileAsString(path)); }
+    public static UnescapedText fileAsString(String path)   { return rawHtml(InlineStaticResource.getFileAsString(path)); }
 
     public static ContainerTag styleWithInlineFile(String path)      { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.CSS); }
     public static ContainerTag scriptWithInlineFile(String path)     { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.JS); }
