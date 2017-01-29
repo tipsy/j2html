@@ -51,12 +51,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.4</version>
         </dependency>
-        <dependency>
-            <groupId>com.google.javascript</groupId>
-            <artifactId>closure-compiler</artifactId>
-            <version>v20151015</version>
-            <optional>true</optional>
-        </dependency>
     </dependencies>
 
     <packaging>jar</packaging>

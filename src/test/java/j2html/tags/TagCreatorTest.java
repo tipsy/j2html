@@ -70,7 +70,7 @@ public class TagCreatorTest {
         assertEquals(text("<script> and \"</script>\"").render(), "&lt;script&gt; and &quot;&lt;/script&gt;&quot;");
         assertEquals(unsafeHtml("<script>").render(), "<script>");
         assertEquals(styleWithInlineFile_min("/test.css").render(), "<style>body{background:#daa520;margin-bottom:10px;margin-left:10px;margin-right:10px;margin-top:10px}</style>");
-        assertEquals(scriptWithInlineFile_min("/test.js").render(), "<script>(function(){console.log(15)})();</script>");
+        assertEquals(scriptWithInlineFile_min("/test.js").render(), "<script>(function(){var test=5;var tast=10;var testTast=test+tast;console.log(testTast);})();</script>");
         assertEquals(fileAsString("/test.html").render(), "<body>" + EOL + "    Any content" + EOL + "</body>" + EOL);
         assertEquals(fileAsEscapedString("/test.html").render(), "&lt;body&gt;" + EOL + "    Any content" + EOL + "&lt;/body&gt;" + EOL);
         assertEquals(fileAsString("/AnyContent.java").render(), "public class AnyContent{}" + EOL);

@@ -14,7 +14,7 @@ public class InlineStaticResource {
         if(fileString != null) {
             switch(format) {
                 case CSS_MIN : return style().with(unsafeHtml(compressCss(fileString)));
-                case JS_MIN  : return script().with(unsafeHtml(compressJs(fileString, path)));
+                case JS_MIN  : return script().with(unsafeHtml(compressJs(fileString)));
                 case CSS     : return style().with(unsafeHtml(fileString));
                 case JS      : return script().with(unsafeHtml(fileString));
                 default      : return errorAlert;
@@ -35,8 +35,8 @@ public class InlineStaticResource {
         return CSSMin.compress(code);
     }
 
-    private static String compressJs(String code, String debugPath) {
-        return JSMin.compressJs(code, debugPath);
+    private static String compressJs(String code) {
+        return JSMin.compressJs(code);
     }
 
 }
