@@ -34,4 +34,11 @@ public class TagTest {
         assertEquals(testTag.renderCloseTag(), "</a>");
     }
 
+    @Test
+    public void testEquals() throws Exception {
+        Tag tagOne = tag("p").withClass("class").withText("Test");
+        Tag tagTwo = p("Test").withClass("class");
+        assertTrue(tagOne.equals(tagTwo));
+    }
+
 }

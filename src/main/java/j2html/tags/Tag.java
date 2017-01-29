@@ -77,8 +77,16 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return (condition ? attr(attribute, value) : (T) this);
     }
 
-    
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof Tag)) {
+            return false;
+        }
+        return ((Tag) obj).render().equals(this.render());
+    }
+
+
     /**
      * Convenience methods that call attr with predefined attributes
      * @return itself for easy chaining
