@@ -5,7 +5,7 @@ import java.io.IOException;
 public abstract class DomContent {
 
     public abstract String render();
-    
+
     public void render(Appendable writer) throws IOException {
         writer.append(render());
     }

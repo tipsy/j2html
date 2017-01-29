@@ -1,7 +1,8 @@
 package j2html.tags;
 
-import java.util.*;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContainerTag extends Tag<ContainerTag> {
 
@@ -12,10 +13,10 @@ public class ContainerTag extends Tag<ContainerTag> {
         this.children = new ArrayList<>();
     }
 
-    
-    
+
     /**
      * Appends a DomContent-object to the end of this element
+     *
      * @param child DomContent-object to be appended
      * @return itself for easy chaining
      */
@@ -27,22 +28,23 @@ public class ContainerTag extends Tag<ContainerTag> {
         return this;
     }
 
-    
-    
+
     /**
      * Call with-method based on condition
      * {@link #with(DomContent child)}
+     *
      * @param condition the condition to use
-     * @param child DomContent-object to be appended if condition met
+     * @param child     DomContent-object to be appended if condition met
      * @return itself for easy chaining
      */
     public ContainerTag condWith(boolean condition, DomContent child) {
         return condition ? this.with(child) : this;
     }
 
-    
+
     /**
      * Appends a list of DomContent-objects to the end of this element
+     *
      * @param children DomContent-objects to be appended
      * @return itself for easy chaining
      */
@@ -55,22 +57,23 @@ public class ContainerTag extends Tag<ContainerTag> {
         return this;
     }
 
-    
-    
+
     /**
      * Call with-method based on condition
      * {@link #with(java.lang.Iterable)}
+     *
      * @param condition the condition to use
-     * @param children DomContent-objects to be appended if condition met
+     * @param children  DomContent-objects to be appended if condition met
      * @return itself for easy chaining
      */
     public ContainerTag condWith(boolean condition, Iterable<? extends DomContent> children) {
         return condition ? this.with(children) : this;
     }
 
-    
+
     /**
      * Appends the DomContent-objects to the end of this element
+     *
      * @param children DomContent-objects to be appended
      * @return itself for easy chaining
      */
@@ -81,21 +84,23 @@ public class ContainerTag extends Tag<ContainerTag> {
         return this;
     }
 
-    
+
     /**
      * Call with-method based on condition
      * {@link #with(DomContent... children)}
+     *
      * @param condition the condition to use
-     * @param children DomContent-objects to be appended if condition met
+     * @param children  DomContent-objects to be appended if condition met
      * @return itself for easy chaining
      */
     public ContainerTag condWith(boolean condition, DomContent... children) {
         return condition ? this.with(children) : this;
     }
 
-    
+
     /**
      * Appends a Text-object to this element
+     *
      * @param text the text to be appended
      * @return itself for easy chaining
      */
@@ -103,9 +108,10 @@ public class ContainerTag extends Tag<ContainerTag> {
         return with(new Text(text));
     }
 
-    
+
     /**
      * Render the ContainerTag and its children
+     *
      * @return the rendered string
      */
     @Override
@@ -119,7 +125,7 @@ public class ContainerTag extends Tag<ContainerTag> {
         rendered.append(renderCloseTag());
         return rendered.toString();
     }
-    
+
     @Override
     public void render(Appendable writer) throws IOException {
         writer.append(renderOpenTag());

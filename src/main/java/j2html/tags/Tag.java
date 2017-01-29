@@ -1,7 +1,9 @@
 package j2html.tags;
 
-import j2html.attributes.*;
-import java.util.*;
+import java.util.ArrayList;
+
+import j2html.attributes.Attr;
+import j2html.attributes.Attribute;
 
 public abstract class Tag<T extends Tag<T>> extends DomContent {
 
@@ -13,25 +15,25 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         this.attributes = new ArrayList<>();
     }
 
-    
+
     String renderOpenTag() {
-        StringBuilder sb = new StringBuilder("<").append( tagName );
+        StringBuilder sb = new StringBuilder("<").append(tagName);
         for (Attribute attribute : attributes) {
-            sb.append( attribute.render() );
+            sb.append(attribute.render());
         }
-        sb.append( ">" );
+        sb.append(">");
         return sb.toString();
     }
 
-    
+
     String renderCloseTag() {
         return "</" + tagName + ">";
     }
 
-    
-    
+
     /**
      * Sets an attribute on an element
+     *
      * @param name  the attribute
      * @param value the attribute value
      */
@@ -48,10 +50,10 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return attributes.add(new Attribute(name, value));
     }
 
-    
-    
+
     /**
      * Sets a custom attribute
+     *
      * @param attribute the attribute name
      * @param value     the attribute value
      * @return itself for easy chaining
@@ -61,11 +63,11 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return (T) this;
     }
 
-    
-    
+
     /**
      * Call attr-method based on condition
      * {@link #attr(String attribute, String value)}
+     *
      * @param condition the condition
      * @param attribute the attribute name
      * @param value     the attribute value

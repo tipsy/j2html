@@ -1,9 +1,10 @@
 package j2html.attributes;
 
 public class Attr {
-    
-    private Attr() {}
-    
+
+    private Attr() {
+    }
+
     public static final String HIDDEN = "hidden";
     public static final String HIGH = "high";
     public static final String HREF = "href";

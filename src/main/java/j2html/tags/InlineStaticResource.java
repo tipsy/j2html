@@ -1,12 +1,18 @@
 package j2html.tags;
 
-import j2html.utils.*;
-import java.nio.file.*;
-import static j2html.TagCreator.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import j2html.utils.CSSMin;
+import j2html.utils.JSMin;
+
+import static j2html.TagCreator.script;
+import static j2html.TagCreator.style;
+import static j2html.TagCreator.unsafeHtml;
 
 public class InlineStaticResource {
 
-    public enum TargetFormat { CSS_MIN, CSS, JS_MIN, JS }
+    public enum TargetFormat {CSS_MIN, CSS, JS_MIN, JS}
 
     public static ContainerTag get(String path, TargetFormat format) {
         ContainerTag errorAlert = script().with(unsafeHtml("alert('Unable to read file. File: \"" + path + "\", Type: \"" + format + "\"')"));

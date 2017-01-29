@@ -1,6 +1,6 @@
 package j2html.attributes;
 
-import static org.apache.commons.lang3.StringEscapeUtils.*;
+import static org.apache.commons.lang3.StringEscapeUtils.escapeHtml4;
 
 public class Attribute {
     private String name;
@@ -17,9 +17,13 @@ public class Attribute {
     }
 
     public String render() {
-        if (name == null) { return ""; }
-        if (value == null) { return " "+name; }
-        return(" "+name+"=\""+value+"\"");
+        if (name == null) {
+            return "";
+        }
+        if (value == null) {
+            return " " + name;
+        }
+        return (" " + name + "=\"" + value + "\"");
     }
 
     @Override
