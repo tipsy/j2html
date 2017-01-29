@@ -1,6 +1,7 @@
 package j2html.attributes;
 
-import static org.apache.commons.lang3.StringEscapeUtils.escapeHtml4;
+
+import j2html.utils.SimpleEscaper;
 
 public class Attribute {
     private String name;
@@ -8,7 +9,7 @@ public class Attribute {
 
     public Attribute(String name, String value) {
         this.name = name;
-        this.value = escapeHtml4(value);
+        this.value = SimpleEscaper.escape(value);
     }
 
     public Attribute(String name) {
