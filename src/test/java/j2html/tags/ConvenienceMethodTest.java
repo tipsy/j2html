@@ -1,6 +1,10 @@
 package j2html.tags;
 
+import java.util.Optional;
+
 import org.junit.Test;
+
+import j2html.attributes.Attribute;
 
 import static j2html.TagCreator.a;
 import static j2html.TagCreator.div;
@@ -38,5 +42,7 @@ public class ConvenienceMethodTest {
         assertThat(img().withSrc("/img/test.png").render(), is("<img src=\"/img/test.png\">"));
         assertThat(div().withStyle("background:red;").render(), is("<div style=\"background:red;\"></div>"));
         assertThat(input().withValue("test-value").render(), is("<input value=\"test-value\">"));
+        assertThat(input().attr(new Attribute("test","test")).render(), is("<input test=\"test\">"));
+        assertThat(input().attr(Optional.of(new Attribute("test","test"))).render(), is("<input test=\"test\">"));
     }
 }

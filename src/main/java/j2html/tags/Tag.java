@@ -1,6 +1,7 @@
 package j2html.tags;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import j2html.attributes.Attr;
 import j2html.attributes.Attribute;
@@ -62,6 +63,42 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         setAttribute(attribute, value);
         return (T) this;
     }
+    
+    
+    /**
+     * Sets a custom attribute
+     *
+     * @param attribute the attribute
+     * @return itself for easy chaining
+     */
+    public T attr(Attribute newAttribute) {
+        for (int i=0;i<attributes.size();i++){
+            Attribute attribute = attributes.get(i);
+            if (attribute.getName().equals(newAttribute.getName())) {
+                attributes.set(i, newAttribute); //update with new value
+                return (T) this;
+            }
+        }
+        attributes.add(newAttribute);
+        return (T) this;
+    }
+    
+    /**
+     * Sets a custom attribute if present
+     *
+     * @param attribute the attribute
+     * @return itself for easy chaining
+     */
+    public T attr(Optional<Attribute> newAttribute) {
+        if (newAttribute.isPresent()) {
+            return attr(newAttribute.get());
+        }
+        return (T) this;
+    }
+
+
+
+
 
 
     /**
