@@ -112,7 +112,7 @@ public class CSSMin {
             if (debugLogging) {
                 LOG.info("Parsing and processing selectors...");
             }
-            Vector<Selector> selectors = new Vector<>();
+            Vector<Selector> selectors = new Vector<Selector>();
             n = 0;
             j = 0;
             for (int i = 0; i < sb.length(); i++) {
@@ -192,7 +192,7 @@ class Selector {
 
         // We're dealing with a nested property, eg @-webkit-keyframes
         if (parts.length > 2) {
-            this.subSelectors = new Vector<>();
+            this.subSelectors = new Vector<Selector>();
             parts = selector.split("(\\s*\\{\\s*)|(\\s*\\}\\s*)");
             for (int i = 1; i < parts.length; i += 2) {
                 parts[i] = parts[i].trim();
@@ -253,7 +253,7 @@ class Selector {
      * @return An array of properties parsed from this selector.
      */
     private ArrayList<Property> parseProperties(String contents) {
-        ArrayList<String> parts = new ArrayList<>();
+        ArrayList<String> parts = new ArrayList<String>();
         boolean bInsideString = false,
                 bInsideURL = false;
         int j = 0;
@@ -276,7 +276,7 @@ class Selector {
         substr = contents.substring(j, contents.length());
         if (!(substr.trim().equals(""))) parts.add(substr);
 
-        ArrayList<Property> results = new ArrayList<>();
+        ArrayList<Property> results = new ArrayList<Property>();
         for (String part : parts) {
             try {
                 results.add(new Property(part));
@@ -314,7 +314,7 @@ class Property implements Comparable<Property> {
     public Property(String property) throws IncompletePropertyException {
         try {
             // Parse the property.
-            ArrayList<String> parts = new ArrayList<>();
+            ArrayList<String> parts = new ArrayList<String>();
             boolean bCanSplit = true;
             int j = 0;
             String substr;

@@ -12,7 +12,7 @@ public abstract class Tag {
 
     protected Tag(String tagType) {
         this.tag = tagType;
-        this.attributes = new ArrayList<>();
+        this.attributes = new ArrayList<Attribute>();
     }
 
     public void setParent(Tag parent) {

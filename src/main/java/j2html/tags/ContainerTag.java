@@ -11,7 +11,7 @@ public class ContainerTag extends Tag {
 
     public ContainerTag(String tagType) {
         super(tagType);
-        this.children = new ArrayList<>();
+        this.children = new ArrayList<Tag>();
     }
 
     /**
