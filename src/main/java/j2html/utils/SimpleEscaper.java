@@ -1,28 +1,36 @@
 package j2html.utils;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class SimpleEscaper {
 
-    private static Map<Character, String> map = new HashMap<Character, String>() {{
-        put('&', "&amp;");
-        put('<', "&lt;");
-        put('>', "&gt;");
-        put('"', "&quot;");
-        put('\'', "&#x27;");
-    }};
-
     public static String escape(String s) {
-        if(s == null) {
+        if (s == null) {
             return null;
         }
-        String escapedString = "";
-        for(char c : s.toCharArray()) {
-            String escaped = map.get(c);
-            escapedString += escaped != null ? escaped : c;
+        StringBuilder escapedText = new StringBuilder();
+        char currentChar;
+        for (int i = 0; i < s.length(); i++) {
+            currentChar = s.charAt(i);
+            switch (currentChar) {
+                case '<':
+                    escapedText.append("&lt;");
+                    break;
+                case '>':
+                    escapedText.append("&gt;");
+                    break;
+                case '&':
+                    escapedText.append("&amp;");
+                    break;
+                case '"':
+                    escapedText.append("&quot;");
+                    break;
+                case '\'':
+                    escapedText.append("&#x27;");
+                    break;
+                default:
+                    escapedText.append(currentChar);
+            }
         }
-        return escapedString;
+        return escapedText.toString();
     }
 
 }
