@@ -91,10 +91,40 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
      * Convenience methods that call attr with predefined attributes
      * @return itself for easy chaining
      */
+
+
+    /**
+     * Add a html-class to the tag
+     *
+     * @param className the class you want to add
+     * @return itself for easy chaining
+     */
+    public T addClass(String className) {
+        String newClassName = className != null ? className : "";
+        for (Attribute attribute : attributes) {
+            if (attribute.getName().equals(Attr.CLASS)) {
+                newClassName = attribute.getValue() + " " + className;
+            }
+        }
+        return attr(Attr.CLASS, newClassName.trim());
+    }
+
+    /**
+     * Add a conditional html-class to the tag
+     *
+     * @param condition the condition
+     * @param className the class you want to add
+     * @return itself for easy chaining
+     */
+    public T addCondClass(boolean condition, String className) {
+        return (condition ? addClass(className) : (T) this);
+    }
+
     public T isAutoComplete()                                                { return attr(Attr.AUTOCOMPLETE, null); }
     public T isAutoFocus()                                                   { return attr(Attr.AUTOFOCUS, null); }
     public T isHidden()                                                      { return attr(Attr.HIDDEN, null); }
     public T isRequired()                                                    { return attr(Attr.REQUIRED, null); }
+
     public T withAlt(String alt)                                             { return attr(Attr.ALT, alt); }
     public T withAction(String action)                                       { return attr(Attr.ACTION, action); }
     public T withCharset(String charset)                                     { return attr(Attr.CHARSET, charset); }

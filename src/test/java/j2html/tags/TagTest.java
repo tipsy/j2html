@@ -49,4 +49,13 @@ public class TagTest {
         assertThat(tagOne.equals(tagTwo), is(true));
     }
 
+    @Test
+    public void testAddClass() throws Exception {
+        String expected = "<p class=\"1 2 3\"></p>";
+        Tag tagOne = tag("p").withClass("1").addClass("2").addCondClass(true, "3");
+        Tag tagTwo = tag("p").addClass("1").addClass("2").addCondClass(true, "3").addCondClass(false, "4");
+        assertThat(tagOne.render(), is(expected));
+        assertThat(tagTwo.render(), is(expected));
+    }
+
 }
