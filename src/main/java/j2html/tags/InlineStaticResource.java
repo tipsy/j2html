@@ -17,8 +17,8 @@ public class InlineStaticResource {
     public static ContainerTag get(String path, TargetFormat format) {
         ContainerTag errorAlert = script().with(rawHtml("alert('Unable to read file. File: \"" + path + "\", Type: \"" + format + "\"')"));
         String fileString = getFileAsString(path);
-        if (fileString != null) {
-            switch(format) {
+        if (!isBlank(fileString)) {
+            switch (format) {
                 case CSS_MIN : return style().with(rawHtml(compressCss(fileString)));
                 case JS_MIN  : return script().with(rawHtml(compressJs(fileString)));
                 case CSS     : return style().with(rawHtml(fileString));
@@ -31,9 +31,15 @@ public class InlineStaticResource {
 
     public static String getFileAsString(String path) {
         try {
+            // try to read the file from resource folder
             return new String(Files.readAllBytes(Paths.get(InlineStaticResource.class.getResource(path).toURI())), "UTF-8");
-        } catch (Exception e) {
-            return null;
+        } catch (Exception e1) {
+            try {
+                // try to read the file from file system
+                return new String(Files.readAllBytes(Paths.get(path)), "UTF-8");
+            } catch (Exception e2) {
+                return "";
+            }
         }
     }
 
@@ -43,6 +49,10 @@ public class InlineStaticResource {
 
     private static String compressJs(String code) {
         return JSMin.compressJs(code);
+    }
+
+    private static boolean isBlank(String s) {
+        return s == null || s.equals("");
     }
 
 }
