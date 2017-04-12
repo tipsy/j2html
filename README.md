@@ -7,8 +7,8 @@ Java to HTML generator. Enjoy typesafe HTML generation.
 
 The project webpage is [j2html.com](http://j2html.com).
 
-##Getting started
-###Add the maven dependency
+## Getting started
+### Add the maven dependency
 ```xml
 <dependency>
     <groupId>com.j2html</groupId>
@@ -17,7 +17,7 @@ The project webpage is [j2html.com](http://j2html.com).
 </dependency>
 ```
 
-###Import TagCreator and start building HTML
+### Import TagCreator and start building HTML
 ```java
 import static j2html.TagCreator.*;
 
