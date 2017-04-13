@@ -1,6 +1,8 @@
 package j2html.tags;
 
+import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import j2html.utils.CSSMin;
@@ -15,44 +17,30 @@ public class InlineStaticResource {
     public enum TargetFormat {CSS_MIN, CSS, JS_MIN, JS}
 
     public static ContainerTag get(String path, TargetFormat format) {
-        ContainerTag errorAlert = script().with(rawHtml("alert('Unable to read file. File: \"" + path + "\", Type: \"" + format + "\"')"));
         String fileString = getFileAsString(path);
-        if (!isBlank(fileString)) {
-            switch (format) {
-                case CSS_MIN : return style().with(rawHtml(compressCss(fileString)));
-                case JS_MIN  : return script().with(rawHtml(compressJs(fileString)));
-                case CSS     : return style().with(rawHtml(fileString));
-                case JS      : return script().with(rawHtml(fileString));
-                default      : return errorAlert;
-            }
+        switch (format) {
+            case CSS_MIN : return style().with(rawHtml(CSSMin.compress(fileString)));
+            case JS_MIN  : return script().with(rawHtml(JSMin.compressJs(fileString)));
+            case CSS     : return style().with(rawHtml(fileString));
+            case JS      : return script().with(rawHtml(fileString));
+            default      : throw new RuntimeException("Invalid target format");
         }
-        return errorAlert;
     }
 
     public static String getFileAsString(String path) {
         try {
-            // try to read the file from resource folder
-            return new String(Files.readAllBytes(Paths.get(InlineStaticResource.class.getResource(path).toURI())), "UTF-8");
+            return readFileAsString(Paths.get(InlineStaticResource.class.getResource(path).toURI()));
         } catch (Exception e1) {
             try {
-                // try to read the file from file system
-                return new String(Files.readAllBytes(Paths.get(path)), "UTF-8");
+                return readFileAsString(Paths.get(path));
             } catch (Exception e2) {
-                return "";
+                throw new RuntimeException("Couldn't find file with path='" + path + "'");
             }
         }
     }
 
-    private static String compressCss(String code) {
-        return CSSMin.compress(code);
-    }
-
-    private static String compressJs(String code) {
-        return JSMin.compressJs(code);
-    }
-
-    private static boolean isBlank(String s) {
-        return s == null || s.equals("");
+    private static String readFileAsString(Path path) throws IOException {
+        return new String(Files.readAllBytes(path), "UTF-8");
     }
 
 }
