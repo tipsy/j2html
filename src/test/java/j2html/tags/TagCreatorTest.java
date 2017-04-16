@@ -65,11 +65,6 @@ public class TagCreatorTest {
         assertThat(text("text").render(), is("text"));
         assertThat(text("<script> and \"</script>\"").render(), is("&lt;script&gt; and &quot;&lt;/script&gt;&quot;"));
         assertThat(rawHtml("<script>").render(), is("<script>"));
-        assertThat(styleWithInlineFile_min("/test.css").render(), is("<style>body{background:#daa520;margin-bottom:10px;margin-left:10px;margin-right:10px;margin-top:10px}</style>"));
-        assertThat(scriptWithInlineFile_min("/test.js").render(), is("<script>(function(){var test=5;var tast=10;var testTast=test+tast;console.log(testTast);})();</script>"));
-        assertThat(fileAsString("/test.html").render(), is("<body>" + EOL + "    Any content" + EOL + "</body>" + EOL));
-        assertThat(fileAsEscapedString("/test.html").render(), is("&lt;body&gt;" + EOL + "    Any content" + EOL + "&lt;/body&gt;" + EOL));
-        assertThat(fileAsString("/AnyContent.java").render(), is("public class AnyContent{}" + EOL));
 
         //EmptyTags
         assertThat(document().render(), is("<!DOCTYPE html>"));
