@@ -17,6 +17,24 @@ public class TagCreatorTest {
     List<Employee> employees = Arrays.asList(new Employee(1, "Name 1", "Title 1"), new Employee(2, "Name 2", "Title 2"), new Employee(3, "Name 3", "Title 3"));
 
     @Test
+    public void testIff() throws Exception {
+        String expected = "<div><p>Test</p><a href=\"#\">Test</a></div>";
+        String actual = div().with(
+                p("Test"),
+                iff(1 == 1, a("Test").withHref("#")),
+                iff(1 == 2, a("Tast").withHref("#"))
+        ).render();
+        assertThat(actual, is(expected));
+    }
+
+    @Test
+    public void testIffElse() throws Exception {
+        String expected = "<div><p>Tast</p></div>";
+        String actual = div().with(iffElse(1 == 2, p("Test"), p("Tast"))).render();
+        assertThat(actual, is(expected));
+    }
+
+    @Test
     public void testEach() throws Exception {
         String j2htmlMap = ul().with(
                 li("Begin list"),
