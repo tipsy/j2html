@@ -22,7 +22,7 @@ public class ContainerTag extends Tag<ContainerTag> {
      */
     public ContainerTag with(DomContent child) {
         if (this == child) {
-            throw new Error("Cannot append a tag to itself.");
+            throw new RuntimeException("Cannot append a tag to itself.");
         }
         children.add(child);
         return this;
