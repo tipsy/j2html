@@ -18,10 +18,29 @@ public class TagCreator {
     private TagCreator() {}
 
     /**
+     * Generic if-expression to do if'ing inside method calls
+     *
+     * @param <T>       The derived generic parameter type
+     * @param condition the condition to if-on
+     * @param ifValue   the value to return if condition is true
+     * @return value if condition is true, null otherwise
+     */
+    public static <T> T iff(boolean condition, T ifValue) {
+        return condition ? ifValue : null;
+    }
+
+    /**
+     * Like {@link j2html.TagCreator#iff}, but returns else-value instead of null
+     */
+    public static <T> T iffElse(boolean condition, T ifValue, T elseValue) {
+        return condition ? ifValue : elseValue;
+    }
+
+    /**
      * Creates a DomContent object containing HTML using a mapping function on a collection
      * Intended usage: {@literal each(numbers, n -> li(n.toString()))}
      *
-     * @param <T> The derived generic parameter type
+     * @param <T>        The derived generic parameter type
      * @param collection the collection to iterate over, ex: a list of values "1, 2, 3"
      * @param mapper     the mapping function, ex: {@literal "n -> li(n.toString())"}
      * @return rawHtml containing mapped data {@literal (ex. docs: <li>1</li><li>2</li><li>3</li>)}
@@ -34,7 +53,7 @@ public class TagCreator {
      * Filters a collection to a list, to be used with {@link j2html.TagCreator#each}
      * Intended usage: {@literal each(filter(numbers, n -> n % 2 == 0), n -> li(n.toString()))}
      *
-     * @param <T> The derived generic parameter type
+     * @param <T>        The derived generic parameter type
      * @param collection the collection to filter, ex: a list of values "1, 2, 3"
      * @param filter     the filter predicate, {@literal ex: "n -> n % 2 == 0"}
      * @return the filtered collection as a list (ex. docs: 2)

@@ -24,6 +24,9 @@ public class ContainerTag extends Tag<ContainerTag> {
         if (this == child) {
             throw new RuntimeException("Cannot append a tag to itself.");
         }
+        if (child == null) {
+            return this; // in some cases, like when using iff(), we ignore null children
+        }
         children.add(child);
         return this;
     }
