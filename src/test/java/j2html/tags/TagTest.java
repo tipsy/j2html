@@ -3,9 +3,11 @@ package j2html.tags;
 import org.junit.Test;
 
 import static j2html.TagCreator.body;
+import static j2html.TagCreator.div;
 import static j2html.TagCreator.footer;
 import static j2html.TagCreator.header;
 import static j2html.TagCreator.html;
+import static j2html.TagCreator.iff;
 import static j2html.TagCreator.main;
 import static j2html.TagCreator.p;
 import static j2html.TagCreator.tag;
@@ -48,5 +50,13 @@ public class TagTest {
         Tag tagTwo = p("Test").withClass("class");
         assertThat(tagOne.equals(tagTwo), is(true));
     }
+
+    @Test
+    public void testWithClasses() throws Exception {
+        String expected = "<div class=\"c1 c2\"></div>";
+        String actual = div().withClasses("c1", iff(1 == 1, "c2"), iff(1 == 2, "c3")).render();
+        assertThat(actual, is(expected));
+    }
+
 
 }

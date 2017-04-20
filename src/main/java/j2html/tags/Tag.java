@@ -1,6 +1,8 @@
 package j2html.tags;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import j2html.attributes.Attr;
 import j2html.attributes.Attribute;
@@ -91,6 +93,16 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
      * Convenience methods that call attr with predefined attributes
      * @return itself for easy chaining
      */
+
+    public T withClasses(String... classes) {
+        return attr(Attr.CLASS,
+                    Stream.of(classes)
+                            .map(c -> c != null ? c : "")
+                            .collect(Collectors.joining(" "))
+                            .trim()
+        );
+    }
+
     public T isAutoComplete()                                                { return attr(Attr.AUTOCOMPLETE, null); }
     public T isAutoFocus()                                                   { return attr(Attr.AUTOFOCUS, null); }
     public T isHidden()                                                      { return attr(Attr.HIDDEN, null); }
