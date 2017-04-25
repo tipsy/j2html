@@ -13,7 +13,7 @@ The project webpage is [j2html.com](http://j2html.com).
 <dependency>
     <groupId>com.j2html</groupId>
     <artifactId>j2html</artifactId>
-    <version>0.88</version>
+    <version>0.99</version>
 </dependency>
 ```
 
