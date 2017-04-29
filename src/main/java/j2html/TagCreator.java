@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import j2html.tags.ContainerTag;
 import j2html.tags.DomContent;
+import j2html.tags.DomContentJoiner;
 import j2html.tags.EmptyTag;
 import j2html.tags.InlineStaticResource;
 import j2html.tags.Text;
@@ -34,6 +35,19 @@ public class TagCreator {
      */
     public static <T> T iffElse(boolean condition, T ifValue, T elseValue) {
         return condition ? ifValue : elseValue;
+    }
+
+
+    /**
+     * Returns the HTML created by concatenating the input elements,
+     * separated by space, in encounter order.
+     * Also removes spaces before periods and commas.
+     *
+     * @param stringOrDomObjects the elements to join
+     * @return joined elements as HTML
+     */
+    public static UnescapedText join(Object... stringOrDomObjects) {
+        return DomContentJoiner.join(" ", true, stringOrDomObjects);
     }
 
     /**

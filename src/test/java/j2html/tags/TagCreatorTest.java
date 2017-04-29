@@ -35,6 +35,13 @@ public class TagCreatorTest {
     }
 
     @Test
+    public void testJoin() throws Exception {
+        String expected = "This is my joined string. It has a <a href=\"#\">link in the middle</a> and <code>code at the end</code>.";
+        String actual = join("This is my joined string. It has a", a("link in the middle").withHref("#"), "and", code("code at the end"), ".").render();
+        assertThat(actual, is(expected));
+    }
+
+    @Test
     public void testEach() throws Exception {
         String j2htmlMap = ul().with(
             li("Begin list"),
