@@ -19,10 +19,10 @@ public class TagCreatorTest {
     @Test
     public void testIff() throws Exception {
         String expected = "<div><p>Test</p><a href=\"#\">Test</a></div>";
-        String actual = div().with(
-                p("Test"),
-                iff(1 == 1, a("Test").withHref("#")),
-                iff(1 == 2, a("Tast").withHref("#"))
+        String actual = div(
+            p("Test"),
+            iff(1 == 1, a("Test").withHref("#")),
+            iff(1 == 2, a("Tast").withHref("#"))
         ).render();
         assertThat(actual, is(expected));
     }
@@ -30,25 +30,25 @@ public class TagCreatorTest {
     @Test
     public void testIffElse() throws Exception {
         String expected = "<div><p>Tast</p></div>";
-        String actual = div().with(iffElse(1 == 2, p("Test"), p("Tast"))).render();
+        String actual = div(iffElse(1 == 2, p("Test"), p("Tast"))).render();
         assertThat(actual, is(expected));
     }
 
     @Test
     public void testEach() throws Exception {
         String j2htmlMap = ul().with(
-                li("Begin list"),
-                each(employees, employee -> li().with(
-                        h2(employee.name),
-                        p(employee.title)
-                ))
+            li("Begin list"),
+            each(employees, employee -> li(
+                h2(employee.name),
+                p(employee.title)
+            ))
         ).render();
         String javaMap = ul().with(
-                li("Begin list"),
-                rawHtml(employees.stream().map(employee -> li().with(
-                        h2(employee.name),
-                        p(employee.title)
-                )).map(DomContent::render).collect(Collectors.joining()))
+            li("Begin list"),
+            rawHtml(employees.stream().map(employee -> li(
+                h2(employee.name),
+                p(employee.title)
+            )).map(DomContent::render).collect(Collectors.joining()))
         ).render();
         assertThat(j2htmlMap.equals(javaMap), is(true));
         assertThat(j2htmlMap, is("<ul><li>Begin list</li><li><h2>Name 1</h2><p>Title 1</p></li><li><h2>Name 2</h2><p>Title 2</p></li><li><h2>Name 3</h2><p>Title 3</p></li></ul>"));
@@ -57,18 +57,18 @@ public class TagCreatorTest {
     @Test
     public void testFilter() throws Exception {
         String j2htmlFilter = ul().with(
-                li("Begin list"),
-                each(filter(employees, e -> e.id % 2 == 1), employee -> li().with(
-                        h2(employee.name),
-                        p(employee.title)
-                ))
+            li("Begin list"),
+            each(filter(employees, e -> e.id % 2 == 1), employee -> li(
+                h2(employee.name),
+                p(employee.title)
+            ))
         ).render();
         String javaFilter = ul().with(
-                li("Begin list"),
-                rawHtml(employees.stream().filter(e -> e.id % 2 == 1).map(employee -> li().with(
-                        h2(employee.name),
-                        p(employee.title)
-                )).map(DomContent::render).collect(Collectors.joining()))
+            li("Begin list"),
+            rawHtml(employees.stream().filter(e -> e.id % 2 == 1).map(employee -> li(
+                h2(employee.name),
+                p(employee.title)
+            )).map(DomContent::render).collect(Collectors.joining()))
         ).render();
         assertThat(j2htmlFilter.equals(javaFilter), is(true));
         assertThat(j2htmlFilter, is("<ul><li>Begin list</li><li><h2>Name 1</h2><p>Title 1</p></li><li><h2>Name 3</h2><p>Title 3</p></li></ul>"));
