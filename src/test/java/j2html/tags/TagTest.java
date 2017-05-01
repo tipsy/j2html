@@ -45,6 +45,16 @@ public class TagTest {
     }
 
     @Test
+    public void testAcceptObjectValueAttribute() throws Exception {
+        ContainerTag complexTestTag = new ContainerTag("input")
+                .attr("attr1", "value1")
+                .attr("attr2", 2)
+                .attr("attr3", null);
+        String expectedResult = "<input attr1=\"value1\" attr2=\"2\" attr3>";
+        assertThat(complexTestTag.renderOpenTag(), is(expectedResult));
+    }
+
+    @Test
     public void testEquals() throws Exception {
         Tag tagOne = tag("p").withClass("class").withText("Test");
         Tag tagTwo = p("Test").withClass("class");
