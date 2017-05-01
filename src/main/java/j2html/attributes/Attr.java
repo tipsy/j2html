@@ -33,18 +33,17 @@ public class Attr {
         return new Shortform(id.trim(), classes.toString().trim());
     }
 
-    @SuppressWarnings("unchecked")
-    public static <T> T addTo(Tag<? extends Tag> tag, Attr.Shortform shortform) {
+    public static <T extends Tag<T>> T addTo(T tag, Attr.Shortform shortform) {
         if (!"".equals(shortform.id) && !"".equals(shortform.classes)) {
-            return (T) tag.withId(shortform.id).withClass(shortform.classes);
+            return tag.withId(shortform.id).withClass(shortform.classes);
         }
         if (!"".equals(shortform.id)) {
-            return (T) tag.withId(shortform.id);
+            return tag.withId(shortform.id);
         }
         if (!"".equals(shortform.classes)) {
-            return (T) tag.withClass(shortform.classes);
+            return tag.withClass(shortform.classes);
         }
-        return (T) tag;
+        return tag;
     }
 
     private Attr() {
