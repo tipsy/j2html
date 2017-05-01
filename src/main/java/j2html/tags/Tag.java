@@ -65,6 +65,17 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return (T) this;
     }
 
+    /**
+     * Sets a custom attribute without value
+     *
+     * @param attribute the attribute name
+     * @return itself for easy chaining
+     * @see Tag#attr(String, String)
+     */
+    public T attr(String attribute) {
+        return attr(attribute, null);
+    }
+
 
     /**
      * Call attr-method based on condition
