@@ -58,5 +58,14 @@ public class TagTest {
         assertThat(actual, is(expected));
     }
 
+    @Test
+    public void testEmptyAttribute() throws Exception {
+        ContainerTag testTagWithAttrValueNull = new ContainerTag("a").attr("attribute", null);
+        assertThat(testTagWithAttrValueNull.render(), is("<a attribute></a>"));
+
+        ContainerTag testTagAttrWithoutAttr = new ContainerTag("a").attr("attribute");
+        assertThat(testTagAttrWithoutAttr.render(), is("<a attribute></a>"));
+    }
+
 
 }
