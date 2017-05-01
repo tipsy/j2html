@@ -17,6 +17,9 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         this.attributes = new ArrayList<>();
     }
 
+    public String getTagName() {
+        return this.tagName;
+    }
 
     String renderOpenTag() {
         StringBuilder sb = new StringBuilder("<").append(tagName);
