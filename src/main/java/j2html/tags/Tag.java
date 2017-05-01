@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import j2html.printer.ConfigurablePrinter;
+import j2html.printer.HtmlPrinter;
 import j2html.attributes.Attr;
 import j2html.attributes.Attribute;
 
@@ -21,19 +23,29 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return this.tagName;
     }
 
-    String renderOpenTag() {
-        StringBuilder sb = new StringBuilder("<").append(tagName);
+    void renderOpenTag(Appendable writer, HtmlPrinter htmlPrinter) {
+        appendCatch(writer, indent(htmlPrinter));
+        appendCatch(writer, "<");
+        appendCatch(writer, tagName);
         for (Attribute attribute : attributes) {
-            sb.append(attribute.render());
+            appendCatch(writer, attribute.render(htmlPrinter.addLevelIndent()));
         }
-        sb.append(">");
-        return sb.toString();
+        appendCatch(writer, ">");
+        if(!isEmpty() && htmlPrinter.prettyPrint()){
+            appendCatch(writer, "\n");
+        }
+    }
+
+    void renderCloseTag(Appendable writer, HtmlPrinter htmlPrinter) {
+        if (!isEmpty() && htmlPrinter.prettyPrint()){
+            appendCatch(writer, "\n"+ indent(htmlPrinter));
+        }
+        appendCatch(writer, "</" + tagName + ">");
     }
 
 
-    String renderCloseTag() {
-        return "</" + tagName + ">";
-    }
+
+    protected abstract boolean isEmpty();
 
 
     /**
@@ -99,7 +111,8 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         if (obj == null || !(obj instanceof Tag)) {
             return false;
         }
-        return ((Tag) obj).render().equals(this.render());
+        HtmlPrinter htmlPrinter = new ConfigurablePrinter();
+        return ((Tag) obj).render(htmlPrinter).equals(this.render(htmlPrinter));
     }
 
 

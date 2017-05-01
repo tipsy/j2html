@@ -1,7 +1,9 @@
 package j2html.tags;
 
-import java.io.IOException;
+import j2html.printer.HtmlPrinter;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ContainerTag extends Tag<ContainerTag> {
@@ -31,6 +33,10 @@ public class ContainerTag extends Tag<ContainerTag> {
         return this;
     }
 
+    @Override
+    protected boolean isEmpty() {
+        return children.isEmpty();
+    }
 
     /**
      * Call with-method based on condition
@@ -118,26 +124,15 @@ public class ContainerTag extends Tag<ContainerTag> {
      * @return the rendered string
      */
     @Override
-    public String render() {
-        StringBuilder rendered = new StringBuilder(renderOpenTag());
-        if (children != null && !children.isEmpty()) {
-            for (DomContent child : children) {
-                rendered.append(child.render());
+    public void render(Appendable writer, HtmlPrinter htmlPrinter) {
+        renderOpenTag(writer, htmlPrinter);
+        Iterator<DomContent> iterator = children.iterator();
+        while (iterator.hasNext()) {
+            iterator.next().render(writer, htmlPrinter.addLevelIndent());
+            if (htmlPrinter.prettyPrint() && iterator.hasNext()) {
+                appendCatch(writer, "\n");
             }
         }
-        rendered.append(renderCloseTag());
-        return rendered.toString();
+        renderCloseTag(writer, htmlPrinter);
     }
-
-    @Override
-    public void render(Appendable writer) throws IOException {
-        writer.append(renderOpenTag());
-        if (children != null && !children.isEmpty()) {
-            for (DomContent child : children) {
-                child.render(writer);
-            }
-        }
-        writer.append(renderCloseTag());
-    }
-
 }

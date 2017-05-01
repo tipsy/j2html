@@ -1,5 +1,6 @@
 package j2html.attributes;
 
+import j2html.printer.ConfigurablePrinter;
 import org.junit.Test;
 
 import j2html.tags.ContainerTag;
@@ -12,13 +13,13 @@ public class AttributeTest {
     @Test
     public void testRender() throws Exception {
         Attribute attributeWithValue = new Attribute("href", "http://example.com");
-        assertThat(attributeWithValue.render(), is(" href=\"http://example.com\""));
+        assertThat(attributeWithValue.render(new ConfigurablePrinter()), is(" href=\"http://example.com\""));
 
         Attribute attribute = new Attribute("required", null);
-        assertThat(attribute.render(), is(" required"));
+        assertThat(attribute.render(new ConfigurablePrinter()), is(" required"));
 
         Attribute nullAttribute = new Attribute(null, null);
-        assertThat(nullAttribute.render(), is(""));
+        assertThat(nullAttribute.render(new ConfigurablePrinter()), is(""));
     }
 
     @Test
