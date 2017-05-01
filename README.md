@@ -16,6 +16,10 @@ The project webpage is [j2html.com](http://j2html.com).
     <version>0.99</version>
 </dependency>
 ```
+### OR the gradle dependency
+```
+compile 'com.j2html:j2html:0.99'
+```
 
 ### Import TagCreator and start building HTML
 ```java
