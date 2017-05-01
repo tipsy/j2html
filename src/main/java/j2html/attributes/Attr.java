@@ -1,6 +1,61 @@
 package j2html.attributes;
 
+import j2html.tags.Tag;
+
 public class Attr {
+
+    public static class Shortform {
+        String id;
+        String classes;
+
+        private Shortform(String id, String classes) {
+            this.id = id;
+            this.classes = classes;
+        }
+
+        boolean hasId() {
+            return id != null && !"".equals(id);
+        }
+
+        boolean hasClasses() {
+            return classes != null && !"".equals(classes);
+        }
+    }
+
+    public static Shortform attrs(String attrs) {
+        if (!attrs.contains(".") && !attrs.contains(("#"))) {
+            throw new IllegalArgumentException("String must contain either id (#) or class (.)");
+        }
+        if (attrs.split("#").length > 2) {
+            throw new IllegalArgumentException("Only one id (#) allowed");
+        }
+        String id = "";
+        StringBuilder classes = new StringBuilder();
+        for (String attr : attrs.split("\\.")) {
+            if (attr.contains("#")) {
+                if (!attr.startsWith("#")) {
+                    throw new IllegalArgumentException("# cannot be in the middle of string");
+                }
+                id = attr.replace("#", "");
+            } else {
+                classes.append(attr).append(" ");
+            }
+        }
+        return new Shortform(id.trim(), classes.toString().trim());
+    }
+
+    public static <T extends Tag<T>> T addTo(T tag, Attr.Shortform shortform) {
+        if (shortform.hasId() && shortform.hasClasses()) {
+            return tag.withId(shortform.id).withClass(shortform.classes);
+        }
+        if (shortform.hasId()) {
+            return tag.withId(shortform.id);
+        }
+        if (shortform.hasClasses()) {
+            return tag.withClass(shortform.classes);
+        }
+        return tag;
+    }
 
     private Attr() {
     }
