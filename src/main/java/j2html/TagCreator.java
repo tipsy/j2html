@@ -38,6 +38,16 @@ public class TagCreator {
         return condition ? ifValue : elseValue;
     }
 
+    /**
+     * Returns a Attr.Shortform object with either id, classes or both,
+     * obtained from parsing the input string using css selector syntax
+     *
+     * @param attrs the string with shortform attributes, only id and class is supported
+     * @return a Attr.Shortform object
+     */
+    public static Attr.Shortform attrs(String attrs) {
+        return Attr.attrs(attrs);
+    }
 
     /**
      * Returns the HTML created by concatenating the input elements,
