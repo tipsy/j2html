@@ -39,7 +39,7 @@ public class AttrTest {
     }
 
     @Test
-    public void addTwo_addTwoClasses() throws Exception {
+    public void addTo_addTwoClasses() throws Exception {
         String expected = "<div class=\"some-class some-other-class\"></div>";
         String actual = div(attrs(".some-class.some-other-class")).render();
         assertThat(actual, is(expected));
@@ -53,6 +53,11 @@ public class AttrTest {
     @Test(expected = IllegalArgumentException.class)
     public void addTo_stringWithTwoIds() throws Exception {
         div(attrs("#id1#id2")).render();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void addTo_stringWithStupidlyPlacedId() throws Exception {
+        System.out.println(div(attrs("id1#id2")).render());
     }
 
 }
