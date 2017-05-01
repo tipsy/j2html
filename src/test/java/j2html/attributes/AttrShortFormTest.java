@@ -2,13 +2,11 @@ package j2html.attributes;
 
 import org.junit.Test;
 
-import static j2html.TagCreator.div;
-import static j2html.TagCreator.input;
-import static j2html.attributes.Attr.attrs;
+import static j2html.TagCreator.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class AttrTest {
+public class AttrShortFormTest {
     
     @Test
     public void addTo_emptyTag() throws Exception {
@@ -57,7 +55,7 @@ public class AttrTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void addTo_stringWithStupidlyPlacedId() throws Exception {
-        System.out.println(div(attrs("id1#id2")).render());
+        div(attrs("id1#id2")).render();
     }
 
 }

@@ -11,7 +11,7 @@ class TagCreatorCodeGenerator {
             String emptyA1 = "public static EmptyTag " + tag + "()";
             String emptyA2 = "{ return new EmptyTag(\"" + tag + "\"); }";
             // Attr shorthands
-            String emptyB1 = "public static EmptyTag " + tag + "(Attr.Shortform shortAttr)";
+            String emptyB1 = "public static EmptyTag " + tag + "(Attr.ShortForm shortAttr)";
             String emptyB2 = "{ return Attr.addTo(new EmptyTag(\"" + tag + "\"), shortAttr); }";
             // Print
             System.out.println(String.format("%-80s%1s", emptyA1, emptyA2));
@@ -27,11 +27,11 @@ class TagCreatorCodeGenerator {
             String containerC1 = "public static ContainerTag " + tag + "(DomContent... dc)";
             String containerC2 = "{ return new ContainerTag(\"" + tag + "\").with(dc); }";
             // Attr shorthands
-            String containerD1 = "public static ContainerTag " + tag + "(Attr.Shortform shortAttr)";
+            String containerD1 = "public static ContainerTag " + tag + "(Attr.ShortForm shortAttr)";
             String containerD2 = "{ return Attr.addTo(new ContainerTag(\"" + tag + "\"), shortAttr); }";
-            String containerE1 = "public static ContainerTag " + tag + "(Attr.Shortform shortAttr, String text)";
+            String containerE1 = "public static ContainerTag " + tag + "(Attr.ShortForm shortAttr, String text)";
             String containerE2 = "{ return Attr.addTo(new ContainerTag(\"" + tag + "\").withText(text), shortAttr); }";
-            String containerF1 = "public static ContainerTag " + tag + "(Attr.Shortform shortAttr, DomContent... dc)";
+            String containerF1 = "public static ContainerTag " + tag + "(Attr.ShortForm shortAttr, DomContent... dc)";
             String containerF2 = "{ return Attr.addTo(new ContainerTag(\"" + tag + "\").with(dc), shortAttr); }";
             // Print
             System.out.println(String.format("%-80s%1s", containerA1, containerA2));
