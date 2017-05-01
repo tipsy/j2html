@@ -17,6 +17,9 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         this.attributes = new ArrayList<>();
     }
 
+    public String getTagName() {
+        return this.tagName;
+    }
 
     String renderOpenTag() {
         StringBuilder sb = new StringBuilder("<").append(tagName);
@@ -63,6 +66,17 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     public T attr(String attribute, String value) {
         setAttribute(attribute, value);
         return (T) this;
+    }
+
+    /**
+     * Sets a custom attribute without value
+     *
+     * @param attribute the attribute name
+     * @return itself for easy chaining
+     * @see Tag#attr(String, String)
+     */
+    public T attr(String attribute) {
+        return attr(attribute, null);
     }
 
 

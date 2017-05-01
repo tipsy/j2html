@@ -97,7 +97,20 @@ public class TagCreator {
         return new Text(text);
     }
 
-    // Special tags
+    /**
+     * Return a complete html document string
+     *
+     * @param htmlTag the html content of a website
+     * @return document declaration and rendered html content
+     */
+    public static String document(ContainerTag htmlTag) {
+        if (htmlTag.getTagName().equals("html")) {
+            return new EmptyTag("!DOCTYPE html").render() + htmlTag.render();
+        }
+        throw new IllegalArgumentException("Only HTML-tag can follow document declaration");
+    }
+
+    //Special tags
     public static ContainerTag tag(String tagName)                                  { return new ContainerTag(tagName); }
     public static EmptyTag emptyTag(String tagName)                                 { return new EmptyTag(tagName); }
 
