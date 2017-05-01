@@ -3,8 +3,6 @@ package j2html.tags;
 import java.util.Arrays;
 import java.util.List;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 class TagCreatorCodeGenerator {
 
     public static void main(String[] args) {
