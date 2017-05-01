@@ -1,6 +1,51 @@
 package j2html.attributes;
 
+import j2html.tags.Tag;
+
 public class Attr {
+
+    public static class Shortform {
+        String id;
+        String classes;
+
+        private Shortform(String id, String classes) {
+            this.id = id;
+            this.classes = classes;
+        }
+    }
+
+    public static Shortform attrs(String shortformAttributes) {
+        if (!shortformAttributes.contains(".") && !shortformAttributes.contains(("#"))) {
+            throw new IllegalArgumentException("String must contain either id (#) or class (.)");
+        }
+        if (shortformAttributes.split("#").length > 2) {
+            throw new IllegalArgumentException("Only one id (#) allowed");
+        }
+        String id = "";
+        StringBuilder classes = new StringBuilder();
+        for (String s : shortformAttributes.split("\\.")) {
+            if (s.contains("#")) {
+                id = s.replace("#", "");
+            } else {
+                classes.append(s).append(" ");
+            }
+        }
+        return new Shortform(id.trim(), classes.toString().trim());
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T addTo(Tag<? extends Tag> tag, Attr.Shortform shortform) {
+        if (!"".equals(shortform.id) && !"".equals(shortform.classes)) {
+            return (T) tag.withId(shortform.id).withClass(shortform.classes);
+        }
+        if (!"".equals(shortform.id)) {
+            return (T) tag.withId(shortform.id);
+        }
+        if (!"".equals(shortform.classes)) {
+            return (T) tag.withClass(shortform.classes);
+        }
+        return (T) tag;
+    }
 
     private Attr() {
     }
