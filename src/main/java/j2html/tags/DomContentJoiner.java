@@ -1,25 +1,24 @@
 package j2html.tags;
 
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 public class DomContentJoiner {
 
     public static UnescapedText join(CharSequence delimiter, boolean fixPeriodAndCommaSpacing, Object... stringOrDomObjects) {
-        String result = Stream.of(stringOrDomObjects).map(object -> {
-            if (object instanceof String) {
-                return ((String) object).trim();
+        StringBuilder sb = new StringBuilder();
+        for (Object o : stringOrDomObjects) {
+            if (o instanceof String) {
+                sb.append(((String) o).trim()).append(" ");
+            } else if (o instanceof DomContent) {
+                sb.append(((DomContent) o).render().trim()).append(" ");
+            } else {
+                throw new RuntimeException("You can only join DomContent and String objects");
             }
-            if (object instanceof DomContent) {
-                return ((DomContent) object).render().trim();
-            }
-            throw new RuntimeException("You can only join DomContent and String objects");
-        }).collect(Collectors.joining(delimiter));
-        if (fixPeriodAndCommaSpacing) {
-            result = result.replaceAll("\\s\\.", ".");
-            result = result.replaceAll("\\s\\,", ",");
         }
-        return new UnescapedText(result.trim());
+        String joined = sb.toString().trim();
+        if (fixPeriodAndCommaSpacing) {
+            joined = joined.replaceAll("\\s\\.", ".");
+            joined = joined.replaceAll("\\s\\,", ",");
+        }
+        return new UnescapedText(joined);
     }
 
 }

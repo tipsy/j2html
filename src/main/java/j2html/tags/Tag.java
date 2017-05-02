@@ -14,7 +14,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
 
     protected Tag(String tagName) {
         this.tagName = tagName;
-        this.attributes = new ArrayList<>();
+        this.attributes = new ArrayList<Attribute>();
     }
 
     public String getTagName() {
@@ -109,12 +109,11 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
      */
 
     public T withClasses(String... classes) {
-        return attr(Attr.CLASS,
-                    Stream.of(classes)
-                            .map(c -> c != null ? c : "")
-                            .collect(Collectors.joining(" "))
-                            .trim()
-        );
+        StringBuilder sb = new StringBuilder();
+        for (String s : classes) {
+            sb.append(s != null ? s : "").append(" ");
+        }
+        return attr(Attr.CLASS, sb.toString().trim());
     }
 
     public T isAutoComplete()                                                { return attr(Attr.AUTOCOMPLETE, null); }

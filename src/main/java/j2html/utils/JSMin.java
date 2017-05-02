@@ -62,7 +62,7 @@ public class JSMin {
         try {
             jsmin.jsmin();
             return outStream.toString().trim();
-        } catch (IOException | UnterminatedRegExpLiteralException | UnterminatedCommentException | UnterminatedStringLiteralException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return "";
         }

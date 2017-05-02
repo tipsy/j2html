@@ -7,7 +7,7 @@ class TagCreatorCodeGenerator {
 
     public static void main(String[] args) {
         System.out.println("// EmptyTags, generated in " + TagCreatorCodeGenerator.class);
-        emptyTags().forEach(tag -> {
+        for (String tag : emptyTags()) {
             String emptyA1 = "public static EmptyTag " + tag + "()";
             String emptyA2 = "{ return new EmptyTag(\"" + tag + "\"); }";
             // Attr shorthands
@@ -17,9 +17,9 @@ class TagCreatorCodeGenerator {
             System.out.println(String.format("%-80s%1s", emptyA1, emptyA2));
             System.out.println(String.format("%-80s%1s", emptyB1, emptyB2));
             System.out.println("");
-        });
+        }
         System.out.println("// ContainerTags, generated in " + TagCreatorCodeGenerator.class);
-        containerTags().forEach(tag -> {
+        for (String tag : containerTags()) {
             String containerA1 = "public static ContainerTag " + tag + "()";
             String containerA2 = "{ return new ContainerTag(\"" + tag + "\"); }";
             String containerB1 = "public static ContainerTag " + tag + "(String text)";
@@ -41,7 +41,7 @@ class TagCreatorCodeGenerator {
             System.out.println(String.format("%-80s%1s", containerE1, containerE2));
             System.out.println(String.format("%-80s%1s", containerF1, containerF2));
             System.out.println("");
-        });
+        }
     }
 
     //  This is a method that contains all ContainerTags, there is nothing below it
