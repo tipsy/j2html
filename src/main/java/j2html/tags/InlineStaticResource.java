@@ -1,16 +1,13 @@
 package j2html.tags;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import j2html.utils.CSSMin;
 import j2html.utils.JSMin;
 
-import static j2html.TagCreator.rawHtml;
-import static j2html.TagCreator.script;
-import static j2html.TagCreator.style;
+import static j2html.TagCreator.*;
 
 public class InlineStaticResource {
 
@@ -29,18 +26,27 @@ public class InlineStaticResource {
 
     public static String getFileAsString(String path) {
         try {
-            return readFileAsString(Paths.get(InlineStaticResource.class.getResource(path).toURI()));
+            return readFileAsString(InlineStaticResource.class.getResource(path).getPath());
         } catch (Exception e1) {
             try {
-                return readFileAsString(Paths.get(path));
+                return readFileAsString(path);
             } catch (Exception e2) {
                 throw new RuntimeException("Couldn't find file with path='" + path + "'");
             }
         }
     }
 
-    private static String readFileAsString(Path path) throws IOException {
-        return new String(Files.readAllBytes(path), "UTF-8");
+    /**
+     * @author kjheimark <3
+     */
+    private static String readFileAsString(String path) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
+        StringBuilder sb = new StringBuilder();
+        int c;
+        while ((c = bufferedReader.read()) >= 0 && c >= 0) {
+            sb.append((char) c);
+        }
+        return sb.toString();
     }
 
 }
