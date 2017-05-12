@@ -6,9 +6,9 @@ public class DomContentJoiner {
         StringBuilder sb = new StringBuilder();
         for (Object o : stringOrDomObjects) {
             if (o instanceof String) {
-                sb.append(((String) o).trim()).append(" ");
+                sb.append(((String) o).trim()).append(delimiter);
             } else if (o instanceof DomContent) {
-                sb.append(((DomContent) o).render().trim()).append(" ");
+                sb.append(((DomContent) o).render().trim()).append(delimiter);
             } else {
                 throw new RuntimeException("You can only join DomContent and String objects");
             }
