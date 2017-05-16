@@ -10,7 +10,7 @@
 
     <groupId>com.j2html</groupId>
     <artifactId>j2html</artifactId>
-    <version>1.0.1-RC-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>j2html</name>
     <description>Java to HTML builder with a fluent API</description>
