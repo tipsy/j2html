@@ -111,7 +111,13 @@ public class ContainerTag extends Tag<ContainerTag> {
         return with(new Text(text));
     }
 
-
+    /**
+     * Gets number of child nodes this tag element contains
+     */
+    public int getNumChildren() {
+        return children.size();
+    }
+    
     /**
      * Render the ContainerTag and its children
      *
