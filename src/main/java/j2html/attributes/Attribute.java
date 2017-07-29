@@ -1,6 +1,8 @@
 package j2html.attributes;
 
 
+import j2html.printer.ConfigurablePrinter;
+import j2html.printer.HtmlPrinter;
 import j2html.utils.SimpleEscaper;
 
 public class Attribute {
@@ -17,7 +19,7 @@ public class Attribute {
         this.value = null;
     }
 
-    public String render() {
+    public String render(HtmlPrinter htmlPrinter) {
         if (name == null) {
             return "";
         }
@@ -29,7 +31,7 @@ public class Attribute {
 
     @Override
     public String toString() {
-        return this.render();
+        return this.render(new ConfigurablePrinter().addLevelIndent());
     }
 
     public String getName() {
@@ -39,4 +41,5 @@ public class Attribute {
     public void setValue(String value) {
         this.value = value;
     }
+
 }

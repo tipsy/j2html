@@ -1,5 +1,7 @@
 package j2html.tags;
 
+import j2html.printer.HtmlPrinter;
+
 public class UnescapedText extends DomContent {
 
     private String text;
@@ -13,4 +15,8 @@ public class UnescapedText extends DomContent {
         return text;
     }
 
+    @Override
+    public void render(Appendable writer, HtmlPrinter htmlPrinter) {
+        appendCatch(writer, render());
+    }
 }

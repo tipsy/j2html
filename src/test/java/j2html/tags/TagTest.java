@@ -1,5 +1,7 @@
 package j2html.tags;
 
+import j2html.printer.ConfigurablePrinter;
+import j2html.printer.HtmlPrinter;
 import org.junit.Test;
 
 import static j2html.TagCreator.body;
@@ -15,33 +17,39 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 public class TagTest {
-
+    HtmlPrinter defaultPrinter = new ConfigurablePrinter();
     @Test
     public void testRender() throws Exception {
         ContainerTag testTag = new ContainerTag("a");
         testTag.setAttribute("href", "http://example.com");
-        assertThat(testTag.render(), is("<a href=\"http://example.com\"></a>"));
+        assertThat(testTag.render(defaultPrinter), is("<a href=\"http://example.com\"></a>"));
 
         ContainerTag complexTestTag = html().with(body().with(header(), main().with(p("Main stuff...")), footer().condWith(1 == 1, p("Conditional with!"))));
         String expectedResult = "<html><body><header></header><main><p>Main stuff...</p></main><footer><p>Conditional with!</p></footer></body></html>";
-        assertThat(complexTestTag.render(), is((expectedResult)));
+        assertThat(complexTestTag.render(defaultPrinter), is((expectedResult)));
     }
 
     @Test
     public void testOpenTag() throws Exception {
         ContainerTag testTag = new ContainerTag("a");
-        assertThat(testTag.renderOpenTag(), is("<a>"));
+        StringBuilder b = new StringBuilder();
+        testTag.renderOpenTag(b, defaultPrinter);
+        assertThat(b.toString(), is("<a>"));
 
         ContainerTag complexTestTag = new ContainerTag("input");
         complexTestTag.withType("password").withId("password").withName("password").withPlaceholder("Password").isRequired();
         String expectedResult = "<input type=\"password\" id=\"password\" name=\"password\" placeholder=\"Password\" required>";
-        assertThat(complexTestTag.renderOpenTag(), is(expectedResult));
+        b = new StringBuilder();
+        complexTestTag.renderOpenTag(b, defaultPrinter);
+        assertThat(b.toString(), is(expectedResult));
     }
 
     @Test
     public void testCloseTag() throws Exception {
         ContainerTag testTag = new ContainerTag("a");
-        assertThat(testTag.renderCloseTag(), is("</a>"));
+        StringBuilder b = new StringBuilder();
+        testTag.renderCloseTag(b, defaultPrinter);
+        assertThat(b.toString(), is("</a>"));
     }
 
     @Test
@@ -54,17 +62,17 @@ public class TagTest {
     @Test
     public void testWithClasses() throws Exception {
         String expected = "<div class=\"c1 c2\"></div>";
-        String actual = div().withClasses("c1", iff(1 == 1, "c2"), iff(1 == 2, "c3")).render();
+        String actual = div().withClasses("c1", iff(1 == 1, "c2"), iff(1 == 2, "c3")).render(defaultPrinter);
         assertThat(actual, is(expected));
     }
 
     @Test
     public void testEmptyAttribute() throws Exception {
         ContainerTag testTagWithAttrValueNull = new ContainerTag("a").attr("attribute", null);
-        assertThat(testTagWithAttrValueNull.render(), is("<a attribute></a>"));
+        assertThat(testTagWithAttrValueNull.render(defaultPrinter), is("<a attribute></a>"));
 
         ContainerTag testTagAttrWithoutAttr = new ContainerTag("a").attr("attribute");
-        assertThat(testTagAttrWithoutAttr.render(), is("<a attribute></a>"));
+        assertThat(testTagAttrWithoutAttr.render(defaultPrinter), is("<a attribute></a>"));
     }
 
 
