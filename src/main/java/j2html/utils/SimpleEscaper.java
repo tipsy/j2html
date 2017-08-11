@@ -1,8 +1,9 @@
 package j2html.utils;
 
-public class SimpleEscaper {
+public class SimpleEscaper implements TextEscaper {
 
-    public static String escape(String s) {
+    @Override
+    public String escape(String s) {
         if (s == null) {
             return null;
         }
@@ -31,6 +32,11 @@ public class SimpleEscaper {
             }
         }
         return escapedText.toString();
+    }
+
+    @Override
+    public int getPriority() {
+        return Integer.MIN_VALUE;
     }
 
 }
