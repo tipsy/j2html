@@ -1,6 +1,6 @@
 package j2html.tags;
 
-import j2html.utils.SimpleEscaper;
+import j2html.Config;
 
 public class Text extends DomContent {
 
@@ -12,7 +12,7 @@ public class Text extends DomContent {
 
     @Override
     public String render() {
-        return SimpleEscaper.escape(text);
+        return Config.textEscaper.escape(text);
     }
 
 }
