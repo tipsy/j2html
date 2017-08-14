@@ -30,8 +30,8 @@ public class PerformanceTest {
 
     @Test
     public void test_escaper_performnce() throws Exception {
-        timeEscaper("SimpleEscaper#short", () -> SimpleEscaper.escape(shortTestString));
-        timeEscaper("SimpleEscaper#long", () -> SimpleEscaper.escape(longTestString));
+        timeEscaper("SimpleEscaper#short", () -> new SimpleEscaper().escape(shortTestString));
+        timeEscaper("SimpleEscaper#long", () -> new SimpleEscaper().escape(longTestString));
         timeEscaper("ApacheEscaper#short", () -> StringEscapeUtils.escapeHtml4(shortTestString));
         timeEscaper("ApacheEscaper#long", () -> StringEscapeUtils.escapeHtml4(longTestString));
     }
