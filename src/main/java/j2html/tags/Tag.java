@@ -1,6 +1,7 @@
 package j2html.tags;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -63,8 +64,8 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
      * @param value     the attribute value
      * @return itself for easy chaining
      */
-    public T attr(String attribute, String value) {
-        setAttribute(attribute, value);
+    public T attr(String attribute, Object value) {
+        setAttribute(attribute,value == null ? null : value.toString());
         return (T) this;
     }
 
@@ -82,14 +83,14 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
 
     /**
      * Call attr-method based on condition
-     * {@link #attr(String attribute, String value)}
+     * {@link #attr(String attribute, Object value)}
      *
      * @param condition the condition
      * @param attribute the attribute name
      * @param value     the attribute value
      * @return itself for easy chaining
      */
-    public T condAttr(boolean condition, String attribute, String value) {
+    public T condAttr(boolean condition, String attribute, Object value) {
         return (condition ? attr(attribute, value) : (T) this);
     }
 
