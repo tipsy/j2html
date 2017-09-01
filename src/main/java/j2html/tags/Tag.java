@@ -12,7 +12,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
 
     protected Tag(String tagName) {
         this.tagName = tagName;
-        this.attributes = new ArrayList<Attribute>();
+        this.attributes = new ArrayList<>();
     }
 
     public String getTagName() {

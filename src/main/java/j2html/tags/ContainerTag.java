@@ -10,7 +10,7 @@ public class ContainerTag extends Tag<ContainerTag> {
 
     public ContainerTag(String tagName) {
         super(tagName);
-        this.children = new ArrayList<DomContent>();
+        this.children = new ArrayList<>();
     }
 
 

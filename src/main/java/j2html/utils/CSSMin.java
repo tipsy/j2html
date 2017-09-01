@@ -1,4 +1,4 @@
-/**
+/*
  * * CSSMin Copyright License Agreement (BSD License)
  * <p>
  * Copyright (c) 2011-2014, Barry van Oudtshoorn
@@ -82,8 +82,8 @@ public class CSSMin {
     public static String compress(String input) {
         try {
             int k,
-                    j, // Number of open braces
-                    n; // Current position in stream
+                j, // Number of open braces
+                n; // Current position in stream
             char curr;
 
             BufferedReader br = new BufferedReader(new StringReader(input));
@@ -124,7 +124,7 @@ public class CSSMin {
             if (debugLogging) {
                 LOG.info("Parsing and processing selectors...");
             }
-            Vector<Selector> selectors = new Vector<Selector>();
+            Vector<Selector> selectors = new Vector<>();
             n = 0;
             j = 0;
             for (int i = 0; i < sb.length(); i++) {
@@ -203,7 +203,7 @@ class Selector {
 
         // We're dealing with a nested property, eg @-webkit-keyframes
         if (parts.length > 2) {
-            this.subSelectors = new Vector<Selector>();
+            this.subSelectors = new Vector<>();
             parts = selector.split("(\\s*\\{\\s*)|(\\s*\\}\\s*)");
             for (int i = 1; i < parts.length; i += 2) {
                 parts[i] = parts[i].trim();
@@ -264,9 +264,9 @@ class Selector {
      * @return An array of properties parsed from this selector.
      */
     private ArrayList<Property> parseProperties(String contents) {
-        ArrayList<String> parts = new ArrayList<String>();
+        ArrayList<String> parts = new ArrayList<>();
         boolean bInsideString = false,
-                bInsideURL = false;
+            bInsideURL = false;
         int j = 0;
         String substr;
         for (int i = 0; i < contents.length(); i++) {
@@ -293,7 +293,7 @@ class Selector {
             parts.add(substr);
         }
 
-        ArrayList<Property> results = new ArrayList<Property>();
+        ArrayList<Property> results = new ArrayList<>();
         for (String part : parts) {
             try {
                 results.add(new Property(part));
@@ -331,7 +331,7 @@ class Property implements Comparable<Property> {
     Property(String property) throws IncompletePropertyException {
         try {
             // Parse the property.
-            ArrayList<String> parts = new ArrayList<String>();
+            ArrayList<String> parts = new ArrayList<>();
             boolean bCanSplit = true;
             int j = 0;
             String substr;
