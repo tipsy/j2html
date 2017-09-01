@@ -131,6 +131,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     public T withName(String name)                                           { return attr(Attr.NAME, name); }
     public T withPlaceholder(String placeholder)                             { return attr(Attr.PLACEHOLDER, placeholder); }
     public T withTarget(String target)                                       { return attr(Attr.TARGET, target); }
+    public T withTitle(String title)                                         { return attr(Attr.TITLE, title); }
     public T withType(String type)                                           { return attr(Attr.TYPE, type); }
     public T withRel(String rel)                                             { return attr(Attr.REL, rel); }
     public T withRole(String role)                                           { return attr(Attr.ROLE, role); }
@@ -154,6 +155,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     public T withCondName(boolean condition, String name)                    { return condAttr(condition, Attr.NAME, name); }
     public T withCondPlaceholder(boolean condition, String placeholder)      { return condAttr(condition, Attr.PLACEHOLDER, placeholder); }
     public T withCondTarget(boolean condition, String target)                { return condAttr(condition, Attr.TARGET, target); }
+    public T withCondTitle(boolean condition, String title)                  { return condAttr(condition, Attr.TITLE, title); }
     public T withCondType(boolean condition, String type)                    { return condAttr(condition, Attr.TYPE, type); }
     public T withCondRel(boolean condition, String rel)                      { return condAttr(condition, Attr.REL, rel); }
     public T withCondSrc(boolean condition, String src)                      { return condAttr(condition, Attr.SRC, src); }

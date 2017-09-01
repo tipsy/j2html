@@ -32,6 +32,7 @@ public class ConvenienceMethodTest {
         assertThat(input().withName("test-name").render(), is("<input name=\"test-name\">"));
         assertThat(input().withPlaceholder("test-placeholder").render(), is("<input placeholder=\"test-placeholder\">"));
         assertThat(a().withTarget("_blank").render(), is("<a target=\"_blank\"></a>"));
+        assertThat(a().withTitle("Title").render(), is("<a title=\"Title\"></a>"));
         assertThat(input().withType("email").render(), is("<input type=\"email\">"));
         assertThat(link().withRel("stylesheet").render(), is("<link rel=\"stylesheet\">"));
         assertThat(link().withRole("role").render(), is("<link role=\"role\">"));
