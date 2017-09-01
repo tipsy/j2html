@@ -117,7 +117,7 @@ public class ContainerTag extends Tag<ContainerTag> {
     public int getNumChildren() {
         return children.size();
     }
-    
+
     /**
      * Render the ContainerTag and its children
      *
@@ -133,6 +133,31 @@ public class ContainerTag extends Tag<ContainerTag> {
         }
         rendered.append(renderCloseTag());
         return rendered.toString();
+    }
+
+    public String renderFormatted() {
+        return renderFormatted(0);
+    }
+
+    private String renderFormatted(int lvl) {
+        StringBuilder res = new StringBuilder(renderOpenTag() + "\n");
+        if (children != null && !children.isEmpty()) {
+            for (DomContent child : children) {
+                lvl++;
+                if (child instanceof ContainerTag) {
+                    res.append(spaces(lvl)).append(((ContainerTag) child).renderFormatted(lvl));
+                } else {
+                    res.append(spaces(lvl)).append(child.render()).append("\n");
+                }
+                lvl--;
+            }
+        }
+        res.append(spaces(lvl)).append(renderCloseTag()).append("\n");
+        return res.toString();
+    }
+
+    private String spaces(int n) {
+        return new String(new char[n * 4]).replace('\0', ' ');
     }
 
     @Override
