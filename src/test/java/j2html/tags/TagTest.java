@@ -2,17 +2,11 @@ package j2html.tags;
 
 import org.junit.Test;
 
-import static j2html.TagCreator.body;
-import static j2html.TagCreator.div;
-import static j2html.TagCreator.footer;
-import static j2html.TagCreator.header;
-import static j2html.TagCreator.html;
-import static j2html.TagCreator.iff;
-import static j2html.TagCreator.main;
-import static j2html.TagCreator.p;
-import static j2html.TagCreator.tag;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
+import j2html.Config;
+
+import static j2html.TagCreator.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
 public class TagTest {
 
@@ -42,6 +36,14 @@ public class TagTest {
     public void testCloseTag() throws Exception {
         ContainerTag testTag = new ContainerTag("a");
         assertThat(testTag.renderCloseTag(), is("</a>"));
+    }
+
+    @Test
+    public void testSelfClosingTags() throws Exception {
+        Config.closeEmptyTags = true;
+        assertThat(img().withSrc("/test.png").render(), is("<img src=\"/test.png\"/>"));
+        assertThat(input().withType("text").render(), is("<input type=\"text\"/>"));
+        Config.closeEmptyTags = false;
     }
 
     @Test

@@ -9,5 +9,6 @@ public class Config {
     }
 
     public static TextEscaper textEscaper = new SimpleEscaper();
+    public static boolean closeEmptyTags = false;
 
 }
