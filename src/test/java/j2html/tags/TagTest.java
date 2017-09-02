@@ -47,6 +47,11 @@ public class TagTest {
     }
 
     @Test
+    public void testFormattedTags() throws Exception { // better test in ComplexRenderTest.java
+        assertThat(div(p("Hello")).renderFormatted(), is("<div>\n    <p>\n        Hello\n    </p>\n</div>\n"));
+    }
+
+    @Test
     public void testEquals() throws Exception {
         Tag tagOne = tag("p").withClass("class").withText("Test");
         Tag tagTwo = p("Test").withClass("class");

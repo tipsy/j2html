@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import j2html.Config;
+
 public class ContainerTag extends Tag<ContainerTag> {
 
     private List<DomContent> children;
@@ -117,7 +119,7 @@ public class ContainerTag extends Tag<ContainerTag> {
     public int getNumChildren() {
         return children.size();
     }
-    
+
     /**
      * Render the ContainerTag and its children
      *
@@ -126,13 +128,41 @@ public class ContainerTag extends Tag<ContainerTag> {
     @Override
     public String render() {
         StringBuilder rendered = new StringBuilder(renderOpenTag());
-        if (children != null && !children.isEmpty()) {
+        if (!children.isEmpty()) {
             for (DomContent child : children) {
                 rendered.append(child.render());
             }
         }
         rendered.append(renderCloseTag());
         return rendered.toString();
+    }
+
+    /**
+     * Render the ContainerTag and its children, adding newlines before each
+     * child and using Config.indenter to indent child based on how deep
+     * in the tree it is
+     *
+     * @return the rendered and formatted string
+     */
+    public String renderFormatted() {
+        return renderFormatted(0);
+    }
+
+    private String renderFormatted(int lvl) {
+        StringBuilder sb = new StringBuilder(renderOpenTag() + "\n");
+        if (!children.isEmpty()) {
+            for (DomContent c : children) {
+                lvl++;
+                if (c instanceof ContainerTag) {
+                    sb.append(Config.indenter.indent(lvl, ((ContainerTag) c).renderFormatted(lvl)));
+                } else {
+                    sb.append(Config.indenter.indent(lvl, c.render())).append("\n");
+                }
+                lvl--;
+            }
+        }
+        sb.append(Config.indenter.indent(lvl, renderCloseTag())).append("\n");
+        return sb.toString();
     }
 
     @Override
