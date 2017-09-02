@@ -1,8 +1,8 @@
 package j2html.utils;
 
-public class SimpleEscaper implements TextEscaper {
+public class EscapeUtil {
 
-    public String escape(String s) {
+    public static String escape(String s) {
         if (s == null) {
             return null;
         }

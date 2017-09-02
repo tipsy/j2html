@@ -5,7 +5,7 @@ import java.util.concurrent.Callable;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.junit.Test;
 
-import j2html.utils.SimpleEscaper;
+import j2html.utils.EscapeUtil;
 
 public class PerformanceTest {
 
@@ -30,8 +30,8 @@ public class PerformanceTest {
 
     @Test
     public void test_escaper_performnce() throws Exception {
-        timeEscaper("SimpleEscaper#short", () -> new SimpleEscaper().escape(shortTestString));
-        timeEscaper("SimpleEscaper#long", () -> new SimpleEscaper().escape(longTestString));
+        timeEscaper("SimpleEscaper#short", () -> EscapeUtil.escape(shortTestString));
+        timeEscaper("SimpleEscaper#long", () -> EscapeUtil.escape(longTestString));
         timeEscaper("ApacheEscaper#short", () -> StringEscapeUtils.escapeHtml4(shortTestString));
         timeEscaper("ApacheEscaper#long", () -> StringEscapeUtils.escapeHtml4(longTestString));
     }

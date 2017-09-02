@@ -79,7 +79,7 @@ public class CSSMin {
      * @param input the CSS
      * @return the compressed version
      */
-    public static String compress(String input) {
+    public static String compressCss(String input) {
         try {
             int k,
                 j, // Number of open braces

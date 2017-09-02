@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import j2html.Config;
 import j2html.utils.CSSMin;
 import j2html.utils.JSMin;
 
@@ -16,8 +17,8 @@ public class InlineStaticResource {
     public static ContainerTag get(String path, TargetFormat format) {
         String fileString = getFileAsString(path);
         switch (format) {
-            case CSS_MIN : return style().with(rawHtml(CSSMin.compress(fileString)));
-            case JS_MIN  : return script().with(rawHtml(JSMin.compressJs(fileString)));
+            case CSS_MIN : return style().with(rawHtml(Config.cssMinifier.minify(fileString)));
+            case JS_MIN  : return script().with(rawHtml(Config.jsMinifier.minify((fileString))));
             case CSS     : return style().with(rawHtml(fileString));
             case JS      : return script().with(rawHtml(fileString));
             default      : throw new RuntimeException("Invalid target format");
