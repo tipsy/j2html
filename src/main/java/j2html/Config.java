@@ -4,7 +4,7 @@ import java.util.Collections;
 
 import j2html.utils.SimpleEscaper;
 import j2html.utils.TextEscaper;
-import j2html.utils.TextIndenter;
+import j2html.utils.Indenter;
 
 public class Config {
 
@@ -15,7 +15,7 @@ public class Config {
 
     public static TextEscaper textEscaper = new SimpleEscaper();
 
-    public static TextIndenter textIndenter = (level, text) -> String.join("", Collections.nCopies(level, FOUR_SPACES)) + text;
+    public static Indenter indenter = (level, text) -> String.join("", Collections.nCopies(level, FOUR_SPACES)) + text;
 
     public static boolean closeEmptyTags = false;
 

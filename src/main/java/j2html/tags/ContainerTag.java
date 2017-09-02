@@ -128,7 +128,7 @@ public class ContainerTag extends Tag<ContainerTag> {
     @Override
     public String render() {
         StringBuilder rendered = new StringBuilder(renderOpenTag());
-        if (children != null && !children.isEmpty()) {
+        if (!children.isEmpty()) {
             for (DomContent child : children) {
                 rendered.append(child.render());
             }
@@ -139,7 +139,7 @@ public class ContainerTag extends Tag<ContainerTag> {
 
     /**
      * Render the ContainerTag and its children, adding newlines before each
-     * child and using Config.textIndenter to indent text based on how deep
+     * child and using Config.indenter to indent text based on how deep
      * in the tree it is
      *
      * @return the rendered and formatted string
@@ -148,21 +148,21 @@ public class ContainerTag extends Tag<ContainerTag> {
         return renderFormatted(0);
     }
 
-    private String renderFormatted(int level) {
-        StringBuilder res = new StringBuilder(renderOpenTag() + "\n");
-        if (children != null && !children.isEmpty()) {
-            for (DomContent child : children) {
-                level++;
-                if (child instanceof ContainerTag) {
-                    res.append(Config.textIndenter.indent(level, ((ContainerTag) child).renderFormatted(level)));
+    private String renderFormatted(int lvl) {
+        StringBuilder sb = new StringBuilder(renderOpenTag() + "\n");
+        if (!children.isEmpty()) {
+            for (DomContent c : children) {
+                lvl++;
+                if (c instanceof ContainerTag) {
+                    sb.append(Config.indenter.indent(lvl, ((ContainerTag) c).renderFormatted(lvl)));
                 } else {
-                    res.append(Config.textIndenter.indent(level, child.render())).append("\n");
+                    sb.append(Config.indenter.indent(lvl, c.render())).append("\n");
                 }
-                level--;
+                lvl--;
             }
         }
-        res.append(Config.textIndenter.indent(level, renderCloseTag())).append("\n");
-        return res.toString();
+        sb.append(Config.indenter.indent(lvl, renderCloseTag())).append("\n");
+        return sb.toString();
     }
 
     @Override
