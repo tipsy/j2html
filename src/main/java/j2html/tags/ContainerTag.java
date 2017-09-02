@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import j2html.Config;
+
 public class ContainerTag extends Tag<ContainerTag> {
 
     private List<DomContent> children;
@@ -135,29 +137,32 @@ public class ContainerTag extends Tag<ContainerTag> {
         return rendered.toString();
     }
 
+    /**
+     * Render the ContainerTag and its children, adding newlines before each
+     * child and using Config.textIndenter to indent text based on how deep
+     * in the tree it is
+     *
+     * @return the rendered and formatted string
+     */
     public String renderFormatted() {
         return renderFormatted(0);
     }
 
-    private String renderFormatted(int lvl) {
+    private String renderFormatted(int level) {
         StringBuilder res = new StringBuilder(renderOpenTag() + "\n");
         if (children != null && !children.isEmpty()) {
             for (DomContent child : children) {
-                lvl++;
+                level++;
                 if (child instanceof ContainerTag) {
-                    res.append(spaces(lvl)).append(((ContainerTag) child).renderFormatted(lvl));
+                    res.append(Config.textIndenter.indent(level, ((ContainerTag) child).renderFormatted(level)));
                 } else {
-                    res.append(spaces(lvl)).append(child.render()).append("\n");
+                    res.append(Config.textIndenter.indent(level, child.render())).append("\n");
                 }
-                lvl--;
+                level--;
             }
         }
-        res.append(spaces(lvl)).append(renderCloseTag()).append("\n");
+        res.append(Config.textIndenter.indent(level, renderCloseTag())).append("\n");
         return res.toString();
-    }
-
-    private String spaces(int n) {
-        return new String(new char[n * 4]).replace('\0', ' ');
     }
 
     @Override
