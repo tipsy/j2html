@@ -139,7 +139,7 @@ public class ContainerTag extends Tag<ContainerTag> {
 
     /**
      * Render the ContainerTag and its children, adding newlines before each
-     * child and using Config.indenter to indent text based on how deep
+     * child and using Config.indenter to indent child based on how deep
      * in the tree it is
      *
      * @return the rendered and formatted string
