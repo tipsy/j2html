@@ -41,7 +41,7 @@ public class Config {
 
 
     /**
-     * Change this to configure enable/disable closing empty tags (like <img/>)
+     * Change this to configure enable/disable closing empty tags
      * The default is to NOT close them
      */
     public static boolean closeEmptyTags = false;
