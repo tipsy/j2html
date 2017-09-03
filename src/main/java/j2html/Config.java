@@ -11,6 +11,8 @@ import j2html.utils.TextEscaper;
 
 public class Config {
 
+    private static String FOUR_SPACES = "    ";
+
     private Config() {
     }
 
@@ -36,7 +38,6 @@ public class Config {
      * Change this to configure indentation when rendering formatted html
      * The default is four spaces
      */
-    private static String FOUR_SPACES = "    ";
     public static Indenter indenter = (level, text) -> String.join("", Collections.nCopies(level, FOUR_SPACES)) + text;
 
 
