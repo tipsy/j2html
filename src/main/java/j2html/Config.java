@@ -16,7 +16,7 @@ public class Config {
 
     /**
      * Change this to configure text-escaping
-     * For example, to disable escaping, do 'Config.textEscaper = text -> text;'
+     * For example, to disable escaping, do <code>{@code Config.textEscaper = text -> text;}</code>
      */
     public static TextEscaper textEscaper = EscapeUtil::escape;
 
