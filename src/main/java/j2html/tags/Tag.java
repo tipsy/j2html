@@ -124,9 +124,11 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     public T withCharset(String charset)                                     { return attr(Attr.CHARSET, charset); }
     public T withClass(String className)                                     { return attr(Attr.CLASS, className); }
     public T withContent(String content)                                     { return attr(Attr.CONTENT, content); }
+    public T withDir(String dir)                                             { return attr(Attr.DIR, dir); }
     public T withHref(String href)                                           { return attr(Attr.HREF, href); }
     public T withId(String id)                                               { return attr(Attr.ID, id); }
     public T withData(String dataAttr, String value)                         { return attr(Attr.DATA + "-" + dataAttr, value); }
+    public T withLang(String lang)                                           { return attr(Attr.LANG, lang); }
     public T withMethod(String method)                                       { return attr(Attr.METHOD, method); }
     public T withName(String name)                                           { return attr(Attr.NAME, name); }
     public T withPlaceholder(String placeholder)                             { return attr(Attr.PLACEHOLDER, placeholder); }
