@@ -150,9 +150,11 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     public T withCharset(boolean condition, String charset)                  { return condAttr(condition, Attr.CHARSET, charset); }
     public T withCondClass(boolean condition, String className)              { return condAttr(condition, Attr.CLASS, className); }
     public T withCondContent(boolean condition, String content)              { return condAttr(condition, Attr.CONTENT, content); }
+    public T withCondDir(boolean condition, String dir)                      { return condAttr(condition, Attr.DIR, dir); }
     public T withCondHref(boolean condition, String href)                    { return condAttr(condition, Attr.HREF, href); }
     public T withCondId(boolean condition, String id)                        { return condAttr(condition, Attr.ID, id); }
     public T withCondData(boolean condition, String dataAttr, String value)  { return condAttr(condition, Attr.DATA + "-" + dataAttr, value); }
+    public T withCondLang(boolean condition, String lang)                    { return condAttr(condition, Attr.LANG, lang); }
     public T withCondMethod(boolean condition, String method)                { return condAttr(condition, Attr.METHOD, method); }
     public T withCondName(boolean condition, String name)                    { return condAttr(condition, Attr.NAME, name); }
     public T withCondPlaceholder(boolean condition, String placeholder)      { return condAttr(condition, Attr.PLACEHOLDER, placeholder); }
