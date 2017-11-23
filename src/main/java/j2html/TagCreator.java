@@ -115,7 +115,7 @@ public class TagCreator {
      */
     public static String document(ContainerTag htmlTag) {
         if (htmlTag.getTagName().equals("html")) {
-            return new EmptyTag("!DOCTYPE html").render() + htmlTag.render();
+            return document().render() + htmlTag.render();
         }
         throw new IllegalArgumentException("Only HTML-tag can follow document declaration");
     }
@@ -132,7 +132,7 @@ public class TagCreator {
     public static ContainerTag styleWithInlineFile_min(String path)                 { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.CSS_MIN); }
     public static ContainerTag scriptWithInlineFile_min(String path)                { return InlineStaticResource.get(path, InlineStaticResource.TargetFormat.JS_MIN); }
 
-    public static EmptyTag document()                                               { return new EmptyTag("!DOCTYPE html"); }
+    public static DomContent document()                                             { return rawHtml("<!DOCTYPE html>"); }
 
     // EmptyTags, generated in class j2html.tags.TagCreatorCodeGenerator
     public static EmptyTag area()                                                   { return new EmptyTag("area"); }

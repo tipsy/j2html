@@ -6,15 +6,29 @@ import java.util.stream.Collectors;
 
 import org.junit.*;
 
+import j2html.Config;
+
 import static j2html.TagCreator.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
 
 public class TagCreatorTest {
 
     private static final String EOL = System.getProperty("line.separator"); // System independent End Of Line
 
     List<Employee> employees = Arrays.asList(new Employee(1, "Name 1", "Title 1"), new Employee(2, "Name 2", "Title 2"), new Employee(3, "Name 3", "Title 3"));
+
+
+    @Test
+    public void testDocument() throws Exception {
+        Config.closeEmptyTags = true;
+        assertEquals("<!DOCTYPE html>", document().render());
+        assertEquals("<!DOCTYPE html><html></html>", document(html()));
+        Config.closeEmptyTags = false;
+        assertEquals("<!DOCTYPE html>", document().render());
+        assertEquals("<!DOCTYPE html><html></html>", document(html()));
+    }
 
     @Test
     public void testIff() throws Exception {
