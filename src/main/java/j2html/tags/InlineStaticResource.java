@@ -1,12 +1,10 @@
 package j2html.tags;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.Scanner;
 
 import j2html.Config;
-import j2html.utils.CSSMin;
-import j2html.utils.JSMin;
 
 import static j2html.TagCreator.*;
 
@@ -27,27 +25,19 @@ public class InlineStaticResource {
 
     public static String getFileAsString(String path) {
         try {
-            return readFileAsString(InlineStaticResource.class.getResource(path).getPath());
-        } catch (Exception e1) {
+            return streamToString(InlineStaticResource.class.getResourceAsStream(path));
+        } catch (Exception expected) { // we don't ask users to specify classpath or file-system
             try {
-                return readFileAsString(path);
-            } catch (Exception e2) {
+                return streamToString(new FileInputStream(path));
+            } catch (Exception exception) {
                 throw new RuntimeException("Couldn't find file with path='" + path + "'");
             }
         }
     }
 
-    /**
-     * @author kjheimark <3
-     */
-    private static String readFileAsString(String path) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-        StringBuilder sb = new StringBuilder();
-        int c;
-        while ((c = bufferedReader.read()) >= 0 && c >= 0) {
-            sb.append((char) c);
-        }
-        return sb.toString();
+    private static String streamToString(InputStream inputStream) {
+        Scanner s = new Scanner(inputStream).useDelimiter("\\A");
+        return s.hasNext() ? s.next() : "";
     }
 
 }
