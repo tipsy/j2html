@@ -2,20 +2,14 @@ package j2html.tags;
 
 import java.io.IOException;
 
-public abstract class Renderer {
+public abstract class Renderer<T> {
     /**
      * Render the DomContent and its children
      *
      * @return the rendered string
      */
     public final String render() {
-        StringBuilder stringBuilder = new StringBuilder();
-        try {
-            render(stringBuilder);
-        } catch (IOException e) {
-            throw new RuntimeException(e.getMessage(), e);
-        }
-        return stringBuilder.toString();
+        return renderModel(null);
     }
 
     /**
@@ -23,7 +17,21 @@ public abstract class Renderer {
      *
      * @return the rendered string
      */
-    public abstract void render(Appendable writer) throws IOException;
+    public void render(Appendable writer) throws IOException {
+        renderModel(writer, null);
+    }
+
+    public String renderModel(T model) {
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            renderModel(stringBuilder, model);
+        } catch (IOException e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
+        return stringBuilder.toString();
+    }
+
+    public abstract void renderModel(Appendable writer, T model) throws IOException;
 
     @Override
     public String toString() {

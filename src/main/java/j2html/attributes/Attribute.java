@@ -5,7 +5,7 @@ import java.io.IOException;
 import j2html.Config;
 import j2html.tags.Renderer;
 
-public class Attribute extends Renderer {
+public class Attribute extends Renderer<Object> {
     private String name;
     private String value;
 
@@ -20,7 +20,7 @@ public class Attribute extends Renderer {
     }
 
     @Override
-    public void render(Appendable writer) throws IOException {
+    public void renderModel(Appendable writer, Object model) throws IOException {
         if (name == null) {
             return;
         }

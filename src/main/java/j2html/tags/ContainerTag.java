@@ -15,11 +15,11 @@ public class ContainerTag extends Tag<ContainerTag> {
         this.children = new ArrayList<>();
     }
 
-
     /**
      * Appends a DomContent-object to the end of this element
      *
-     * @param child DomContent-object to be appended
+     * @param child
+     *            DomContent-object to be appended
      * @return itself for easy chaining
      */
     public ContainerTag with(DomContent child) {
@@ -27,30 +27,31 @@ public class ContainerTag extends Tag<ContainerTag> {
             throw new RuntimeException("Cannot append a tag to itself.");
         }
         if (child == null) {
-            return this; // in some cases, like when using iff(), we ignore null children
+            return this; // in some cases, like when using iff(), we ignore null
+                         // children
         }
         children.add(child);
         return this;
     }
 
-
     /**
-     * Call with-method based on condition
-     * {@link #with(DomContent child)}
+     * Call with-method based on condition {@link #with(DomContent child)}
      *
-     * @param condition the condition to use
-     * @param child     DomContent-object to be appended if condition met
+     * @param condition
+     *            the condition to use
+     * @param child
+     *            DomContent-object to be appended if condition met
      * @return itself for easy chaining
      */
     public ContainerTag condWith(boolean condition, DomContent child) {
         return condition ? this.with(child) : this;
     }
 
-
     /**
      * Appends a list of DomContent-objects to the end of this element
      *
-     * @param children DomContent-objects to be appended
+     * @param children
+     *            DomContent-objects to be appended
      * @return itself for easy chaining
      */
     public ContainerTag with(Iterable<? extends DomContent> children) {
@@ -62,24 +63,24 @@ public class ContainerTag extends Tag<ContainerTag> {
         return this;
     }
 
-
     /**
-     * Call with-method based on condition
-     * {@link #with(java.lang.Iterable)}
+     * Call with-method based on condition {@link #with(java.lang.Iterable)}
      *
-     * @param condition the condition to use
-     * @param children  DomContent-objects to be appended if condition met
+     * @param condition
+     *            the condition to use
+     * @param children
+     *            DomContent-objects to be appended if condition met
      * @return itself for easy chaining
      */
     public ContainerTag condWith(boolean condition, Iterable<? extends DomContent> children) {
         return condition ? this.with(children) : this;
     }
 
-
     /**
      * Appends the DomContent-objects to the end of this element
      *
-     * @param children DomContent-objects to be appended
+     * @param children
+     *            DomContent-objects to be appended
      * @return itself for easy chaining
      */
     public ContainerTag with(DomContent... children) {
@@ -89,24 +90,24 @@ public class ContainerTag extends Tag<ContainerTag> {
         return this;
     }
 
-
     /**
-     * Call with-method based on condition
-     * {@link #with(DomContent... children)}
+     * Call with-method based on condition {@link #with(DomContent... children)}
      *
-     * @param condition the condition to use
-     * @param children  DomContent-objects to be appended if condition met
+     * @param condition
+     *            the condition to use
+     * @param children
+     *            DomContent-objects to be appended if condition met
      * @return itself for easy chaining
      */
     public ContainerTag condWith(boolean condition, DomContent... children) {
         return condition ? this.with(children) : this;
     }
 
-
     /**
      * Appends a Text-object to this element
      *
-     * @param text the text to be appended
+     * @param text
+     *            the text to be appended
      * @return itself for easy chaining
      */
     public ContainerTag withText(String text) {
@@ -122,8 +123,8 @@ public class ContainerTag extends Tag<ContainerTag> {
 
     /**
      * Render the ContainerTag and its children, adding newlines before each
-     * child and using Config.indenter to indent child based on how deep
-     * in the tree it is
+     * child and using Config.indenter to indent child based on how deep in the
+     * tree it is
      *
      * @return the rendered and formatted string
      */
@@ -137,7 +138,7 @@ public class ContainerTag extends Tag<ContainerTag> {
 
     private String renderFormatted(int lvl) throws IOException {
         StringBuilder sb = new StringBuilder();
-        renderOpenTag(sb);
+        renderOpenTag(sb, null);
         sb.append("\n");
         if (!children.isEmpty()) {
             for (DomContent c : children) {
@@ -157,14 +158,13 @@ public class ContainerTag extends Tag<ContainerTag> {
     }
 
     @Override
-    public void render(Appendable writer) throws IOException {
-        renderOpenTag(writer);
+    public void renderModel(Appendable writer, Object model) throws IOException {
+        renderOpenTag(writer, model);
         if (children != null && !children.isEmpty()) {
             for (DomContent child : children) {
-                child.render(writer);
+                child.renderModel(writer, model);
             }
         }
         renderCloseTag(writer);
     }
-
 }

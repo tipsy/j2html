@@ -11,6 +11,8 @@ import static j2html.TagCreator.p;
 import static j2html.TagCreator.title;
 import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
@@ -27,6 +29,40 @@ public class RenderPerformanceTest {
     @Rule
     public TestRule benchmarkRun = new BenchmarkRule();
 
+    private DomContent template;
+
+    public RenderPerformanceTest() {
+        this.template =
+                // @formatter:off
+                html(
+                     head(
+                          title(new BrowserTitle())
+                             ),
+                     body(
+                          h1(new TextTemplate()),
+                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
+                          h2(attrs("#title.visible-small"),new TextTemplate()),
+                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
+                          h2(new TextTemplate()),
+                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
+                          h2(attrs("#title.visible-small"),new TextTemplate()),
+                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
+                          h2(new TextTemplate()),
+                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
+                          h1(new TextTemplate()),
+                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
+                          h2(new TextTemplate()),
+                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
+                          h2(new TextTemplate()),
+                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
+                          h2(new TextTemplate()),
+                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
+                          h2(new TextTemplate()),
+                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate())))))))))))))))))))))))))))
+                     )
+                );
+        // @formatter:on
+    }
     private DomContent getDomContent(PageModel pageModel) throws Exception {
         return
         // @formatter:off
@@ -65,6 +101,30 @@ public class RenderPerformanceTest {
         PageModel pageModel = new PageModel("Browsertitle", "Hello World!");
         String result = getDomContent(pageModel).render();
         assertEquals(expected, result);
+    }
+
+    @Test
+    public void templatePerfomanceTest() throws Exception {
+        PageModel pageModel = new PageModel("Browsertitle", "Hello World!");
+
+        String result = template.renderModel(pageModel);
+        assertEquals(expected, result);
+    }
+}
+
+class BrowserTitle extends DomContent<PageModel> {
+
+    @Override
+    public void renderModel(Appendable writer, PageModel model) throws IOException {
+        writer.append(model.getTitle());
+    }
+
+}
+
+class TextTemplate extends DomContent<PageModel> {
+    @Override
+    public void renderModel(Appendable writer, PageModel model) throws IOException {
+        writer.append(model.getText());
     }
 }
 
