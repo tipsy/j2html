@@ -1,5 +1,6 @@
 package j2html.tags;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import j2html.attributes.Attr;
@@ -19,21 +20,35 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return this.tagName;
     }
 
-    String renderOpenTag() {
-        StringBuilder sb = new StringBuilder("<").append(tagName);
+    String renderOpenTag() throws IOException {
+        StringBuilder stringBuilder = new StringBuilder();
+        renderOpenTag(stringBuilder);
+        return stringBuilder.toString();
+    }
+
+    String renderCloseTag() throws IOException {
+        StringBuilder stringBuilder = new StringBuilder();
+        renderCloseTag(stringBuilder);
+        return stringBuilder.toString();
+    }
+
+    void renderOpenTag(Appendable writer) throws IOException {
+        writer.append("<").append(tagName);
         for (Attribute attribute : attributes) {
-            sb.append(attribute.render());
+            attribute.render(writer);
         }
-        sb.append(">");
-        return sb.toString();
+        writer.append(">");
     }
 
-
-    String renderCloseTag() {
-        return "</" + tagName + ">";
+    void renderCloseTag(Appendable writer) throws IOException {
+        writer.append("</");
+        writer.append(tagName);
+        writer.append(">");
     }
 
-
+    ArrayList<Attribute> getAttributes() {
+        return attributes;
+    }
     /**
      * Sets an attribute on an element
      *

@@ -1,9 +1,11 @@
 package j2html.attributes;
 
+import java.io.IOException;
 
 import j2html.Config;
+import j2html.tags.Renderer;
 
-public class Attribute {
+public class Attribute extends Renderer {
     private String name;
     private String value;
 
@@ -17,19 +19,18 @@ public class Attribute {
         this.value = null;
     }
 
-    public String render() {
-        if (name == null) {
-            return "";
-        }
-        if (value == null) {
-            return " " + name;
-        }
-        return (" " + name + "=\"" + value + "\"");
-    }
-
     @Override
-    public String toString() {
-        return this.render();
+    public void render(Appendable writer) throws IOException {
+        if (name == null) {
+            return;
+        }
+        writer.append(" ");
+        writer.append(name);
+        if (value != null) {
+            writer.append("=\"");
+            writer.append(value);
+            writer.append("\"");
+        }
     }
 
     public String getName() {
