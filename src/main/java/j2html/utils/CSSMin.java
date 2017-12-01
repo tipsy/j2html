@@ -224,7 +224,8 @@ class Selector {
             if (contents.length() == 1) {
                 throw new EmptySelectorBodyException(selector);
             }
-            contents = contents.substring(0, contents.length() - 2);
+            int endIndex = contents.endsWith(";}") ? 2 : 1;
+            contents = contents.substring(0, contents.length() - endIndex);
 
             this.properties = new Property[0];
             this.properties = parseProperties(contents).toArray(this.properties);

@@ -24,6 +24,7 @@ public class InlineStaticResourceTest {
 
         // classpath files
         assertThat(styleWithInlineFile_min("/test.css").render(), is(expectedCss));
+        assertThat(styleWithInlineFile_min("/test-without-trailing-semis.css").render(), is(expectedCss));
         assertThat(scriptWithInlineFile_min("/test.js").render(), is(expectedJs));
         assertThat(fileAsString("/test.html").render(), is(expectedHtml));
         assertThat(fileAsEscapedString("/test.html").render(), is(expectedEscapedHtml));
