@@ -1,12 +1,20 @@
 package j2html.tags;
 
-import org.junit.Test;
-
 import j2html.Config;
-
-import static j2html.TagCreator.*;
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
+import org.junit.Test;
+import static j2html.TagCreator.body;
+import static j2html.TagCreator.div;
+import static j2html.TagCreator.footer;
+import static j2html.TagCreator.header;
+import static j2html.TagCreator.html;
+import static j2html.TagCreator.iff;
+import static j2html.TagCreator.img;
+import static j2html.TagCreator.input;
+import static j2html.TagCreator.main;
+import static j2html.TagCreator.p;
+import static j2html.TagCreator.tag;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 public class TagTest {
 
