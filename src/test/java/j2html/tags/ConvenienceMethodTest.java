@@ -1,7 +1,6 @@
 package j2html.tags;
 
 import org.junit.Test;
-
 import static j2html.TagCreator.a;
 import static j2html.TagCreator.div;
 import static j2html.TagCreator.form;

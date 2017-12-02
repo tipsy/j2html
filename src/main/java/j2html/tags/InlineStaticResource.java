@@ -1,12 +1,12 @@
 package j2html.tags;
 
+import j2html.Config;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Scanner;
-
-import j2html.Config;
-
-import static j2html.TagCreator.*;
+import static j2html.TagCreator.rawHtml;
+import static j2html.TagCreator.script;
+import static j2html.TagCreator.style;
 
 public class InlineStaticResource {
 
@@ -15,11 +15,16 @@ public class InlineStaticResource {
     public static ContainerTag get(String path, TargetFormat format) {
         String fileString = getFileAsString(path);
         switch (format) {
-            case CSS_MIN : return style().with(rawHtml(Config.cssMinifier.minify(fileString)));
-            case JS_MIN  : return script().with(rawHtml(Config.jsMinifier.minify((fileString))));
-            case CSS     : return style().with(rawHtml(fileString));
-            case JS      : return script().with(rawHtml(fileString));
-            default      : throw new RuntimeException("Invalid target format");
+            case CSS_MIN:
+                return style().with(rawHtml(Config.cssMinifier.minify(fileString)));
+            case JS_MIN:
+                return script().with(rawHtml(Config.jsMinifier.minify((fileString))));
+            case CSS:
+                return style().with(rawHtml(fileString));
+            case JS:
+                return script().with(rawHtml(fileString));
+            default:
+                throw new RuntimeException("Invalid target format");
         }
     }
 

@@ -1,13 +1,12 @@
 package j2html;
 
-import java.util.Collections;
-
 import j2html.utils.CSSMin;
 import j2html.utils.EscapeUtil;
 import j2html.utils.Indenter;
 import j2html.utils.JSMin;
 import j2html.utils.Minifier;
 import j2html.utils.TextEscaper;
+import java.util.Collections;
 
 public class Config {
 
