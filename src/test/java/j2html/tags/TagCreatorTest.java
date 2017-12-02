@@ -1,13 +1,11 @@
 package j2html.tags;
 
+import j2html.Config;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.junit.*;
-
-import j2html.Config;
-
+import org.junit.Ignore;
+import org.junit.Test;
 import static j2html.TagCreator.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

@@ -1,10 +1,9 @@
 package j2html.tags;
 
+import j2html.Config;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import j2html.Config;
 
 public class ContainerTag extends Tag<ContainerTag> {
 

@@ -1,9 +1,8 @@
 package j2html.tags;
 
-import java.util.ArrayList;
-
 import j2html.attributes.Attr;
 import j2html.attributes.Attribute;
+import java.util.ArrayList;
 
 public abstract class Tag<T extends Tag<T>> extends DomContent {
 
@@ -115,55 +114,200 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return attr(Attr.CLASS, sb.toString().trim());
     }
 
-    public T isAutoComplete()                                                { return attr(Attr.AUTOCOMPLETE, null); }
-    public T isAutoFocus()                                                   { return attr(Attr.AUTOFOCUS, null); }
-    public T isHidden()                                                      { return attr(Attr.HIDDEN, null); }
-    public T isRequired()                                                    { return attr(Attr.REQUIRED, null); }
-    public T withAlt(String alt)                                             { return attr(Attr.ALT, alt); }
-    public T withAction(String action)                                       { return attr(Attr.ACTION, action); }
-    public T withCharset(String charset)                                     { return attr(Attr.CHARSET, charset); }
-    public T withClass(String className)                                     { return attr(Attr.CLASS, className); }
-    public T withContent(String content)                                     { return attr(Attr.CONTENT, content); }
-    public T withDir(String dir)                                             { return attr(Attr.DIR, dir); }
-    public T withHref(String href)                                           { return attr(Attr.HREF, href); }
-    public T withId(String id)                                               { return attr(Attr.ID, id); }
-    public T withData(String dataAttr, String value)                         { return attr(Attr.DATA + "-" + dataAttr, value); }
-    public T withLang(String lang)                                           { return attr(Attr.LANG, lang); }
-    public T withMethod(String method)                                       { return attr(Attr.METHOD, method); }
-    public T withName(String name)                                           { return attr(Attr.NAME, name); }
-    public T withPlaceholder(String placeholder)                             { return attr(Attr.PLACEHOLDER, placeholder); }
-    public T withTarget(String target)                                       { return attr(Attr.TARGET, target); }
-    public T withTitle(String title)                                         { return attr(Attr.TITLE, title); }
-    public T withType(String type)                                           { return attr(Attr.TYPE, type); }
-    public T withRel(String rel)                                             { return attr(Attr.REL, rel); }
-    public T withRole(String role)                                           { return attr(Attr.ROLE, role); }
-    public T withSrc(String src)                                             { return attr(Attr.SRC, src); }
-    public T withStyle(String style)                                         { return attr(Attr.STYLE, style); }
-    public T withValue(String value)                                         { return attr(Attr.VALUE, value); }
+    public T isAutoComplete() {
+        return attr(Attr.AUTOCOMPLETE, null);
+    }
 
-    public T withCondAutoComplete(boolean condition)                         { return condAttr(condition, Attr.AUTOCOMPLETE, null); }
-    public T withCondAutoFocus(boolean condition)                            { return condAttr(condition, Attr.AUTOFOCUS, null); }
-    public T withCondHidden(boolean condition)                               { return condAttr(condition, Attr.HIDDEN, null); }
-    public T withCondRequired(boolean condition)                             { return condAttr(condition, Attr.REQUIRED, null); }
-    public T withCondAlt(boolean condition, String alt)                      { return condAttr(condition, Attr.ALT, alt); }
-    public T withCondAction(boolean condition, String action)                { return condAttr(condition, Attr.ACTION, action); }
-    public T withCharset(boolean condition, String charset)                  { return condAttr(condition, Attr.CHARSET, charset); }
-    public T withCondClass(boolean condition, String className)              { return condAttr(condition, Attr.CLASS, className); }
-    public T withCondContent(boolean condition, String content)              { return condAttr(condition, Attr.CONTENT, content); }
-    public T withCondDir(boolean condition, String dir)                      { return condAttr(condition, Attr.DIR, dir); }
-    public T withCondHref(boolean condition, String href)                    { return condAttr(condition, Attr.HREF, href); }
-    public T withCondId(boolean condition, String id)                        { return condAttr(condition, Attr.ID, id); }
-    public T withCondData(boolean condition, String dataAttr, String value)  { return condAttr(condition, Attr.DATA + "-" + dataAttr, value); }
-    public T withCondLang(boolean condition, String lang)                    { return condAttr(condition, Attr.LANG, lang); }
-    public T withCondMethod(boolean condition, String method)                { return condAttr(condition, Attr.METHOD, method); }
-    public T withCondName(boolean condition, String name)                    { return condAttr(condition, Attr.NAME, name); }
-    public T withCondPlaceholder(boolean condition, String placeholder)      { return condAttr(condition, Attr.PLACEHOLDER, placeholder); }
-    public T withCondTarget(boolean condition, String target)                { return condAttr(condition, Attr.TARGET, target); }
-    public T withCondTitle(boolean condition, String title)                  { return condAttr(condition, Attr.TITLE, title); }
-    public T withCondType(boolean condition, String type)                    { return condAttr(condition, Attr.TYPE, type); }
-    public T withCondRel(boolean condition, String rel)                      { return condAttr(condition, Attr.REL, rel); }
-    public T withCondSrc(boolean condition, String src)                      { return condAttr(condition, Attr.SRC, src); }
-    public T withCondStyle(boolean condition, String style)                  { return condAttr(condition, Attr.STYLE, style); }
-    public T withCondValue(boolean condition, String value)                  { return condAttr(condition, Attr.VALUE, value); }
+    public T isAutoFocus() {
+        return attr(Attr.AUTOFOCUS, null);
+    }
+
+    public T isHidden() {
+        return attr(Attr.HIDDEN, null);
+    }
+
+    public T isRequired() {
+        return attr(Attr.REQUIRED, null);
+    }
+
+    public T withAlt(String alt) {
+        return attr(Attr.ALT, alt);
+    }
+
+    public T withAction(String action) {
+        return attr(Attr.ACTION, action);
+    }
+
+    public T withCharset(String charset) {
+        return attr(Attr.CHARSET, charset);
+    }
+
+    public T withClass(String className) {
+        return attr(Attr.CLASS, className);
+    }
+
+    public T withContent(String content) {
+        return attr(Attr.CONTENT, content);
+    }
+
+    public T withDir(String dir) {
+        return attr(Attr.DIR, dir);
+    }
+
+    public T withHref(String href) {
+        return attr(Attr.HREF, href);
+    }
+
+    public T withId(String id) {
+        return attr(Attr.ID, id);
+    }
+
+    public T withData(String dataAttr, String value) {
+        return attr(Attr.DATA + "-" + dataAttr, value);
+    }
+
+    public T withLang(String lang) {
+        return attr(Attr.LANG, lang);
+    }
+
+    public T withMethod(String method) {
+        return attr(Attr.METHOD, method);
+    }
+
+    public T withName(String name) {
+        return attr(Attr.NAME, name);
+    }
+
+    public T withPlaceholder(String placeholder) {
+        return attr(Attr.PLACEHOLDER, placeholder);
+    }
+
+    public T withTarget(String target) {
+        return attr(Attr.TARGET, target);
+    }
+
+    public T withTitle(String title) {
+        return attr(Attr.TITLE, title);
+    }
+
+    public T withType(String type) {
+        return attr(Attr.TYPE, type);
+    }
+
+    public T withRel(String rel) {
+        return attr(Attr.REL, rel);
+    }
+
+    public T withRole(String role) {
+        return attr(Attr.ROLE, role);
+    }
+
+    public T withSrc(String src) {
+        return attr(Attr.SRC, src);
+    }
+
+    public T withStyle(String style) {
+        return attr(Attr.STYLE, style);
+    }
+
+    public T withValue(String value) {
+        return attr(Attr.VALUE, value);
+    }
+
+    public T withCondAutoComplete(boolean condition) {
+        return condAttr(condition, Attr.AUTOCOMPLETE, null);
+    }
+
+    public T withCondAutoFocus(boolean condition) {
+        return condAttr(condition, Attr.AUTOFOCUS, null);
+    }
+
+    public T withCondHidden(boolean condition) {
+        return condAttr(condition, Attr.HIDDEN, null);
+    }
+
+    public T withCondRequired(boolean condition) {
+        return condAttr(condition, Attr.REQUIRED, null);
+    }
+
+    public T withCondAlt(boolean condition, String alt) {
+        return condAttr(condition, Attr.ALT, alt);
+    }
+
+    public T withCondAction(boolean condition, String action) {
+        return condAttr(condition, Attr.ACTION, action);
+    }
+
+    public T withCharset(boolean condition, String charset) {
+        return condAttr(condition, Attr.CHARSET, charset);
+    }
+
+    public T withCondClass(boolean condition, String className) {
+        return condAttr(condition, Attr.CLASS, className);
+    }
+
+    public T withCondContent(boolean condition, String content) {
+        return condAttr(condition, Attr.CONTENT, content);
+    }
+
+    public T withCondDir(boolean condition, String dir) {
+        return condAttr(condition, Attr.DIR, dir);
+    }
+
+    public T withCondHref(boolean condition, String href) {
+        return condAttr(condition, Attr.HREF, href);
+    }
+
+    public T withCondId(boolean condition, String id) {
+        return condAttr(condition, Attr.ID, id);
+    }
+
+    public T withCondData(boolean condition, String dataAttr, String value) {
+        return condAttr(condition, Attr.DATA + "-" + dataAttr, value);
+    }
+
+    public T withCondLang(boolean condition, String lang) {
+        return condAttr(condition, Attr.LANG, lang);
+    }
+
+    public T withCondMethod(boolean condition, String method) {
+        return condAttr(condition, Attr.METHOD, method);
+    }
+
+    public T withCondName(boolean condition, String name) {
+        return condAttr(condition, Attr.NAME, name);
+    }
+
+    public T withCondPlaceholder(boolean condition, String placeholder) {
+        return condAttr(condition, Attr.PLACEHOLDER, placeholder);
+    }
+
+    public T withCondTarget(boolean condition, String target) {
+        return condAttr(condition, Attr.TARGET, target);
+    }
+
+    public T withCondTitle(boolean condition, String title) {
+        return condAttr(condition, Attr.TITLE, title);
+    }
+
+    public T withCondType(boolean condition, String type) {
+        return condAttr(condition, Attr.TYPE, type);
+    }
+
+    public T withCondRel(boolean condition, String rel) {
+        return condAttr(condition, Attr.REL, rel);
+    }
+
+    public T withCondSrc(boolean condition, String src) {
+        return condAttr(condition, Attr.SRC, src);
+    }
+
+    public T withCondStyle(boolean condition, String style) {
+        return condAttr(condition, Attr.STYLE, style);
+    }
+
+    public T withCondValue(boolean condition, String value) {
+        return condAttr(condition, Attr.VALUE, value);
+    }
 
 }

@@ -87,12 +87,12 @@ public class JSMin {
      */
     private static boolean isAlphanum(int c) {
         return ((c >= 'a' && c <= 'z') ||
-                (c >= '0' && c <= '9') ||
-                (c >= 'A' && c <= 'Z') ||
-                c == '_' ||
-                c == '$' ||
-                c == '\\' ||
-                c > 126);
+            (c >= '0' && c <= '9') ||
+            (c >= 'A' && c <= 'Z') ||
+            c == '_' ||
+            c == '$' ||
+            c == '\\' ||
+            c > 126);
     }
 
     /**
@@ -172,7 +172,7 @@ public class JSMin {
      */
 
     private void action(int d) throws IOException, UnterminatedRegExpLiteralException,
-                                      UnterminatedCommentException, UnterminatedStringLiteralException {
+        UnterminatedCommentException, UnterminatedStringLiteralException {
         switch (d) {
             case 1:
                 out.write(theA);
