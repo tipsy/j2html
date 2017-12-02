@@ -11,8 +11,6 @@ import static j2html.TagCreator.p;
 import static j2html.TagCreator.title;
 import static org.junit.Assert.assertEquals;
 
-import java.io.IOException;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
@@ -21,23 +19,28 @@ import com.carrotsearch.junitbenchmarks.BenchmarkOptions;
 import com.carrotsearch.junitbenchmarks.BenchmarkRule;
 import com.carrotsearch.junitbenchmarks.Clock;
 
+import j2html.model.BrowserTitle;
+import j2html.model.Button;
+import j2html.model.ButtonModel;
+import j2html.model.PageModel;
+import j2html.model.TextTemplate;
 import j2html.tags.DomContent;
 
 @BenchmarkOptions(callgc = false, benchmarkRounds = 50000, warmupRounds = 200, concurrency = 2, clock = Clock.NANO_TIME)
 public class RenderPerformanceTest {
-    String expected = "<html><head><title>Browsertitle</title></head><body><h1>Hello World!</h1><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2 id=\"title\" class=\"visible-small\">Hello World!</h2><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2>Hello World!</h2><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2 id=\"title\" class=\"visible-small\">Hello World!</h2><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2>Hello World!</h2><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h1>Hello World!</h1><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2>Hello World!</h2><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2>Hello World!</h2><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2>Hello World!</h2><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2>Hello World!</h2><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></body></html>";
+    String expected = "<html><head><title>Browsertitle</title></head><body><h1>Hello World!</h1><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2 id=\"title\" class=\"visible-small\">Hello World!</h2><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2>Hello World!</h2><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2 id=\"title\" class=\"visible-small\">Hello World!</h2><div class=\"button\"><div class=\"button-text\">Action!</div></div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2>Hello World!</h2><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h1>Hello World!</h1><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2>Hello World!</h2><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2>Hello World!</h2><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2>Hello World!</h2><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><h2>Hello World!</h2><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><p>Hello World!</p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></body></html>";
     @Rule
     public TestRule benchmarkRun = new BenchmarkRule();
 
-    private DomContent template;
+    private DomContent<Object> template;
 
     public RenderPerformanceTest() {
         this.template =
                 // @formatter:off
                 html(
                      head(
-                          title(new BrowserTitle())
-                             ),
+                          new BrowserTitle()
+                     ),
                      body(
                           h1(new TextTemplate()),
                           div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
@@ -46,6 +49,7 @@ public class RenderPerformanceTest {
                           h2(new TextTemplate()),
                           div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
                           h2(attrs("#title.visible-small"),new TextTemplate()),
+                          new Button(),
                           div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
                           h2(new TextTemplate()),
                           div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
@@ -63,7 +67,7 @@ public class RenderPerformanceTest {
                 );
         // @formatter:on
     }
-    private DomContent getDomContent(PageModel pageModel) throws Exception {
+    private DomContent<Object> getDomContent(PageModel pageModel) throws Exception {
         return
         // @formatter:off
         html(
@@ -78,6 +82,13 @@ public class RenderPerformanceTest {
                h2(pageModel.getText()),
                div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
                h2(attrs("#title.visible-small"),pageModel.getText()),
+               div()
+               .withClass("button")
+               .with(
+                       div()
+                       .withClass("button-text")
+                       .withText(pageModel.getButtonModel().getText())
+               ),
                div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
                h2(pageModel.getText()),
                div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
@@ -98,50 +109,16 @@ public class RenderPerformanceTest {
 
     @Test
     public void staticPerfomanceTest() throws Exception {
-        PageModel pageModel = new PageModel("Browsertitle", "Hello World!");
+        PageModel pageModel = new PageModel("Browsertitle", "Hello World!", new ButtonModel("Action!"));
         String result = getDomContent(pageModel).render();
         assertEquals(expected, result);
     }
 
     @Test
     public void templatePerfomanceTest() throws Exception {
-        PageModel pageModel = new PageModel("Browsertitle", "Hello World!");
+        PageModel pageModel = new PageModel("Browsertitle", "Hello World!", new ButtonModel("Action!"));
 
         String result = template.renderModel(pageModel);
         assertEquals(expected, result);
-    }
-}
-
-class BrowserTitle extends DomContent<PageModel> {
-
-    @Override
-    public void renderModel(Appendable writer, PageModel model) throws IOException {
-        writer.append(model.getTitle());
-    }
-
-}
-
-class TextTemplate extends DomContent<PageModel> {
-    @Override
-    public void renderModel(Appendable writer, PageModel model) throws IOException {
-        writer.append(model.getText());
-    }
-}
-
-class PageModel {
-    String title;
-    String text;
-
-    public PageModel(String title, String text) {
-        this.title = title;
-        this.text = text;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getText() {
-        return text;
     }
 }

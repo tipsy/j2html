@@ -2,7 +2,7 @@ package j2html.tags;
 
 import java.io.IOException;
 
-public class UnescapedText extends DomContent {
+public class UnescapedText extends DomContent<Object> {
 
     private String text;
 

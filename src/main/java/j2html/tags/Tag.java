@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import j2html.attributes.Attr;
 import j2html.attributes.Attribute;
 
-public abstract class Tag<T extends Tag<T>> extends DomContent {
+public abstract class Tag<T extends Tag<T>> extends DomContent<Object> {
 
     protected String tagName;
     private ArrayList<Attribute> attributes;
