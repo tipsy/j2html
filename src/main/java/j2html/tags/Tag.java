@@ -1,11 +1,12 @@
 package j2html.tags;
 
-import j2html.attributes.Attr;
-import j2html.attributes.Attribute;
+import java.io.IOException;
 import java.util.ArrayList;
 
-public abstract class Tag<T extends Tag<T>> extends DomContent {
+import j2html.attributes.Attr;
+import j2html.attributes.Attribute;
 
+public abstract class Tag<T extends Tag<T>> extends DomContent {
     protected String tagName;
     private ArrayList<Attribute> attributes;
 
@@ -18,25 +19,40 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return this.tagName;
     }
 
-    String renderOpenTag() {
-        StringBuilder sb = new StringBuilder("<").append(tagName);
+    String renderOpenTag() throws IOException {
+        StringBuilder stringBuilder = new StringBuilder();
+        renderOpenTag(stringBuilder);
+        return stringBuilder.toString();
+    }
+
+    String renderCloseTag() throws IOException {
+        StringBuilder stringBuilder = new StringBuilder();
+        renderCloseTag(stringBuilder);
+        return stringBuilder.toString();
+    }
+
+    void renderOpenTag(Appendable writer) throws IOException {
+        writer.append("<").append(tagName);
         for (Attribute attribute : attributes) {
-            sb.append(attribute.render());
+            attribute.render(writer);
         }
-        sb.append(">");
-        return sb.toString();
+        writer.append(">");
     }
 
-
-    String renderCloseTag() {
-        return "</" + tagName + ">";
+    void renderCloseTag(Appendable writer) throws IOException {
+        writer.append("</");
+        writer.append(tagName);
+        writer.append(">");
     }
 
+    ArrayList<Attribute> getAttributes() {
+        return attributes;
+    }
 
     /**
      * Sets an attribute on an element
      *
-     * @param name  the attribute
+     * @param name the attribute
      * @param value the attribute value
      */
     boolean setAttribute(String name, String value) {
@@ -45,19 +61,18 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         }
         for (Attribute attribute : attributes) {
             if (attribute.getName().equals(name)) {
-                attribute.setValue(value); //update with new value
+                attribute.setValue(value); // update with new value
                 return true;
             }
         }
         return attributes.add(new Attribute(name, value));
     }
 
-
     /**
      * Sets a custom attribute
      *
      * @param attribute the attribute name
-     * @param value     the attribute value
+     * @param value the attribute value
      * @return itself for easy chaining
      */
     public T attr(String attribute, Object value) {
@@ -76,20 +91,18 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return attr(attribute, null);
     }
 
-
     /**
      * Call attr-method based on condition
      * {@link #attr(String attribute, Object value)}
      *
      * @param condition the condition
      * @param attribute the attribute name
-     * @param value     the attribute value
+     * @param value the attribute value
      * @return itself for easy chaining
      */
     public T condAttr(boolean condition, String attribute, String value) {
         return (condition ? attr(attribute, value) : (T) this);
     }
-
 
     @Override
     public boolean equals(Object obj) {
@@ -99,13 +112,11 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return ((Tag) obj).render().equals(this.render());
     }
 
-
     /**
      * Convenience methods that call attr with predefined attributes
      *
      * @return itself for easy chaining
      */
-
     public T withClasses(String... classes) {
         StringBuilder sb = new StringBuilder();
         for (String s : classes) {
@@ -309,5 +320,4 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     public T withCondValue(boolean condition, String value) {
         return condAttr(condition, Attr.VALUE, value);
     }
-
 }

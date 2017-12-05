@@ -120,23 +120,6 @@ public class ContainerTag extends Tag<ContainerTag> {
     }
 
     /**
-     * Render the ContainerTag and its children
-     *
-     * @return the rendered string
-     */
-    @Override
-    public String render() {
-        StringBuilder rendered = new StringBuilder(renderOpenTag());
-        if (!children.isEmpty()) {
-            for (DomContent child : children) {
-                rendered.append(child.render());
-            }
-        }
-        rendered.append(renderCloseTag());
-        return rendered.toString();
-    }
-
-    /**
      * Render the ContainerTag and its children, adding newlines before each
      * child and using Config.indenter to indent child based on how deep
      * in the tree it is
@@ -144,11 +127,17 @@ public class ContainerTag extends Tag<ContainerTag> {
      * @return the rendered and formatted string
      */
     public String renderFormatted() {
-        return renderFormatted(0);
+        try {
+            return renderFormatted(0);
+        } catch (IOException e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
     }
 
-    private String renderFormatted(int lvl) {
-        StringBuilder sb = new StringBuilder(renderOpenTag() + "\n");
+    private String renderFormatted(int lvl) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        renderOpenTag(sb);
+        sb.append("\n");
         if (!children.isEmpty()) {
             for (DomContent c : children) {
                 lvl++;
@@ -160,19 +149,21 @@ public class ContainerTag extends Tag<ContainerTag> {
                 lvl--;
             }
         }
-        sb.append(Config.indenter.indent(lvl, renderCloseTag())).append("\n");
+        sb.append(Config.indenter.indent(lvl, ""));
+        renderCloseTag(sb);
+        sb.append("\n");
         return sb.toString();
     }
 
     @Override
     public void render(Appendable writer) throws IOException {
-        writer.append(renderOpenTag());
+        renderOpenTag(writer);
         if (children != null && !children.isEmpty()) {
             for (DomContent child : children) {
                 child.render(writer);
             }
         }
-        writer.append(renderCloseTag());
+        renderCloseTag(writer);
     }
 
 }
