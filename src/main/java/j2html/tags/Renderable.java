@@ -21,8 +21,7 @@ public interface Renderable {
     /**
      * Render the Renderable and it's children using the supplied writer
      *
-     * @param writer
-     *            the current writer
+     * @param writer the current writer
      */
     void render(Appendable writer) throws IOException;
 }

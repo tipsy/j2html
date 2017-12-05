@@ -1,10 +1,9 @@
 package j2html.tags;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import j2html.attributes.Attr;
 import j2html.attributes.Attribute;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public abstract class Tag<T extends Tag<T>> extends DomContent {
     protected String tagName;
@@ -52,7 +51,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     /**
      * Sets an attribute on an element
      *
-     * @param name the attribute
+     * @param name  the attribute
      * @param value the attribute value
      */
     boolean setAttribute(String name, String value) {
@@ -72,7 +71,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
      * Sets a custom attribute
      *
      * @param attribute the attribute name
-     * @param value the attribute value
+     * @param value     the attribute value
      * @return itself for easy chaining
      */
     public T attr(String attribute, Object value) {
@@ -97,7 +96,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
      *
      * @param condition the condition
      * @param attribute the attribute name
-     * @param value the attribute value
+     * @param value     the attribute value
      * @return itself for easy chaining
      */
     public T condAttr(boolean condition, String attribute, String value) {

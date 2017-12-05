@@ -1,9 +1,8 @@
 package j2html.tags;
 
-import java.io.IOException;
-
 import j2html.Config;
 import j2html.attributes.Attribute;
+import java.io.IOException;
 
 public class EmptyTag extends Tag<EmptyTag> {
 
