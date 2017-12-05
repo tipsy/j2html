@@ -30,33 +30,33 @@ public class RenderPerformanceTest {
     private DomContent getDomContent(PageModel pageModel) throws Exception {
         return
         // @formatter:off
-        html(
-             head(
-                  title(pageModel.getTitle())
-             ),
-             body(
-               h1(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(attrs("#title.visible-small"), pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(attrs("#title.visible-small"),pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h1(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText())))))))))))))))))))))))))))
-             )
-        );
+            html(
+                head(
+                    title(pageModel.getTitle())
+                ),
+                body(
+                    h1(pageModel.getText()),
+                    div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
+                    h2(attrs("#title.visible-small"), pageModel.getText()),
+                    div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
+                    h2(pageModel.getText()),
+                    div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
+                    h2(attrs("#title.visible-small"), pageModel.getText()),
+                    div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
+                    h2(pageModel.getText()),
+                    div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
+                    h1(pageModel.getText()),
+                    div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
+                    h2(pageModel.getText()),
+                    div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
+                    h2(pageModel.getText()),
+                    div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
+                    h2(pageModel.getText()),
+                    div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
+                    h2(pageModel.getText()),
+                    div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText())))))))))))))))))))))))))))
+                )
+            );
         // @formatter:on
     }
 
