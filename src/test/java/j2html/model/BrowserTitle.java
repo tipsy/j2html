@@ -1,15 +1,11 @@
 package j2html.model;
 
-import static j2html.TagCreator.title;
-
 import java.io.IOException;
 
-import j2html.tags.DomContent;
-
-public class BrowserTitle extends DomContent<PageModel> {
+public class BrowserTitle extends Template<PageModel> {
 
     @Override
-    public void renderModel(Appendable writer, PageModel model) throws IOException {
-        title(model.getTitle()).renderModel(writer, model);
+    public void renderTemplate(Appendable writer, PageModel pageModel) throws IOException {
+        writer.append(pageModel.getTitle());
     }
 }

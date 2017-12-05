@@ -3,9 +3,9 @@ package j2html.attributes;
 import java.io.IOException;
 
 import j2html.Config;
-import j2html.tags.Renderer;
+import j2html.tags.Renderable;
 
-public class Attribute extends Renderer<Object> {
+public class Attribute implements Renderable {
     private String name;
     private String value;
 

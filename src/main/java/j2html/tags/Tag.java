@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import j2html.attributes.Attr;
 import j2html.attributes.Attribute;
 
-public abstract class Tag<T extends Tag<T>> extends DomContent<Object> {
+public abstract class Tag<T extends Tag<T>> extends DomContent {
 
     protected String tagName;
     private ArrayList<Attribute> attributes;
@@ -282,5 +282,4 @@ public abstract class Tag<T extends Tag<T>> extends DomContent<Object> {
     public T withCondValue(boolean condition, String value) {
         return condAttr(condition, Attr.VALUE, value);
     }
-
 }

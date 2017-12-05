@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import j2html.Config;
 
-public class Text extends DomContent<Object> {
+public class Text extends DomContent {
 
     private String text;
 

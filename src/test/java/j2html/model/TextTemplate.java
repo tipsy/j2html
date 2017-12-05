@@ -2,12 +2,10 @@ package j2html.model;
 
 import java.io.IOException;
 
-import j2html.tags.DomContent;
-
-public class TextTemplate extends DomContent<PageModel> {
+public class TextTemplate extends Template<PageModel> {
 
     @Override
-    public void renderModel(Appendable writer, PageModel pageModel) throws IOException {
+    public void renderTemplate(Appendable writer, PageModel pageModel) throws IOException {
         writer.append(pageModel.getText());
     }
 }

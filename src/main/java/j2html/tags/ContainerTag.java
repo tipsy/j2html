@@ -8,7 +8,7 @@ import j2html.Config;
 
 public class ContainerTag extends Tag<ContainerTag> {
 
-    private List<DomContent<Object>> children;
+    private List<DomContent> children;
 
     public ContainerTag(String tagName) {
         super(tagName);
@@ -161,7 +161,7 @@ public class ContainerTag extends Tag<ContainerTag> {
     public void renderModel(Appendable writer, Object model) throws IOException {
         renderOpenTag(writer, model);
         if (children != null && !children.isEmpty()) {
-            for (DomContent<Object> child : children) {
+            for (DomContent child : children) {
                 child.renderModel(writer, model);
             }
         }

@@ -33,14 +33,14 @@ public class RenderPerformanceTest {
     @Rule
     public TestRule benchmarkRun = new BenchmarkRule();
 
-    private DomContent<Object> template;
+    private DomContent template;
 
     public RenderPerformanceTest() {
         this.template =
                 // @formatter:off
                 html(
                      head(
-                          new BrowserTitle()
+                          title(new BrowserTitle())
                      ),
                      body(
                           h1(new TextTemplate()),
@@ -68,7 +68,16 @@ public class RenderPerformanceTest {
                 );
         // @formatter:on
     }
-    private DomContent<Object> getDomContent(PageModel pageModel) throws Exception {
+
+    @Test
+    public void templatePerfomanceTest() throws Exception {
+        PageModel pageModel = new PageModel("Browsertitle", "Hello World!", new ButtonModel("Action!"));
+        StringBuilder stringBuilder = new StringBuilder();
+        template.renderModel(stringBuilder, pageModel);
+        assertEquals(expected, stringBuilder.toString());
+    }
+
+    private DomContent getDomContent(PageModel pageModel) throws Exception {
         return
         // @formatter:off
         html(
@@ -105,6 +114,7 @@ public class RenderPerformanceTest {
                div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText())))))))))))))))))))))))))))
              )
         );
+
         // @formatter:on
     }
 
@@ -112,14 +122,6 @@ public class RenderPerformanceTest {
     public void staticPerfomanceTest() throws Exception {
         PageModel pageModel = new PageModel("Browsertitle", "Hello World!", new ButtonModel("Action!"));
         String result = getDomContent(pageModel).render();
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void templatePerfomanceTest() throws Exception {
-        PageModel pageModel = new PageModel("Browsertitle", "Hello World!", new ButtonModel("Action!"));
-
-        String result = template.renderModel(pageModel);
         assertEquals(expected, result);
     }
 }

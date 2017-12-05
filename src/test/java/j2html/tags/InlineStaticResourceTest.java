@@ -1,7 +1,6 @@
 package j2html.tags;
 
 import org.junit.Test;
-
 import static j2html.TagCreator.fileAsEscapedString;
 import static j2html.TagCreator.fileAsString;
 import static j2html.TagCreator.scriptWithInlineFile_min;
@@ -38,7 +37,7 @@ public class InlineStaticResourceTest {
         assertThat(fileAsString("src/test/files/AnyContent.java").render(), is(expectedAnyContent));
     }
 
-    @Test(expected=RuntimeException.class)
+    @Test(expected = RuntimeException.class)
     public void testExceptionForBadPath() throws Exception {
         styleWithInlineFile_min("NOT A FILE");
     }

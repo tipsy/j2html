@@ -5,23 +5,12 @@ import static j2html.TagCreator.div;
 import java.io.IOException;
 
 import j2html.tags.ContainerTag;
-import j2html.tags.DomContent;
 
-public class Button extends DomContent<PageModel> {
-
-    private ButtonDomContent buttonDomContent = new ButtonDomContent();
-
-    @Override
-    public void renderModel(Appendable writer, PageModel model) throws IOException {
-        buttonDomContent.renderModel(writer, model.getButtonModel());
-    }
-}
-
-class ButtonDomContent extends DomContent<ButtonModel> {
+public class Button extends Template<PageModel> {
 
     private ContainerTag template;
 
-    public ButtonDomContent() {
+    public Button() {
         // @formatter:off
         template =
                 div()
@@ -30,22 +19,22 @@ class ButtonDomContent extends DomContent<ButtonModel> {
                         div()
                         .withClass("button-text")
                         .with(
-                              new ButtonText()
+                                new ButtonText()
                         )
                 );
         // @formatter:on
     }
+
     @Override
-    public void renderModel(Appendable writer, ButtonModel model) throws IOException {
-        template.renderModel(writer, model.getText());
+    public void renderTemplate(Appendable writer, PageModel model) throws IOException {
+        template.renderModel(writer, model.getButtonModel().getText());
     }
 }
 
-class ButtonText extends DomContent<String> {
+class ButtonText extends Template<String> {
 
     @Override
-    public void renderModel(Appendable writer, String model) throws IOException {
+    public void renderTemplate(Appendable writer, String model) throws IOException {
         writer.append(model);
     }
-
 }
