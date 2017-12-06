@@ -1,9 +1,8 @@
 package j2html.attributes;
 
-import java.io.IOException;
-
 import j2html.Config;
 import j2html.tags.Renderable;
+import java.io.IOException;
 
 public class Attribute implements Renderable {
     private String name;
