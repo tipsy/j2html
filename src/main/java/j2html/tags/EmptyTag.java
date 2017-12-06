@@ -1,6 +1,8 @@
 package j2html.tags;
 
 import j2html.Config;
+import j2html.attributes.Attribute;
+import java.io.IOException;
 
 public class EmptyTag extends Tag<EmptyTag> {
 
@@ -9,12 +11,14 @@ public class EmptyTag extends Tag<EmptyTag> {
     }
 
     @Override
-    public String render() {
-        if (Config.closeEmptyTags) {
-            String tag = renderOpenTag();
-            return tag.substring(0, tag.length() - 1) + "/>";
+    public void render(Appendable writer) throws IOException {
+        writer.append("<").append(tagName);
+        for (Attribute attribute : getAttributes()) {
+            attribute.render(writer);
         }
-        return renderOpenTag();
+        if (Config.closeEmptyTags) {
+            writer.append("/");
+        }
+        writer.append(">");
     }
-
 }

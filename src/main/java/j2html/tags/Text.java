@@ -1,6 +1,7 @@
 package j2html.tags;
 
 import j2html.Config;
+import java.io.IOException;
 
 public class Text extends DomContent {
 
@@ -11,8 +12,8 @@ public class Text extends DomContent {
     }
 
     @Override
-    public String render() {
-        return Config.textEscaper.escape(text);
+    public void render(Appendable writer) throws IOException {
+        writer.append(Config.textEscaper.escape(text));
     }
 
 }

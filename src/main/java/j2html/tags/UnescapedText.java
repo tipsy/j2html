@@ -1,5 +1,7 @@
 package j2html.tags;
 
+import java.io.IOException;
+
 public class UnescapedText extends DomContent {
 
     private String text;
@@ -9,8 +11,8 @@ public class UnescapedText extends DomContent {
     }
 
     @Override
-    public String render() {
-        return text;
+    public void render(Appendable writer) throws IOException {
+        writer.append(text);
     }
 
 }
