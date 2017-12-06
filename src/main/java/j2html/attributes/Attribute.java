@@ -19,7 +19,7 @@ public class Attribute implements Renderable {
     }
 
     @Override
-    public void render(Appendable writer) throws IOException {
+    public void renderModel(Appendable writer, Object model) throws IOException {
         if (name == null) {
             return;
         }

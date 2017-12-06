@@ -136,7 +136,7 @@ public class ContainerTag extends Tag<ContainerTag> {
 
     private String renderFormatted(int lvl) throws IOException {
         StringBuilder sb = new StringBuilder();
-        renderOpenTag(sb);
+        renderOpenTag(sb, null);
         sb.append("\n");
         if (!children.isEmpty()) {
             for (DomContent c : children) {
@@ -156,11 +156,11 @@ public class ContainerTag extends Tag<ContainerTag> {
     }
 
     @Override
-    public void render(Appendable writer) throws IOException {
-        renderOpenTag(writer);
+    public void renderModel(Appendable writer, Object model) throws IOException {
+        renderOpenTag(writer, model);
         if (children != null && !children.isEmpty()) {
             for (DomContent child : children) {
-                child.render(writer);
+                child.renderModel(writer, model);
             }
         }
         renderCloseTag(writer);

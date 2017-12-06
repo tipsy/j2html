@@ -13,6 +13,11 @@ public class Text extends DomContent {
 
     @Override
     public void render(Appendable writer) throws IOException {
+        renderModel(writer, null);
+    }
+
+    @Override
+    public void renderModel(Appendable writer, Object model) throws IOException {
         writer.append(Config.textEscaper.escape(text));
     }
 

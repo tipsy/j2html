@@ -20,7 +20,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
 
     String renderOpenTag() throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
-        renderOpenTag(stringBuilder);
+        renderOpenTag(stringBuilder, null);
         return stringBuilder.toString();
     }
 
@@ -30,10 +30,10 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return stringBuilder.toString();
     }
 
-    void renderOpenTag(Appendable writer) throws IOException {
+    void renderOpenTag(Appendable writer, Object model) throws IOException {
         writer.append("<").append(tagName);
         for (Attribute attribute : attributes) {
-            attribute.render(writer);
+            attribute.renderModel(writer, model);
         }
         writer.append(">");
     }

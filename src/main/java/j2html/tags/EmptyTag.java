@@ -12,9 +12,14 @@ public class EmptyTag extends Tag<EmptyTag> {
 
     @Override
     public void render(Appendable writer) throws IOException {
+        renderModel(writer, null);
+    }
+
+    @Override
+    public void renderModel(Appendable writer, Object model) throws IOException {
         writer.append("<").append(tagName);
         for (Attribute attribute : getAttributes()) {
-            attribute.render(writer);
+            attribute.renderModel(writer, model);
         }
         if (Config.closeEmptyTags) {
             writer.append("/");
