@@ -5,7 +5,8 @@ import java.io.IOException;
 public interface Renderable {
 
     /**
-     * Create a StringBuilder and use it to render the Renderable and it's children
+     * Create a StringBuilder and use it to render the Renderable and it's
+     * children
      */
     default String render() {
         StringBuilder stringBuilder = new StringBuilder();

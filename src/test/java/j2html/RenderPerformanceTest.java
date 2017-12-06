@@ -66,14 +66,6 @@ public class RenderPerformanceTest {
         // @formatter:on
     }
 
-    @Test
-    public void templatePerfomanceTest() throws Exception {
-        PageModel pageModel = new PageModel("Browsertitle", "Hello World!", new ButtonModel("Action!"));
-        StringBuilder stringBuilder = new StringBuilder();
-        template.renderModel(stringBuilder, pageModel);
-        assertEquals(expected, stringBuilder.toString());
-    }
-
     private DomContent getDomContent(PageModel pageModel) throws Exception {
         return
         // @formatter:off
@@ -113,6 +105,14 @@ public class RenderPerformanceTest {
         );
 
         // @formatter:on
+    }
+
+    @Test
+    public void templatePerfomanceTest() throws Exception {
+        PageModel pageModel = new PageModel("Browsertitle", "Hello World!", new ButtonModel("Action!"));
+        StringBuilder stringBuilder = new StringBuilder();
+        template.renderModel(stringBuilder, pageModel);
+        assertEquals(expected, stringBuilder.toString());
     }
 
     @Test

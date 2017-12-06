@@ -14,6 +14,7 @@ public class ContainerTag extends Tag<ContainerTag> {
         this.children = new ArrayList<>();
     }
 
+
     /**
      * Appends a DomContent-object to the end of this element
      *
@@ -25,23 +26,25 @@ public class ContainerTag extends Tag<ContainerTag> {
             throw new RuntimeException("Cannot append a tag to itself.");
         }
         if (child == null) {
-            return this; // in some cases, like when using iff(), we ignore null
-                         // children
+            return this; // in some cases, like when using iff(), we ignore null children
         }
         children.add(child);
         return this;
     }
 
+
     /**
-     * Call with-method based on condition {@link #with(DomContent child)}
+     * Call with-method based on condition
+     * {@link #with(DomContent child)}
      *
      * @param condition the condition to use
-     * @param child DomContent-object to be appended if condition met
+     * @param child     DomContent-object to be appended if condition met
      * @return itself for easy chaining
      */
     public ContainerTag condWith(boolean condition, DomContent child) {
         return condition ? this.with(child) : this;
     }
+
 
     /**
      * Appends a list of DomContent-objects to the end of this element
@@ -58,16 +61,19 @@ public class ContainerTag extends Tag<ContainerTag> {
         return this;
     }
 
+
     /**
-     * Call with-method based on condition {@link #with(java.lang.Iterable)}
+     * Call with-method based on condition
+     * {@link #with(java.lang.Iterable)}
      *
      * @param condition the condition to use
-     * @param children DomContent-objects to be appended if condition met
+     * @param children  DomContent-objects to be appended if condition met
      * @return itself for easy chaining
      */
     public ContainerTag condWith(boolean condition, Iterable<? extends DomContent> children) {
         return condition ? this.with(children) : this;
     }
+
 
     /**
      * Appends the DomContent-objects to the end of this element
@@ -82,16 +88,19 @@ public class ContainerTag extends Tag<ContainerTag> {
         return this;
     }
 
+
     /**
-     * Call with-method based on condition {@link #with(DomContent... children)}
+     * Call with-method based on condition
+     * {@link #with(DomContent... children)}
      *
      * @param condition the condition to use
-     * @param children DomContent-objects to be appended if condition met
+     * @param children  DomContent-objects to be appended if condition met
      * @return itself for easy chaining
      */
     public ContainerTag condWith(boolean condition, DomContent... children) {
         return condition ? this.with(children) : this;
     }
+
 
     /**
      * Appends a Text-object to this element
@@ -111,7 +120,9 @@ public class ContainerTag extends Tag<ContainerTag> {
     }
 
     /**
-     * Render the ContainerTag and its children, adding newlines before each child and using Config.indenter to indent child based on how deep in the tree it is
+     * Render the ContainerTag and its children, adding newlines before each
+     * child and using Config.indenter to indent child based on how deep
+     * in the tree it is
      *
      * @return the rendered and formatted string
      */
@@ -154,4 +165,5 @@ public class ContainerTag extends Tag<ContainerTag> {
         }
         renderCloseTag(writer);
     }
+
 }
