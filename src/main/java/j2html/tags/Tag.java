@@ -1,12 +1,11 @@
 package j2html.tags;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import j2html.attributes.Attr;
 import j2html.attributes.Attribute;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public abstract class Tag<T extends Tag<T>> extends DomContent {
-
     protected String tagName;
     private ArrayList<Attribute> attributes;
 
@@ -51,10 +50,8 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     /**
      * Sets an attribute on an element
      *
-     * @param name
-     *            the attribute
-     * @param value
-     *            the attribute value
+     * @param name the attribute
+     * @param value the attribute value
      */
     boolean setAttribute(String name, String value) {
         if (value == null) {
@@ -72,10 +69,8 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     /**
      * Sets a custom attribute
      *
-     * @param attribute
-     *            the attribute name
-     * @param value
-     *            the attribute value
+     * @param attribute the attribute name
+     * @param value the attribute value
      * @return itself for easy chaining
      */
     public T attr(String attribute, Object value) {
@@ -86,8 +81,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     /**
      * Sets a custom attribute without value
      *
-     * @param attribute
-     *            the attribute name
+     * @param attribute the attribute name
      * @return itself for easy chaining
      * @see Tag#attr(String, Object)
      */
@@ -96,15 +90,11 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     }
 
     /**
-     * Call attr-method based on condition
-     * {@link #attr(String attribute, Object value)}
+     * Call attr-method based on condition {@link #attr(String attribute, Object value)}
      *
-     * @param condition
-     *            the condition
-     * @param attribute
-     *            the attribute name
-     * @param value
-     *            the attribute value
+     * @param condition the condition
+     * @param attribute the attribute name
+     * @param value the attribute value
      * @return itself for easy chaining
      */
     public T condAttr(boolean condition, String attribute, String value) {
@@ -124,7 +114,6 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
      *
      * @return itself for easy chaining
      */
-
     public T withClasses(String... classes) {
         StringBuilder sb = new StringBuilder();
         for (String s : classes) {

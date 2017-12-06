@@ -5,8 +5,7 @@ import java.io.IOException;
 public interface Renderable {
 
     /**
-     * Create a StringBuilder and use it to render the Renderable and it's
-     * children
+     * Create a StringBuilder and use it to render the Renderable and it's children
      */
     default String render() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -21,20 +20,16 @@ public interface Renderable {
     /**
      * Render the Renderable and it's children using the supplied writer
      *
-     * @param writer
-     *            the current writer
+     * @param writer the current writer
      */
     default void render(Appendable writer) throws IOException {
         renderModel(writer, null);
     }
     /**
-     * Render the Renderable and it's children using the supplied writer and a
-     * model.
+     * Render the Renderable and it's children using the supplied writer and a model.
      *
-     * @param writer
-     *            the current writer
-     * @param model
-     *            a model object to provide data for children to render
+     * @param writer the current writer
+     * @param model a model object to provide data for children to render
      */
     void renderModel(Appendable writer, Object model) throws IOException;
 }

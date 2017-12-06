@@ -1,8 +1,7 @@
 package j2html.tags;
 
-import java.io.IOException;
-
 import j2html.Config;
+import java.io.IOException;
 
 public class Text extends DomContent {
 

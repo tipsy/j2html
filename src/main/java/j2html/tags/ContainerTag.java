@@ -35,10 +35,8 @@ public class ContainerTag extends Tag<ContainerTag> {
     /**
      * Call with-method based on condition {@link #with(DomContent child)}
      *
-     * @param condition
-     *            the condition to use
-     * @param child
-     *            DomContent-object to be appended if condition met
+     * @param condition the condition to use
+     * @param child DomContent-object to be appended if condition met
      * @return itself for easy chaining
      */
     public ContainerTag condWith(boolean condition, DomContent child) {
@@ -48,8 +46,7 @@ public class ContainerTag extends Tag<ContainerTag> {
     /**
      * Appends a list of DomContent-objects to the end of this element
      *
-     * @param children
-     *            DomContent-objects to be appended
+     * @param children DomContent-objects to be appended
      * @return itself for easy chaining
      */
     public ContainerTag with(Iterable<? extends DomContent> children) {
@@ -64,10 +61,8 @@ public class ContainerTag extends Tag<ContainerTag> {
     /**
      * Call with-method based on condition {@link #with(java.lang.Iterable)}
      *
-     * @param condition
-     *            the condition to use
-     * @param children
-     *            DomContent-objects to be appended if condition met
+     * @param condition the condition to use
+     * @param children DomContent-objects to be appended if condition met
      * @return itself for easy chaining
      */
     public ContainerTag condWith(boolean condition, Iterable<? extends DomContent> children) {
@@ -77,8 +72,7 @@ public class ContainerTag extends Tag<ContainerTag> {
     /**
      * Appends the DomContent-objects to the end of this element
      *
-     * @param children
-     *            DomContent-objects to be appended
+     * @param children DomContent-objects to be appended
      * @return itself for easy chaining
      */
     public ContainerTag with(DomContent... children) {
@@ -91,10 +85,8 @@ public class ContainerTag extends Tag<ContainerTag> {
     /**
      * Call with-method based on condition {@link #with(DomContent... children)}
      *
-     * @param condition
-     *            the condition to use
-     * @param children
-     *            DomContent-objects to be appended if condition met
+     * @param condition the condition to use
+     * @param children DomContent-objects to be appended if condition met
      * @return itself for easy chaining
      */
     public ContainerTag condWith(boolean condition, DomContent... children) {
@@ -104,8 +96,7 @@ public class ContainerTag extends Tag<ContainerTag> {
     /**
      * Appends a Text-object to this element
      *
-     * @param text
-     *            the text to be appended
+     * @param text the text to be appended
      * @return itself for easy chaining
      */
     public ContainerTag withText(String text) {
@@ -120,9 +111,7 @@ public class ContainerTag extends Tag<ContainerTag> {
     }
 
     /**
-     * Render the ContainerTag and its children, adding newlines before each
-     * child and using Config.indenter to indent child based on how deep in the
-     * tree it is
+     * Render the ContainerTag and its children, adding newlines before each child and using Config.indenter to indent child based on how deep in the tree it is
      *
      * @return the rendered and formatted string
      */

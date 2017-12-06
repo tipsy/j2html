@@ -10,21 +10,18 @@ import static j2html.TagCreator.html;
 import static j2html.TagCreator.p;
 import static j2html.TagCreator.title;
 import static org.junit.Assert.assertEquals;
-
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TestRule;
-
 import com.carrotsearch.junitbenchmarks.BenchmarkOptions;
 import com.carrotsearch.junitbenchmarks.BenchmarkRule;
 import com.carrotsearch.junitbenchmarks.Clock;
-
 import j2html.model.BrowserTitle;
 import j2html.model.Button;
 import j2html.model.ButtonModel;
 import j2html.model.PageModel;
 import j2html.model.TextTemplate;
 import j2html.tags.DomContent;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TestRule;
 
 @BenchmarkOptions(callgc = false, benchmarkRounds = 50000, warmupRounds = 200, concurrency = 2, clock = Clock.NANO_TIME)
 public class RenderPerformanceTest {
