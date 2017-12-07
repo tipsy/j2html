@@ -63,7 +63,22 @@
             <artifactId>junit-benchmarks</artifactId>
             <version>0.7.2</version>
             <scope>test</scope>
-        </dependency>        
+        </dependency>
+
+        <!-- performance test dependencies -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <packaging>jar</packaging>
