@@ -39,4 +39,14 @@ public class TestVelocity {
         return render("/comparison/velocity/macros.vm", null);
     }
 
+    public static String multiplicationTable() {
+        Map<String, Object> model = new HashMap<>();
+        model.put("tableNumbers", ComparisonData.tableNumbers);
+        return render("/comparison/velocity/multiplicationTable.vm", model);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(multiplicationTable());
+    }
+
 }

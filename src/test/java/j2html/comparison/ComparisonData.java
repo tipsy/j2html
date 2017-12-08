@@ -11,5 +11,7 @@ public class ComparisonData {
         return IntStream.range(0, 500).mapToObj(i -> new Employee(i, "Some name", "Some title")).collect(Collectors.toList());
     }
 
+    public static List<Integer> tableNumbers = IntStream.range(1, 51).boxed().collect(Collectors.toList());
+
 }
 

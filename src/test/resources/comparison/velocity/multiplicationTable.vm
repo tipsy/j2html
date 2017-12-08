@@ -1,0 +1,12 @@
+<table>
+    <tbody>
+        #foreach($i in $tableNumbers)
+            <tr>
+                #foreach($j in $tableNumbers)
+                    #set($product = $i * $j)
+                    <td>$product</td>
+                #end
+            </tr>
+        #end
+    </tbody>
+</table>

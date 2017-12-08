@@ -20,6 +20,7 @@ public class RenderPerformanceComparisonTest {
         TestJ2html.helloWorld();
         TestJ2html.fiveHundredEmployees();
         TestJ2html.macros();
+        TestJ2html.multiplicationTable();
     }
 
     @Test
@@ -27,6 +28,7 @@ public class RenderPerformanceComparisonTest {
         TestVelocity.helloWorld();
         TestVelocity.fiveHundredEmployees();
         TestVelocity.macros();
+        TestVelocity.multiplicationTable();
     }
 
 }
