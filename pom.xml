@@ -10,7 +10,7 @@
 
     <groupId>com.j2html</groupId>
     <artifactId>j2html</artifactId>
-    <version>1.2.2-SNAPSHOT</version>
+    <version>1.2.3-SNAPSHOT</version>
 
     <name>j2html</name>
     <description>Java to HTML builder with a fluent API</description>
@@ -63,7 +63,22 @@
             <artifactId>junit-benchmarks</artifactId>
             <version>0.7.2</version>
             <scope>test</scope>
-        </dependency>        
+        </dependency>
+
+        <!-- performance test dependencies -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <packaging>jar</packaging>

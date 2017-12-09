@@ -1,0 +1,7 @@
+#* @vtlvariable name="employees" type="java.util.List<j2html.comparison.ComparisonData.Employee>" *#
+
+<ul>
+    #foreach($employee in $employees)
+        <li>$employee.id $employee.name $employee.title</li>
+    #end
+</ul>

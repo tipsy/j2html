@@ -13,12 +13,12 @@ The project webpage is [j2html.com](http://j2html.com).
 <dependency>
     <groupId>com.j2html</groupId>
     <artifactId>j2html</artifactId>
-    <version>1.2.1</version>
+    <version>1.2.2</version>
 </dependency>
 ```
-### OR the gradle dependency
+### Or the gradle dependency
 ```
-compile 'com.j2html:j2html:1.2.1'
+compile 'com.j2html:j2html:1.2.2'
 ```
 
 ### Import TagCreator and start building HTML

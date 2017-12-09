@@ -1,0 +1,28 @@
+#macro(mainLayout)
+<html>
+    <head>
+        <title>Title</title>
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        <main id="main" class="content">
+            $!bodyContent
+        </main>
+    </body>
+</html>
+#end
+
+#@mainLayout()
+    <div>
+        <h1>Example content</h1>
+        #someMacro(1)
+        #someMacro(2)
+        #someMacro(3)
+    </div>
+#end
+
+#macro(someMacro $callNumber)
+    <div>
+        Macro call $callNumber
+    </div>
+#end
