@@ -4,6 +4,7 @@ import j2html.attributes.Attr;
 import j2html.attributes.Attribute;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public abstract class Tag<T extends Tag<T>> extends DomContent {
     protected String tagName;
@@ -76,6 +77,28 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
      */
     public T attr(String attribute, Object value) {
         setAttribute(attribute, value == null ? null : String.valueOf(value));
+        return (T) this;
+    }
+    
+    /**
+     * Adds the specified attribute. If the Tag previously contained an attribute with the same name, the old attribute is replaced by the specified attribute.
+     *
+     * @param attribute the attribute
+     * @return itself for easy chaining
+     */
+    public T attr(Attribute attribute) {
+        Iterator<Attribute> iterator = attributes.iterator();
+        String name = attribute.getName();
+        if (name != null) {
+            // name == null is allowed, but those Attributes are not rendered. So we add them anyway.
+            while (iterator.hasNext()) {
+                Attribute existingAttribute = iterator.next();
+                if (existingAttribute.getName().equals(name)) {
+                    iterator.remove();
+                }
+            }
+        }
+        attributes.add(attribute);
         return (T) this;
     }
 
