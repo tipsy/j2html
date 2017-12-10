@@ -1,7 +1,5 @@
 package j2html.tags;
 
-import j2html.Config;
-import org.junit.Test;
 import static j2html.TagCreator.body;
 import static j2html.TagCreator.div;
 import static j2html.TagCreator.footer;
@@ -15,6 +13,9 @@ import static j2html.TagCreator.p;
 import static j2html.TagCreator.tag;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import j2html.Config;
+import j2html.model.DynamicHrefAttribute;
+import org.junit.Test;
 
 public class TagTest {
 
@@ -92,5 +93,16 @@ public class TagTest {
         assertThat(testTagAttrWithoutAttr.render(), is("<a attribute></a>"));
     }
 
+    @Test
+    public void testDynamicAttribute() throws Exception {
+        ContainerTag testTagWithAttrValueNull = new ContainerTag("a").attr(new DynamicHrefAttribute());
+        assertThat(testTagWithAttrValueNull.render(), is("<a href=\"/\"></a>"));
+    }
+    
+    @Test
+    public void testDynamicAttributeReplacement() throws Exception {
+        ContainerTag testTagWithAttrValueNull = new ContainerTag("a").attr("href", "/link").attr(new DynamicHrefAttribute());
+        assertThat(testTagWithAttrValueNull.render(), is("<a href=\"/\"></a>"));
+    }
 
 }
