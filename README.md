@@ -37,8 +37,8 @@ public class Main {
 The above Java will result in the following HTML:
 ```html
 <body>
-    <h1 class="example">Heading!</h1>
-    <img src="img/hello.png">
+    <h1>Hello, World!</h1>
+    <img src="/img/hello.png">
 </body>
 ```
 
