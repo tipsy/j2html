@@ -93,6 +93,9 @@
                     <source>1.8</source>
                     <target>1.8</target>
                     <optimize>true</optimize>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>

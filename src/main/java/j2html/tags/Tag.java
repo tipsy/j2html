@@ -2,6 +2,7 @@ package j2html.tags;
 
 import j2html.attributes.Attr;
 import j2html.attributes.Attribute;
+import j2html.attributes.LambdaAttribute;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -79,7 +80,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         setAttribute(attribute, value == null ? null : String.valueOf(value));
         return (T) this;
     }
-    
+
     /**
      * Adds the specified attribute. If the Tag previously contained an attribute with the same name, the old attribute is replaced by the specified attribute.
      *
@@ -134,11 +135,6 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return ((Tag) obj).render().equals(this.render());
     }
 
-    /**
-     * Convenience methods that call attr with predefined attributes
-     *
-     * @return itself for easy chaining
-     */
     public T withClasses(String... classes) {
         StringBuilder sb = new StringBuilder();
         for (String s : classes) {
@@ -146,6 +142,19 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         }
         return attr(Attr.CLASS, sb.toString().trim());
     }
+
+    public T withAttrs(LambdaAttribute... lambdaAttributes) {
+        for (LambdaAttribute attr : lambdaAttributes) {
+            attr(attr.name(), attr.value());
+        }
+        return (T) this;
+    }
+
+    /**
+     * Convenience methods that call attr with predefined attributes
+     *
+     * @return itself for easy chaining
+     */
 
     public T isAutoComplete() {
         return attr(Attr.AUTOCOMPLETE, null);
