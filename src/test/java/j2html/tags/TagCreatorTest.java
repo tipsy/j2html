@@ -3,6 +3,7 @@ package j2html.tags;
 import j2html.Config;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -35,6 +36,17 @@ public class TagCreatorTest {
             p("Test"),
             iff(1 == 1, a("Test").withHref("#")),
             iff(1 == 2, a("Tast").withHref("#"))
+        ).render();
+        assertThat(actual, is(expected));
+    }
+    
+    @Test
+    public void testIffOptional() {
+        String expected = "<div><p>Test</p><a href=\"#1\">Test</a></div>";
+        String actual = div(
+            p("Test"),
+            iff(Optional.of(1), i -> a("Test").withHref("#" + i)),
+            iff(Optional.empty(), i -> a("Tast").withHref("#2"))
         ).render();
         assertThat(actual, is(expected));
     }
