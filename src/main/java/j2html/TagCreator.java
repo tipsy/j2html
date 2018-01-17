@@ -10,6 +10,8 @@ import j2html.tags.Text;
 import j2html.tags.UnescapedText;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -29,6 +31,23 @@ public class TagCreator {
      */
     public static <T> T iff(boolean condition, T ifValue) {
         return condition ? ifValue : null;
+    }
+    
+    /**
+     * Generic if-expression to if'ing inside method calls
+     *
+     * @param optional   The item that may be present
+     * @param ifFunction The function that will be called if that optional is present
+     * @param <T>        The derived generic parameter type
+     * @param <U>        The supplying generic parameter type
+     * @return transformed value if condition is true, null otherwise
+     */
+    @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
+    public static <T, U> T iff(Optional<U> optional, Function<U, T> ifFunction) {
+        if (Objects.nonNull(optional) && optional.isPresent()) {
+            return optional.map(ifFunction).orElse(null);
+        }
+        return null;
     }
 
     /**
