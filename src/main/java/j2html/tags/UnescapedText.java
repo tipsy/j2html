@@ -4,20 +4,19 @@ import java.io.IOException;
 
 public class UnescapedText extends DomContent {
 
-    private String text;
+  private String text;
 
-    public UnescapedText(String text) {
-        this.text = text;
-    }
+  public UnescapedText(String text) {
+    this.text = text;
+  }
 
-    @Override
-    public void render(Appendable writer) throws IOException {
-        renderModel(writer, null);
-    }
+  @Override
+  public void render(Appendable writer) throws IOException {
+    renderModel(writer, null);
+  }
 
-    @Override
-    public void renderModel(Appendable writer, Object model) throws IOException {
-        writer.append(text);
-    }
-
+  @Override
+  public void renderModel(Appendable writer, Object model) throws IOException {
+    writer.append(text);
+  }
 }
