@@ -1,4 +1,3 @@
 package j2html.tags;
 
-public abstract class DomContent implements Renderable {
-}
+public abstract class DomContent implements Renderable {}

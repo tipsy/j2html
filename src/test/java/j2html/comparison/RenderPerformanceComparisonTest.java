@@ -9,26 +9,30 @@ import org.junit.Test;
 import org.junit.rules.TestRule;
 
 @Ignore
-@BenchmarkOptions(callgc = false, benchmarkRounds = 20_000, warmupRounds = 200, concurrency = 2, clock = Clock.NANO_TIME)
+@BenchmarkOptions(
+  callgc = false,
+  benchmarkRounds = 20_000,
+  warmupRounds = 200,
+  concurrency = 2,
+  clock = Clock.NANO_TIME
+)
 public class RenderPerformanceComparisonTest {
 
-    @Rule
-    public TestRule benchmarkRun = new BenchmarkRule();
+  @Rule public TestRule benchmarkRun = new BenchmarkRule();
 
-    @Test
-    public void j2htmlPerformance() throws Exception {
-        TestJ2html.helloWorld();
-        TestJ2html.fiveHundredEmployees();
-        TestJ2html.macros();
-        TestJ2html.multiplicationTable();
-    }
+  @Test
+  public void j2htmlPerformance() throws Exception {
+    TestJ2html.helloWorld();
+    TestJ2html.fiveHundredEmployees();
+    TestJ2html.macros();
+    TestJ2html.multiplicationTable();
+  }
 
-    @Test
-    public void velocityPerformance() throws Exception {
-        TestVelocity.helloWorld();
-        TestVelocity.fiveHundredEmployees();
-        TestVelocity.macros();
-        TestVelocity.multiplicationTable();
-    }
-
+  @Test
+  public void velocityPerformance() throws Exception {
+    TestVelocity.helloWorld();
+    TestVelocity.fiveHundredEmployees();
+    TestVelocity.macros();
+    TestVelocity.multiplicationTable();
+  }
 }
