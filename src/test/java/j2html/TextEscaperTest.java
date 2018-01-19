@@ -12,16 +12,13 @@ public class TextEscaperTest {
     @Test
     public void testTextEscaper() throws Exception {
         String expected = "&lt;div&gt;&lt;/div&gt;";
-        assertThat("default text escaper works",
-            Config.textEscaper.escape("<div></div>"), is(expected));
+        assertThat("default text escaper works", Config.textEscaper.escape("<div></div>"), is(expected));
 
         Config.textEscaper = new NoOpEscaper();
-        assertThat("user can change text escaper implementation",
-            Config.textEscaper, is(instanceOf(NoOpEscaper.class)));
+        assertThat("user can change text escaper implementation", Config.textEscaper, is(instanceOf(NoOpEscaper.class)));
 
         expected = "<div></div>";
-        assertThat("user provided text escaper actually works",
-            Config.textEscaper.escape("<div></div>"), is(expected));
+        assertThat("user provided text escaper actually works", Config.textEscaper.escape("<div></div>"), is(expected));
         Config.textEscaper = EscapeUtil::escape; // reset escaper
     }
 

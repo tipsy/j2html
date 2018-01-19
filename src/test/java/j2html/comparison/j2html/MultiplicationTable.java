@@ -6,14 +6,6 @@ import static j2html.TagCreator.*;
 
 public class MultiplicationTable {
 
-    public static ContainerTag tag = table(
-        tbody(
-            each(ComparisonData.tableNumbers, i -> tr(
-                each(ComparisonData.tableNumbers, j -> td(
-                    String.valueOf(i * j)
-                ))
-            ))
-        )
-    );
+    public static ContainerTag tag = table(tbody(each(ComparisonData.tableNumbers, i -> tr(each(ComparisonData.tableNumbers, j -> td(String.valueOf(i * j)))))));
 
 }

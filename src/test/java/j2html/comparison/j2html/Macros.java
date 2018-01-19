@@ -14,33 +14,14 @@ import static j2html.TagCreator.title;
 
 public class Macros {
 
-    public static ContainerTag tag = mainLayout(
-        div(
-            h1("Example content"),
-            someMacro(1),
-            someMacro(2),
-            someMacro(3)
-        )
-    );
+    public static ContainerTag tag = mainLayout(div(h1("Example content"), someMacro(1), someMacro(2), someMacro(3)));
 
     private static ContainerTag mainLayout(DomContent content) {
-        return html(
-            head(
-                title("Title"),
-                link().withRel("stylesheet").withHref("/css/main.css")
-            ),
-            body(
-                main(attrs("#main.content"),
-                    content
-                )
-            )
-        );
+        return html(head(title("Title"), link().withRel("stylesheet").withHref("/css/main.css")), body(main(attrs("#main.content"), content)));
     }
 
     private static ContainerTag someMacro(int i) {
-        return div(
-            "Macro call " + i
-        );
+        return div("Macro call " + i);
     }
 
 }

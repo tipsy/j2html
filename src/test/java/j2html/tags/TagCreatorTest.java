@@ -18,7 +18,6 @@ public class TagCreatorTest {
 
     List<Employee> employees = Arrays.asList(new Employee(1, "Name 1", "Title 1"), new Employee(2, "Name 2", "Title 2"), new Employee(3, "Name 3", "Title 3"));
 
-
     @Test
     public void testDocument() throws Exception {
         Config.closeEmptyTags = true;
@@ -32,22 +31,14 @@ public class TagCreatorTest {
     @Test
     public void testIff() throws Exception {
         String expected = "<div><p>Test</p><a href=\"#\">Test</a></div>";
-        String actual = div(
-            p("Test"),
-            iff(1 == 1, a("Test").withHref("#")),
-            iff(1 == 2, a("Tast").withHref("#"))
-        ).render();
+        String actual = div(p("Test"), iff(1 == 1, a("Test").withHref("#")), iff(1 == 2, a("Tast").withHref("#"))).render();
         assertThat(actual, is(expected));
     }
-    
+
     @Test
     public void testIffOptional() {
         String expected = "<div><p>Test</p><a href=\"#1\">Test</a></div>";
-        String actual = div(
-            p("Test"),
-            iff(Optional.of(1), i -> a("Test").withHref("#" + i)),
-            iff(Optional.empty(), i -> a("Tast").withHref("#2"))
-        ).render();
+        String actual = div(p("Test"), iff(Optional.of(1), i -> a("Test").withHref("#" + i)), iff(Optional.empty(), i -> a("Tast").withHref("#2"))).render();
         assertThat(actual, is(expected));
     }
 
@@ -68,20 +59,9 @@ public class TagCreatorTest {
     @Test
     @Ignore // Having some trouble with RetroLambda setup
     public void testEach() throws Exception {
-        String j2htmlMap = ul().with(
-            li("Begin list"),
-            each(employees, employee -> li(
-                h2(employee.name),
-                p(employee.title)
-            ))
-        ).render();
-        String javaMap = ul().with(
-            li("Begin list"),
-            rawHtml(employees.stream().map(employee -> li(
-                h2(employee.name),
-                p(employee.title)
-            )).map(DomContent::render).collect(Collectors.joining()))
-        ).render();
+        String j2htmlMap = ul().with(li("Begin list"), each(employees, employee -> li(h2(employee.name), p(employee.title)))).render();
+        String javaMap = ul().with(li("Begin list"), rawHtml(employees.stream().map(employee -> li(h2(employee.name), p(employee.title))).map(DomContent::render).collect(Collectors.joining())))
+                .render();
         assertThat(j2htmlMap.equals(javaMap), is(true));
         assertThat(j2htmlMap, is("<ul><li>Begin list</li><li><h2>Name 1</h2><p>Title 1</p></li><li><h2>Name 2</h2><p>Title 2</p></li><li><h2>Name 3</h2><p>Title 3</p></li></ul>"));
     }
@@ -89,20 +69,11 @@ public class TagCreatorTest {
     @Test
     @Ignore // Having some trouble with RetroLambda setup
     public void testFilter() throws Exception {
-        String j2htmlFilter = ul().with(
-            li("Begin list"),
-            each(filter(employees, e -> e.id % 2 == 1), employee -> li(
-                h2(employee.name),
-                p(employee.title)
-            ))
-        ).render();
-        String javaFilter = ul().with(
-            li("Begin list"),
-            rawHtml(employees.stream().filter(e -> e.id % 2 == 1).map(employee -> li(
-                h2(employee.name),
-                p(employee.title)
-            )).map(DomContent::render).collect(Collectors.joining()))
-        ).render();
+        String j2htmlFilter = ul().with(li("Begin list"), each(filter(employees, e -> e.id % 2 == 1), employee -> li(h2(employee.name), p(employee.title)))).render();
+        String javaFilter = ul()
+                .with(li("Begin list"),
+                        rawHtml(employees.stream().filter(e -> e.id % 2 == 1).map(employee -> li(h2(employee.name), p(employee.title))).map(DomContent::render).collect(Collectors.joining())))
+                .render();
         assertThat(j2htmlFilter.equals(javaFilter), is(true));
         assertThat(j2htmlFilter, is("<ul><li>Begin list</li><li><h2>Name 1</h2><p>Title 1</p></li><li><h2>Name 3</h2><p>Title 3</p></li></ul>"));
     }
@@ -110,14 +81,14 @@ public class TagCreatorTest {
     @Test
     public void testAllTags() throws Exception {
 
-        //Special Tags
+        // Special Tags
         assertThat(tag("tagname").render(), is("<tagname></tagname>"));
         assertThat(emptyTag("tagname").render(), is("<tagname>"));
         assertThat(text("text").render(), is("text"));
         assertThat(text("<script> and \"</script>\"").render(), is("&lt;script&gt; and &quot;&lt;/script&gt;&quot;"));
         assertThat(rawHtml("<script>").render(), is("<script>"));
 
-        //EmptyTags
+        // EmptyTags
         assertThat(document().render(), is("<!DOCTYPE html>"));
         assertThat(area().render(), is("<area>"));
         assertThat(base().render(), is("<base>"));
@@ -135,7 +106,7 @@ public class TagCreatorTest {
         assertThat(track().render(), is("<track>"));
         assertThat(wbr().render(), is("<wbr>"));
 
-        //ContainerTags
+        // ContainerTags
         assertThat(a().render(), is("<a></a>"));
         assertThat(a("Text").render(), is("<a>Text</a>"));
         assertThat(abbr().render(), is("<abbr></abbr>"));

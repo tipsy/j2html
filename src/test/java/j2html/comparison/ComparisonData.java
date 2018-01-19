@@ -14,4 +14,3 @@ public class ComparisonData {
     public static List<Integer> tableNumbers = IntStream.range(1, 51).boxed().collect(Collectors.toList());
 
 }
-

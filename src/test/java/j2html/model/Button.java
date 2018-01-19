@@ -12,16 +12,7 @@ public class Button extends Template<PageModel> {
 
     public Button() {
         // @formatter:off
-        template =
-                div()
-                .withClass("button")
-                .with(
-                        div()
-                        .withClass("button-text")
-                        .with(
-                                new ButtonText()
-                        )
-                );
+        template = div().withClass("button").with(div().withClass("button-text").with(new ButtonText()));
         // @formatter:on
     }
 
