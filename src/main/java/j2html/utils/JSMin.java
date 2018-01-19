@@ -1,42 +1,42 @@
 package j2html.utils;
 
-    /*
-     * JSMin.java 2006-02-13
-     *
-     * Copyright (c) 2006 John Reilly (www.inconspicuous.org)
-     *
-     * This work is a translation from C to Java of jsmin.c published by
-     * Douglas Crockford.  Permission is hereby granted to use the Java
-     * version under the same conditions as the jsmin.c on which it is
-     * based.
-     *
-     *
-     *
-     *
-     * jsmin.c 2003-04-21
-     *
-     * Copyright (c) 2002 Douglas Crockford (www.crockford.com)
-     *
-     * Permission is hereby granted, free of charge, to any person obtaining a copy
-     * of this software and associated documentation files (the "Software"), to deal
-     * in the Software without restriction, including without limitation the rights
-     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     * copies of the Software, and to permit persons to whom the Software is
-     * furnished to do so, subject to the following conditions:
-     *
-     * The above copyright notice and this permission notice shall be included in
-     * all copies or substantial portions of the Software.
-     *
-     * The Software shall be used for Good, not Evil.
-     *
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-     * SOFTWARE.
-     */
+/*
+ * JSMin.java 2006-02-13
+ *
+ * Copyright (c) 2006 John Reilly (www.inconspicuous.org)
+ *
+ * This work is a translation from C to Java of jsmin.c published by
+ * Douglas Crockford. Permission is hereby granted to use the Java
+ * version under the same conditions as the jsmin.c on which it is
+ * based.
+ *
+ *
+ *
+ *
+ * jsmin.c 2003-04-21
+ *
+ * Copyright (c) 2002 Douglas Crockford (www.crockford.com)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * The Software shall be used for Good, not Evil.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -84,13 +84,7 @@ public class JSMin {
      * underscore, dollar sign, or non-ASCII character.
      */
     private static boolean isAlphanum(int c) {
-        return ((c >= 'a' && c <= 'z') ||
-            (c >= '0' && c <= '9') ||
-            (c >= 'A' && c <= 'Z') ||
-            c == '_' ||
-            c == '$' ||
-            c == '\\' ||
-            c > 126);
+        return ((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || c == '_' || c == '$' || c == '\\' || c > 126);
     }
 
     /**
@@ -112,7 +106,6 @@ public class JSMin {
         return ' ';
     }
 
-
     /**
      * Get the next character without getting it.
      */
@@ -131,7 +124,7 @@ public class JSMin {
         if (c == '/') {
             switch (peek()) {
                 case '/':
-                    for (; ; ) {
+                    for (;;) {
                         c = get();
                         if (c <= '\n') {
                             return c;
@@ -140,7 +133,7 @@ public class JSMin {
 
                 case '*':
                     get();
-                    for (; ; ) {
+                    for (;;) {
                         switch (get()) {
                             case '*':
                                 if (peek() == '/') {
@@ -169,8 +162,7 @@ public class JSMin {
      * preceded by ( or , or =.
      */
 
-    private void action(int d) throws IOException, UnterminatedRegExpLiteralException,
-        UnterminatedCommentException, UnterminatedStringLiteralException {
+    private void action(int d) throws IOException, UnterminatedRegExpLiteralException, UnterminatedCommentException, UnterminatedStringLiteralException {
         switch (d) {
             case 1:
                 out.write(theA);
@@ -178,7 +170,7 @@ public class JSMin {
                 theA = theB;
 
                 if (theA == '\'' || theA == '"') {
-                    for (; ; ) {
+                    for (;;) {
                         out.write(theA);
                         theA = get();
                         if (theA == theB) {
@@ -199,7 +191,7 @@ public class JSMin {
                 if (theB == '/' && (theA == '(' || theA == ',' || theA == '=')) {
                     out.write(theA);
                     out.write(theB);
-                    for (; ; ) {
+                    for (;;) {
                         theA = get();
                         if (theA == '/') {
                             break;

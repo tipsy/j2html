@@ -24,22 +24,22 @@ public class TagCreator {
     /**
      * Generic if-expression to do if'ing inside method calls
      *
-     * @param <T>       The derived generic parameter type
+     * @param <T> The derived generic parameter type
      * @param condition the condition to if-on
-     * @param ifValue   the value to return if condition is true
+     * @param ifValue the value to return if condition is true
      * @return value if condition is true, null otherwise
      */
     public static <T> T iff(boolean condition, T ifValue) {
         return condition ? ifValue : null;
     }
-    
+
     /**
      * Generic if-expression to if'ing inside method calls
      *
-     * @param optional   The item that may be present
+     * @param optional The item that may be present
      * @param ifFunction The function that will be called if that optional is present
-     * @param <T>        The derived generic parameter type
-     * @param <U>        The supplying generic parameter type
+     * @param <T> The derived generic parameter type
+     * @param <U> The supplying generic parameter type
      * @return transformed value if condition is true, null otherwise
      */
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
@@ -84,9 +84,9 @@ public class TagCreator {
      * Creates a DomContent object containing HTML using a mapping function on a collection
      * Intended usage: {@literal each(numbers, n -> li(n.toString()))}
      *
-     * @param <T>        The derived generic parameter type
+     * @param <T> The derived generic parameter type
      * @param collection the collection to iterate over, ex: a list of values "1, 2, 3"
-     * @param mapper     the mapping function, ex: {@literal "n -> li(n.toString())"}
+     * @param mapper the mapping function, ex: {@literal "n -> li(n.toString())"}
      * @return rawHtml containing mapped data {@literal (ex. docs: <li>1</li><li>2</li><li>3</li>)}
      */
     public static <T> DomContent each(Collection<T> collection, Function<? super T, DomContent> mapper) {
@@ -97,9 +97,9 @@ public class TagCreator {
      * Filters a collection to a list, to be used with {@link j2html.TagCreator#each}
      * Intended usage: {@literal each(filter(numbers, n -> n % 2 == 0), n -> li(n.toString()))}
      *
-     * @param <T>        The derived generic parameter type
+     * @param <T> The derived generic parameter type
      * @param collection the collection to filter, ex: a list of values "1, 2, 3"
-     * @param filter     the filter predicate, {@literal ex: "n -> n % 2 == 0"}
+     * @param filter the filter predicate, {@literal ex: "n -> n % 2 == 0"}
      * @return the filtered collection as a list (ex. docs: 2)
      */
     public static <T> List<T> filter(Collection<T> collection, Predicate<? super T> filter) {
@@ -139,7 +139,7 @@ public class TagCreator {
         throw new IllegalArgumentException("Only HTML-tag can follow document declaration");
     }
 
-    //Special tags
+    // Special tags
     public static ContainerTag tag(String tagName) {
         return new ContainerTag(tagName);
     }

@@ -19,9 +19,7 @@ public class TestVelocity {
 
     private static String render(String templatePath, Map<String, Object> model) {
         StringWriter stringWriter = new StringWriter();
-        velocityEngine.getTemplate(templatePath, StandardCharsets.UTF_8.name()).merge(
-            new VelocityContext(model), stringWriter
-        );
+        velocityEngine.getTemplate(templatePath, StandardCharsets.UTF_8.name()).merge(new VelocityContext(model), stringWriter);
         return stringWriter.toString();
     }
 

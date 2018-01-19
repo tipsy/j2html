@@ -35,74 +35,38 @@ public class RenderPerformanceTest {
     public RenderPerformanceTest() {
         this.template =
                 // @formatter:off
-                html(
-                     head(
-                          title(new BrowserTitle())
-                     ),
-                     body(
-                          h1(new TextTemplate()),
-                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
-                          h2(attrs("#title.visible-small"),new TextTemplate()),
-                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
-                          h2(new TextTemplate()),
-                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
-                          h2(attrs("#title.visible-small"),new TextTemplate()),
-                          new Button(),
-                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
-                          h2(new TextTemplate()),
-                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
-                          h1(new TextTemplate()),
-                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
-                          h2(new TextTemplate()),
-                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
-                          h2(new TextTemplate()),
-                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
-                          h2(new TextTemplate()),
-                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
-                          h2(new TextTemplate()),
-                          div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate())))))))))))))))))))))))))))
-                     )
-                );
+                html(head(title(new BrowserTitle())), body(h1(new TextTemplate()),
+                        div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
+                        h2(attrs("#title.visible-small"), new TextTemplate()),
+                        div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))), h2(new TextTemplate()),
+                        div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))),
+                        h2(attrs("#title.visible-small"), new TextTemplate()), new Button(),
+                        div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))), h2(new TextTemplate()),
+                        div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))), h1(new TextTemplate()),
+                        div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))), h2(new TextTemplate()),
+                        div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))), h2(new TextTemplate()),
+                        div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))), h2(new TextTemplate()),
+                        div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate()))))))))))))))))))))))))))), h2(new TextTemplate()),
+                        div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(new TextTemplate())))))))))))))))))))))))))))));
         // @formatter:on
     }
 
     private DomContent getDomContent(PageModel pageModel) throws Exception {
         return
         // @formatter:off
-        html(
-             head(
-                  title(pageModel.getTitle())
-             ),
-             body(
-               h1(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(attrs("#title.visible-small"), pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(attrs("#title.visible-small"),pageModel.getText()),
-               div()
-               .withClass("button")
-               .with(
-                       div()
-                       .withClass("button-text")
-                       .withText(pageModel.getButtonModel().getText())
-               ),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h1(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
-               h2(pageModel.getText()),
-               div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText())))))))))))))))))))))))))))
-             )
-        );
+        html(head(title(pageModel.getTitle())), body(h1(pageModel.getText()),
+                div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
+                h2(attrs("#title.visible-small"), pageModel.getText()),
+                div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))), h2(pageModel.getText()),
+                div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))),
+                h2(attrs("#title.visible-small"), pageModel.getText()), div().withClass("button").with(div().withClass("button-text").withText(pageModel.getButtonModel().getText())),
+                div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))), h2(pageModel.getText()),
+                div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))), h1(pageModel.getText()),
+                div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))), h2(pageModel.getText()),
+                div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))), h2(pageModel.getText()),
+                div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))), h2(pageModel.getText()),
+                div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText()))))))))))))))))))))))))))), h2(pageModel.getText()),
+                div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(div(p(pageModel.getText())))))))))))))))))))))))))))));
 
         // @formatter:on
     }

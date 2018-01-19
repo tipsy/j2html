@@ -52,7 +52,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     /**
      * Sets an attribute on an element
      *
-     * @param name  the attribute
+     * @param name the attribute
      * @param value the attribute value
      */
     boolean setAttribute(String name, String value) {
@@ -72,16 +72,17 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
      * Sets a custom attribute
      *
      * @param attribute the attribute name
-     * @param value     the attribute value
+     * @param value the attribute value
      * @return itself for easy chaining
      */
     public T attr(String attribute, Object value) {
         setAttribute(attribute, value == null ? null : String.valueOf(value));
         return (T) this;
     }
-    
+
     /**
-     * Adds the specified attribute. If the Tag previously contained an attribute with the same name, the old attribute is replaced by the specified attribute.
+     * Adds the specified attribute. If the Tag previously contained an attribute with the same name,
+     * the old attribute is replaced by the specified attribute.
      *
      * @param attribute the attribute
      * @return itself for easy chaining
@@ -119,7 +120,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
      *
      * @param condition the condition
      * @param attribute the attribute name
-     * @param value     the attribute value
+     * @param value the attribute value
      * @return itself for easy chaining
      */
     public T condAttr(boolean condition, String attribute, String value) {

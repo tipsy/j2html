@@ -69,10 +69,7 @@ public class TagTest {
 
     @Test
     public void testAcceptObjectValueAttribute() throws Exception {
-        ContainerTag complexTestTag = new ContainerTag("input")
-            .attr("attr1", "value1")
-            .attr("attr2", 2)
-            .attr("attr3", null);
+        ContainerTag complexTestTag = new ContainerTag("input").attr("attr1", "value1").attr("attr2", 2).attr("attr3", null);
         String expectedResult = "<input attr1=\"value1\" attr2=\"2\" attr3>";
         assertThat(complexTestTag.renderOpenTag(), is(expectedResult));
     }
@@ -98,7 +95,7 @@ public class TagTest {
         ContainerTag testTagWithAttrValueNull = new ContainerTag("a").attr(new DynamicHrefAttribute());
         assertThat(testTagWithAttrValueNull.render(), is("<a href=\"/\"></a>"));
     }
-    
+
     @Test
     public void testDynamicAttributeReplacement() throws Exception {
         ContainerTag testTagWithAttrValueNull = new ContainerTag("a").attr("href", "/link").attr(new DynamicHrefAttribute());

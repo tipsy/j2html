@@ -12,16 +12,6 @@ import static j2html.TagCreator.title;
 
 public class HelloWorld {
 
-    public static ContainerTag tag = html(
-        head(
-            title("Title"),
-            link().withRel("stylesheet").withHref("/css/main.css")
-        ),
-        body(
-            main(attrs("#main.content"),
-                h1("Heading!")
-            )
-        )
-    );
+    public static ContainerTag tag = html(head(title("Title"), link().withRel("stylesheet").withHref("/css/main.css")), body(main(attrs("#main.content"), h1("Heading!"))));
 
 }

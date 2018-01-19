@@ -39,7 +39,6 @@ public class Config {
      */
     public static Indenter indenter = (level, text) -> String.join("", Collections.nCopies(level, FOUR_SPACES)) + text;
 
-
     /**
      * Change this to configure enable/disable closing empty tags
      * The default is to NOT close them
