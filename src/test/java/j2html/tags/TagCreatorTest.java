@@ -81,8 +81,8 @@ public class TagCreatorTest {
                 p(employee.title)
             )).map(DomContent::render).collect(Collectors.joining()))
         ).render();
-        assertThat(j2htmlMap.equals(javaMap), is(true));
         assertThat(j2htmlMap, is("<ul><li>Begin list</li><li><h2>Name 1</h2><p>Title 1</p></li><li><h2>Name 2</h2><p>Title 2</p></li><li><h2>Name 3</h2><p>Title 3</p></li></ul>"));
+        assertThat(j2htmlMap.equals(javaMap), is(true));
     }
 
     @Test
@@ -101,8 +101,8 @@ public class TagCreatorTest {
                 p(employee.title)
             )).map(DomContent::render).collect(Collectors.joining()))
         ).render();
-        assertThat(j2htmlFilter.equals(javaFilter), is(true));
         assertThat(j2htmlFilter, is("<ul><li>Begin list</li><li><h2>Name 1</h2><p>Title 1</p></li><li><h2>Name 3</h2><p>Title 3</p></li></ul>"));
+        assertThat(j2htmlFilter.equals(javaFilter), is(true));
     }
 
     @Test
