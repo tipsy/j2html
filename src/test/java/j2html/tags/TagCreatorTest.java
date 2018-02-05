@@ -66,7 +66,6 @@ public class TagCreatorTest {
     }
 
     @Test
-    @Ignore // Having some trouble with RetroLambda setup
     public void testEach() throws Exception {
         String j2htmlMap = ul().with(
             li("Begin list"),
@@ -87,7 +86,6 @@ public class TagCreatorTest {
     }
 
     @Test
-    @Ignore // Having some trouble with RetroLambda setup
     public void testFilter() throws Exception {
         String j2htmlFilter = ul().with(
             li("Begin list"),
