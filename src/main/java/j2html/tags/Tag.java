@@ -79,7 +79,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         setAttribute(attribute, value == null ? null : String.valueOf(value));
         return (T) this;
     }
-    
+
     /**
      * Adds the specified attribute. If the Tag previously contained an attribute with the same name, the old attribute is replaced by the specified attribute.
      *
