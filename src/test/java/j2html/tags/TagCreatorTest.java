@@ -2,9 +2,12 @@ package j2html.tags;
 
 import j2html.Config;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import static j2html.TagCreator.*;
@@ -18,6 +21,14 @@ public class TagCreatorTest {
 
     List<Employee> employees = Arrays.asList(new Employee(1, "Name 1", "Title 1"), new Employee(2, "Name 2", "Title 2"), new Employee(3, "Name 3", "Title 3"));
 
+    Map<Integer, Employee> employeeMap = new HashMap<>();
+
+    @Before
+    public void setUp() {
+        employeeMap.put(1, new Employee(1, "Name 1", "Title 1"));
+        employeeMap.put(2, new Employee(2, "Name 2", "Title 2"));
+        employeeMap.put(3, new Employee(3, "Name 3", "Title 3"));
+    }
 
     @Test
     public void testDocument() throws Exception {
@@ -90,6 +101,16 @@ public class TagCreatorTest {
         ).render();
         assertThat(j2htmlMap, is("<ul><li>Begin list</li><li><h2>Name 1</h2><p>Title 1</p></li><li><h2>Name 2</h2><p>Title 2</p></li><li><h2>Name 3</h2><p>Title 3</p></li></ul>"));
         assertThat(j2htmlMap.equals(javaMap), is(true));
+    }
+
+    @Test
+    public void testEachWithMap() {
+         final String j2htmlMap = ul().with(
+                 li("Begin list"),
+                each(employeeMap, entry -> li(entry.getKey() + "-" + entry.getValue().name))
+        ).render();
+
+        assertThat(j2htmlMap, is("<ul><li>Begin list</li><li>1-Name 1</li><li>2-Name 2</li><li>3-Name 3</li></ul>"));
     }
 
     @Test
