@@ -9,6 +9,8 @@ public class DomContentJoiner {
                 sb.append(((String) o).trim()).append(delimiter);
             } else if (o instanceof DomContent) {
                 sb.append(((DomContent) o).render().trim()).append(delimiter);
+            } else if (o == null) {
+                //Discard null objects so iff/iffelse can be used with join
             } else {
                 throw new RuntimeException("You can only join DomContent and String objects");
             }
