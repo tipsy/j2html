@@ -10,6 +10,8 @@ import j2html.tags.Text;
 import j2html.tags.UnescapedText;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
@@ -91,6 +93,10 @@ public class TagCreator {
      */
     public static <T> DomContent each(Collection<T> collection, Function<? super T, DomContent> mapper) {
         return rawHtml(collection.stream().map(mapper.andThen(DomContent::render)).collect(Collectors.joining()));
+    }
+
+    public static <I, T> DomContent each(final Map<I, T> map, final Function<Entry<I, T>, DomContent> mapper) {
+        return rawHtml(map.entrySet().stream().map(mapper.andThen(DomContent::render)).collect(Collectors.joining()));
     }
 
     /**
