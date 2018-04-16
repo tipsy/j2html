@@ -66,6 +66,13 @@ public class TagCreatorTest {
     }
 
     @Test
+    public void testJoinWithNulls() throws Exception {
+        String expected = "This is my joined string. It has ignored null content in the middle.";
+        String actual = join("This is my joined string.", iff(false, "this should not be displayed"), "It has ignored null content in the middle.").render();
+        assertThat(actual, is(expected));
+    }
+
+    @Test
     public void testEach() throws Exception {
         String j2htmlMap = ul().with(
             li("Begin list"),
