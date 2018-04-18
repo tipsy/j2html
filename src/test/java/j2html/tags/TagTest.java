@@ -1,8 +1,13 @@
 package j2html.tags;
 
+import j2html.Config;
+import j2html.model.DynamicHrefAttribute;
+import org.junit.Test;
+import static j2html.TagCreator.a;
 import static j2html.TagCreator.body;
 import static j2html.TagCreator.div;
 import static j2html.TagCreator.footer;
+import static j2html.TagCreator.form;
 import static j2html.TagCreator.header;
 import static j2html.TagCreator.html;
 import static j2html.TagCreator.iff;
@@ -13,9 +18,6 @@ import static j2html.TagCreator.p;
 import static j2html.TagCreator.tag;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import j2html.Config;
-import j2html.model.DynamicHrefAttribute;
-import org.junit.Test;
 
 public class TagTest {
 
@@ -98,11 +100,24 @@ public class TagTest {
         ContainerTag testTagWithAttrValueNull = new ContainerTag("a").attr(new DynamicHrefAttribute());
         assertThat(testTagWithAttrValueNull.render(), is("<a href=\"/\"></a>"));
     }
-    
+
     @Test
     public void testDynamicAttributeReplacement() throws Exception {
         ContainerTag testTagWithAttrValueNull = new ContainerTag("a").attr("href", "/link").attr(new DynamicHrefAttribute());
         assertThat(testTagWithAttrValueNull.render(), is("<a href=\"/\"></a>"));
+    }
+
+    @Test
+    public void testParameterNameReflectionAttributes() throws Exception {
+        String expectedAnchor = "<a href=\"http://example.com\">example.com</a>";
+        String actualAnchor = a("example.com").withAttrs(href -> "http://example.com").render();
+        assertThat(actualAnchor, is(expectedAnchor));
+        String expectedForm = "<form method=\"post\" action=\"/form-path\"><input name=\"email\" type=\"email\"><input name=\"password\" type=\"password\"></form>";
+        String actualForm = form().withAttrs(method -> "post", action -> "/form-path").with(
+            input().withAttrs(name -> "email", type -> "email"),
+            input().withAttrs(name -> "password", type -> "password")
+        ).render();
+        assertThat(actualForm, is(expectedForm));
     }
 
 }
