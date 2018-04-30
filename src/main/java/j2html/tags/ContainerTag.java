@@ -137,6 +137,9 @@ public class ContainerTag extends Tag<ContainerTag> {
     private String renderFormatted(int lvl) throws IOException {
         StringBuilder sb = new StringBuilder();
         renderOpenTag(sb, null);
+        if ("pre".equals(tagName) || "textarea".equals(tagName)) {
+            return this.render() + "\n";
+        }
         sb.append("\n");
         if (!children.isEmpty()) {
             for (DomContent c : children) {

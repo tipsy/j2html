@@ -34,7 +34,7 @@ public class TagCreator {
     public static <T> T iff(boolean condition, T ifValue) {
         return condition ? ifValue : null;
     }
-    
+
     /**
      * Generic if-expression to if'ing inside method calls
      *
@@ -89,10 +89,10 @@ public class TagCreator {
      * @param <T>        The derived generic parameter type
      * @param collection the collection to iterate over, ex: a list of values "1, 2, 3"
      * @param mapper     the mapping function, ex: {@literal "n -> li(n.toString())"}
-     * @return rawHtml containing mapped data {@literal (ex. docs: <li>1</li><li>2</li><li>3</li>)}
+     * @return DomContent containing mapped data {@literal (ex. docs: [li(1), li(2), li(3)])}
      */
     public static <T> DomContent each(Collection<T> collection, Function<? super T, DomContent> mapper) {
-        return rawHtml(collection.stream().map(mapper.andThen(DomContent::render)).collect(Collectors.joining()));
+        return tag(null).with(collection.stream().map(mapper).collect(Collectors.toList()));
     }
 
     public static <I, T> DomContent each(final Map<I, T> map, final Function<Entry<I, T>, DomContent> mapper) {

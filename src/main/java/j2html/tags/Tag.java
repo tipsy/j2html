@@ -32,6 +32,9 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     }
 
     void renderOpenTag(Appendable writer, Object model) throws IOException {
+        if (tagName == null || tagName.equals("")) { // avoid <null> and <> tags
+            return;
+        }
         writer.append("<").append(tagName);
         for (Attribute attribute : attributes) {
             attribute.renderModel(writer, model);
@@ -40,6 +43,9 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     }
 
     void renderCloseTag(Appendable writer) throws IOException {
+        if (tagName == null || tagName.equals("")) {
+            return;
+        }
         writer.append("</");
         writer.append(tagName);
         writer.append(">");
