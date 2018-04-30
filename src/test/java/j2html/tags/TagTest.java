@@ -1,21 +1,12 @@
 package j2html.tags;
 
-import static j2html.TagCreator.body;
-import static j2html.TagCreator.div;
-import static j2html.TagCreator.footer;
-import static j2html.TagCreator.header;
-import static j2html.TagCreator.html;
-import static j2html.TagCreator.iff;
-import static j2html.TagCreator.img;
-import static j2html.TagCreator.input;
-import static j2html.TagCreator.main;
-import static j2html.TagCreator.p;
-import static j2html.TagCreator.tag;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 import j2html.Config;
 import j2html.model.DynamicHrefAttribute;
 import org.junit.Test;
+
+import static j2html.TagCreator.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
 public class TagTest {
 
@@ -58,6 +49,12 @@ public class TagTest {
     @Test
     public void testFormattedTags() throws Exception { // better test in ComplexRenderTest.java
         assertThat(div(p("Hello")).renderFormatted(), is("<div>\n    <p>\n        Hello\n    </p>\n</div>\n"));
+    }
+
+    @Test
+    public void testFormattedTextArea() {
+        assertThat(textarea("fred\ntom").renderFormatted(), is("<textarea>\nfred\ntom\n</textarea>\n"));
+        assertThat(div(textarea("fred\ntom")).renderFormatted(), is("<div>\n    <textarea>\nfred\ntom\n    </textarea>\n</div>\n"));
     }
 
     @Test

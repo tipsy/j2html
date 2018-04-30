@@ -143,6 +143,8 @@ public class ContainerTag extends Tag<ContainerTag> {
                 lvl++;
                 if (c instanceof ContainerTag) {
                     sb.append(Config.indenter.indent(lvl, ((ContainerTag) c).renderFormatted(lvl)));
+                } else if ("textarea".equals(tagName)) {
+                    sb.append(Config.indenter.indent(0, c.render())).append("\n");
                 } else {
                     sb.append(Config.indenter.indent(lvl, c.render())).append("\n");
                 }
