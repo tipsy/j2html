@@ -63,12 +63,6 @@ public class TagTest {
     }
 
     @Test
-    public void testFormattedTextArea() {
-        assertThat(textarea("fred\ntom").renderFormatted(), is("<textarea>\nfred\ntom\n</textarea>\n"));
-        assertThat(div(textarea("fred\ntom")).renderFormatted(), is("<div>\n    <textarea>\nfred\ntom\n    </textarea>\n</div>\n"));
-    }
-
-    @Test
     public void testEquals() throws Exception {
         Tag tagOne = tag("p").withClass("class").withText("Test");
         Tag tagTwo = p("Test").withClass("class");

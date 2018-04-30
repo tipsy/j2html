@@ -19,6 +19,10 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return this.tagName;
     }
 
+    protected boolean hasTagName() {
+        return tagName != null && !tagName.isEmpty();
+    }
+
     String renderOpenTag() throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
         renderOpenTag(stringBuilder, null);
@@ -32,6 +36,9 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     }
 
     void renderOpenTag(Appendable writer, Object model) throws IOException {
+        if (!hasTagName()) { // avoid <null> and <> tags
+            return;
+        }
         writer.append("<").append(tagName);
         for (Attribute attribute : attributes) {
             attribute.renderModel(writer, model);
@@ -40,6 +47,9 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
     }
 
     void renderCloseTag(Appendable writer) throws IOException {
+        if (!hasTagName()) { // avoid <null> and <> tags
+            return;
+        }
         writer.append("</");
         writer.append(tagName);
         writer.append(">");

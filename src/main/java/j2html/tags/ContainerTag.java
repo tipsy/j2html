@@ -137,24 +137,38 @@ public class ContainerTag extends Tag<ContainerTag> {
     private String renderFormatted(int lvl) throws IOException {
         StringBuilder sb = new StringBuilder();
         renderOpenTag(sb, null);
-        sb.append("\n");
+        if (hasTagName() && !isSelfFormattingTag()) {
+            sb.append("\n");
+        }
         if (!children.isEmpty()) {
             for (DomContent c : children) {
                 lvl++;
                 if (c instanceof ContainerTag) {
-                    sb.append(Config.indenter.indent(lvl, ((ContainerTag) c).renderFormatted(lvl)));
-                } else if ("textarea".equals(tagName)) {
-                    sb.append(Config.indenter.indent(0, c.render())).append("\n");
+                    if (((ContainerTag) c).hasTagName()) {
+                        sb.append(Config.indenter.indent(lvl, ((ContainerTag) c).renderFormatted(lvl)));
+                    } else {
+                        sb.append(Config.indenter.indent(lvl - 1, ((ContainerTag) c).renderFormatted(lvl - 1)));
+                    }
+                } else if (isSelfFormattingTag()) {
+                    sb.append(Config.indenter.indent(0, c.render()));
                 } else {
                     sb.append(Config.indenter.indent(lvl, c.render())).append("\n");
                 }
                 lvl--;
             }
         }
-        sb.append(Config.indenter.indent(lvl, ""));
+        if (!isSelfFormattingTag()) {
+            sb.append(Config.indenter.indent(lvl, ""));
+        }
         renderCloseTag(sb);
-        sb.append("\n");
+        if (hasTagName()) {
+            sb.append("\n");
+        }
         return sb.toString();
+    }
+
+    private boolean isSelfFormattingTag() {
+        return "textarea".equals(tagName) || "pre".equals(tagName);
     }
 
     @Override
