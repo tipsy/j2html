@@ -114,6 +114,16 @@ public class TagCreatorTest {
     }
 
     @Test
+    public void testEachWithMapAndBiFunction() {
+        final String j2htmlMap = ul().with(
+            li("Begin list"),
+            each(employeeMap, (id, employee) -> li(id + "-" + employee.name))
+        ).render();
+
+        assertThat(j2htmlMap, is("<ul><li>Begin list</li><li>1-Name 1</li><li>2-Name 2</li><li>3-Name 3</li></ul>"));
+    }
+
+    @Test
     public void testFilter() throws Exception {
         String j2htmlFilter = ul().with(
             li("Begin list"),
