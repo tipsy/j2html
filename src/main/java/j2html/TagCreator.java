@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -97,6 +98,20 @@ public class TagCreator {
 
     public static <I, T> DomContent each(final Map<I, T> map, final Function<Entry<I, T>, DomContent> mapper) {
         return rawHtml(map.entrySet().stream().map(mapper.andThen(DomContent::render)).collect(Collectors.joining()));
+    }
+
+    /**
+     * Creates a DomContent object containing HTML using a mapping function on a map
+     * Intended usage: {@literal each(idsToNames, (id, name) -> li(id + " " + name))}
+     *
+     * @param <I>        The type of the keys
+     * @param <T>        The type of the values
+     * @param map        the map to iterate over, ex: a map of values { 1: "Tom", 2: "Dick", 3: "Harry" }
+     * @param mapper     the mapping function, ex: {@literal "(id, name) -> li(id + " " + name)"}
+     * @return DomContent containing mapped data {@literal (ex. docs: [li(1 Tom), li(2 Dick), li(3 Harry)])}
+     */
+    public static <I, T> DomContent each(final Map<I, T> map, final BiFunction<I, T, DomContent> mapper) {
+        return rawHtml(map.entrySet().stream().map(entry -> mapper.andThen(DomContent::render).apply(entry.getKey(), entry.getValue())).collect(Collectors.joining()));
     }
 
     /**
