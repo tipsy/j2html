@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContainerTag extends Tag<ContainerTag> {
+public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
 
     private List<DomContent> children;
 
@@ -21,15 +21,15 @@ public class ContainerTag extends Tag<ContainerTag> {
      * @param child DomContent-object to be appended
      * @return itself for easy chaining
      */
-    public ContainerTag with(DomContent child) {
+    public T with(DomContent child) {
         if (this == child) {
             throw new RuntimeException("Cannot append a tag to itself.");
         }
         if (child == null) {
-            return this; // in some cases, like when using iff(), we ignore null children
+            return (T) this; // in some cases, like when using iff(), we ignore null children
         }
         children.add(child);
-        return this;
+        return (T) this;
     }
 
 
@@ -41,8 +41,8 @@ public class ContainerTag extends Tag<ContainerTag> {
      * @param child     DomContent-object to be appended if condition met
      * @return itself for easy chaining
      */
-    public ContainerTag condWith(boolean condition, DomContent child) {
-        return condition ? this.with(child) : this;
+    public T condWith(boolean condition, DomContent child) {
+        return condition ? this.with(child) : (T) this;
     }
 
 
@@ -52,13 +52,13 @@ public class ContainerTag extends Tag<ContainerTag> {
      * @param children DomContent-objects to be appended
      * @return itself for easy chaining
      */
-    public ContainerTag with(Iterable<? extends DomContent> children) {
+    public T with(Iterable<? extends DomContent> children) {
         if (children != null) {
             for (DomContent child : children) {
                 this.with(child);
             }
         }
-        return this;
+        return (T) this;
     }
 
 
@@ -70,8 +70,8 @@ public class ContainerTag extends Tag<ContainerTag> {
      * @param children  DomContent-objects to be appended if condition met
      * @return itself for easy chaining
      */
-    public ContainerTag condWith(boolean condition, Iterable<? extends DomContent> children) {
-        return condition ? this.with(children) : this;
+    public T condWith(boolean condition, Iterable<? extends DomContent> children) {
+        return condition ? this.with(children) : (T) this;
     }
 
 
@@ -81,11 +81,11 @@ public class ContainerTag extends Tag<ContainerTag> {
      * @param children DomContent-objects to be appended
      * @return itself for easy chaining
      */
-    public ContainerTag with(DomContent... children) {
+    public T with(DomContent... children) {
         for (DomContent child : children) {
             with(child);
         }
-        return this;
+        return (T) this;
     }
 
 
@@ -97,8 +97,8 @@ public class ContainerTag extends Tag<ContainerTag> {
      * @param children  DomContent-objects to be appended if condition met
      * @return itself for easy chaining
      */
-    public ContainerTag condWith(boolean condition, DomContent... children) {
-        return condition ? this.with(children) : this;
+    public T condWith(boolean condition, DomContent... children) {
+        return condition ? this.with(children) : (T) this;
     }
 
 
@@ -108,7 +108,7 @@ public class ContainerTag extends Tag<ContainerTag> {
      * @param text the text to be appended
      * @return itself for easy chaining
      */
-    public ContainerTag withText(String text) {
+    public T withText(String text) {
         return with(new Text(text));
     }
 

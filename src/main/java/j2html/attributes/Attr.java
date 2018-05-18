@@ -140,6 +140,7 @@ public class Attr {
     public static final String READONLY = "readonly";
     public static final String REL = "rel";
     public static final String REQUIRED = "required";
+    public static final String REV = "rev";
     public static final String REVERSED = "reversed";
     public static final String ROLE = "role";
     public static final String ROWS = "rows";
