@@ -4,6 +4,7 @@ import j2html.Config;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class ContainerTag extends Tag<ContainerTag> {
 
@@ -85,6 +86,18 @@ public class ContainerTag extends Tag<ContainerTag> {
         for (DomContent child : children) {
             with(child);
         }
+        return this;
+    }
+
+
+    /**
+     * Appends the DomContent-objects in the stream to the end of this element
+     *
+     * @param children Stream of DomContent-objects to be appended
+     * @return itself for easy chaining
+     */
+    public ContainerTag with(Stream<DomContent> children) {
+        children.forEach(this::with);
         return this;
     }
 

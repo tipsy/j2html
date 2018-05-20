@@ -18,6 +18,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TagCreator {
 
@@ -84,6 +85,17 @@ public class TagCreator {
     }
 
     /**
+     * Creates a DomContent object containing HTML elements from a stream.
+     * Intended usage: {@literal each(numbers.stream().map(n -> li(n.toString())))}
+     *
+     * @param stream the stream of DomContent elements
+     * @return DomContent containing elements from the stream
+     */
+    public static DomContent each(Stream<DomContent> stream) {
+        return new ContainerTag(null).with(stream);
+    }
+
+    /**
      * Creates a DomContent object containing HTML using a mapping function on a collection
      * Intended usage: {@literal each(numbers, n -> li(n.toString()))}
      *
@@ -93,7 +105,7 @@ public class TagCreator {
      * @return DomContent containing mapped data {@literal (ex. docs: [li(1), li(2), li(3)])}
      */
     public static <T> DomContent each(Collection<T> collection, Function<? super T, DomContent> mapper) {
-        return tag(null).with(collection.stream().map(mapper).collect(Collectors.toList()));
+        return tag(null).with(collection.stream().map(mapper));
     }
 
     public static <I, T> DomContent each(final Map<I, T> map, final Function<Entry<I, T>, DomContent> mapper) {

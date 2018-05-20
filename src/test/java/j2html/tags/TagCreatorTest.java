@@ -144,6 +144,16 @@ public class TagCreatorTest {
     }
 
     @Test
+    public void testEachWithStream() throws Exception {
+        final String j2htmlMap = ul().with(
+            li("Begin list"),
+            each(employeeMap.entrySet().stream().map(e -> li(e.getKey() + "-" + e.getValue().name)))
+        ).render();
+
+        assertThat(j2htmlMap, is("<ul><li>Begin list</li><li>1-Name 1</li><li>2-Name 2</li><li>3-Name 3</li></ul>"));
+    }
+
+    @Test
     public void testAllTags() throws Exception {
 
         //Special Tags
