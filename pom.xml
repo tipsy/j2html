@@ -158,6 +158,20 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>com.j2html</groupId>
+                <artifactId>j2html-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <id>generate-tags</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate-tags</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
