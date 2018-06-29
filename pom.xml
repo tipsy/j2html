@@ -165,7 +165,6 @@
                 <executions>
                     <execution>
                         <id>generate-tags</id>
-                        <phase>generate-sources</phase>
                         <goals>
                             <goal>generate-tags</goal>
                         </goals>
