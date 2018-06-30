@@ -12,6 +12,7 @@
             "attrs": [
                 { "name": "autoplay", "empty": true }, "controls", "height", "loop", "muted", "poster", "preload", "src", "width"
             ]
-        }
+        },
+        "abbr"
     ]
 }
