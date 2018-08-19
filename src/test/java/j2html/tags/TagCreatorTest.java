@@ -50,6 +50,17 @@ public class TagCreatorTest {
         ).render();
         assertThat(actual, is(expected));
     }
+
+    @Test
+    public void testIffSupplier() throws Exception {
+        String expected = "<div><p>Test</p><a href=\"#\">Test</a></div>";
+        String actual = div(
+            p("Test"),
+            iff(1 == 1, () -> a("Test").withHref("#")),
+            iff(1 == 2, () -> a("Tast").withHref("#"))
+        ).render();
+        assertThat(actual, is(expected));
+    }
     
     @Test
     public void testIffOptional() {
@@ -66,6 +77,16 @@ public class TagCreatorTest {
     public void testIffElse() throws Exception {
         String expected = "<div><p>Tast</p></div>";
         String actual = div(iffElse(1 == 2, p("Test"), p("Tast"))).render();
+        assertThat(actual, is(expected));
+    }
+
+    @Test
+    public void testIffElseSupplier() throws Exception {
+        String expected = "<div><p>Test</p><p>Tast</p></div>";
+        String actual = div(
+            iffElse(1 == 1, () -> p("Test"), () -> p("Tast")),
+            iffElse(1 == 2, () -> p("Test"), () -> p("Tast"))
+        ).render();
         assertThat(actual, is(expected));
     }
 

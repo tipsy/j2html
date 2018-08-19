@@ -17,6 +17,7 @@ import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -35,6 +36,18 @@ public class TagCreator {
      */
     public static <T> T iff(boolean condition, T ifValue) {
         return condition ? ifValue : null;
+    }
+
+     /**
+     * Generic if-expression to do if'ing inside method calls
+     *
+     * @param <T>        The derived generic parameter type
+     * @param condition  the condition to if-on
+     * @param ifSupplier the supplier to return a value from if condition is true
+     * @return value if condition is true, null otherwise
+     */
+    public static <T> T iff(boolean condition, Supplier<T> ifSupplier) {
+        return condition ? ifSupplier.get() : null;
     }
 
     /**
@@ -59,6 +72,14 @@ public class TagCreator {
      */
     public static <T> T iffElse(boolean condition, T ifValue, T elseValue) {
         return condition ? ifValue : elseValue;
+    }
+
+    /**
+     * Like {@link j2html.TagCreator#iff}, but returns else-value instead of null
+     */
+    public static <T> T iffElse(boolean condition, Supplier<T> ifSupplier,
+        Supplier<T> elseSupplier) {
+        return condition ? ifSupplier.get() : elseSupplier.get();
     }
 
     /**
