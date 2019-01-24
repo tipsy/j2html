@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import static j2html.TagCreator.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -50,7 +49,7 @@ public class TagCreatorTest {
         ).render();
         assertThat(actual, is(expected));
     }
-    
+
     @Test
     public void testIffOptional() {
         String expected = "<div><p>Test</p><a href=\"#1\">Test</a></div>";
@@ -105,9 +104,9 @@ public class TagCreatorTest {
 
     @Test
     public void testEachWithMap() {
-         final String j2htmlMap = ul().with(
-                 li("Begin list"),
-                each(employeeMap, entry -> li(entry.getKey() + "-" + entry.getValue().name))
+        final String j2htmlMap = ul().with(
+            li("Begin list"),
+            each(employeeMap, entry -> li(entry.getKey() + "-" + entry.getValue().name))
         ).render();
 
         assertThat(j2htmlMap, is("<ul><li>Begin list</li><li>1-Name 1</li><li>2-Name 2</li><li>3-Name 3</li></ul>"));

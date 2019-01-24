@@ -47,6 +47,16 @@ import java.io.PushbackInputStream;
 
 public class JSMin {
 
+    private static final int EOF = -1;
+    private PushbackInputStream in;
+    private OutputStream out;
+    private int theA;
+    private int theB;
+    private JSMin(InputStream in, OutputStream out) {
+        this.in = new PushbackInputStream(in);
+        this.out = out;
+    }
+
     /**
      * Compress a JS-string
      *
@@ -64,19 +74,6 @@ public class JSMin {
             e.printStackTrace();
             return "";
         }
-    }
-
-    private static final int EOF = -1;
-
-    private PushbackInputStream in;
-    private OutputStream out;
-
-    private int theA;
-    private int theB;
-
-    private JSMin(InputStream in, OutputStream out) {
-        this.in = new PushbackInputStream(in);
-        this.out = out;
     }
 
     /**

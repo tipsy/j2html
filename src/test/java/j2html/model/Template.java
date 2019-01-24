@@ -1,8 +1,7 @@
 package j2html.model;
 
-import java.io.IOException;
-
 import j2html.tags.DomContent;
+import java.io.IOException;
 
 public abstract class Template<T> extends DomContent {
 

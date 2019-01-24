@@ -65,13 +65,11 @@ import java.util.regex.PatternSyntaxException;
 
 public class CSSMin {
 
-    private CSSMin() {
-    }
-
     private static final Logger LOG = Logger.getLogger(CSSMin.class.getName());
-
     static boolean debugLogging = false;
 
+    private CSSMin() {
+    }
 
     /**
      * Minify supplied CSS.

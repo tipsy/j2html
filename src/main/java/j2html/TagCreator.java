@@ -116,10 +116,10 @@ public class TagCreator {
      * Creates a DomContent object containing HTML using a mapping function on a map
      * Intended usage: {@literal each(idsToNames, (id, name) -> li(id + " " + name))}
      *
-     * @param <I>        The type of the keys
-     * @param <T>        The type of the values
-     * @param map        the map to iterate over, ex: a map of values { 1: "Tom", 2: "Dick", 3: "Harry" }
-     * @param mapper     the mapping function, ex: {@literal "(id, name) -> li(id + " " + name)"}
+     * @param <I>    The type of the keys
+     * @param <T>    The type of the values
+     * @param map    the map to iterate over, ex: a map of values { 1: "Tom", 2: "Dick", 3: "Harry" }
+     * @param mapper the mapping function, ex: {@literal "(id, name) -> li(id + " " + name)"}
      * @return DomContent containing mapped data {@literal (ex. docs: [li(1 Tom), li(2 Dick), li(3 Harry)])}
      */
     public static <I, T> DomContent each(final Map<I, T> map, final BiFunction<I, T, DomContent> mapper) {

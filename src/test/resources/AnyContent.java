@@ -1,1 +1,2 @@
-public class AnyContent{}
+public class AnyContent {
+}

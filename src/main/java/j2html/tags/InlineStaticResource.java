@@ -10,8 +10,6 @@ import static j2html.TagCreator.style;
 
 public class InlineStaticResource {
 
-    public enum TargetFormat {CSS_MIN, CSS, JS_MIN, JS}
-
     public static ContainerTag get(String path, TargetFormat format) {
         String fileString = getFileAsString(path);
         switch (format) {
@@ -44,6 +42,8 @@ public class InlineStaticResource {
         Scanner s = new Scanner(inputStream).useDelimiter("\\A");
         return s.hasNext() ? s.next() : "";
     }
+
+    public enum TargetFormat {CSS_MIN, CSS, JS_MIN, JS}
 
 }
 

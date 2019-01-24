@@ -19,7 +19,7 @@ public class InlineStaticResourceTest {
         String expectedJs = "<script>(function(){var test=5;var tast=10;var testTast=test+tast;console.log(testTast);})();</script>";
         String expectedHtml = "<body>" + EOL + "    Any content" + EOL + "</body>" + EOL;
         String expectedEscapedHtml = "&lt;body&gt;" + EOL + "    Any content" + EOL + "&lt;/body&gt;" + EOL;
-        String expectedAnyContent = "public class AnyContent{}" + EOL;
+        String expectedAnyContent = "public class AnyContent {" + EOL + "}" + EOL;
 
         // classpath files
         assertThat(styleWithInlineFile_min("/test.css").render(), is(expectedCss));

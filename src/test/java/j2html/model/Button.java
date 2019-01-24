@@ -1,10 +1,8 @@
 package j2html.model;
 
-import static j2html.TagCreator.div;
-
-import java.io.IOException;
-
 import j2html.tags.ContainerTag;
+import java.io.IOException;
+import static j2html.TagCreator.div;
 
 public class Button extends Template<PageModel> {
 

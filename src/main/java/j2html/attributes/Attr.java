@@ -4,62 +4,6 @@ import j2html.tags.Tag;
 
 public class Attr {
 
-    public static class ShortForm {
-        String id;
-        String classes;
-
-        private ShortForm(String id, String classes) {
-            this.id = id;
-            this.classes = classes;
-        }
-
-        boolean hasId() {
-            return id != null && !"".equals(id);
-        }
-
-        boolean hasClasses() {
-            return classes != null && !"".equals(classes);
-        }
-    }
-
-    public static ShortForm shortFormFromAttrsString(String attrs) {
-        if (!attrs.contains(".") && !attrs.contains(("#"))) {
-            throw new IllegalArgumentException("String must contain either id (#) or class (.)");
-        }
-        if (attrs.split("#").length > 2) {
-            throw new IllegalArgumentException("Only one id (#) allowed");
-        }
-        String id = "";
-        StringBuilder classes = new StringBuilder();
-        for (String attr : attrs.split("\\.")) {
-            if (attr.contains("#")) {
-                if (!attr.startsWith("#")) {
-                    throw new IllegalArgumentException("# cannot be in the middle of string");
-                }
-                id = attr.replace("#", "");
-            } else {
-                classes.append(attr).append(" ");
-            }
-        }
-        return new ShortForm(id.trim(), classes.toString().trim());
-    }
-
-    public static <T extends Tag<T>> T addTo(T tag, ShortForm shortForm) {
-        if (shortForm.hasId() && shortForm.hasClasses()) {
-            return tag.withId(shortForm.id).withClass(shortForm.classes);
-        }
-        if (shortForm.hasId()) {
-            return tag.withId(shortForm.id);
-        }
-        if (shortForm.hasClasses()) {
-            return tag.withClass(shortForm.classes);
-        }
-        return tag;
-    }
-
-    private Attr() {
-    }
-
     public static final String ACCEPT = "accept";
     public static final String ACCEPT_CHARSET = "accept-charset";
     public static final String ACCESSKEY = "accesskey";
@@ -170,5 +114,60 @@ public class Attr {
     public static final String VALUE = "value";
     public static final String WIDTH = "width";
     public static final String WRAP = "wrap";
+    private Attr() {
+    }
+
+    public static ShortForm shortFormFromAttrsString(String attrs) {
+        if (!attrs.contains(".") && !attrs.contains(("#"))) {
+            throw new IllegalArgumentException("String must contain either id (#) or class (.)");
+        }
+        if (attrs.split("#").length > 2) {
+            throw new IllegalArgumentException("Only one id (#) allowed");
+        }
+        String id = "";
+        StringBuilder classes = new StringBuilder();
+        for (String attr : attrs.split("\\.")) {
+            if (attr.contains("#")) {
+                if (!attr.startsWith("#")) {
+                    throw new IllegalArgumentException("# cannot be in the middle of string");
+                }
+                id = attr.replace("#", "");
+            } else {
+                classes.append(attr).append(" ");
+            }
+        }
+        return new ShortForm(id.trim(), classes.toString().trim());
+    }
+
+    public static <T extends Tag<T>> T addTo(T tag, ShortForm shortForm) {
+        if (shortForm.hasId() && shortForm.hasClasses()) {
+            return tag.withId(shortForm.id).withClass(shortForm.classes);
+        }
+        if (shortForm.hasId()) {
+            return tag.withId(shortForm.id);
+        }
+        if (shortForm.hasClasses()) {
+            return tag.withClass(shortForm.classes);
+        }
+        return tag;
+    }
+
+    public static class ShortForm {
+        String id;
+        String classes;
+
+        private ShortForm(String id, String classes) {
+            this.id = id;
+            this.classes = classes;
+        }
+
+        boolean hasId() {
+            return id != null && !"".equals(id);
+        }
+
+        boolean hasClasses() {
+            return classes != null && !"".equals(classes);
+        }
+    }
 
 }

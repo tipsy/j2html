@@ -1,9 +1,6 @@
 package j2html.tags;
 
 import org.junit.Test;
-
-import java.util.Arrays;
-
 import static j2html.TagCreator.div;
 import static j2html.TagCreator.each;
 import static j2html.TagCreator.li;
