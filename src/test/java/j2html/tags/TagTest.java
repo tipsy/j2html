@@ -2,6 +2,7 @@ package j2html.tags;
 
 import j2html.Config;
 import j2html.model.DynamicHrefAttribute;
+import java.io.File;
 import java.io.FileWriter;
 import org.junit.Test;
 import static j2html.TagCreator.body;
@@ -111,6 +112,7 @@ public class TagTest {
         FileWriter fileWriter = new FileWriter("file.txt");
         div("Test").render(fileWriter);
         fileWriter.close();
+        new File("file.txt").delete();
     }
 
 }
