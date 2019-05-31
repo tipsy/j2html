@@ -2,7 +2,7 @@ package j2html.attributes;
 
 import j2html.tags.Tag;
 
-public class Attr {
+public abstract class Attr {
 
     public static final String ACCEPT = "accept";
     public static final String ACCEPT_CHARSET = "accept-charset";
@@ -139,20 +139,15 @@ public class Attr {
         return new ShortForm(id.trim(), classes.toString().trim());
     }
 
-    public static <T extends Tag<T>> T addTo(T tag, ShortForm shortForm) {
-        if (shortForm.hasId() && shortForm.hasClasses()) {
-            return tag.withId(shortForm.id).withClass(shortForm.classes);
-        }
-        if (shortForm.hasId()) {
-            return tag.withId(shortForm.id);
-        }
-        if (shortForm.hasClasses()) {
-            return tag.withClass(shortForm.classes);
-        }
+    public static <T extends Tag<T>> T addTo(T tag, Attr attr) {
+        if (null != attr)
+            attr.addTo(tag);
         return tag;
     }
 
-    public static class ShortForm {
+    public abstract <T extends Tag<T>> T addTo(T tag);
+
+    public static class ShortForm extends Attr {
         String id;
         String classes;
 
@@ -168,6 +163,19 @@ public class Attr {
         boolean hasClasses() {
             return classes != null && !"".equals(classes);
         }
-    }
 
+        @Override
+        public <T extends Tag<T>> T addTo(T tag) {
+            if (hasId() && hasClasses()) {
+                return tag.withId(id).withClass(classes);
+            }
+            if (hasId()) {
+                return tag.withId(id);
+            }
+            if (hasClasses()) {
+                return tag.withClass(classes);
+            }
+            return tag;
+        }
+    }
 }
