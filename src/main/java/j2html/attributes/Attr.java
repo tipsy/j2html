@@ -114,8 +114,6 @@ public abstract class Attr {
     public static final String VALUE = "value";
     public static final String WIDTH = "width";
     public static final String WRAP = "wrap";
-    private Attr() {
-    }
 
     public static ShortForm shortFormFromAttrsString(String attrs) {
         if (!attrs.contains(".") && !attrs.contains(("#"))) {
