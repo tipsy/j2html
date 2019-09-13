@@ -6,6 +6,7 @@ import static j2html.TagCreator.each;
 import static j2html.TagCreator.li;
 import static j2html.TagCreator.p;
 import static j2html.TagCreator.pre;
+import static j2html.TagCreator.span;
 import static j2html.TagCreator.textarea;
 import static j2html.TagCreator.ul;
 import static java.util.Arrays.asList;
@@ -27,6 +28,17 @@ public class RenderFormattedTest {
             "    <pre>public void renderModel(Appendable writer, Object model) throws IOException {\n" +
             "        writer.append(text);\n" +
             "    }</pre>\n" +
+            "</div>\n"));
+    }
+
+    @Test
+    public void testFormattedTags_doesntFormatPreChildren() throws Exception {
+        assertThat(div(pre("public void renderModel(Appendable writer, Object model) throws IOException {\n" +
+            "        writer.append(text);\n" +
+            "    }").with(span("Test"))).renderFormatted(), is("<div>\n" +
+            "    <pre>public void renderModel(Appendable writer, Object model) throws IOException {\n" +
+            "        writer.append(text);\n" +
+            "    }<span>Test</span></pre>\n" +
             "</div>\n"));
     }
 
