@@ -253,6 +253,10 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return attr(Attr.STYLE, style);
     }
 
+    public T withStep(String step) {
+        return attr(Attr.STEP, step);
+    }
+
     public T withValue(String value) {
         return attr(Attr.VALUE, value);
     }

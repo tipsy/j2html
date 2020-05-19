@@ -36,6 +36,7 @@ public class ConvenienceMethodTest {
         assertThat(link().withRel("stylesheet").render(), is("<link rel=\"stylesheet\">"));
         assertThat(link().withRole("role").render(), is("<link role=\"role\">"));
         assertThat(img().withSrc("/img/test.png").render(), is("<img src=\"/img/test.png\">"));
+        assertThat(input().withStep("0.1").render(), is("<input step=\"0.1\">"));
         assertThat(div().withStyle("background:red;").render(), is("<div style=\"background:red;\"></div>"));
         assertThat(input().withValue("test-value").render(), is("<input value=\"test-value\">"));
     }
