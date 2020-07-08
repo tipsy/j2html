@@ -2011,28 +2011,28 @@ public class TagCreator {
         return Attr.addTo(new ContainerTag("samp").with(dc), shortAttr);
     }
 
+    public static ContainerTag script(Attr.ShortForm shortAttr) {
+        return Attr.addTo(script(), shortAttr);
+    }
+
     public static ContainerTag script() {
         return new ContainerTag("script");
     }
 
+    public static ContainerTag script(Attr.ShortForm shortAttr, String text) {
+        return Attr.addTo(script(text), shortAttr);
+    }
+
     public static ContainerTag script(String text) {
-        return new ContainerTag("script").withText(text);
+        return new ContainerTag("script").with(new UnescapedText(text));
+    }
+
+    public static ContainerTag script(Attr.ShortForm shortAttr, DomContent... dc) {
+        return Attr.addTo(script(dc), shortAttr);
     }
 
     public static ContainerTag script(DomContent... dc) {
         return new ContainerTag("script").with(dc);
-    }
-
-    public static ContainerTag script(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("script"), shortAttr);
-    }
-
-    public static ContainerTag script(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("script").withText(text), shortAttr);
-    }
-
-    public static ContainerTag script(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("script").with(dc), shortAttr);
     }
 
     public static ContainerTag section() {

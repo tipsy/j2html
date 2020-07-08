@@ -317,4 +317,11 @@ public class TagCreatorTest {
         assertThat(video().render(), is("<video></video>"));
     }
 
+    @Test
+    public void testScriptWithText() {
+        String expected = "<script>var test = 'Hello, world!';</script>";
+        String actual = script("var test = 'Hello, world!';").render();
+        assertEquals(expected, actual);
+    }
+
 }
