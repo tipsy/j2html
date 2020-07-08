@@ -2011,20 +2011,12 @@ public class TagCreator {
         return Attr.addTo(new ContainerTag("samp").with(dc), shortAttr);
     }
 
-    public static ContainerTag script(Attr.ShortForm shortAttr) {
-        return Attr.addTo(script(), shortAttr);
-    }
-
-    public static ContainerTag script() {
-        return new ContainerTag("script");
-    }
-
     public static ContainerTag script(Attr.ShortForm shortAttr, String text) {
         return Attr.addTo(script(text), shortAttr);
     }
 
     public static ContainerTag script(String text) {
-        return new ContainerTag("script").with(new UnescapedText(text));
+        return script().with(new UnescapedText(text));
     }
 
     public static ContainerTag script(Attr.ShortForm shortAttr, DomContent... dc) {
@@ -2032,7 +2024,15 @@ public class TagCreator {
     }
 
     public static ContainerTag script(DomContent... dc) {
-        return new ContainerTag("script").with(dc);
+        return script().with(dc);
+    }
+
+    public static ContainerTag script(Attr.ShortForm shortAttr) {
+        return Attr.addTo(script(), shortAttr);
+    }
+
+    public static ContainerTag script() {
+        return new ContainerTag("script");
     }
 
     public static ContainerTag section() {
@@ -2155,28 +2155,28 @@ public class TagCreator {
         return Attr.addTo(new ContainerTag("strong").with(dc), shortAttr);
     }
 
-    public static ContainerTag style() {
-        return new ContainerTag("style");
+    public static ContainerTag style(Attr.ShortForm shortAttr, String text) {
+        return Attr.addTo(style(text), shortAttr);
     }
 
     public static ContainerTag style(String text) {
-        return new ContainerTag("style").withText(text);
-    }
-
-    public static ContainerTag style(DomContent... dc) {
-        return new ContainerTag("style").with(dc);
-    }
-
-    public static ContainerTag style(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("style"), shortAttr);
-    }
-
-    public static ContainerTag style(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("style").withText(text), shortAttr);
+        return style().with(new UnescapedText(text));
     }
 
     public static ContainerTag style(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("style").with(dc), shortAttr);
+        return Attr.addTo(style(dc), shortAttr);
+    }
+
+    public static ContainerTag style(DomContent... dc) {
+        return style().with(dc);
+    }
+
+    public static ContainerTag style(Attr.ShortForm shortAttr) {
+        return Attr.addTo(style(), shortAttr);
+    }
+
+    public static ContainerTag style() {
+        return new ContainerTag("style");
     }
 
     public static ContainerTag sub() {

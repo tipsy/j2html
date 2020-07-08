@@ -324,4 +324,11 @@ public class TagCreatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testStyleWithText() {
+        String expected = "<style>.test>a {}</style>";
+        String actual = style(".test>a {}").render();
+        assertEquals(expected, actual);
+    }
+
 }
