@@ -37,7 +37,7 @@ public class Attribute implements Renderable {
     }
 
     public void setValue(String value) {
-        this.value = value;
+        this.value = Config.textEscaper.escape(value);
     }
 
     public String getValue()
