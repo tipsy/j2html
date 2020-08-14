@@ -2,6 +2,8 @@ package j2html.comparison.j2html;
 
 import j2html.tags.ContainerTag;
 import j2html.tags.DomContent;
+import j2html.tags.specialized.HtmlTag;
+
 import static j2html.TagCreator.attrs;
 import static j2html.TagCreator.body;
 import static j2html.TagCreator.div;
@@ -14,7 +16,7 @@ import static j2html.TagCreator.title;
 
 public class Macros {
 
-    public static ContainerTag tag = mainLayout(
+    public static HtmlTag tag = mainLayout(
         div(
             h1("Example content"),
             someMacro(1),
@@ -23,7 +25,7 @@ public class Macros {
         )
     );
 
-    private static ContainerTag mainLayout(DomContent content) {
+    private static HtmlTag mainLayout(DomContent content) {
         return html(
             head(
                 title("Title"),

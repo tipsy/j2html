@@ -8,6 +8,10 @@ import j2html.tags.EmptyTag;
 import j2html.tags.InlineStaticResource;
 import j2html.tags.Text;
 import j2html.tags.UnescapedText;
+import j2html.tags.specialized.BodyTag;
+import j2html.tags.specialized.HeadTag;
+import j2html.tags.specialized.HtmlTag;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -165,11 +169,8 @@ public class TagCreator {
      * @param htmlTag the html content of a website
      * @return document declaration and rendered html content
      */
-    public static String document(ContainerTag htmlTag) {
-        if (htmlTag.getTagName().equals("html")) {
-            return document().render() + htmlTag.render();
-        }
-        throw new IllegalArgumentException("Only HTML-tag can follow document declaration");
+    public static String document(HtmlTag htmlTag) {
+        return document().render() + htmlTag.render();
     }
 
     //Special tags
@@ -571,28 +572,28 @@ public class TagCreator {
         return Attr.addTo(new ContainerTag("blockquote").with(dc), shortAttr);
     }
 
-    public static ContainerTag body() {
-        return new ContainerTag("body");
+    public static BodyTag body() {
+        return new BodyTag();
     }
 
-    public static ContainerTag body(String text) {
-        return new ContainerTag("body").withText(text);
+    public static BodyTag body(String text) {
+        return (BodyTag)new BodyTag().withText(text);
     }
 
-    public static ContainerTag body(DomContent... dc) {
-        return new ContainerTag("body").with(dc);
+    public static BodyTag body(DomContent... dc) {
+        return (BodyTag)new BodyTag().with(dc);
     }
 
-    public static ContainerTag body(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("body"), shortAttr);
+    public static BodyTag body(Attr.ShortForm shortAttr) {
+        return (BodyTag)Attr.addTo(new BodyTag(), shortAttr);
     }
 
-    public static ContainerTag body(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("body").withText(text), shortAttr);
+    public static BodyTag body(Attr.ShortForm shortAttr, String text) {
+        return (BodyTag)Attr.addTo(new BodyTag().withText(text), shortAttr);
     }
 
-    public static ContainerTag body(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("body").with(dc), shortAttr);
+    public static BodyTag body(Attr.ShortForm shortAttr, DomContent... dc) {
+        return (BodyTag)Attr.addTo(new BodyTag().with(dc), shortAttr);
     }
 
     public static ContainerTag button() {
@@ -1243,28 +1244,28 @@ public class TagCreator {
         return Attr.addTo(new ContainerTag("h6").with(dc), shortAttr);
     }
 
-    public static ContainerTag head() {
-        return new ContainerTag("head");
+    public static HeadTag head() {
+        return new HeadTag();
     }
 
-    public static ContainerTag head(String text) {
-        return new ContainerTag("head").withText(text);
+    public static HeadTag head(String text) {
+        return (HeadTag)new HeadTag().withText(text);
     }
 
-    public static ContainerTag head(DomContent... dc) {
-        return new ContainerTag("head").with(dc);
+    public static HeadTag head(DomContent... dc) {
+        return (HeadTag)new HeadTag().with(dc);
     }
 
-    public static ContainerTag head(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("head"), shortAttr);
+    public static HeadTag head(Attr.ShortForm shortAttr) {
+        return (HeadTag)Attr.addTo(new HeadTag(), shortAttr);
     }
 
-    public static ContainerTag head(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("head").withText(text), shortAttr);
+    public static HeadTag head(Attr.ShortForm shortAttr, String text) {
+        return (HeadTag)Attr.addTo(new HeadTag().withText(text), shortAttr);
     }
 
-    public static ContainerTag head(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("head").with(dc), shortAttr);
+    public static HeadTag head(Attr.ShortForm shortAttr, DomContent... dc) {
+        return (HeadTag)Attr.addTo(new HeadTag().with(dc), shortAttr);
     }
 
     public static ContainerTag header() {
@@ -1291,28 +1292,24 @@ public class TagCreator {
         return Attr.addTo(new ContainerTag("header").with(dc), shortAttr);
     }
 
-    public static ContainerTag html() {
-        return new ContainerTag("html");
+    public static HtmlTag html() {
+        return new HtmlTag();
     }
 
-    public static ContainerTag html(String text) {
-        return new ContainerTag("html").withText(text);
+    public static HtmlTag html(Attr.ShortForm shortAttr) {
+        return (HtmlTag)Attr.addTo(new HtmlTag(), shortAttr);
     }
 
-    public static ContainerTag html(DomContent... dc) {
-        return new ContainerTag("html").with(dc);
+    public static HtmlTag html(final HeadTag head){
+        return new HtmlTag(head);
     }
 
-    public static ContainerTag html(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("html"), shortAttr);
+    public static HtmlTag html(final BodyTag body){
+        return new HtmlTag(body);
     }
 
-    public static ContainerTag html(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("html").withText(text), shortAttr);
-    }
-
-    public static ContainerTag html(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("html").with(dc), shortAttr);
+    public static HtmlTag html(final HeadTag head, final BodyTag body){
+        return new HtmlTag(head, body);
     }
 
     public static ContainerTag i() {
