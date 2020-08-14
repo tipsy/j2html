@@ -18,19 +18,19 @@ public final class HtmlTag extends Tag<HtmlTag> {
         body = Optional.empty();
     }
 
-    public HtmlTag(final HeadTag head){
+    public HtmlTag(HeadTag head){
         super("html");
         this.head = Optional.of(head);
         this.body = Optional.empty();
     }
 
-    public HtmlTag(final BodyTag body){
+    public HtmlTag(BodyTag body){
         super("html");
         this.head = Optional.empty();
         this.body = Optional.of(body);
     }
 
-    public HtmlTag(final HeadTag head, final BodyTag body){
+    public HtmlTag(HeadTag head, BodyTag body){
         super("html");
         this.head = Optional.of(head);
         this.body = Optional.of(body);

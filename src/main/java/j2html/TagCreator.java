@@ -1300,27 +1300,27 @@ public class TagCreator {
         return Attr.addTo(new HtmlTag(), shortAttr);
     }
 
-    public static HtmlTag html(final HeadTag head){
+    public static HtmlTag html(HeadTag head){
         return new HtmlTag(head);
     }
 
-    public static HtmlTag html(final BodyTag body){
+    public static HtmlTag html(BodyTag body){
         return new HtmlTag(body);
     }
 
-    public static HtmlTag html(final HeadTag head, final BodyTag body){
+    public static HtmlTag html(HeadTag head, BodyTag body){
         return new HtmlTag(head, body);
     }
 
-    public static HtmlTag html(final Attr.ShortForm shortAttr, final HeadTag head){
+    public static HtmlTag html(Attr.ShortForm shortAttr, HeadTag head){
         return Attr.addTo(new HtmlTag(head), shortAttr);
     }
 
-    public static HtmlTag html(final Attr.ShortForm shortAttr, final BodyTag body){
+    public static HtmlTag html(Attr.ShortForm shortAttr, BodyTag body){
         return Attr.addTo(new HtmlTag(body), shortAttr);
     }
 
-    public static HtmlTag html(final Attr.ShortForm shortAttr, final HeadTag head, final BodyTag body){
+    public static HtmlTag html(Attr.ShortForm shortAttr, HeadTag head, BodyTag body){
         return Attr.addTo(new HtmlTag(head, body), shortAttr);
     }
 
