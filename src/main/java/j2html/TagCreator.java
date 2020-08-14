@@ -1297,7 +1297,7 @@ public class TagCreator {
     }
 
     public static HtmlTag html(Attr.ShortForm shortAttr) {
-        return (HtmlTag)Attr.addTo(new HtmlTag(), shortAttr);
+        return Attr.addTo(new HtmlTag(), shortAttr);
     }
 
     public static HtmlTag html(final HeadTag head){
@@ -1310,6 +1310,18 @@ public class TagCreator {
 
     public static HtmlTag html(final HeadTag head, final BodyTag body){
         return new HtmlTag(head, body);
+    }
+
+    public static HtmlTag html(final Attr.ShortForm shortAttr, final HeadTag head){
+        return Attr.addTo(new HtmlTag(head), shortAttr);
+    }
+
+    public static HtmlTag html(final Attr.ShortForm shortAttr, final BodyTag body){
+        return Attr.addTo(new HtmlTag(body), shortAttr);
+    }
+
+    public static HtmlTag html(final Attr.ShortForm shortAttr, final HeadTag head, final BodyTag body){
+        return Attr.addTo(new HtmlTag(head, body), shortAttr);
     }
 
     public static ContainerTag i() {
