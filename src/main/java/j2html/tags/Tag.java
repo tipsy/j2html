@@ -144,6 +144,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return ((Tag) obj).render().equals(this.render());
     }
 
+    // TODO Remove below attribute accessors and add only those which are common to all HTML elements: https://www.w3.org/TR/2010/WD-html-markup-20100624/common-attributes.html
     /**
      * Convenience methods that call attr with predefined attributes
      *

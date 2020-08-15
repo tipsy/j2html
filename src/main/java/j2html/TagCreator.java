@@ -1,6 +1,7 @@
 package j2html;
 
 import j2html.attributes.Attr;
+import j2html.tags.ATag;
 import j2html.tags.ContainerTag;
 import j2html.tags.DomContent;
 import j2html.tags.DomContentJoiner;
@@ -331,28 +332,28 @@ public class TagCreator {
     }
 
     // ContainerTags, generated in class j2html.tags.TagCreatorCodeGenerator
-    public static ContainerTag a() {
-        return new ContainerTag("a");
+    public static ATag a() {
+        return new ATag();
     }
 
-    public static ContainerTag a(String text) {
-        return new ContainerTag("a").withText(text);
+    public static ATag a(String text) {
+        return new ATag().withText(text);
     }
 
-    public static ContainerTag a(DomContent... dc) {
-        return new ContainerTag("a").with(dc);
+    public static ATag a(DomContent... dc) {
+        return new ATag().with(dc);
     }
 
-    public static ContainerTag a(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("a"), shortAttr);
+    public static ATag a(Attr.ShortForm shortAttr) {
+        return Attr.addTo(new ATag(), shortAttr);
     }
 
-    public static ContainerTag a(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("a").withText(text), shortAttr);
+    public static ATag a(Attr.ShortForm shortAttr, String text) {
+        return Attr.addTo(new ATag().withText(text), shortAttr);
     }
 
-    public static ContainerTag a(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("a").with(dc), shortAttr);
+    public static ATag a(Attr.ShortForm shortAttr, DomContent... dc) {
+        return Attr.addTo(new ATag().with(dc), shortAttr);
     }
 
     public static ContainerTag abbr() {

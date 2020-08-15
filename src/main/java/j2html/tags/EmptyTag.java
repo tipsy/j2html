@@ -4,7 +4,7 @@ import j2html.Config;
 import j2html.attributes.Attribute;
 import java.io.IOException;
 
-public class EmptyTag extends Tag<EmptyTag> {
+public class EmptyTag<T extends ContainerTag<T>> extends Tag<T> {
 
     public EmptyTag(String tagName) {
         super(tagName);
