@@ -1,4 +1,4 @@
-![](https://img.shields.io/travis/tipsy/j2html.svg)
+[![Workflow](https://github.com/tipsy/j2html/workflows/Test%20all%20JDKs%20on%20all%20OSes/badge.svg)](https://github.com/tipsy/j2html/actions)
 ![](https://img.shields.io/github/license/tipsy/j2html.svg)
 ![](https://img.shields.io/maven-central/v/com.j2html/j2html.svg)
 
