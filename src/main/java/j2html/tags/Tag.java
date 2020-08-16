@@ -233,10 +233,6 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
         return attr(Attr.TITLE, title);
     }
 
-    public T withType(String type) {
-        return attr(Attr.TYPE, type);
-    }
-
     public T withRel(String rel) {
         return attr(Attr.REL, rel);
     }
@@ -255,10 +251,6 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
 
     public T withStep(String step) {
         return attr(Attr.STEP, step);
-    }
-
-    public T withValue(String value) {
-        return attr(Attr.VALUE, value);
     }
 
     public T withCondAutoComplete(boolean condition) {

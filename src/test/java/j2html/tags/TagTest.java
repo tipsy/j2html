@@ -46,7 +46,7 @@ public class TagTest {
         assertThat(testTag.renderOpenTag(), is("<a>"));
 
         ContainerTag complexTestTag = new ContainerTag("input");
-        complexTestTag.withType("password").withId("password").withName("password").withPlaceholder("Password").isRequired();
+        complexTestTag.attr("type","password").withId("password").withName("password").withPlaceholder("Password").isRequired();
         String expectedResult = "<input type=\"password\" id=\"password\" name=\"password\" placeholder=\"Password\" required>";
         assertThat(complexTestTag.renderOpenTag(), is(expectedResult));
     }

@@ -8,9 +8,7 @@ import j2html.tags.EmptyTag;
 import j2html.tags.InlineStaticResource;
 import j2html.tags.Text;
 import j2html.tags.UnescapedText;
-import j2html.tags.specialized.BodyTag;
-import j2html.tags.specialized.HeadTag;
-import j2html.tags.specialized.HtmlTag;
+import j2html.tags.specialized.*;
 
 import java.util.Collection;
 import java.util.List;
@@ -267,12 +265,12 @@ public class TagCreator {
         return Attr.addTo(new EmptyTag("img"), shortAttr);
     }
 
-    public static EmptyTag input() {
-        return new EmptyTag("input");
+    public static InputTag input() {
+        return new InputTag();
     }
 
-    public static EmptyTag input(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("input"), shortAttr);
+    public static InputTag input(Attr.ShortForm shortAttr) {
+        return (InputTag)Attr.addTo(new InputTag(), shortAttr);
     }
 
     public static EmptyTag keygen() {
@@ -332,28 +330,28 @@ public class TagCreator {
     }
 
     // ContainerTags, generated in class j2html.tags.TagCreatorCodeGenerator
-    public static ContainerTag a() {
-        return new ContainerTag("a");
+    public static ATag a() {
+        return new ATag();
     }
 
-    public static ContainerTag a(String text) {
-        return new ContainerTag("a").withText(text);
+    public static ATag a(String text) {
+        return (ATag)new ATag().withText(text);
     }
 
-    public static ContainerTag a(DomContent... dc) {
-        return new ContainerTag("a").with(dc);
+    public static ATag a(DomContent... dc) {
+        return (ATag)new ATag().with(dc);
     }
 
-    public static ContainerTag a(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("a"), shortAttr);
+    public static ATag a(Attr.ShortForm shortAttr) {
+        return (ATag)Attr.addTo(new ATag(), shortAttr);
     }
 
-    public static ContainerTag a(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("a").withText(text), shortAttr);
+    public static ATag a(Attr.ShortForm shortAttr, String text) {
+        return (ATag)Attr.addTo(new ATag().withText(text), shortAttr);
     }
 
-    public static ContainerTag a(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("a").with(dc), shortAttr);
+    public static ATag a(Attr.ShortForm shortAttr, DomContent... dc) {
+        return (ATag)Attr.addTo(new ATag().with(dc), shortAttr);
     }
 
     public static ContainerTag abbr() {
@@ -596,28 +594,28 @@ public class TagCreator {
         return (BodyTag)Attr.addTo(new BodyTag().with(dc), shortAttr);
     }
 
-    public static ContainerTag button() {
-        return new ContainerTag("button");
+    public static ButtonTag button() {
+        return new ButtonTag();
     }
 
-    public static ContainerTag button(String text) {
-        return new ContainerTag("button").withText(text);
+    public static ButtonTag button(String text) {
+        return (ButtonTag)new ButtonTag().withText(text);
     }
 
-    public static ContainerTag button(DomContent... dc) {
-        return new ContainerTag("button").with(dc);
+    public static ButtonTag button(DomContent... dc) {
+        return (ButtonTag)new ButtonTag().with(dc);
     }
 
-    public static ContainerTag button(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("button"), shortAttr);
+    public static ButtonTag button(Attr.ShortForm shortAttr) {
+        return (ButtonTag)Attr.addTo(new ButtonTag(), shortAttr);
     }
 
-    public static ContainerTag button(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("button").withText(text), shortAttr);
+    public static ButtonTag button(Attr.ShortForm shortAttr, String text) {
+        return (ButtonTag)Attr.addTo(new ButtonTag().withText(text), shortAttr);
     }
 
-    public static ContainerTag button(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("button").with(dc), shortAttr);
+    public static ButtonTag button(Attr.ShortForm shortAttr, DomContent... dc) {
+        return (ButtonTag)Attr.addTo(new ButtonTag().with(dc), shortAttr);
     }
 
     public static ContainerTag canvas() {
@@ -2068,28 +2066,28 @@ public class TagCreator {
         return Attr.addTo(new ContainerTag("section").with(dc), shortAttr);
     }
 
-    public static ContainerTag select() {
-        return new ContainerTag("select");
+    public static SelectTag select() {
+        return new SelectTag();
     }
 
-    public static ContainerTag select(String text) {
-        return new ContainerTag("select").withText(text);
+    public static SelectTag select(String text) {
+        return (SelectTag)new SelectTag().withText(text);
     }
 
-    public static ContainerTag select(DomContent... dc) {
-        return new ContainerTag("select").with(dc);
+    public static SelectTag select(DomContent... dc) {
+        return (SelectTag)new SelectTag().with(dc);
     }
 
-    public static ContainerTag select(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("select"), shortAttr);
+    public static SelectTag select(Attr.ShortForm shortAttr) {
+        return (SelectTag)Attr.addTo(new SelectTag(), shortAttr);
     }
 
-    public static ContainerTag select(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("select").withText(text), shortAttr);
+    public static SelectTag select(Attr.ShortForm shortAttr, String text) {
+        return (SelectTag)Attr.addTo(new SelectTag().withText(text), shortAttr);
     }
 
-    public static ContainerTag select(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("select").with(dc), shortAttr);
+    public static SelectTag select(Attr.ShortForm shortAttr, DomContent... dc) {
+        return (SelectTag)Attr.addTo(new SelectTag().with(dc), shortAttr);
     }
 
     public static ContainerTag small() {
@@ -2332,28 +2330,28 @@ public class TagCreator {
         return Attr.addTo(new ContainerTag("td").with(dc), shortAttr);
     }
 
-    public static ContainerTag textarea() {
-        return new ContainerTag("textarea");
+    public static TextAreaTag textarea() {
+        return new TextAreaTag();
     }
 
-    public static ContainerTag textarea(String text) {
-        return new ContainerTag("textarea").withText(text);
+    public static TextAreaTag textarea(String text) {
+        return (TextAreaTag)new TextAreaTag().withText(text);
     }
 
-    public static ContainerTag textarea(DomContent... dc) {
-        return new ContainerTag("textarea").with(dc);
+    public static TextAreaTag textarea(DomContent... dc) {
+        return (TextAreaTag)new TextAreaTag().with(dc);
     }
 
-    public static ContainerTag textarea(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("textarea"), shortAttr);
+    public static TextAreaTag textarea(Attr.ShortForm shortAttr) {
+        return (TextAreaTag)Attr.addTo(new TextAreaTag(), shortAttr);
     }
 
-    public static ContainerTag textarea(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("textarea").withText(text), shortAttr);
+    public static TextAreaTag textarea(Attr.ShortForm shortAttr, String text) {
+        return (TextAreaTag)Attr.addTo(new TextAreaTag().withText(text), shortAttr);
     }
 
-    public static ContainerTag textarea(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("textarea").with(dc), shortAttr);
+    public static TextAreaTag textarea(Attr.ShortForm shortAttr, DomContent... dc) {
+        return (TextAreaTag)Attr.addTo(new TextAreaTag().with(dc), shortAttr);
     }
 
     public static ContainerTag tfoot() {
