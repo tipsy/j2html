@@ -28,11 +28,11 @@ public class ComplexRenderTest {
         boolean USER_SHOULD_LOG_IN = true;
         boolean USER_SHOULD_SIGN_UP = false;
         return document().render() +
-            html().with(
-                head().with(
+            html(
+                head(
                     title().withText("Test")
                 ),
-                body().with(
+                body(
                     header().with(
                         h1().with(
                             text("Test Header "),

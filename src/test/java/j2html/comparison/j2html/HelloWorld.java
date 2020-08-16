@@ -1,6 +1,8 @@
 package j2html.comparison.j2html;
 
 import j2html.tags.ContainerTag;
+import j2html.tags.specialized.HtmlTag;
+
 import static j2html.TagCreator.attrs;
 import static j2html.TagCreator.body;
 import static j2html.TagCreator.h1;
@@ -12,7 +14,7 @@ import static j2html.TagCreator.title;
 
 public class HelloWorld {
 
-    public static ContainerTag tag = html(
+    public static HtmlTag tag = html(
         head(
             title("Title"),
             link().withRel("stylesheet").withHref("/css/main.css")

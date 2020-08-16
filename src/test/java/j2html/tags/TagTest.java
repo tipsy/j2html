@@ -4,6 +4,8 @@ import j2html.Config;
 import j2html.model.DynamicHrefAttribute;
 import java.io.File;
 import java.io.FileWriter;
+
+import j2html.tags.specialized.HtmlTag;
 import org.junit.Test;
 import static j2html.TagCreator.body;
 import static j2html.TagCreator.div;
@@ -27,7 +29,13 @@ public class TagTest {
         testTag.setAttribute("href", "http://example.com");
         assertThat(testTag.render(), is("<a href=\"http://example.com\"></a>"));
 
-        ContainerTag complexTestTag = html().with(body().with(header(), main().with(p("Main stuff...")), footer().condWith(1 == 1, p("Conditional with!"))));
+        HtmlTag complexTestTag = html(
+            body(
+                header(),
+                main().with(p("Main stuff...")),
+                footer().condWith(1 == 1, p("Conditional with!"))
+            )
+        );
         String expectedResult = "<html><body><header></header><main><p>Main stuff...</p></main><footer><p>Conditional with!</p></footer></body></html>";
         assertThat(complexTestTag.render(), is((expectedResult)));
     }
