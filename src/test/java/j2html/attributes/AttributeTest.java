@@ -3,10 +3,11 @@ package j2html.attributes;
 import static j2html.TagCreator.p;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import j2html.Config;
 import j2html.tags.ContainerTag;
 
 public class AttributeTest {
@@ -33,11 +34,11 @@ public class AttributeTest {
 
     @Test
     public void attrShouldEscapeValue() {
-    	ContainerTag p1 = p().withClass("aaa");
-    	assertNotEquals("<p class=\"bar\"baz\"></p>" , p1.render());
+    	ContainerTag p1 = p().withClass("bar\"baz");
+    	assertEquals( "<p class=\"" + Config.textEscaper.escape("bar\"baz") + "\"></p>", p1.render());
 
     	ContainerTag p2 = p().withClass("aaa").withClass("bar\"baz");
-    	assertNotEquals("<p class=\"bar\"baz\"></p>" , p2.render());
+    	assertEquals(  "<p class=\"" + Config.textEscaper.escape("bar\"baz") + "\"></p>" , p2.render());
     }
 	
 	
