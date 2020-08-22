@@ -132,7 +132,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
      * @param value     the attribute value
      * @return itself for easy chaining
      */
-    public T condAttr(boolean condition, String attribute, String value) {
+    public T condAttr(boolean condition, String attribute, Object value) {
         return (condition ? attr(attribute, value) : (T) this);
     }
 

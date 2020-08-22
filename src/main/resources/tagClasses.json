@@ -1,0 +1,18 @@
+{
+    "tags": [
+        {
+            "tag": "a",
+            "attrs": [
+                "href",
+                "charset"
+            ]
+        },
+        {
+            "tag": "video",
+            "attrs": [
+                { "name": "autoplay", "empty": true }, "controls", "height", "loop", "muted", "poster", "preload", "src", "width"
+            ]
+        },
+        "abbr"
+    ]
+}
