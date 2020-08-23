@@ -4,7 +4,7 @@ import j2html.tags.ContainerTag;
 import j2html.tags.attributes.*;
 
 public final class VideoTag extends ContainerTag<VideoTag>
-    implements IAutoplay, IControls, IHeight, ILoop, IMuted, IOnabort, IOncanplay, IOncanplaythrough, IOndurationchange, IOnemptied, IOnended, IOnerror, IOnloadeddata, IOnloadedmetadata, IOnloadstart, IOnpause, IOnplay, IOnplaying, IOnprogress, IOnratechange, IOnseeked, IOnseeking, IOnstalled, IOnsuspend, IOntimeupdate, IOnvolumechanged, IOnwaiting, IPoster, IPreload, ISrc, IWidth {
+    implements IAutoplay<VideoTag>, IControls<VideoTag>, IHeight<VideoTag>, ILoop<VideoTag>, IMuted<VideoTag>, IOnabort<VideoTag>, IOncanplay<VideoTag>, IOncanplaythrough<VideoTag>, IOndurationchange<VideoTag>, IOnemptied<VideoTag>, IOnended<VideoTag>, IOnerror<VideoTag>, IOnloadeddata<VideoTag>, IOnloadedmetadata<VideoTag>, IOnloadstart<VideoTag>, IOnpause<VideoTag>, IOnplay<VideoTag>, IOnplaying<VideoTag>, IOnprogress<VideoTag>, IOnratechange<VideoTag>, IOnseeked<VideoTag>, IOnseeking<VideoTag>, IOnstalled<VideoTag>, IOnsuspend<VideoTag>, IOntimeupdate<VideoTag>, IOnvolumechanged<VideoTag>, IOnwaiting<VideoTag>, IPoster<VideoTag>, IPreload<VideoTag>, ISrc<VideoTag>, IWidth<VideoTag> {
     public VideoTag() {
         super("video");
     }

@@ -4,7 +4,7 @@ import j2html.tags.EmptyTag;
 import j2html.tags.attributes.*;
 
 public final class SourceTag extends EmptyTag<SourceTag>
-    implements IMedia, ISizes, ISrc, ISrcset, IType {
+    implements IMedia<SourceTag>, ISizes<SourceTag>, ISrc<SourceTag>, ISrcset<SourceTag>, IType<SourceTag> {
     public SourceTag() {
         super("source");
     }

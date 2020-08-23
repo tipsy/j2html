@@ -4,7 +4,7 @@ import j2html.tags.EmptyTag;
 import j2html.tags.attributes.*;
 
 public final class ParamTag extends EmptyTag<ParamTag>
-    implements IName, IValue {
+    implements IName<ParamTag>, IValue<ParamTag> {
     public ParamTag() {
         super("param");
     }

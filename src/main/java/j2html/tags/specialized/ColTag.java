@@ -4,7 +4,7 @@ import j2html.tags.EmptyTag;
 import j2html.tags.attributes.*;
 
 public final class ColTag extends EmptyTag<ColTag>
-    implements ISpan {
+    implements ISpan<ColTag> {
     public ColTag() {
         super("col");
     }
