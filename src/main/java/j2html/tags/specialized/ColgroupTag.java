@@ -2,7 +2,10 @@ package j2html.tags.specialized;
 
 import j2html.tags.ContainerTag;
 
-public final class ColgroupTag extends ContainerTag<ColgroupTag> {
+import j2html.tags.attributes.*;
+
+public final class ColgroupTag extends ContainerTag<ColgroupTag>
+    implements ISpan {
     public ColgroupTag() {
         super("colgroup");
     }

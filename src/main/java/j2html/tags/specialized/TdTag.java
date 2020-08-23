@@ -2,7 +2,10 @@ package j2html.tags.specialized;
 
 import j2html.tags.ContainerTag;
 
-public final class TdTag extends ContainerTag<TdTag> {
+import j2html.tags.attributes.*;
+
+public final class TdTag extends ContainerTag<TdTag>
+    implements IColspan, IHeaders, IRowspan {
     public TdTag() {
         super("td");
     }

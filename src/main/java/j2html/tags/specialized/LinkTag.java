@@ -3,7 +3,8 @@ package j2html.tags.specialized;
 import j2html.tags.EmptyTag;
 import j2html.tags.attributes.*;
 
-public final class LinkTag extends EmptyTag<LinkTag> {
+public final class LinkTag extends EmptyTag<LinkTag>
+    implements IHref, IHreflang, IMedia, IOnload, IRel, ISizes, IType {
     public LinkTag() {
         super("link");
     }

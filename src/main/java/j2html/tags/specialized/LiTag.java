@@ -2,7 +2,10 @@ package j2html.tags.specialized;
 
 import j2html.tags.ContainerTag;
 
-public final class LiTag extends ContainerTag<LiTag> {
+import j2html.tags.attributes.*;
+
+public final class LiTag extends ContainerTag<LiTag>
+    implements IValue {
     public LiTag() {
         super("li");
     }

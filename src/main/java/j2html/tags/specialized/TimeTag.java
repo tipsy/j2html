@@ -2,7 +2,10 @@ package j2html.tags.specialized;
 
 import j2html.tags.ContainerTag;
 
-public final class TimeTag extends ContainerTag<TimeTag> {
+import j2html.tags.attributes.*;
+
+public final class TimeTag extends ContainerTag<TimeTag>
+    implements IDatetime {
     public TimeTag() {
         super("time");
     }

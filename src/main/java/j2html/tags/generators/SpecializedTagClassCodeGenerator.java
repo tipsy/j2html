@@ -1,5 +1,6 @@
 package j2html.tags.generators;
 
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -7,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static j2html.tags.generators.TagCreatorCodeGenerator.containerTags;
 import static j2html.tags.generators.TagCreatorCodeGenerator.emptyTags;
@@ -38,7 +40,8 @@ class SpecializedTagClassCodeGenerator {
         final String className,
         final Optional<String> optExtends,
         final List<String> imports,
-        final String tag
+        final String tag,
+        final List<String> interfaces
     ){
 
         final StringBuilder sb = new StringBuilder();
@@ -51,11 +54,25 @@ class SpecializedTagClassCodeGenerator {
         }
         sb.append("\n");
         sb.append("public final class ")
-            .append(className);
+            .append(className)
+            .append(" ");
 
         if(optExtends.isPresent()) {
-                sb.append(" extends ").append(optExtends.get())
+                sb.append("extends ").append(optExtends.get())
                 .append(" ");
+        }
+
+        //add the 'implements' clause
+        if(!interfaces.isEmpty()) {
+            sb.append("\n");
+            sb.append("implements ");
+
+            final List<String> genericInterfaceNames
+                = interfaces.stream().map(iName -> iName+"<"+className+">")
+                .collect(Collectors.toList());
+            sb.append(
+                String.join(",", genericInterfaceNames)
+            );
         }
 
         sb.append(" {\n");
@@ -72,12 +89,22 @@ class SpecializedTagClassCodeGenerator {
         return sb.toString();
     }
 
+    private static List<String> getInterfaceNamesForTag(final String tagNameLowercase){
+        return AttributesList.getCustomAttributesForHtmlTag(tagNameLowercase)
+            .stream()
+            .map(
+                AttributeInterfaceCodeGenerator::interfaceNameFromAttribute
+            ).collect(Collectors.toList());
+    }
+
     public static void mainInner(final boolean delete) throws IOException {
         System.out.println("// EmptyTags, generated in " + SpecializedTagClassCodeGenerator.class);
 
         for (final String tag : emptyTags()) {
             final String className = classNameFromTag(tag);
             final Path path = makePath(tag);
+
+            final List<String> interfaceNames = getInterfaceNamesForTag(tag);
 
             final String classString =
               getClassTemplate(
@@ -87,7 +114,8 @@ class SpecializedTagClassCodeGenerator {
                       "j2html.tags.EmptyTag",
                       "j2html.tags.attributes.*"
                       ),
-                  tag
+                  tag,
+                  interfaceNames
               );
 
             /*
@@ -108,12 +136,19 @@ class SpecializedTagClassCodeGenerator {
         for (final String tag : containerTags()) {
             final Path path = makePath(tag);
             final String className = classNameFromTag(tag);
+
+            final List<String> interfaceNames = getInterfaceNamesForTag(tag);
+
             final String classString =
                 getClassTemplate(
                     className,
                     Optional.of("ContainerTag<"+className+">"),
-                    Arrays.asList("j2html.tags.ContainerTag"),
-                    tag
+                    Arrays.asList(
+                        "j2html.tags.ContainerTag",
+                        "j2html.tags.attributes.*"
+                    ),
+                    tag,
+                    interfaceNames
                 );
 
             if(delete){

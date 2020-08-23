@@ -101,8 +101,8 @@ public final class AttributeInterfaceCodeGenerator {
         return sb.toString();
     }
 
-    private static String interfaceNameFromAttribute(String tageNameLowerCase){
-        String res = tageNameLowerCase.substring(0,1).toUpperCase()+tageNameLowerCase.substring(1);
+    public static String interfaceNameFromAttribute(String attribute){
+        String res = attribute.substring(0,1).toUpperCase()+attribute.substring(1);
         return "I" + res;
     }
 
