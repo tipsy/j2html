@@ -72,14 +72,14 @@ public class TagTest {
 
     @Test
     public void testEquals() throws Exception {
-        Tag tagOne = tag("p").withClass("class").withText("Test");
+        Tag tagOne = tag("p").withText("Test").withClass("class");
         Tag tagTwo = p("Test").withClass("class");
         assertThat(tagOne.equals(tagTwo), is(true));
     }
 
     @Test
     public void testAcceptObjectValueAttribute() throws Exception {
-        ContainerTag complexTestTag = new ContainerTag("input")
+        Tag complexTestTag = new ContainerTag("input")
             .attr("attr1", "value1")
             .attr("attr2", 2)
             .attr("attr3", null);
@@ -96,22 +96,22 @@ public class TagTest {
 
     @Test
     public void testEmptyAttribute() throws Exception {
-        ContainerTag testTagWithAttrValueNull = new ContainerTag("a").attr("attribute", null);
+        Tag testTagWithAttrValueNull = new ContainerTag("a").attr("attribute", null);
         assertThat(testTagWithAttrValueNull.render(), is("<a attribute></a>"));
 
-        ContainerTag testTagAttrWithoutAttr = new ContainerTag("a").attr("attribute");
+        Tag testTagAttrWithoutAttr = new ContainerTag("a").attr("attribute");
         assertThat(testTagAttrWithoutAttr.render(), is("<a attribute></a>"));
     }
 
     @Test
     public void testDynamicAttribute() throws Exception {
-        ContainerTag testTagWithAttrValueNull = new ContainerTag("a").attr(new DynamicHrefAttribute());
+        Tag testTagWithAttrValueNull = new ContainerTag("a").attr(new DynamicHrefAttribute());
         assertThat(testTagWithAttrValueNull.render(), is("<a href=\"/\"></a>"));
     }
 
     @Test
     public void testDynamicAttributeReplacement() throws Exception {
-        ContainerTag testTagWithAttrValueNull = new ContainerTag("a").attr("href", "/link").attr(new DynamicHrefAttribute());
+        Tag testTagWithAttrValueNull = new ContainerTag("a").attr("href", "/link").attr(new DynamicHrefAttribute());
         assertThat(testTagWithAttrValueNull.render(), is("<a href=\"/\"></a>"));
     }
 

@@ -82,7 +82,7 @@ class SpecializedTagClassCodeGenerator {
             final String classString =
               getClassTemplate(
                   className,
-                  Optional.of("EmptyTag"),
+                  Optional.of("EmptyTag<"+className+">"),
                   Arrays.asList(
                       "j2html.tags.EmptyTag",
                       "j2html.tags.attributes.*"
@@ -111,7 +111,7 @@ class SpecializedTagClassCodeGenerator {
             final String classString =
                 getClassTemplate(
                     className,
-                    Optional.of("ContainerTag"),
+                    Optional.of("ContainerTag<"+className+">"),
                     Arrays.asList("j2html.tags.ContainerTag"),
                     tag
                 );
