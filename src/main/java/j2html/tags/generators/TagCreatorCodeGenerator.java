@@ -13,7 +13,7 @@ class TagCreatorCodeGenerator {
             final String className = SpecializedTagClassCodeGenerator.classNameFromTag(tag);
             final String publicstaticTypeMethod = "public static "+className+" "+tag+" ";
             final String castReturn = " return ("+className+") ";
-            final String construct = " new "+className+"(\"" + tag + "\")";
+            final String construct = " new "+className+"()";
 
             String emptyA1 = publicstaticTypeMethod + "()";
             String emptyA2 = "{ return "+construct+"; }";
@@ -32,7 +32,7 @@ class TagCreatorCodeGenerator {
             final String className = SpecializedTagClassCodeGenerator.classNameFromTag(tag);
             final String publicstaticTypeMethod = "public static "+className+" "+tag+" ";
             final String castReturn = " return ("+className+") ";
-            final String construct = " new "+className+"(\"" + tag + "\")";
+            final String construct = " new "+className+"()";
 
             String containerA1 = publicstaticTypeMethod+ "()";
             String containerA2 = "{ "+castReturn + construct + "; }";
@@ -73,6 +73,7 @@ class TagCreatorCodeGenerator {
             "embed",
             "hr",
             "img",
+            "input",
             "keygen",
             "link",
             "meta",
@@ -85,7 +86,7 @@ class TagCreatorCodeGenerator {
 
     static List<String> containerTags() {
         return Arrays.asList(
-            // "a" ATag is managed manually
+            "a",
             "abbr",
             "address",
             "article",
@@ -95,7 +96,8 @@ class TagCreatorCodeGenerator {
             "bdi",
             "bdo",
             "blockquote",
-            //"body" BodyTag is managed manually
+            //"body" BodyTag is managed manually,
+            "button",
             "canvas",
             "caption",
             "cite",
@@ -155,6 +157,7 @@ class TagCreatorCodeGenerator {
             "samp",
             "script",
             "section",
+            "select",
             "small",
             "span",
             "strong",

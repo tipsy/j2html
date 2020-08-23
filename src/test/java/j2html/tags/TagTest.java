@@ -61,7 +61,7 @@ public class TagTest {
     public void testSelfClosingTags() throws Exception {
         Config.closeEmptyTags = true;
         assertThat(img().withSrc("/test.png").render(), is("<img src=\"/test.png\"/>"));
-        assertThat(input().withType("text").render(), is("<input type=\"text\"/>"));
+        assertThat(input().attr("type","text").render(), is("<input type=\"text\"/>"));
         Config.closeEmptyTags = false;
     }
 

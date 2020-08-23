@@ -43,10 +43,10 @@ public class ComplexRenderTest {
                     main().with(
                         h2("Test Form"),
                         div().with(
-                            input().withType("email").withName("email").withPlaceholder("Email"),
-                            input().withType("password").withName("password").withPlaceholder("Password")
-                        ).condWith(USER_SHOULD_LOG_IN, button().withType("submit").withText("Login")
-                        ).condWith(USER_SHOULD_SIGN_UP, button().withType("submit").withText("Signup"))
+                            input().attr("type","email").withName("email").withPlaceholder("Email"),
+                            input().attr("type","password").withName("password").withPlaceholder("Password")
+                        ).condWith(USER_SHOULD_LOG_IN, button().attr("type","submit").withText("Login")
+                        ).condWith(USER_SHOULD_SIGN_UP, button().attr("type","submit").withText("Signup"))
                     ),
                     footer().attr(Attr.CLASS, "footer").condAttr(1 == 1, Attr.ID, "id").withText("Test Footer"),
                     script().withSrc("/testScript.js")
@@ -73,10 +73,10 @@ public class ComplexRenderTest {
                     main(
                         h2("Test Form"),
                         div(
-                            input().withType("email").withName("email").withPlaceholder("Email"),
-                            input().withType("password").withName("password").withPlaceholder("Password"),
-                            iff(USER_SHOULD_LOG_IN, button().withType("submit").withText("Login")),
-                            iff(USER_SHOULD_SIGN_UP, button().withType("submit").withText("Signup"))
+                            input().attr("type","email").withName("email").withPlaceholder("Email"),
+                            input().attr("type","password").withName("password").withPlaceholder("Password"),
+                            iff(USER_SHOULD_LOG_IN, button().attr("type","submit").withText("Login")),
+                            iff(USER_SHOULD_SIGN_UP, button().attr("type","submit").withText("Signup"))
                         )
                     ),
                     footer("Test Footer").attr(Attr.CLASS, "footer").condAttr(1 == 1, Attr.ID, "id"),
@@ -104,10 +104,10 @@ public class ComplexRenderTest {
                     main(
                         h2("Test Form"),
                         div(
-                            input().withType("email").withName("email").withPlaceholder("Email"),
-                            input().withType("password").withName("password").withPlaceholder("Password"),
-                            iff(USER_SHOULD_LOG_IN, button().withType("submit").withText("Login")),
-                            iff(USER_SHOULD_SIGN_UP, button().withType("submit").withText("Signup"))
+                            input().attr("type","email").withName("email").withPlaceholder("Email"),
+                            input().attr("type","password").withName("password").withPlaceholder("Password"),
+                            iff(USER_SHOULD_LOG_IN, button().attr("type","submit").withText("Login")),
+                            iff(USER_SHOULD_SIGN_UP, button().attr("type","submit").withText("Signup"))
                         )
                     ),
                     footer("Test Footer").attr(Attr.CLASS, "footer").condAttr(1 == 1, Attr.ID, "id"),
