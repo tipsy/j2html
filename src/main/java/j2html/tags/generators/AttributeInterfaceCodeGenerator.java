@@ -7,17 +7,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static j2html.tags.generators.AttributesList.attributes;
-
 public final class AttributeInterfaceCodeGenerator {
 
     public static void main(String[] args){
         try {
             final boolean delete = false;
 
-            for (final String attr : attributes()) {
-                final Path path = makePath(attr);
-                final String interfaceName = interfaceNameFromAttribute(attr)+"<T extends Tag>";
+            for (final AttrD attr : AttributesList.attributesDescriptive()) {
+                final Path path = makePath(attr.attr);
+                final String interfaceName = interfaceNameFromAttribute(attr.attr)+"<T extends Tag>";
+
 
                 /*
                 IFormAction<T extends Tag> extends IInstance<T>
@@ -32,7 +31,8 @@ public final class AttributeInterfaceCodeGenerator {
                     interfaceName,
                     Optional.of("IInstance<T>"),
                     Arrays.asList("j2html.tags.Tag"),
-                    interfaceNameFromAttribute(attr).substring(1)
+                    interfaceNameFromAttribute(attr.attr).substring(1),
+                    attr
                 );
 
                 if (delete) {
@@ -52,7 +52,8 @@ public final class AttributeInterfaceCodeGenerator {
         final String interfaceName,
         final Optional<String> optExtends,
         final List<String> imports,
-        final String interfaceNameSimple
+        final String interfaceNameSimple,
+        final AttrD attrD
     ){
 
         final StringBuilder sb = new StringBuilder();
@@ -87,18 +88,39 @@ public final class AttributeInterfaceCodeGenerator {
         //where attributes are java keywords. Just to make it consistent and avoid special cases.
         final String attrName = interfaceNameSimple.toLowerCase();
         final String paramName = attrName+"_";
-        sb.append("default ")
-            .append("T ").append("with").append(interfaceNameSimple)
-            .append("(final String ").append(paramName).append(") {")
 
-            .append("get().attr(\"").append(attrName).append("\", "+paramName+");\n")
-            .append("return get();\n")
-
-            .append("}\n");
+        //append the 'with$ATTR' method
+        writeAttributeMethod(interfaceNameSimple, attrD, sb, attrName, paramName);
 
         sb.append("}\n");
 
         return sb.toString();
+    }
+
+    private static void writeAttributeMethod(String interfaceNameSimple, AttrD attrD, StringBuilder sb, String attrName, String paramName) {
+        sb.append("default ")
+            .append("T ");
+
+        sb.append("with").append(interfaceNameSimple);
+
+        if(attrD.hasArgument){
+            //add a variant where you can specify the argument
+
+            sb.append("(final String ").append(paramName).append(") {")
+
+                .append("get().attr(\"").append(attrName).append("\", "+ paramName +");\n")
+                .append("return get();\n");
+        }else{
+            //add a variant where you can toggle the attribute
+
+            sb.append("(final boolean ").append(paramName).append(") {")
+
+                .append("if ("+ paramName +") {\n")
+                    .append("get().attr(\"").append(attrName).append("\");\n")
+                .append("}\n")
+                .append("return get();\n");
+        }
+        sb.append("}\n");
     }
 
     public static String interfaceNameFromAttribute(String attribute){

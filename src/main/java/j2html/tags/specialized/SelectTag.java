@@ -4,7 +4,7 @@ import j2html.tags.ContainerTag;
 import j2html.tags.attributes.*;
 
 public final class SelectTag extends ContainerTag<SelectTag>
-    implements IAutofocus<SelectTag>, IForm<SelectTag>, IMultiple<SelectTag>, IName<SelectTag>, IRequired<SelectTag>, ISize<SelectTag> {
+    implements IAutofocus<SelectTag>, IDisabled<SelectTag>, IForm<SelectTag>, IMultiple<SelectTag>, IName<SelectTag>, IRequired<SelectTag>, ISize<SelectTag> {
     public SelectTag() {
         super("select");
     }
