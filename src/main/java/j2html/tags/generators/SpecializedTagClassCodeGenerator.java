@@ -20,7 +20,6 @@ class SpecializedTagClassCodeGenerator {
             mainInner(false);
         }catch (Exception ignored){}
     }
-
     public static String classNameFromTag(String tageNameLowerCase){
         String res = tageNameLowerCase.substring(0,1).toUpperCase()+tageNameLowerCase.substring(1);
         return res + "Tag";

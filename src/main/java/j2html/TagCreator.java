@@ -207,6 +207,71 @@ public class TagCreator {
     public static DomContent document() {
         return rawHtml("<!DOCTYPE html>");
     }
+    // -- start of manually managed tags --
+
+    // EmptyTags
+
+    //ContainerTags
+    public static HtmlTag html() {
+        return new HtmlTag();
+    }
+
+    public static HtmlTag html(Attr.ShortForm shortAttr) {
+        return Attr.addTo(new HtmlTag(), shortAttr);
+    }
+
+    public static HtmlTag html(HeadTag head){
+        return new HtmlTag(head);
+    }
+
+    public static HtmlTag html(BodyTag body){
+        return new HtmlTag(body);
+    }
+
+    public static HtmlTag html(HeadTag head, BodyTag body){
+        return new HtmlTag(head, body);
+    }
+
+    public static HtmlTag html(Attr.ShortForm shortAttr, HeadTag head){
+        return Attr.addTo(new HtmlTag(head), shortAttr);
+    }
+
+    public static HtmlTag html(Attr.ShortForm shortAttr, BodyTag body){
+        return Attr.addTo(new HtmlTag(body), shortAttr);
+    }
+
+    public static HtmlTag html(Attr.ShortForm shortAttr, HeadTag head, BodyTag body){
+        return Attr.addTo(new HtmlTag(head, body), shortAttr);
+    }
+
+
+    public static BodyTag body() {
+        return new BodyTag();
+    }
+
+    public static BodyTag body(String text) {
+        return (BodyTag)new BodyTag().withText(text);
+    }
+
+    public static BodyTag body(DomContent... dc) {
+        return (BodyTag)new BodyTag().with(dc);
+    }
+
+    public static BodyTag body(Attr.ShortForm shortAttr) {
+        return (BodyTag)Attr.addTo(new BodyTag(), shortAttr);
+    }
+
+    public static BodyTag body(Attr.ShortForm shortAttr, String text) {
+        return (BodyTag)Attr.addTo(new BodyTag().withText(text), shortAttr);
+    }
+
+    public static BodyTag body(Attr.ShortForm shortAttr, DomContent... dc) {
+        return (BodyTag)Attr.addTo(new BodyTag().with(dc), shortAttr);
+    }
+
+    // -- end of manually managed tags --
+
+
 
     // EmptyTags, generated in class j2html.tags.TagCreatorCodeGenerator
     public static EmptyTag area() {
@@ -570,29 +635,6 @@ public class TagCreator {
         return Attr.addTo(new ContainerTag("blockquote").with(dc), shortAttr);
     }
 
-    public static BodyTag body() {
-        return new BodyTag();
-    }
-
-    public static BodyTag body(String text) {
-        return (BodyTag)new BodyTag().withText(text);
-    }
-
-    public static BodyTag body(DomContent... dc) {
-        return (BodyTag)new BodyTag().with(dc);
-    }
-
-    public static BodyTag body(Attr.ShortForm shortAttr) {
-        return (BodyTag)Attr.addTo(new BodyTag(), shortAttr);
-    }
-
-    public static BodyTag body(Attr.ShortForm shortAttr, String text) {
-        return (BodyTag)Attr.addTo(new BodyTag().withText(text), shortAttr);
-    }
-
-    public static BodyTag body(Attr.ShortForm shortAttr, DomContent... dc) {
-        return (BodyTag)Attr.addTo(new BodyTag().with(dc), shortAttr);
-    }
 
     public static ButtonTag button() {
         return new ButtonTag();
@@ -1290,37 +1332,7 @@ public class TagCreator {
         return Attr.addTo(new ContainerTag("header").with(dc), shortAttr);
     }
 
-    public static HtmlTag html() {
-        return new HtmlTag();
-    }
 
-    public static HtmlTag html(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new HtmlTag(), shortAttr);
-    }
-
-    public static HtmlTag html(HeadTag head){
-        return new HtmlTag(head);
-    }
-
-    public static HtmlTag html(BodyTag body){
-        return new HtmlTag(body);
-    }
-
-    public static HtmlTag html(HeadTag head, BodyTag body){
-        return new HtmlTag(head, body);
-    }
-
-    public static HtmlTag html(Attr.ShortForm shortAttr, HeadTag head){
-        return Attr.addTo(new HtmlTag(head), shortAttr);
-    }
-
-    public static HtmlTag html(Attr.ShortForm shortAttr, BodyTag body){
-        return Attr.addTo(new HtmlTag(body), shortAttr);
-    }
-
-    public static HtmlTag html(Attr.ShortForm shortAttr, HeadTag head, BodyTag body){
-        return Attr.addTo(new HtmlTag(head, body), shortAttr);
-    }
 
     public static ContainerTag i() {
         return new ContainerTag("i");
