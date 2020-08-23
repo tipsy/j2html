@@ -269,6 +269,30 @@ public class TagCreator {
         return (BodyTag)Attr.addTo(new BodyTag().with(dc), shortAttr);
     }
 
+    public static HeadTag head() {
+        return new HeadTag();
+    }
+
+    public static HeadTag head(String text) {
+        return (HeadTag)new HeadTag().withText(text);
+    }
+
+    public static HeadTag head(DomContent... dc) {
+        return (HeadTag)new HeadTag().with(dc);
+    }
+
+    public static HeadTag head(Attr.ShortForm shortAttr) {
+        return (HeadTag)Attr.addTo(new HeadTag(), shortAttr);
+    }
+
+    public static HeadTag head(Attr.ShortForm shortAttr, String text) {
+        return (HeadTag)Attr.addTo(new HeadTag().withText(text), shortAttr);
+    }
+
+    public static HeadTag head(Attr.ShortForm shortAttr, DomContent... dc) {
+        return (HeadTag)Attr.addTo(new HeadTag().with(dc), shortAttr);
+    }
+
     // -- end of manually managed tags --
 
 
@@ -1284,29 +1308,7 @@ public class TagCreator {
         return Attr.addTo(new ContainerTag("h6").with(dc), shortAttr);
     }
 
-    public static HeadTag head() {
-        return new HeadTag();
-    }
 
-    public static HeadTag head(String text) {
-        return (HeadTag)new HeadTag().withText(text);
-    }
-
-    public static HeadTag head(DomContent... dc) {
-        return (HeadTag)new HeadTag().with(dc);
-    }
-
-    public static HeadTag head(Attr.ShortForm shortAttr) {
-        return (HeadTag)Attr.addTo(new HeadTag(), shortAttr);
-    }
-
-    public static HeadTag head(Attr.ShortForm shortAttr, String text) {
-        return (HeadTag)Attr.addTo(new HeadTag().withText(text), shortAttr);
-    }
-
-    public static HeadTag head(Attr.ShortForm shortAttr, DomContent... dc) {
-        return (HeadTag)Attr.addTo(new HeadTag().with(dc), shortAttr);
-    }
 
     public static ContainerTag header() {
         return new ContainerTag("header");

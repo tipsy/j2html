@@ -8,12 +8,12 @@ public interface IInstance<T> {
 
     // this method shows up in autocomplete.
     // this is really undesireable as it does not do anything.
-    default T get(){
+    default T get() {
         //we know that the implementing class will supply
         //its own type as the type argument.
         //therefore every instance of IInstance can assume it
         //is also of type T
 
-        return (T)this;
+        return (T) this;
     }
 }
