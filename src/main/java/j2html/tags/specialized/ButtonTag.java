@@ -1,18 +1,16 @@
 package j2html.tags.specialized;
 
 import j2html.tags.ContainerTag;
-import j2html.tags.EmptyTag;
-import j2html.tags.attributes.*;
+import j2html.tags.attributes.IDisabled;
+import j2html.tags.attributes.IForm;
+import j2html.tags.attributes.IType;
 
 public final class ButtonTag extends ContainerTag
-    implements
-    IForm<ButtonTag>,
-    IDisabled<ButtonTag>,
-    IFormAction<ButtonTag>,
+implements
     IType<ButtonTag>,
-    IValue<ButtonTag>
+    IDisabled<ButtonTag>,
+    IForm<ButtonTag>
 {
-
     public ButtonTag() {
         super("button");
     }

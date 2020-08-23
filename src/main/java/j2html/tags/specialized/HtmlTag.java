@@ -11,32 +11,32 @@ public final class HtmlTag extends Tag<HtmlTag> {
     private final Optional<HeadTag> head;
     private final Optional<BodyTag> body;
 
-    public HtmlTag(){
+    public HtmlTag() {
         super("html");
 
         head = Optional.empty();
         body = Optional.empty();
     }
 
-    public HtmlTag(HeadTag head){
+    public HtmlTag(HeadTag head) {
         super("html");
         this.head = Optional.of(head);
         this.body = Optional.empty();
     }
 
-    public HtmlTag(BodyTag body){
+    public HtmlTag(BodyTag body) {
         super("html");
         this.head = Optional.empty();
         this.body = Optional.of(body);
     }
 
-    public HtmlTag(HeadTag head, BodyTag body){
+    public HtmlTag(HeadTag head, BodyTag body) {
         super("html");
         this.head = Optional.of(head);
         this.body = Optional.of(body);
     }
 
-    private ContainerTag makeContainerTagForRendering(){
+    private ContainerTag makeContainerTagForRendering() {
         return new ContainerTag("html").with(
             this.head.orElse(null),
             this.body.orElse(null)

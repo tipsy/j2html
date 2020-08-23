@@ -10,8 +10,7 @@ public final class InputTag extends EmptyTag
     IDisabled<InputTag>,
     IFormAction<InputTag>,
     IType<InputTag>,
-    IValue<InputTag>
-{
+    IValue<InputTag> {
 
     /*
     Attributes implemented are those not found in EmptyTag Base Class and present in
@@ -25,8 +24,8 @@ public final class InputTag extends EmptyTag
         super("input");
     }
 
-    public InputTag withChecked(boolean checked){
-        if(checked){
+    public InputTag withChecked(boolean checked) {
+        if (checked) {
             attr("checked");
         }
         return this;
