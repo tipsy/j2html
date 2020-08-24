@@ -53,6 +53,17 @@ public final class AttributesPerTagTest {
         assertThat(input().withDirname("fname.dir").render(), is("<input dirname=\"fname.dir\">"));
     }
 
+    @Test
+    public void testAttributesPerTag4(){
+        //TEST: disabled, download, enctype, for, form, formaction
+        assertThat(input().isDisabled().render(), is("<input disabled>"));
+        assertThat(a().isDownload().render(), is("<a download></a>"));
+        assertThat(form().withEnctype("enc").render(), is("<form enctype=\"enc\"></form>"));
+        assertThat(label().withFor("idk").render(), is("<label for=\"idk\"></label>"));
+        assertThat(button().withForm("myform").render(), is("<button form=\"myform\"></button>"));
+        assertThat(button().withFormaction("/1/2").render(), is("<button formaction=\"/1/2\"></button>"));
+    }
+
     //TODO: leaving the rest of the tests for the rest
     //of the custom attributes for later, or for other people
     //to possibly implement
