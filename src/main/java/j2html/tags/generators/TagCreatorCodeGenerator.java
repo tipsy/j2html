@@ -126,6 +126,7 @@ class TagCreatorCodeGenerator {
             "h6",
             //"head", HeadTag is managed manually
             "header",
+            //"html" HtmlTag is managed manually
             "i",
             "iframe",
             "ins",
