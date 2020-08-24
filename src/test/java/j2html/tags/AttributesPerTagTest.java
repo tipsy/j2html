@@ -16,28 +16,29 @@ public final class AttributesPerTagTest {
 
     @Test
     public void testAttributesPerTag1(){
-
         //TEST:
         //accept, action, alt, async,
         //autocomplete, autofocus,
         //autoplay, charset, checked
         assertThat(input().withAccept("image/*").render(), is("<input accept=\"image/*\">"));
-
         assertThat(form().withAction("/1/2").render(), is("<form action=\"/1/2\"></form>"));
-
         assertThat(img().withAlt("horse").render(), is("<img alt=\"horse\">"));
-
         assertThat(script().isAsync().render(), is("<script async></script>"));
-
         assertThat(form().isAutocomplete().render(), is("<form autocomplete=\"on\"></form>"));
-
         assertThat(input().isAutofocus().render(), is("<input autofocus>"));
-
         assertThat(video().isAutoplay().render(), is("<video autoplay></video>"));
-
         assertThat(script().withCharset("mycharset").render(), is("<script charset=\"mycharset\"></script>"));
-
         assertThat(input().isChecked().render(), is("<input checked>"));
+    }
+
+    @Test
+    public void testAttributesPerTag2(){
+        //TEST: cite, cols, colspan, content, controls
+        assertThat(blockquote().withCite("hi").render(), is("<blockquote cite=\"hi\"></blockquote>"));
+        assertThat(textarea().withCols("3").render(), is("<textarea cols=\"3\"></textarea>"));
+        assertThat(td().withColspan("4").render(), is("<td colspan=\"4\"></td>"));
+        assertThat(meta().withContent("mycontent").render(), is("<meta content=\"mycontent\">"));
+        assertThat(audio().isControls().render(), is("<audio controls></audio>"));
     }
 
     //TODO: leaving the rest of the tests for the rest

@@ -44,7 +44,7 @@ public final class AttributesList {
             new AttrD("colspan", true, "td","th"),
             new AttrD("content", true, "meta"),
             //"contenteditable" global attribute, should be in Tag.java
-            new AttrD("controls", true, "audio","video"),
+            new AttrD("controls", false, "audio","video"),
             new AttrD("coords", true, "area"),
             new AttrD("data", true, "object"),
             new AttrD("datetime", true, "del","ins","time"),
