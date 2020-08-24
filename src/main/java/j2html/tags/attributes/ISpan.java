@@ -7,4 +7,11 @@ public interface ISpan<T extends Tag> extends IInstance<T> {
         get().attr("span", span_);
         return get();
     }
+
+    default T withCondSpan(final boolean enable, final String span_) {
+        if (enable) {
+            get().attr("span", span_);
+        }
+        return get();
+    }
 }

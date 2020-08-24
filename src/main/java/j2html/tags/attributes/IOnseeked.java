@@ -7,4 +7,11 @@ public interface IOnseeked<T extends Tag> extends IInstance<T> {
         get().attr("onseeked", onseeked_);
         return get();
     }
+
+    default T withCondOnseeked(final boolean enable, final String onseeked_) {
+        if (enable) {
+            get().attr("onseeked", onseeked_);
+        }
+        return get();
+    }
 }

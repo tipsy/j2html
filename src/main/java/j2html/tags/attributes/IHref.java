@@ -7,4 +7,11 @@ public interface IHref<T extends Tag> extends IInstance<T> {
         get().attr("href", href_);
         return get();
     }
+
+    default T withCondHref(final boolean enable, final String href_) {
+        if (enable) {
+            get().attr("href", href_);
+        }
+        return get();
+    }
 }

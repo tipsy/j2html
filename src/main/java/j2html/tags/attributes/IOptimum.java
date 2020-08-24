@@ -7,4 +7,11 @@ public interface IOptimum<T extends Tag> extends IInstance<T> {
         get().attr("optimum", optimum_);
         return get();
     }
+
+    default T withCondOptimum(final boolean enable, final String optimum_) {
+        if (enable) {
+            get().attr("optimum", optimum_);
+        }
+        return get();
+    }
 }

@@ -7,4 +7,11 @@ public interface IRel<T extends Tag> extends IInstance<T> {
         get().attr("rel", rel_);
         return get();
     }
+
+    default T withCondRel(final boolean enable, final String rel_) {
+        if (enable) {
+            get().attr("rel", rel_);
+        }
+        return get();
+    }
 }

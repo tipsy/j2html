@@ -7,4 +7,11 @@ public interface ILabel<T extends Tag> extends IInstance<T> {
         get().attr("label", label_);
         return get();
     }
+
+    default T withCondLabel(final boolean enable, final String label_) {
+        if (enable) {
+            get().attr("label", label_);
+        }
+        return get();
+    }
 }

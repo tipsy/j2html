@@ -7,4 +7,11 @@ public interface IPreload<T extends Tag> extends IInstance<T> {
         get().attr("preload", preload_);
         return get();
     }
+
+    default T withCondPreload(final boolean enable, final String preload_) {
+        if (enable) {
+            get().attr("preload", preload_);
+        }
+        return get();
+    }
 }

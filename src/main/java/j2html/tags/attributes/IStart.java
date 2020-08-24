@@ -7,4 +7,11 @@ public interface IStart<T extends Tag> extends IInstance<T> {
         get().attr("start", start_);
         return get();
     }
+
+    default T withCondStart(final boolean enable, final String start_) {
+        if (enable) {
+            get().attr("start", start_);
+        }
+        return get();
+    }
 }

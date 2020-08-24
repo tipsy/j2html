@@ -7,4 +7,11 @@ public interface IOnprogress<T extends Tag> extends IInstance<T> {
         get().attr("onprogress", onprogress_);
         return get();
     }
+
+    default T withCondOnprogress(final boolean enable, final String onprogress_) {
+        if (enable) {
+            get().attr("onprogress", onprogress_);
+        }
+        return get();
+    }
 }

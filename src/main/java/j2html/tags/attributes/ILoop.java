@@ -7,4 +7,11 @@ public interface ILoop<T extends Tag> extends IInstance<T> {
         get().attr("loop", loop_);
         return get();
     }
+
+    default T withCondLoop(final boolean enable, final String loop_) {
+        if (enable) {
+            get().attr("loop", loop_);
+        }
+        return get();
+    }
 }

@@ -7,4 +7,11 @@ public interface IRowspan<T extends Tag> extends IInstance<T> {
         get().attr("rowspan", rowspan_);
         return get();
     }
+
+    default T withCondRowspan(final boolean enable, final String rowspan_) {
+        if (enable) {
+            get().attr("rowspan", rowspan_);
+        }
+        return get();
+    }
 }

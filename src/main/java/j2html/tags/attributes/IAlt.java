@@ -7,4 +7,11 @@ public interface IAlt<T extends Tag> extends IInstance<T> {
         get().attr("alt", alt_);
         return get();
     }
+
+    default T withCondAlt(final boolean enable, final String alt_) {
+        if (enable) {
+            get().attr("alt", alt_);
+        }
+        return get();
+    }
 }

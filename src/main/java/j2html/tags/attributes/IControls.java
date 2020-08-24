@@ -7,4 +7,11 @@ public interface IControls<T extends Tag> extends IInstance<T> {
         get().attr("controls", controls_);
         return get();
     }
+
+    default T withCondControls(final boolean enable, final String controls_) {
+        if (enable) {
+            get().attr("controls", controls_);
+        }
+        return get();
+    }
 }

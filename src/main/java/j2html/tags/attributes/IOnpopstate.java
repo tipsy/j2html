@@ -7,4 +7,11 @@ public interface IOnpopstate<T extends Tag> extends IInstance<T> {
         get().attr("onpopstate", onpopstate_);
         return get();
     }
+
+    default T withCondOnpopstate(final boolean enable, final String onpopstate_) {
+        if (enable) {
+            get().attr("onpopstate", onpopstate_);
+        }
+        return get();
+    }
 }

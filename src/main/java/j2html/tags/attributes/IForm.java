@@ -7,4 +7,11 @@ public interface IForm<T extends Tag> extends IInstance<T> {
         get().attr("form", form_);
         return get();
     }
+
+    default T withCondForm(final boolean enable, final String form_) {
+        if (enable) {
+            get().attr("form", form_);
+        }
+        return get();
+    }
 }

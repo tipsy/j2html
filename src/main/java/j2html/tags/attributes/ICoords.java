@@ -7,4 +7,11 @@ public interface ICoords<T extends Tag> extends IInstance<T> {
         get().attr("coords", coords_);
         return get();
     }
+
+    default T withCondCoords(final boolean enable, final String coords_) {
+        if (enable) {
+            get().attr("coords", coords_);
+        }
+        return get();
+    }
 }

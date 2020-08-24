@@ -7,4 +7,11 @@ public interface IDefault<T extends Tag> extends IInstance<T> {
         get().attr("default", default_);
         return get();
     }
+
+    default T withCondDefault(final boolean enable, final String default_) {
+        if (enable) {
+            get().attr("default", default_);
+        }
+        return get();
+    }
 }

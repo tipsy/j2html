@@ -7,4 +7,11 @@ public interface IOnsuspend<T extends Tag> extends IInstance<T> {
         get().attr("onsuspend", onsuspend_);
         return get();
     }
+
+    default T withCondOnsuspend(final boolean enable, final String onsuspend_) {
+        if (enable) {
+            get().attr("onsuspend", onsuspend_);
+        }
+        return get();
+    }
 }

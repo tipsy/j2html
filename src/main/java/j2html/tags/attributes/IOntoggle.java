@@ -7,4 +7,11 @@ public interface IOntoggle<T extends Tag> extends IInstance<T> {
         get().attr("ontoggle", ontoggle_);
         return get();
     }
+
+    default T withCondOntoggle(final boolean enable, final String ontoggle_) {
+        if (enable) {
+            get().attr("ontoggle", ontoggle_);
+        }
+        return get();
+    }
 }

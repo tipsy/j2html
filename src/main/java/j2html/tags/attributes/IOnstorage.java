@@ -7,4 +7,11 @@ public interface IOnstorage<T extends Tag> extends IInstance<T> {
         get().attr("onstorage", onstorage_);
         return get();
     }
+
+    default T withCondOnstorage(final boolean enable, final String onstorage_) {
+        if (enable) {
+            get().attr("onstorage", onstorage_);
+        }
+        return get();
+    }
 }

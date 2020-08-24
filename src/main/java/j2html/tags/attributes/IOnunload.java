@@ -7,4 +7,11 @@ public interface IOnunload<T extends Tag> extends IInstance<T> {
         get().attr("onunload", onunload_);
         return get();
     }
+
+    default T withCondOnunload(final boolean enable, final String onunload_) {
+        if (enable) {
+            get().attr("onunload", onunload_);
+        }
+        return get();
+    }
 }

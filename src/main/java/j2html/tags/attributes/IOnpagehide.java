@@ -7,4 +7,11 @@ public interface IOnpagehide<T extends Tag> extends IInstance<T> {
         get().attr("onpagehide", onpagehide_);
         return get();
     }
+
+    default T withCondOnpagehide(final boolean enable, final String onpagehide_) {
+        if (enable) {
+            get().attr("onpagehide", onpagehide_);
+        }
+        return get();
+    }
 }

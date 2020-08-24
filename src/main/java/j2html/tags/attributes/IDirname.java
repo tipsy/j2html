@@ -7,4 +7,11 @@ public interface IDirname<T extends Tag> extends IInstance<T> {
         get().attr("dirname", dirname_);
         return get();
     }
+
+    default T withCondDirname(final boolean enable, final String dirname_) {
+        if (enable) {
+            get().attr("dirname", dirname_);
+        }
+        return get();
+    }
 }

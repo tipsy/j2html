@@ -7,4 +7,11 @@ public interface ICols<T extends Tag> extends IInstance<T> {
         get().attr("cols", cols_);
         return get();
     }
+
+    default T withCondCols(final boolean enable, final String cols_) {
+        if (enable) {
+            get().attr("cols", cols_);
+        }
+        return get();
+    }
 }

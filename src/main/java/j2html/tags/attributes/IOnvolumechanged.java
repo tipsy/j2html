@@ -7,4 +7,11 @@ public interface IOnvolumechanged<T extends Tag> extends IInstance<T> {
         get().attr("onvolumechanged", onvolumechanged_);
         return get();
     }
+
+    default T withCondOnvolumechanged(final boolean enable, final String onvolumechanged_) {
+        if (enable) {
+            get().attr("onvolumechanged", onvolumechanged_);
+        }
+        return get();
+    }
 }

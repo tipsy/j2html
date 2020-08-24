@@ -7,4 +7,11 @@ public interface IDatetime<T extends Tag> extends IInstance<T> {
         get().attr("datetime", datetime_);
         return get();
     }
+
+    default T withCondDatetime(final boolean enable, final String datetime_) {
+        if (enable) {
+            get().attr("datetime", datetime_);
+        }
+        return get();
+    }
 }

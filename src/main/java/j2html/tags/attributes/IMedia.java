@@ -7,4 +7,11 @@ public interface IMedia<T extends Tag> extends IInstance<T> {
         get().attr("media", media_);
         return get();
     }
+
+    default T withCondMedia(final boolean enable, final String media_) {
+        if (enable) {
+            get().attr("media", media_);
+        }
+        return get();
+    }
 }

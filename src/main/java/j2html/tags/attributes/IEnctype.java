@@ -7,4 +7,11 @@ public interface IEnctype<T extends Tag> extends IInstance<T> {
         get().attr("enctype", enctype_);
         return get();
     }
+
+    default T withCondEnctype(final boolean enable, final String enctype_) {
+        if (enable) {
+            get().attr("enctype", enctype_);
+        }
+        return get();
+    }
 }

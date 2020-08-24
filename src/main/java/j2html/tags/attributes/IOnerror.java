@@ -7,4 +7,11 @@ public interface IOnerror<T extends Tag> extends IInstance<T> {
         get().attr("onerror", onerror_);
         return get();
     }
+
+    default T withCondOnerror(final boolean enable, final String onerror_) {
+        if (enable) {
+            get().attr("onerror", onerror_);
+        }
+        return get();
+    }
 }

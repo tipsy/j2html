@@ -7,4 +7,11 @@ public interface IOnsearch<T extends Tag> extends IInstance<T> {
         get().attr("onsearch", onsearch_);
         return get();
     }
+
+    default T withCondOnsearch(final boolean enable, final String onsearch_) {
+        if (enable) {
+            get().attr("onsearch", onsearch_);
+        }
+        return get();
+    }
 }

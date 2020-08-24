@@ -7,4 +7,11 @@ public interface IScope<T extends Tag> extends IInstance<T> {
         get().attr("scope", scope_);
         return get();
     }
+
+    default T withCondScope(final boolean enable, final String scope_) {
+        if (enable) {
+            get().attr("scope", scope_);
+        }
+        return get();
+    }
 }

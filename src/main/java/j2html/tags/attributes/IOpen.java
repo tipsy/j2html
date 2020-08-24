@@ -7,4 +7,11 @@ public interface IOpen<T extends Tag> extends IInstance<T> {
         get().attr("open", open_);
         return get();
     }
+
+    default T withCondOpen(final boolean enable, final String open_) {
+        if (enable) {
+            get().attr("open", open_);
+        }
+        return get();
+    }
 }

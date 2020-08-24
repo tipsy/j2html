@@ -7,4 +7,11 @@ public interface INovalidate<T extends Tag> extends IInstance<T> {
         get().attr("novalidate", novalidate_);
         return get();
     }
+
+    default T withCondNovalidate(final boolean enable, final String novalidate_) {
+        if (enable) {
+            get().attr("novalidate", novalidate_);
+        }
+        return get();
+    }
 }

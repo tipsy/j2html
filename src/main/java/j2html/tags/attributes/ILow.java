@@ -7,4 +7,11 @@ public interface ILow<T extends Tag> extends IInstance<T> {
         get().attr("low", low_);
         return get();
     }
+
+    default T withCondLow(final boolean enable, final String low_) {
+        if (enable) {
+            get().attr("low", low_);
+        }
+        return get();
+    }
 }

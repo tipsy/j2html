@@ -7,4 +7,11 @@ public interface IColspan<T extends Tag> extends IInstance<T> {
         get().attr("colspan", colspan_);
         return get();
     }
+
+    default T withCondColspan(final boolean enable, final String colspan_) {
+        if (enable) {
+            get().attr("colspan", colspan_);
+        }
+        return get();
+    }
 }

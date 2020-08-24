@@ -7,4 +7,11 @@ public interface IOndurationchange<T extends Tag> extends IInstance<T> {
         get().attr("ondurationchange", ondurationchange_);
         return get();
     }
+
+    default T withCondOndurationchange(final boolean enable, final String ondurationchange_) {
+        if (enable) {
+            get().attr("ondurationchange", ondurationchange_);
+        }
+        return get();
+    }
 }

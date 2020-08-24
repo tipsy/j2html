@@ -7,4 +7,11 @@ public interface ISrcset<T extends Tag> extends IInstance<T> {
         get().attr("srcset", srcset_);
         return get();
     }
+
+    default T withCondSrcset(final boolean enable, final String srcset_) {
+        if (enable) {
+            get().attr("srcset", srcset_);
+        }
+        return get();
+    }
 }

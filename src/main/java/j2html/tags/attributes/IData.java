@@ -7,4 +7,11 @@ public interface IData<T extends Tag> extends IInstance<T> {
         get().attr("data", data_);
         return get();
     }
+
+    default T withCondData(final boolean enable, final String data_) {
+        if (enable) {
+            get().attr("data", data_);
+        }
+        return get();
+    }
 }

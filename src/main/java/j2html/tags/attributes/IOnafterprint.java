@@ -7,4 +7,11 @@ public interface IOnafterprint<T extends Tag> extends IInstance<T> {
         get().attr("onafterprint", onafterprint_);
         return get();
     }
+
+    default T withCondOnafterprint(final boolean enable, final String onafterprint_) {
+        if (enable) {
+            get().attr("onafterprint", onafterprint_);
+        }
+        return get();
+    }
 }

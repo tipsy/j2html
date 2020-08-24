@@ -7,4 +7,11 @@ public interface IOnbeforeprint<T extends Tag> extends IInstance<T> {
         get().attr("onbeforeprint", onbeforeprint_);
         return get();
     }
+
+    default T withCondOnbeforeprint(final boolean enable, final String onbeforeprint_) {
+        if (enable) {
+            get().attr("onbeforeprint", onbeforeprint_);
+        }
+        return get();
+    }
 }

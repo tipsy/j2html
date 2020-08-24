@@ -7,4 +7,11 @@ public interface IReversed<T extends Tag> extends IInstance<T> {
         get().attr("reversed", reversed_);
         return get();
     }
+
+    default T withCondReversed(final boolean enable, final String reversed_) {
+        if (enable) {
+            get().attr("reversed", reversed_);
+        }
+        return get();
+    }
 }

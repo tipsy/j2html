@@ -17,7 +17,6 @@ public final class AttributeInterfaceCodeGenerator {
                 final Path path = makePath(attr.attr);
                 final String interfaceName = interfaceNameFromAttribute(attr.attr)+"<T extends Tag>";
 
-
                 /*
                 IFormAction<T extends Tag> extends IInstance<T>
 
@@ -46,6 +45,10 @@ public final class AttributeInterfaceCodeGenerator {
 
     private static String getPackage(){
         return "package j2html.tags.attributes;\n";
+    }
+
+    private static String makeReturnTypeAndMethodName(final String name){
+        return "default "+ "T "+name;
     }
 
     private static String getInterfaceTemplate(
@@ -89,19 +92,51 @@ public final class AttributeInterfaceCodeGenerator {
         final String attrName = interfaceNameSimple.toLowerCase();
         final String paramName = attrName+"_";
 
+        //depending on if the attribute has an argument or not,
+        //generate methods according to the convention in Tag.java
+        // arg -> with$ATTR(arg), withCond$ATTR(condition, arg)
+        // no arg -> is$ATTR(), withCond$ATTR(condition)
+
         //append the 'with$ATTR' method
         writeAttributeMethod(interfaceNameSimple, attrD, sb, attrName, paramName);
+        writeAttributeMethodCond(interfaceNameSimple, attrD, sb, attrName, paramName);
 
         sb.append("}\n");
 
         return sb.toString();
     }
 
-    private static void writeAttributeMethod(String interfaceNameSimple, AttrD attrD, StringBuilder sb, String attrName, String paramName) {
-        sb.append("default ")
-            .append("T ");
+    private static void writeAttributeMethodCond(String interfaceNameSimple, AttrD attrD, StringBuilder sb, String attrName, String paramName) {
 
-        sb.append("with").append(interfaceNameSimple);
+        sb.append(makeReturnTypeAndMethodName("withCond"+interfaceNameSimple));
+
+        if(attrD.hasArgument){
+            //add a variant where you can specify the argument
+
+            sb.append("(final boolean enable, final String ").append(paramName).append(") {");
+
+                sb.append("if (enable){\n");
+                    sb.append("get().attr(\"").append(attrName).append("\", "+ paramName +");\n");
+                sb.append("}\n");
+
+                sb.append("return get();\n");
+        }else{
+            //add a variant where you can toggle the attribute
+
+            sb.append("(final boolean enable) {");
+                sb.append("if (enable){\n");
+                    sb.append("get().attr(\"").append(attrName).append("\");\n");
+                sb.append("}\n");
+                sb.append("return get();\n");
+        }
+        sb.append("}\n");
+    }
+
+    private static void writeAttributeMethod(String interfaceNameSimple, AttrD attrD, StringBuilder sb, String attrName, String paramName) {
+
+        sb.append(makeReturnTypeAndMethodName(
+            ((attrD.hasArgument)?"with":"is")+interfaceNameSimple)
+        );
 
         if(attrD.hasArgument){
             //add a variant where you can specify the argument
@@ -113,11 +148,9 @@ public final class AttributeInterfaceCodeGenerator {
         }else{
             //add a variant where you can toggle the attribute
 
-            sb.append("(final boolean ").append(paramName).append(") {")
+            sb.append("() {")
 
-                .append("if ("+ paramName +") {\n")
-                    .append("get().attr(\"").append(attrName).append("\");\n")
-                .append("}\n")
+                .append("get().attr(\"").append(attrName).append("\");\n")
                 .append("return get();\n");
         }
         sb.append("}\n");

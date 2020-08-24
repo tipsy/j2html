@@ -7,4 +7,11 @@ public interface IOnpause<T extends Tag> extends IInstance<T> {
         get().attr("onpause", onpause_);
         return get();
     }
+
+    default T withCondOnpause(final boolean enable, final String onpause_) {
+        if (enable) {
+            get().attr("onpause", onpause_);
+        }
+        return get();
+    }
 }

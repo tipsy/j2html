@@ -7,4 +7,11 @@ public interface IName<T extends Tag> extends IInstance<T> {
         get().attr("name", name_);
         return get();
     }
+
+    default T withCondName(final boolean enable, final String name_) {
+        if (enable) {
+            get().attr("name", name_);
+        }
+        return get();
+    }
 }

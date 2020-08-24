@@ -7,4 +7,11 @@ public interface IAutoplay<T extends Tag> extends IInstance<T> {
         get().attr("autoplay", autoplay_);
         return get();
     }
+
+    default T withCondAutoplay(final boolean enable, final String autoplay_) {
+        if (enable) {
+            get().attr("autoplay", autoplay_);
+        }
+        return get();
+    }
 }

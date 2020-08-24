@@ -7,4 +7,11 @@ public interface IOnended<T extends Tag> extends IInstance<T> {
         get().attr("onended", onended_);
         return get();
     }
+
+    default T withCondOnended(final boolean enable, final String onended_) {
+        if (enable) {
+            get().attr("onended", onended_);
+        }
+        return get();
+    }
 }

@@ -7,4 +7,11 @@ public interface IUsemap<T extends Tag> extends IInstance<T> {
         get().attr("usemap", usemap_);
         return get();
     }
+
+    default T withCondUsemap(final boolean enable, final String usemap_) {
+        if (enable) {
+            get().attr("usemap", usemap_);
+        }
+        return get();
+    }
 }

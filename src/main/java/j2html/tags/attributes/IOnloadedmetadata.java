@@ -7,4 +7,11 @@ public interface IOnloadedmetadata<T extends Tag> extends IInstance<T> {
         get().attr("onloadedmetadata", onloadedmetadata_);
         return get();
     }
+
+    default T withCondOnloadedmetadata(final boolean enable, final String onloadedmetadata_) {
+        if (enable) {
+            get().attr("onloadedmetadata", onloadedmetadata_);
+        }
+        return get();
+    }
 }

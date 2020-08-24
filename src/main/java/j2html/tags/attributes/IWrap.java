@@ -7,4 +7,11 @@ public interface IWrap<T extends Tag> extends IInstance<T> {
         get().attr("wrap", wrap_);
         return get();
     }
+
+    default T withCondWrap(final boolean enable, final String wrap_) {
+        if (enable) {
+            get().attr("wrap", wrap_);
+        }
+        return get();
+    }
 }

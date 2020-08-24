@@ -15,8 +15,8 @@ public class ConvenienceMethodTest {
 
     @Test
     public void testAllConvenienceMethods() throws Exception {
-        assertThat(input().isAutoComplete().render(), is("<input autocomplete>"));
-        assertThat(input().isAutoFocus().render(), is("<input autofocus>"));
+        assertThat(input().isAutocomplete().render(), is("<input autocomplete>"));
+        assertThat(input().isAutofocus().render(), is("<input autofocus>"));
         assertThat(input().isHidden().render(), is("<input hidden>"));
         assertThat(input().isRequired().render(), is("<input required>"));
         assertThat(img().withAlt("An image").render(), is("<img alt=\"An image\">"));
@@ -34,7 +34,7 @@ public class ConvenienceMethodTest {
         assertThat(a().withTitle("Title").render(), is("<a title=\"Title\"></a>"));
         assertThat(input().attr("type","email").render(), is("<input type=\"email\">"));
         assertThat(link().withRel("stylesheet").render(), is("<link rel=\"stylesheet\">"));
-        assertThat(link().withRole("role").render(), is("<link role=\"role\">"));
+        assertThat(link().attr("role","role").render(), is("<link role=\"role\">"));
         assertThat(img().withSrc("/img/test.png").render(), is("<img src=\"/img/test.png\">"));
         assertThat(input().withStep("0.1").render(), is("<input step=\"0.1\">"));
         assertThat(div().withStyle("background:red;").render(), is("<div style=\"background:red;\"></div>"));

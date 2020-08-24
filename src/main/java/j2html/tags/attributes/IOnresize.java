@@ -7,4 +7,11 @@ public interface IOnresize<T extends Tag> extends IInstance<T> {
         get().attr("onresize", onresize_);
         return get();
     }
+
+    default T withCondOnresize(final boolean enable, final String onresize_) {
+        if (enable) {
+            get().attr("onresize", onresize_);
+        }
+        return get();
+    }
 }

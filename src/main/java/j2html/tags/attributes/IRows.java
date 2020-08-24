@@ -7,4 +7,11 @@ public interface IRows<T extends Tag> extends IInstance<T> {
         get().attr("rows", rows_);
         return get();
     }
+
+    default T withCondRows(final boolean enable, final String rows_) {
+        if (enable) {
+            get().attr("rows", rows_);
+        }
+        return get();
+    }
 }

@@ -7,4 +7,11 @@ public interface IDefer<T extends Tag> extends IInstance<T> {
         get().attr("defer", defer_);
         return get();
     }
+
+    default T withCondDefer(final boolean enable, final String defer_) {
+        if (enable) {
+            get().attr("defer", defer_);
+        }
+        return get();
+    }
 }

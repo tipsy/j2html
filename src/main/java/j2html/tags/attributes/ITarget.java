@@ -7,4 +7,11 @@ public interface ITarget<T extends Tag> extends IInstance<T> {
         get().attr("target", target_);
         return get();
     }
+
+    default T withCondTarget(final boolean enable, final String target_) {
+        if (enable) {
+            get().attr("target", target_);
+        }
+        return get();
+    }
 }

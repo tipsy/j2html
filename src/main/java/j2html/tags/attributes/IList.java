@@ -7,4 +7,11 @@ public interface IList<T extends Tag> extends IInstance<T> {
         get().attr("list", list_);
         return get();
     }
+
+    default T withCondList(final boolean enable, final String list_) {
+        if (enable) {
+            get().attr("list", list_);
+        }
+        return get();
+    }
 }

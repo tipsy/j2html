@@ -7,4 +7,11 @@ public interface IOnoffline<T extends Tag> extends IInstance<T> {
         get().attr("onoffline", onoffline_);
         return get();
     }
+
+    default T withCondOnoffline(final boolean enable, final String onoffline_) {
+        if (enable) {
+            get().attr("onoffline", onoffline_);
+        }
+        return get();
+    }
 }

@@ -31,8 +31,8 @@ public final class AttributesList {
             //"align", not supported in HTML5
             new AttrD("alt", true, "area","img","input"),
             new AttrD("async", true, "script"),
-            new AttrD("autocomplete", true, "form","input"),
-            new AttrD("autofocus", true, "button","input","select","textarea"),
+            new AttrD("autocomplete", false, "form","input"),
+            new AttrD("autofocus", false, "button","input","select","textarea"),
             new AttrD("autoplay", true, "audio","video"),
             //"bgcolor", not supported in HTMTL5
             //"border", not supported in HTML5
@@ -150,7 +150,7 @@ public final class AttributesList {
             new AttrD("preload", true, "audio","video"),
             new AttrD("readonly", true, "input","textarea"),
             new AttrD("rel", true, "a","area","form","link"),
-            new AttrD("required", true, "input","select","textarea"),
+            new AttrD("required", false, "input","select","textarea"),
             new AttrD("reversed", true, "ol"),
             new AttrD("rows", true, "textarea"),
             new AttrD("rowspan", true, "td","th"),

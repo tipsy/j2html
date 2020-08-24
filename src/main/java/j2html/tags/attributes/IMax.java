@@ -7,4 +7,11 @@ public interface IMax<T extends Tag> extends IInstance<T> {
         get().attr("max", max_);
         return get();
     }
+
+    default T withCondMax(final boolean enable, final String max_) {
+        if (enable) {
+            get().attr("max", max_);
+        }
+        return get();
+    }
 }

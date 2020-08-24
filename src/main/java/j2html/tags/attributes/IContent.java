@@ -7,4 +7,11 @@ public interface IContent<T extends Tag> extends IInstance<T> {
         get().attr("content", content_);
         return get();
     }
+
+    default T withCondContent(final boolean enable, final String content_) {
+        if (enable) {
+            get().attr("content", content_);
+        }
+        return get();
+    }
 }

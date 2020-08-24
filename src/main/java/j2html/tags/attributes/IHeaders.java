@@ -7,4 +7,11 @@ public interface IHeaders<T extends Tag> extends IInstance<T> {
         get().attr("headers", headers_);
         return get();
     }
+
+    default T withCondHeaders(final boolean enable, final String headers_) {
+        if (enable) {
+            get().attr("headers", headers_);
+        }
+        return get();
+    }
 }

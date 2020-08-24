@@ -7,4 +7,11 @@ public interface IHigh<T extends Tag> extends IInstance<T> {
         get().attr("high", high_);
         return get();
     }
+
+    default T withCondHigh(final boolean enable, final String high_) {
+        if (enable) {
+            get().attr("high", high_);
+        }
+        return get();
+    }
 }

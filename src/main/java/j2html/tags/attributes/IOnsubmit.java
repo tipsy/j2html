@@ -7,4 +7,11 @@ public interface IOnsubmit<T extends Tag> extends IInstance<T> {
         get().attr("onsubmit", onsubmit_);
         return get();
     }
+
+    default T withCondOnsubmit(final boolean enable, final String onsubmit_) {
+        if (enable) {
+            get().attr("onsubmit", onsubmit_);
+        }
+        return get();
+    }
 }

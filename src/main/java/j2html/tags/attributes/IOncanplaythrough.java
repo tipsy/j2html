@@ -7,4 +7,11 @@ public interface IOncanplaythrough<T extends Tag> extends IInstance<T> {
         get().attr("oncanplaythrough", oncanplaythrough_);
         return get();
     }
+
+    default T withCondOncanplaythrough(final boolean enable, final String oncanplaythrough_) {
+        if (enable) {
+            get().attr("oncanplaythrough", oncanplaythrough_);
+        }
+        return get();
+    }
 }

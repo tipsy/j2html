@@ -7,4 +7,11 @@ public interface IMin<T extends Tag> extends IInstance<T> {
         get().attr("min", min_);
         return get();
     }
+
+    default T withCondMin(final boolean enable, final String min_) {
+        if (enable) {
+            get().attr("min", min_);
+        }
+        return get();
+    }
 }

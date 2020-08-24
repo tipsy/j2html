@@ -7,4 +7,11 @@ public interface IMaxlength<T extends Tag> extends IInstance<T> {
         get().attr("maxlength", maxlength_);
         return get();
     }
+
+    default T withCondMaxlength(final boolean enable, final String maxlength_) {
+        if (enable) {
+            get().attr("maxlength", maxlength_);
+        }
+        return get();
+    }
 }

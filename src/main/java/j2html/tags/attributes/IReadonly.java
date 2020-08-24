@@ -7,4 +7,11 @@ public interface IReadonly<T extends Tag> extends IInstance<T> {
         get().attr("readonly", readonly_);
         return get();
     }
+
+    default T withCondReadonly(final boolean enable, final String readonly_) {
+        if (enable) {
+            get().attr("readonly", readonly_);
+        }
+        return get();
+    }
 }

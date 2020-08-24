@@ -7,4 +7,11 @@ public interface ISize<T extends Tag> extends IInstance<T> {
         get().attr("size", size_);
         return get();
     }
+
+    default T withCondSize(final boolean enable, final String size_) {
+        if (enable) {
+            get().attr("size", size_);
+        }
+        return get();
+    }
 }

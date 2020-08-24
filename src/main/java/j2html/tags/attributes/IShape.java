@@ -7,4 +7,11 @@ public interface IShape<T extends Tag> extends IInstance<T> {
         get().attr("shape", shape_);
         return get();
     }
+
+    default T withCondShape(final boolean enable, final String shape_) {
+        if (enable) {
+            get().attr("shape", shape_);
+        }
+        return get();
+    }
 }

@@ -7,4 +7,11 @@ public interface IMultiple<T extends Tag> extends IInstance<T> {
         get().attr("multiple", multiple_);
         return get();
     }
+
+    default T withCondMultiple(final boolean enable, final String multiple_) {
+        if (enable) {
+            get().attr("multiple", multiple_);
+        }
+        return get();
+    }
 }

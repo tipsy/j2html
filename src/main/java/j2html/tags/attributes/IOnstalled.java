@@ -7,4 +7,11 @@ public interface IOnstalled<T extends Tag> extends IInstance<T> {
         get().attr("onstalled", onstalled_);
         return get();
     }
+
+    default T withCondOnstalled(final boolean enable, final String onstalled_) {
+        if (enable) {
+            get().attr("onstalled", onstalled_);
+        }
+        return get();
+    }
 }

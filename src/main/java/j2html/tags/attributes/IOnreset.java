@@ -7,4 +7,11 @@ public interface IOnreset<T extends Tag> extends IInstance<T> {
         get().attr("onreset", onreset_);
         return get();
     }
+
+    default T withCondOnreset(final boolean enable, final String onreset_) {
+        if (enable) {
+            get().attr("onreset", onreset_);
+        }
+        return get();
+    }
 }

@@ -7,4 +7,11 @@ public interface IMuted<T extends Tag> extends IInstance<T> {
         get().attr("muted", muted_);
         return get();
     }
+
+    default T withCondMuted(final boolean enable, final String muted_) {
+        if (enable) {
+            get().attr("muted", muted_);
+        }
+        return get();
+    }
 }

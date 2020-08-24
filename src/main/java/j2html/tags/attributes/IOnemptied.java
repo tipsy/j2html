@@ -7,4 +7,11 @@ public interface IOnemptied<T extends Tag> extends IInstance<T> {
         get().attr("onemptied", onemptied_);
         return get();
     }
+
+    default T withCondOnemptied(final boolean enable, final String onemptied_) {
+        if (enable) {
+            get().attr("onemptied", onemptied_);
+        }
+        return get();
+    }
 }

@@ -183,13 +183,13 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
 
     public T withClass(String className) { return attr(Attr.CLASS, className); }
 
-    public T withContenteditable(){ return attr(Attr.CONTENTEDITABLE, "true"); }
+    public T isContenteditable(){ return attr(Attr.CONTENTEDITABLE, "true"); }
 
     public T withData(String dataAttr, String value) { return attr(Attr.DATA + "-" + dataAttr, value); }
 
     public T withDir(String dir) { return attr(Attr.DIR, dir); }
 
-    public T withDraggable(){ return attr(Attr.DRAGGABLE, "true"); }
+    public T isDraggable(){ return attr(Attr.DRAGGABLE, "true"); }
 
     public T isHidden() { return attr(Attr.HIDDEN, null); }
 
@@ -197,7 +197,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
 
     public T withLang(String lang) { return attr(Attr.LANG, lang); }
 
-    public T withSpellcheck(){ return attr(Attr.SPELLCHECK, "true"); }
+    public T isSpellcheck(){ return attr(Attr.SPELLCHECK, "true"); }
 
     public T withStyle(String style) { return attr(Attr.STYLE, style); }
 
@@ -205,7 +205,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
 
     public T withTitle(String title) { return attr(Attr.TITLE, title); }
 
-    public T withTranslate(){ return attr(Attr.TRANSLATE, "yes"); }
+    public T isTranslate(){ return attr(Attr.TRANSLATE, "yes"); }
 
     // ----- start of withCond$ATTR variants -----
     public T withCondAccessKey(boolean condition, String accesskey){ return condAttr(condition, Attr.ACCESSKEY, accesskey); }

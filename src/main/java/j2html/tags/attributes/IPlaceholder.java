@@ -7,4 +7,11 @@ public interface IPlaceholder<T extends Tag> extends IInstance<T> {
         get().attr("placeholder", placeholder_);
         return get();
     }
+
+    default T withCondPlaceholder(final boolean enable, final String placeholder_) {
+        if (enable) {
+            get().attr("placeholder", placeholder_);
+        }
+        return get();
+    }
 }

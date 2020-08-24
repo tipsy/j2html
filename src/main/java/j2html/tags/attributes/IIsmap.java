@@ -7,4 +7,11 @@ public interface IIsmap<T extends Tag> extends IInstance<T> {
         get().attr("ismap", ismap_);
         return get();
     }
+
+    default T withCondIsmap(final boolean enable, final String ismap_) {
+        if (enable) {
+            get().attr("ismap", ismap_);
+        }
+        return get();
+    }
 }

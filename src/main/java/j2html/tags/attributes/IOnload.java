@@ -7,4 +7,11 @@ public interface IOnload<T extends Tag> extends IInstance<T> {
         get().attr("onload", onload_);
         return get();
     }
+
+    default T withCondOnload(final boolean enable, final String onload_) {
+        if (enable) {
+            get().attr("onload", onload_);
+        }
+        return get();
+    }
 }

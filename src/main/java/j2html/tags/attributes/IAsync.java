@@ -7,4 +7,11 @@ public interface IAsync<T extends Tag> extends IInstance<T> {
         get().attr("async", async_);
         return get();
     }
+
+    default T withCondAsync(final boolean enable, final String async_) {
+        if (enable) {
+            get().attr("async", async_);
+        }
+        return get();
+    }
 }

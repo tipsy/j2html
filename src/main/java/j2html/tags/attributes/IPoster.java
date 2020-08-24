@@ -7,4 +7,11 @@ public interface IPoster<T extends Tag> extends IInstance<T> {
         get().attr("poster", poster_);
         return get();
     }
+
+    default T withCondPoster(final boolean enable, final String poster_) {
+        if (enable) {
+            get().attr("poster", poster_);
+        }
+        return get();
+    }
 }

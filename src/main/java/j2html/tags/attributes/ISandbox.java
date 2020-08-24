@@ -7,4 +7,11 @@ public interface ISandbox<T extends Tag> extends IInstance<T> {
         get().attr("sandbox", sandbox_);
         return get();
     }
+
+    default T withCondSandbox(final boolean enable, final String sandbox_) {
+        if (enable) {
+            get().attr("sandbox", sandbox_);
+        }
+        return get();
+    }
 }

@@ -7,4 +7,11 @@ public interface IOnonline<T extends Tag> extends IInstance<T> {
         get().attr("ononline", ononline_);
         return get();
     }
+
+    default T withCondOnonline(final boolean enable, final String ononline_) {
+        if (enable) {
+            get().attr("ononline", ononline_);
+        }
+        return get();
+    }
 }

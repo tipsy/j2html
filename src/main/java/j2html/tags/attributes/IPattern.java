@@ -7,4 +7,11 @@ public interface IPattern<T extends Tag> extends IInstance<T> {
         get().attr("pattern", pattern_);
         return get();
     }
+
+    default T withCondPattern(final boolean enable, final String pattern_) {
+        if (enable) {
+            get().attr("pattern", pattern_);
+        }
+        return get();
+    }
 }

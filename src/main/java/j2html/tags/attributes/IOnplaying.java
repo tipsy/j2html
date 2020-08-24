@@ -7,4 +7,11 @@ public interface IOnplaying<T extends Tag> extends IInstance<T> {
         get().attr("onplaying", onplaying_);
         return get();
     }
+
+    default T withCondOnplaying(final boolean enable, final String onplaying_) {
+        if (enable) {
+            get().attr("onplaying", onplaying_);
+        }
+        return get();
+    }
 }

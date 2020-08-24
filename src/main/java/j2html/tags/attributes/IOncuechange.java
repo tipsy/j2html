@@ -7,4 +7,11 @@ public interface IOncuechange<T extends Tag> extends IInstance<T> {
         get().attr("oncuechange", oncuechange_);
         return get();
     }
+
+    default T withCondOncuechange(final boolean enable, final String oncuechange_) {
+        if (enable) {
+            get().attr("oncuechange", oncuechange_);
+        }
+        return get();
+    }
 }

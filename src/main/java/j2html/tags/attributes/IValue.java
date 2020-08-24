@@ -7,4 +7,11 @@ public interface IValue<T extends Tag> extends IInstance<T> {
         get().attr("value", value_);
         return get();
     }
+
+    default T withCondValue(final boolean enable, final String value_) {
+        if (enable) {
+            get().attr("value", value_);
+        }
+        return get();
+    }
 }

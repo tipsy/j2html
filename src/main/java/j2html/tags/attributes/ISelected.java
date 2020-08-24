@@ -7,4 +7,11 @@ public interface ISelected<T extends Tag> extends IInstance<T> {
         get().attr("selected", selected_);
         return get();
     }
+
+    default T withCondSelected(final boolean enable, final String selected_) {
+        if (enable) {
+            get().attr("selected", selected_);
+        }
+        return get();
+    }
 }

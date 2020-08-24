@@ -7,4 +7,11 @@ public interface IType<T extends Tag> extends IInstance<T> {
         get().attr("type", type_);
         return get();
     }
+
+    default T withCondType(final boolean enable, final String type_) {
+        if (enable) {
+            get().attr("type", type_);
+        }
+        return get();
+    }
 }

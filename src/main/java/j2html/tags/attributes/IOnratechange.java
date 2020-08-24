@@ -7,4 +7,11 @@ public interface IOnratechange<T extends Tag> extends IInstance<T> {
         get().attr("onratechange", onratechange_);
         return get();
     }
+
+    default T withCondOnratechange(final boolean enable, final String onratechange_) {
+        if (enable) {
+            get().attr("onratechange", onratechange_);
+        }
+        return get();
+    }
 }
