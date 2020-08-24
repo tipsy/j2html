@@ -41,6 +41,18 @@ public final class AttributesPerTagTest {
         assertThat(audio().isControls().render(), is("<audio controls></audio>"));
     }
 
+    @Test
+    public void testAttributesPerTag3(){
+        //TEST: coords, data, datetime, default, defer, dirname
+        assertThat(area().withCoords("0,0,82,126").render(), is("<area coords=\"0,0,82,126\">"));
+        assertThat(object().withData("/1/2").render(), is("<object data=\"/1/2\"></object>"));
+        assertThat(time().withDatetime("2015-11-15T22:55:03Z").render(), is("<time datetime=\"2015-11-15T22:55:03Z\"></time>"));
+        assertThat(object().withData("/1/2").render(), is("<object data=\"/1/2\"></object>"));
+        assertThat(track().isDefault().render(), is("<track default>"));
+        assertThat(script().isDefer().render(), is("<script defer></script>"));
+        assertThat(input().withDirname("fname.dir").render(), is("<input dirname=\"fname.dir\">"));
+    }
+
     //TODO: leaving the rest of the tests for the rest
     //of the custom attributes for later, or for other people
     //to possibly implement

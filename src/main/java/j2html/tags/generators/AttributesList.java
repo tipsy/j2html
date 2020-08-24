@@ -48,8 +48,8 @@ public final class AttributesList {
             new AttrD("coords", true, "area"),
             new AttrD("data", true, "object"),
             new AttrD("datetime", true, "del","ins","time"),
-            new AttrD("default", true, "track"),
-            new AttrD("defer", true, "script"),
+            new AttrD("default", false, "track"),
+            new AttrD("defer", false, "script"),
             //new AttrD("dir"), //global attribute
             new AttrD("dirname", true, "input","textarea"),
             new AttrD("disabled",false, "button","fieldset","input","optgroup","option","select","textarea"),
