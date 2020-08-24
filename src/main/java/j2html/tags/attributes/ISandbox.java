@@ -3,14 +3,14 @@ package j2html.tags.attributes;
 import j2html.tags.Tag;
 
 public interface ISandbox<T extends Tag> extends IInstance<T> {
-    default T withSandbox(final String sandbox_) {
-        get().attr("sandbox", sandbox_);
+    default T isSandbox() {
+        get().attr("sandbox");
         return get();
     }
 
-    default T withCondSandbox(final boolean enable, final String sandbox_) {
+    default T withCondSandbox(final boolean enable) {
         if (enable) {
-            get().attr("sandbox", sandbox_);
+            get().attr("sandbox");
         }
         return get();
     }

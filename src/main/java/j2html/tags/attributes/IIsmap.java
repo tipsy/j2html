@@ -3,14 +3,14 @@ package j2html.tags.attributes;
 import j2html.tags.Tag;
 
 public interface IIsmap<T extends Tag> extends IInstance<T> {
-    default T withIsmap(final String ismap_) {
-        get().attr("ismap", ismap_);
+    default T isIsmap() {
+        get().attr("ismap");
         return get();
     }
 
-    default T withCondIsmap(final boolean enable, final String ismap_) {
+    default T withCondIsmap(final boolean enable) {
         if (enable) {
-            get().attr("ismap", ismap_);
+            get().attr("ismap");
         }
         return get();
     }
