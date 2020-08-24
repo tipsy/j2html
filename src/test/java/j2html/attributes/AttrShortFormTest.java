@@ -1,9 +1,8 @@
 package j2html.attributes;
 
 import org.junit.Test;
-import static j2html.TagCreator.attrs;
-import static j2html.TagCreator.div;
-import static j2html.TagCreator.input;
+
+import static j2html.TagCreator.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 

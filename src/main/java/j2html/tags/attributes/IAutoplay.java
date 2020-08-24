@@ -3,14 +3,14 @@ package j2html.tags.attributes;
 import j2html.tags.Tag;
 
 public interface IAutoplay<T extends Tag> extends IInstance<T> {
-    default T withAutoplay(final String autoplay_) {
-        get().attr("autoplay", autoplay_);
+    default T isAutoplay() {
+        get().attr("autoplay");
         return get();
     }
 
-    default T withCondAutoplay(final boolean enable, final String autoplay_) {
+    default T withCondAutoplay(final boolean enable) {
         if (enable) {
-            get().attr("autoplay", autoplay_);
+            get().attr("autoplay");
         }
         return get();
     }

@@ -30,10 +30,10 @@ public final class AttributesList {
             new AttrD("action", true, "form"),
             //"align", not supported in HTML5
             new AttrD("alt", true, "area","img","input"),
-            new AttrD("async", true, "script"),
+            new AttrD("async", false, "script"),
             new AttrD("autocomplete", false, "form","input"),
             new AttrD("autofocus", false, "button","input","select","textarea"),
-            new AttrD("autoplay", true, "audio","video"),
+            new AttrD("autoplay", false, "audio","video"),
             //"bgcolor", not supported in HTMTL5
             //"border", not supported in HTML5
             new AttrD("charset", true, "meta","script"),

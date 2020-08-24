@@ -106,6 +106,22 @@ public final class AttributeInterfaceCodeGenerator {
         return sb.toString();
     }
 
+    private static void addAttributeNoArg(final StringBuilder sb, final String attrName){
+        //generate the code to add an attribute without an argument
+
+        //there are some special attributes
+        //which do take an argument, but where the argument
+        //is boolean (meaning on/off, yes/no and the like)
+        sb.append("get().attr(\"");
+        if(attrName.equals("autocomplete")){
+            sb.append(attrName).append("\",\"on\"");
+        }else {
+
+            sb.append(attrName).append("\"");
+        }
+        sb.append(");\n");
+    }
+
     private static void writeAttributeMethodCond(String interfaceNameSimple, AttrD attrD, StringBuilder sb, String attrName, String paramName) {
 
         sb.append(makeReturnTypeAndMethodName("withCond"+interfaceNameSimple));
@@ -125,7 +141,7 @@ public final class AttributeInterfaceCodeGenerator {
 
             sb.append("(final boolean enable) {");
                 sb.append("if (enable){\n");
-                    sb.append("get().attr(\"").append(attrName).append("\");\n");
+                    addAttributeNoArg(sb, attrName);
                 sb.append("}\n");
                 sb.append("return get();\n");
         }
@@ -148,10 +164,11 @@ public final class AttributeInterfaceCodeGenerator {
         }else{
             //add a variant where you can toggle the attribute
 
-            sb.append("() {")
+            sb.append("() {");
 
-                .append("get().attr(\"").append(attrName).append("\");\n")
-                .append("return get();\n");
+                addAttributeNoArg(sb, attrName);
+
+                sb.append("return get();\n");
         }
         sb.append("}\n");
     }

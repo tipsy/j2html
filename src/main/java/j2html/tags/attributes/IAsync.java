@@ -3,14 +3,14 @@ package j2html.tags.attributes;
 import j2html.tags.Tag;
 
 public interface IAsync<T extends Tag> extends IInstance<T> {
-    default T withAsync(final String async_) {
-        get().attr("async", async_);
+    default T isAsync() {
+        get().attr("async");
         return get();
     }
 
-    default T withCondAsync(final boolean enable, final String async_) {
+    default T withCondAsync(final boolean enable) {
         if (enable) {
-            get().attr("async", async_);
+            get().attr("async");
         }
         return get();
     }
