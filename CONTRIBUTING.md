@@ -86,7 +86,7 @@ Each Tag-specific class ```implements``` interfaces which correspond to the Attr
 
 For Reference which Tags support which Attributes, see [HTML Attribute Reference](https://www.w3schools.com/tags/ref_attributes.asp).
 
-For Example, ```BodyTag``` might implement ```IType<ButtonTag>``` which says it can have an Attribute ```type```, which may later show up like ```<button type="submit"></button>```.
+For Example, ```ButtonTag``` might implement ```IType<ButtonTag>``` which says it can have an Attribute ```type```, which may later show up like ```<button type="submit"></button>```.
 
 ### How are the Attributes of HTML Tags implemented?
 
@@ -110,6 +110,22 @@ public interface IAccept<T extends Tag> extends IInstance<T> {
 }
 ```
 
+As you can see, **IAccept** extends ```IInstance<T>``` which provides only the ```get()``` Method to access an instance of type ```T```.
+All attribute-specific interfaces extend ```IInstance<T>```.
+
+```
+public interface IInstance<T> {
+    default T get() {  return (T) this;  }
+}
+```
+
+```IInstance<T>``` is cheating the type system because ```get()``` returns an instance of type ```T```, but the implementing class
+technically does not have to supply it's own type as the type argument. But by convention, in this Project, the implementing class 
+always supplies it's own type as the type argument.
+
+But in ```default``` methods in interfaces there is AFAIK no way to obtain the type of the class that is implementing the interface.
+If you find a way, that would be a great PR.
+
 ### Special classes/interfaces besides TagCreator.java
 
 There are 3 classes which contain code-generating methods in ```j2html/src/main/java/j2html/tags/generators/```:
@@ -118,11 +134,23 @@ There are 3 classes which contain code-generating methods in ```j2html/src/main/
 - SpecializedTagClassCodeGenerator.java (generating the classes for the tags)
 - TagCreatorCodeGenerator.java (generating some contents of TagCreator.java)
 
-### Relationships between special classes / interfaces in J2HTML
+### Other special classes / interfaces in J2HTML
 
-- HtmlTag, BodyTag, HeadTag are special because they are handwritten
+- HtmlTag, BodyTag, HeadTag are special because they are handwritten and have special semantics in HTML: they can only be used once. 
+  This is not modeled fully in J2HTML though.
 
-- **Tag.java** is the base class for every tag
+- **Tag.java** is the base class for every tag and extends DomContent
 - **EmptyTag.java** is the base class for all Tags which have no contents
 - **ContainerTag.java** is the base class for all Tags which can contain other tags
+- **DomContent.java** 
+
+### How is the Code generation for the Attribute specific Interfaces parameterized?
+
+Attributes differ in their 'type' . Some of them can be set with numbers (which are converted into strings in the html). 
+Others can only be set or not set, others still have 3 states: set, unset, and not present. 
+To model these propertise, a single Attribute can be described by an instance of **AttrD.java**.
+
+```j2html/src/main/java/j2html/tags/generators/AttributesList.java```  contains the different Attributes, their properties,
+and the Tags they can be set on. It is the starting point for adding new Attributes and customizing their properties.
+
 
