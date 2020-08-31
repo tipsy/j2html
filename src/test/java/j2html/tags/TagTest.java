@@ -46,7 +46,9 @@ public class TagTest {
         assertThat(testTag.renderOpenTag(), is("<a>"));
 
         ContainerTag complexTestTag = new ContainerTag("input");
-        complexTestTag.withType("password").withId("password").withName("password").withPlaceholder("Password").isRequired();
+        complexTestTag.attr("type","password").withId("password")
+            .attr("name","password")
+            .attr("placeholder","Password").attr("required");
         String expectedResult = "<input type=\"password\" id=\"password\" name=\"password\" placeholder=\"Password\" required>";
         assertThat(complexTestTag.renderOpenTag(), is(expectedResult));
     }
@@ -61,7 +63,7 @@ public class TagTest {
     public void testSelfClosingTags() throws Exception {
         Config.closeEmptyTags = true;
         assertThat(img().withSrc("/test.png").render(), is("<img src=\"/test.png\"/>"));
-        assertThat(input().withType("text").render(), is("<input type=\"text\"/>"));
+        assertThat(input().attr("type","text").render(), is("<input type=\"text\"/>"));
         Config.closeEmptyTags = false;
     }
 
@@ -72,14 +74,14 @@ public class TagTest {
 
     @Test
     public void testEquals() throws Exception {
-        Tag tagOne = tag("p").withClass("class").withText("Test");
+        Tag tagOne = tag("p").withText("Test").withClass("class");
         Tag tagTwo = p("Test").withClass("class");
         assertThat(tagOne.equals(tagTwo), is(true));
     }
 
     @Test
     public void testAcceptObjectValueAttribute() throws Exception {
-        ContainerTag complexTestTag = new ContainerTag("input")
+        Tag complexTestTag = new ContainerTag("input")
             .attr("attr1", "value1")
             .attr("attr2", 2)
             .attr("attr3", null);
@@ -96,22 +98,22 @@ public class TagTest {
 
     @Test
     public void testEmptyAttribute() throws Exception {
-        ContainerTag testTagWithAttrValueNull = new ContainerTag("a").attr("attribute", null);
+        Tag testTagWithAttrValueNull = new ContainerTag("a").attr("attribute", null);
         assertThat(testTagWithAttrValueNull.render(), is("<a attribute></a>"));
 
-        ContainerTag testTagAttrWithoutAttr = new ContainerTag("a").attr("attribute");
+        Tag testTagAttrWithoutAttr = new ContainerTag("a").attr("attribute");
         assertThat(testTagAttrWithoutAttr.render(), is("<a attribute></a>"));
     }
 
     @Test
     public void testDynamicAttribute() throws Exception {
-        ContainerTag testTagWithAttrValueNull = new ContainerTag("a").attr(new DynamicHrefAttribute());
+        Tag testTagWithAttrValueNull = new ContainerTag("a").attr(new DynamicHrefAttribute());
         assertThat(testTagWithAttrValueNull.render(), is("<a href=\"/\"></a>"));
     }
 
     @Test
     public void testDynamicAttributeReplacement() throws Exception {
-        ContainerTag testTagWithAttrValueNull = new ContainerTag("a").attr("href", "/link").attr(new DynamicHrefAttribute());
+        Tag testTagWithAttrValueNull = new ContainerTag("a").attr("href", "/link").attr(new DynamicHrefAttribute());
         assertThat(testTagWithAttrValueNull.render(), is("<a href=\"/\"></a>"));
     }
 

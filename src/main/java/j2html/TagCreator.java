@@ -8,9 +8,7 @@ import j2html.tags.EmptyTag;
 import j2html.tags.InlineStaticResource;
 import j2html.tags.Text;
 import j2html.tags.UnescapedText;
-import j2html.tags.specialized.BodyTag;
-import j2html.tags.specialized.HeadTag;
-import j2html.tags.specialized.HtmlTag;
+import j2html.tags.specialized.*;
 
 import java.util.Collection;
 import java.util.List;
@@ -209,1089 +207,11 @@ public class TagCreator {
     public static DomContent document() {
         return rawHtml("<!DOCTYPE html>");
     }
+    // -- start of manually managed tags --
 
-    // EmptyTags, generated in class j2html.tags.TagCreatorCodeGenerator
-    public static EmptyTag area() {
-        return new EmptyTag("area");
-    }
+    // EmptyTags
 
-    public static EmptyTag area(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("area"), shortAttr);
-    }
-
-    public static EmptyTag base() {
-        return new EmptyTag("base");
-    }
-
-    public static EmptyTag base(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("base"), shortAttr);
-    }
-
-    public static EmptyTag br() {
-        return new EmptyTag("br");
-    }
-
-    public static EmptyTag br(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("br"), shortAttr);
-    }
-
-    public static EmptyTag col() {
-        return new EmptyTag("col");
-    }
-
-    public static EmptyTag col(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("col"), shortAttr);
-    }
-
-    public static EmptyTag embed() {
-        return new EmptyTag("embed");
-    }
-
-    public static EmptyTag embed(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("embed"), shortAttr);
-    }
-
-    public static EmptyTag hr() {
-        return new EmptyTag("hr");
-    }
-
-    public static EmptyTag hr(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("hr"), shortAttr);
-    }
-
-    public static EmptyTag img() {
-        return new EmptyTag("img");
-    }
-
-    public static EmptyTag img(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("img"), shortAttr);
-    }
-
-    public static EmptyTag input() {
-        return new EmptyTag("input");
-    }
-
-    public static EmptyTag input(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("input"), shortAttr);
-    }
-
-    public static EmptyTag keygen() {
-        return new EmptyTag("keygen");
-    }
-
-    public static EmptyTag keygen(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("keygen"), shortAttr);
-    }
-
-    public static EmptyTag link() {
-        return new EmptyTag("link");
-    }
-
-    public static EmptyTag link(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("link"), shortAttr);
-    }
-
-    public static EmptyTag meta() {
-        return new EmptyTag("meta");
-    }
-
-    public static EmptyTag meta(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("meta"), shortAttr);
-    }
-
-    public static EmptyTag param() {
-        return new EmptyTag("param");
-    }
-
-    public static EmptyTag param(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("param"), shortAttr);
-    }
-
-    public static EmptyTag source() {
-        return new EmptyTag("source");
-    }
-
-    public static EmptyTag source(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("source"), shortAttr);
-    }
-
-    public static EmptyTag track() {
-        return new EmptyTag("track");
-    }
-
-    public static EmptyTag track(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("track"), shortAttr);
-    }
-
-    public static EmptyTag wbr() {
-        return new EmptyTag("wbr");
-    }
-
-    public static EmptyTag wbr(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new EmptyTag("wbr"), shortAttr);
-    }
-
-    // ContainerTags, generated in class j2html.tags.TagCreatorCodeGenerator
-    public static ContainerTag a() {
-        return new ContainerTag("a");
-    }
-
-    public static ContainerTag a(String text) {
-        return new ContainerTag("a").withText(text);
-    }
-
-    public static ContainerTag a(DomContent... dc) {
-        return new ContainerTag("a").with(dc);
-    }
-
-    public static ContainerTag a(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("a"), shortAttr);
-    }
-
-    public static ContainerTag a(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("a").withText(text), shortAttr);
-    }
-
-    public static ContainerTag a(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("a").with(dc), shortAttr);
-    }
-
-    public static ContainerTag abbr() {
-        return new ContainerTag("abbr");
-    }
-
-    public static ContainerTag abbr(String text) {
-        return new ContainerTag("abbr").withText(text);
-    }
-
-    public static ContainerTag abbr(DomContent... dc) {
-        return new ContainerTag("abbr").with(dc);
-    }
-
-    public static ContainerTag abbr(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("abbr"), shortAttr);
-    }
-
-    public static ContainerTag abbr(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("abbr").withText(text), shortAttr);
-    }
-
-    public static ContainerTag abbr(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("abbr").with(dc), shortAttr);
-    }
-
-    public static ContainerTag address() {
-        return new ContainerTag("address");
-    }
-
-    public static ContainerTag address(String text) {
-        return new ContainerTag("address").withText(text);
-    }
-
-    public static ContainerTag address(DomContent... dc) {
-        return new ContainerTag("address").with(dc);
-    }
-
-    public static ContainerTag address(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("address"), shortAttr);
-    }
-
-    public static ContainerTag address(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("address").withText(text), shortAttr);
-    }
-
-    public static ContainerTag address(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("address").with(dc), shortAttr);
-    }
-
-    public static ContainerTag article() {
-        return new ContainerTag("article");
-    }
-
-    public static ContainerTag article(String text) {
-        return new ContainerTag("article").withText(text);
-    }
-
-    public static ContainerTag article(DomContent... dc) {
-        return new ContainerTag("article").with(dc);
-    }
-
-    public static ContainerTag article(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("article"), shortAttr);
-    }
-
-    public static ContainerTag article(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("article").withText(text), shortAttr);
-    }
-
-    public static ContainerTag article(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("article").with(dc), shortAttr);
-    }
-
-    public static ContainerTag aside() {
-        return new ContainerTag("aside");
-    }
-
-    public static ContainerTag aside(String text) {
-        return new ContainerTag("aside").withText(text);
-    }
-
-    public static ContainerTag aside(DomContent... dc) {
-        return new ContainerTag("aside").with(dc);
-    }
-
-    public static ContainerTag aside(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("aside"), shortAttr);
-    }
-
-    public static ContainerTag aside(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("aside").withText(text), shortAttr);
-    }
-
-    public static ContainerTag aside(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("aside").with(dc), shortAttr);
-    }
-
-    public static ContainerTag audio() {
-        return new ContainerTag("audio");
-    }
-
-    public static ContainerTag audio(String text) {
-        return new ContainerTag("audio").withText(text);
-    }
-
-    public static ContainerTag audio(DomContent... dc) {
-        return new ContainerTag("audio").with(dc);
-    }
-
-    public static ContainerTag audio(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("audio"), shortAttr);
-    }
-
-    public static ContainerTag audio(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("audio").withText(text), shortAttr);
-    }
-
-    public static ContainerTag audio(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("audio").with(dc), shortAttr);
-    }
-
-    public static ContainerTag b() {
-        return new ContainerTag("b");
-    }
-
-    public static ContainerTag b(String text) {
-        return new ContainerTag("b").withText(text);
-    }
-
-    public static ContainerTag b(DomContent... dc) {
-        return new ContainerTag("b").with(dc);
-    }
-
-    public static ContainerTag b(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("b"), shortAttr);
-    }
-
-    public static ContainerTag b(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("b").withText(text), shortAttr);
-    }
-
-    public static ContainerTag b(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("b").with(dc), shortAttr);
-    }
-
-    public static ContainerTag bdi() {
-        return new ContainerTag("bdi");
-    }
-
-    public static ContainerTag bdi(String text) {
-        return new ContainerTag("bdi").withText(text);
-    }
-
-    public static ContainerTag bdi(DomContent... dc) {
-        return new ContainerTag("bdi").with(dc);
-    }
-
-    public static ContainerTag bdi(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("bdi"), shortAttr);
-    }
-
-    public static ContainerTag bdi(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("bdi").withText(text), shortAttr);
-    }
-
-    public static ContainerTag bdi(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("bdi").with(dc), shortAttr);
-    }
-
-    public static ContainerTag bdo() {
-        return new ContainerTag("bdo");
-    }
-
-    public static ContainerTag bdo(String text) {
-        return new ContainerTag("bdo").withText(text);
-    }
-
-    public static ContainerTag bdo(DomContent... dc) {
-        return new ContainerTag("bdo").with(dc);
-    }
-
-    public static ContainerTag bdo(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("bdo"), shortAttr);
-    }
-
-    public static ContainerTag bdo(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("bdo").withText(text), shortAttr);
-    }
-
-    public static ContainerTag bdo(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("bdo").with(dc), shortAttr);
-    }
-
-    public static ContainerTag blockquote() {
-        return new ContainerTag("blockquote");
-    }
-
-    public static ContainerTag blockquote(String text) {
-        return new ContainerTag("blockquote").withText(text);
-    }
-
-    public static ContainerTag blockquote(DomContent... dc) {
-        return new ContainerTag("blockquote").with(dc);
-    }
-
-    public static ContainerTag blockquote(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("blockquote"), shortAttr);
-    }
-
-    public static ContainerTag blockquote(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("blockquote").withText(text), shortAttr);
-    }
-
-    public static ContainerTag blockquote(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("blockquote").with(dc), shortAttr);
-    }
-
-    public static BodyTag body() {
-        return new BodyTag();
-    }
-
-    public static BodyTag body(String text) {
-        return (BodyTag)new BodyTag().withText(text);
-    }
-
-    public static BodyTag body(DomContent... dc) {
-        return (BodyTag)new BodyTag().with(dc);
-    }
-
-    public static BodyTag body(Attr.ShortForm shortAttr) {
-        return (BodyTag)Attr.addTo(new BodyTag(), shortAttr);
-    }
-
-    public static BodyTag body(Attr.ShortForm shortAttr, String text) {
-        return (BodyTag)Attr.addTo(new BodyTag().withText(text), shortAttr);
-    }
-
-    public static BodyTag body(Attr.ShortForm shortAttr, DomContent... dc) {
-        return (BodyTag)Attr.addTo(new BodyTag().with(dc), shortAttr);
-    }
-
-    public static ContainerTag button() {
-        return new ContainerTag("button");
-    }
-
-    public static ContainerTag button(String text) {
-        return new ContainerTag("button").withText(text);
-    }
-
-    public static ContainerTag button(DomContent... dc) {
-        return new ContainerTag("button").with(dc);
-    }
-
-    public static ContainerTag button(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("button"), shortAttr);
-    }
-
-    public static ContainerTag button(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("button").withText(text), shortAttr);
-    }
-
-    public static ContainerTag button(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("button").with(dc), shortAttr);
-    }
-
-    public static ContainerTag canvas() {
-        return new ContainerTag("canvas");
-    }
-
-    public static ContainerTag canvas(String text) {
-        return new ContainerTag("canvas").withText(text);
-    }
-
-    public static ContainerTag canvas(DomContent... dc) {
-        return new ContainerTag("canvas").with(dc);
-    }
-
-    public static ContainerTag canvas(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("canvas"), shortAttr);
-    }
-
-    public static ContainerTag canvas(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("canvas").withText(text), shortAttr);
-    }
-
-    public static ContainerTag canvas(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("canvas").with(dc), shortAttr);
-    }
-
-    public static ContainerTag caption() {
-        return new ContainerTag("caption");
-    }
-
-    public static ContainerTag caption(String text) {
-        return new ContainerTag("caption").withText(text);
-    }
-
-    public static ContainerTag caption(DomContent... dc) {
-        return new ContainerTag("caption").with(dc);
-    }
-
-    public static ContainerTag caption(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("caption"), shortAttr);
-    }
-
-    public static ContainerTag caption(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("caption").withText(text), shortAttr);
-    }
-
-    public static ContainerTag caption(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("caption").with(dc), shortAttr);
-    }
-
-    public static ContainerTag cite() {
-        return new ContainerTag("cite");
-    }
-
-    public static ContainerTag cite(String text) {
-        return new ContainerTag("cite").withText(text);
-    }
-
-    public static ContainerTag cite(DomContent... dc) {
-        return new ContainerTag("cite").with(dc);
-    }
-
-    public static ContainerTag cite(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("cite"), shortAttr);
-    }
-
-    public static ContainerTag cite(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("cite").withText(text), shortAttr);
-    }
-
-    public static ContainerTag cite(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("cite").with(dc), shortAttr);
-    }
-
-    public static ContainerTag code() {
-        return new ContainerTag("code");
-    }
-
-    public static ContainerTag code(String text) {
-        return new ContainerTag("code").withText(text);
-    }
-
-    public static ContainerTag code(DomContent... dc) {
-        return new ContainerTag("code").with(dc);
-    }
-
-    public static ContainerTag code(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("code"), shortAttr);
-    }
-
-    public static ContainerTag code(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("code").withText(text), shortAttr);
-    }
-
-    public static ContainerTag code(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("code").with(dc), shortAttr);
-    }
-
-    public static ContainerTag colgroup() {
-        return new ContainerTag("colgroup");
-    }
-
-    public static ContainerTag colgroup(String text) {
-        return new ContainerTag("colgroup").withText(text);
-    }
-
-    public static ContainerTag colgroup(DomContent... dc) {
-        return new ContainerTag("colgroup").with(dc);
-    }
-
-    public static ContainerTag colgroup(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("colgroup"), shortAttr);
-    }
-
-    public static ContainerTag colgroup(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("colgroup").withText(text), shortAttr);
-    }
-
-    public static ContainerTag colgroup(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("colgroup").with(dc), shortAttr);
-    }
-
-    public static ContainerTag datalist() {
-        return new ContainerTag("datalist");
-    }
-
-    public static ContainerTag datalist(String text) {
-        return new ContainerTag("datalist").withText(text);
-    }
-
-    public static ContainerTag datalist(DomContent... dc) {
-        return new ContainerTag("datalist").with(dc);
-    }
-
-    public static ContainerTag datalist(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("datalist"), shortAttr);
-    }
-
-    public static ContainerTag datalist(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("datalist").withText(text), shortAttr);
-    }
-
-    public static ContainerTag datalist(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("datalist").with(dc), shortAttr);
-    }
-
-    public static ContainerTag dd() {
-        return new ContainerTag("dd");
-    }
-
-    public static ContainerTag dd(String text) {
-        return new ContainerTag("dd").withText(text);
-    }
-
-    public static ContainerTag dd(DomContent... dc) {
-        return new ContainerTag("dd").with(dc);
-    }
-
-    public static ContainerTag dd(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("dd"), shortAttr);
-    }
-
-    public static ContainerTag dd(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("dd").withText(text), shortAttr);
-    }
-
-    public static ContainerTag dd(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("dd").with(dc), shortAttr);
-    }
-
-    public static ContainerTag del() {
-        return new ContainerTag("del");
-    }
-
-    public static ContainerTag del(String text) {
-        return new ContainerTag("del").withText(text);
-    }
-
-    public static ContainerTag del(DomContent... dc) {
-        return new ContainerTag("del").with(dc);
-    }
-
-    public static ContainerTag del(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("del"), shortAttr);
-    }
-
-    public static ContainerTag del(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("del").withText(text), shortAttr);
-    }
-
-    public static ContainerTag del(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("del").with(dc), shortAttr);
-    }
-
-    public static ContainerTag details() {
-        return new ContainerTag("details");
-    }
-
-    public static ContainerTag details(String text) {
-        return new ContainerTag("details").withText(text);
-    }
-
-    public static ContainerTag details(DomContent... dc) {
-        return new ContainerTag("details").with(dc);
-    }
-
-    public static ContainerTag details(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("details"), shortAttr);
-    }
-
-    public static ContainerTag details(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("details").withText(text), shortAttr);
-    }
-
-    public static ContainerTag details(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("details").with(dc), shortAttr);
-    }
-
-    public static ContainerTag dfn() {
-        return new ContainerTag("dfn");
-    }
-
-    public static ContainerTag dfn(String text) {
-        return new ContainerTag("dfn").withText(text);
-    }
-
-    public static ContainerTag dfn(DomContent... dc) {
-        return new ContainerTag("dfn").with(dc);
-    }
-
-    public static ContainerTag dfn(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("dfn"), shortAttr);
-    }
-
-    public static ContainerTag dfn(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("dfn").withText(text), shortAttr);
-    }
-
-    public static ContainerTag dfn(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("dfn").with(dc), shortAttr);
-    }
-
-    public static ContainerTag dialog() {
-        return new ContainerTag("dialog");
-    }
-
-    public static ContainerTag dialog(String text) {
-        return new ContainerTag("dialog").withText(text);
-    }
-
-    public static ContainerTag dialog(DomContent... dc) {
-        return new ContainerTag("dialog").with(dc);
-    }
-
-    public static ContainerTag dialog(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("dialog"), shortAttr);
-    }
-
-    public static ContainerTag dialog(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("dialog").withText(text), shortAttr);
-    }
-
-    public static ContainerTag dialog(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("dialog").with(dc), shortAttr);
-    }
-
-    public static ContainerTag div() {
-        return new ContainerTag("div");
-    }
-
-    public static ContainerTag div(String text) {
-        return new ContainerTag("div").withText(text);
-    }
-
-    public static ContainerTag div(DomContent... dc) {
-        return new ContainerTag("div").with(dc);
-    }
-
-    public static ContainerTag div(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("div"), shortAttr);
-    }
-
-    public static ContainerTag div(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("div").withText(text), shortAttr);
-    }
-
-    public static ContainerTag div(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("div").with(dc), shortAttr);
-    }
-
-    public static ContainerTag dl() {
-        return new ContainerTag("dl");
-    }
-
-    public static ContainerTag dl(String text) {
-        return new ContainerTag("dl").withText(text);
-    }
-
-    public static ContainerTag dl(DomContent... dc) {
-        return new ContainerTag("dl").with(dc);
-    }
-
-    public static ContainerTag dl(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("dl"), shortAttr);
-    }
-
-    public static ContainerTag dl(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("dl").withText(text), shortAttr);
-    }
-
-    public static ContainerTag dl(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("dl").with(dc), shortAttr);
-    }
-
-    public static ContainerTag dt() {
-        return new ContainerTag("dt");
-    }
-
-    public static ContainerTag dt(String text) {
-        return new ContainerTag("dt").withText(text);
-    }
-
-    public static ContainerTag dt(DomContent... dc) {
-        return new ContainerTag("dt").with(dc);
-    }
-
-    public static ContainerTag dt(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("dt"), shortAttr);
-    }
-
-    public static ContainerTag dt(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("dt").withText(text), shortAttr);
-    }
-
-    public static ContainerTag dt(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("dt").with(dc), shortAttr);
-    }
-
-    public static ContainerTag em() {
-        return new ContainerTag("em");
-    }
-
-    public static ContainerTag em(String text) {
-        return new ContainerTag("em").withText(text);
-    }
-
-    public static ContainerTag em(DomContent... dc) {
-        return new ContainerTag("em").with(dc);
-    }
-
-    public static ContainerTag em(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("em"), shortAttr);
-    }
-
-    public static ContainerTag em(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("em").withText(text), shortAttr);
-    }
-
-    public static ContainerTag em(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("em").with(dc), shortAttr);
-    }
-
-    public static ContainerTag fieldset() {
-        return new ContainerTag("fieldset");
-    }
-
-    public static ContainerTag fieldset(String text) {
-        return new ContainerTag("fieldset").withText(text);
-    }
-
-    public static ContainerTag fieldset(DomContent... dc) {
-        return new ContainerTag("fieldset").with(dc);
-    }
-
-    public static ContainerTag fieldset(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("fieldset"), shortAttr);
-    }
-
-    public static ContainerTag fieldset(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("fieldset").withText(text), shortAttr);
-    }
-
-    public static ContainerTag fieldset(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("fieldset").with(dc), shortAttr);
-    }
-
-    public static ContainerTag figcaption() {
-        return new ContainerTag("figcaption");
-    }
-
-    public static ContainerTag figcaption(String text) {
-        return new ContainerTag("figcaption").withText(text);
-    }
-
-    public static ContainerTag figcaption(DomContent... dc) {
-        return new ContainerTag("figcaption").with(dc);
-    }
-
-    public static ContainerTag figcaption(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("figcaption"), shortAttr);
-    }
-
-    public static ContainerTag figcaption(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("figcaption").withText(text), shortAttr);
-    }
-
-    public static ContainerTag figcaption(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("figcaption").with(dc), shortAttr);
-    }
-
-    public static ContainerTag figure() {
-        return new ContainerTag("figure");
-    }
-
-    public static ContainerTag figure(String text) {
-        return new ContainerTag("figure").withText(text);
-    }
-
-    public static ContainerTag figure(DomContent... dc) {
-        return new ContainerTag("figure").with(dc);
-    }
-
-    public static ContainerTag figure(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("figure"), shortAttr);
-    }
-
-    public static ContainerTag figure(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("figure").withText(text), shortAttr);
-    }
-
-    public static ContainerTag figure(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("figure").with(dc), shortAttr);
-    }
-
-    public static ContainerTag footer() {
-        return new ContainerTag("footer");
-    }
-
-    public static ContainerTag footer(String text) {
-        return new ContainerTag("footer").withText(text);
-    }
-
-    public static ContainerTag footer(DomContent... dc) {
-        return new ContainerTag("footer").with(dc);
-    }
-
-    public static ContainerTag footer(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("footer"), shortAttr);
-    }
-
-    public static ContainerTag footer(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("footer").withText(text), shortAttr);
-    }
-
-    public static ContainerTag footer(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("footer").with(dc), shortAttr);
-    }
-
-    public static ContainerTag form() {
-        return new ContainerTag("form");
-    }
-
-    public static ContainerTag form(String text) {
-        return new ContainerTag("form").withText(text);
-    }
-
-    public static ContainerTag form(DomContent... dc) {
-        return new ContainerTag("form").with(dc);
-    }
-
-    public static ContainerTag form(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("form"), shortAttr);
-    }
-
-    public static ContainerTag form(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("form").withText(text), shortAttr);
-    }
-
-    public static ContainerTag form(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("form").with(dc), shortAttr);
-    }
-
-    public static ContainerTag h1() {
-        return new ContainerTag("h1");
-    }
-
-    public static ContainerTag h1(String text) {
-        return new ContainerTag("h1").withText(text);
-    }
-
-    public static ContainerTag h1(DomContent... dc) {
-        return new ContainerTag("h1").with(dc);
-    }
-
-    public static ContainerTag h1(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("h1"), shortAttr);
-    }
-
-    public static ContainerTag h1(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("h1").withText(text), shortAttr);
-    }
-
-    public static ContainerTag h1(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("h1").with(dc), shortAttr);
-    }
-
-    public static ContainerTag h2() {
-        return new ContainerTag("h2");
-    }
-
-    public static ContainerTag h2(String text) {
-        return new ContainerTag("h2").withText(text);
-    }
-
-    public static ContainerTag h2(DomContent... dc) {
-        return new ContainerTag("h2").with(dc);
-    }
-
-    public static ContainerTag h2(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("h2"), shortAttr);
-    }
-
-    public static ContainerTag h2(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("h2").withText(text), shortAttr);
-    }
-
-    public static ContainerTag h2(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("h2").with(dc), shortAttr);
-    }
-
-    public static ContainerTag h3() {
-        return new ContainerTag("h3");
-    }
-
-    public static ContainerTag h3(String text) {
-        return new ContainerTag("h3").withText(text);
-    }
-
-    public static ContainerTag h3(DomContent... dc) {
-        return new ContainerTag("h3").with(dc);
-    }
-
-    public static ContainerTag h3(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("h3"), shortAttr);
-    }
-
-    public static ContainerTag h3(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("h3").withText(text), shortAttr);
-    }
-
-    public static ContainerTag h3(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("h3").with(dc), shortAttr);
-    }
-
-    public static ContainerTag h4() {
-        return new ContainerTag("h4");
-    }
-
-    public static ContainerTag h4(String text) {
-        return new ContainerTag("h4").withText(text);
-    }
-
-    public static ContainerTag h4(DomContent... dc) {
-        return new ContainerTag("h4").with(dc);
-    }
-
-    public static ContainerTag h4(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("h4"), shortAttr);
-    }
-
-    public static ContainerTag h4(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("h4").withText(text), shortAttr);
-    }
-
-    public static ContainerTag h4(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("h4").with(dc), shortAttr);
-    }
-
-    public static ContainerTag h5() {
-        return new ContainerTag("h5");
-    }
-
-    public static ContainerTag h5(String text) {
-        return new ContainerTag("h5").withText(text);
-    }
-
-    public static ContainerTag h5(DomContent... dc) {
-        return new ContainerTag("h5").with(dc);
-    }
-
-    public static ContainerTag h5(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("h5"), shortAttr);
-    }
-
-    public static ContainerTag h5(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("h5").withText(text), shortAttr);
-    }
-
-    public static ContainerTag h5(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("h5").with(dc), shortAttr);
-    }
-
-    public static ContainerTag h6() {
-        return new ContainerTag("h6");
-    }
-
-    public static ContainerTag h6(String text) {
-        return new ContainerTag("h6").withText(text);
-    }
-
-    public static ContainerTag h6(DomContent... dc) {
-        return new ContainerTag("h6").with(dc);
-    }
-
-    public static ContainerTag h6(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("h6"), shortAttr);
-    }
-
-    public static ContainerTag h6(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("h6").withText(text), shortAttr);
-    }
-
-    public static ContainerTag h6(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("h6").with(dc), shortAttr);
-    }
-
-    public static HeadTag head() {
-        return new HeadTag();
-    }
-
-    public static HeadTag head(String text) {
-        return (HeadTag)new HeadTag().withText(text);
-    }
-
-    public static HeadTag head(DomContent... dc) {
-        return (HeadTag)new HeadTag().with(dc);
-    }
-
-    public static HeadTag head(Attr.ShortForm shortAttr) {
-        return (HeadTag)Attr.addTo(new HeadTag(), shortAttr);
-    }
-
-    public static HeadTag head(Attr.ShortForm shortAttr, String text) {
-        return (HeadTag)Attr.addTo(new HeadTag().withText(text), shortAttr);
-    }
-
-    public static HeadTag head(Attr.ShortForm shortAttr, DomContent... dc) {
-        return (HeadTag)Attr.addTo(new HeadTag().with(dc), shortAttr);
-    }
-
-    public static ContainerTag header() {
-        return new ContainerTag("header");
-    }
-
-    public static ContainerTag header(String text) {
-        return new ContainerTag("header").withText(text);
-    }
-
-    public static ContainerTag header(DomContent... dc) {
-        return new ContainerTag("header").with(dc);
-    }
-
-    public static ContainerTag header(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("header"), shortAttr);
-    }
-
-    public static ContainerTag header(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("header").withText(text), shortAttr);
-    }
-
-    public static ContainerTag header(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("header").with(dc), shortAttr);
-    }
-
+    //ContainerTags
     public static HtmlTag html() {
         return new HtmlTag();
     }
@@ -1324,1276 +244,745 @@ public class TagCreator {
         return Attr.addTo(new HtmlTag(head, body), shortAttr);
     }
 
-    public static ContainerTag i() {
-        return new ContainerTag("i");
-    }
-
-    public static ContainerTag i(String text) {
-        return new ContainerTag("i").withText(text);
-    }
-
-    public static ContainerTag i(DomContent... dc) {
-        return new ContainerTag("i").with(dc);
-    }
-
-    public static ContainerTag i(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("i"), shortAttr);
-    }
-
-    public static ContainerTag i(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("i").withText(text), shortAttr);
-    }
-
-    public static ContainerTag i(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("i").with(dc), shortAttr);
-    }
-
-    public static ContainerTag iframe() {
-        return new ContainerTag("iframe");
-    }
-
-    public static ContainerTag iframe(String text) {
-        return new ContainerTag("iframe").withText(text);
-    }
-
-    public static ContainerTag iframe(DomContent... dc) {
-        return new ContainerTag("iframe").with(dc);
-    }
-
-    public static ContainerTag iframe(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("iframe"), shortAttr);
-    }
-
-    public static ContainerTag iframe(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("iframe").withText(text), shortAttr);
-    }
-
-    public static ContainerTag iframe(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("iframe").with(dc), shortAttr);
-    }
-
-    public static ContainerTag ins() {
-        return new ContainerTag("ins");
-    }
-
-    public static ContainerTag ins(String text) {
-        return new ContainerTag("ins").withText(text);
-    }
-
-    public static ContainerTag ins(DomContent... dc) {
-        return new ContainerTag("ins").with(dc);
-    }
-
-    public static ContainerTag ins(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("ins"), shortAttr);
-    }
-
-    public static ContainerTag ins(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("ins").withText(text), shortAttr);
-    }
-
-    public static ContainerTag ins(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("ins").with(dc), shortAttr);
-    }
-
-    public static ContainerTag kbd() {
-        return new ContainerTag("kbd");
-    }
-
-    public static ContainerTag kbd(String text) {
-        return new ContainerTag("kbd").withText(text);
-    }
-
-    public static ContainerTag kbd(DomContent... dc) {
-        return new ContainerTag("kbd").with(dc);
-    }
-
-    public static ContainerTag kbd(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("kbd"), shortAttr);
-    }
-
-    public static ContainerTag kbd(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("kbd").withText(text), shortAttr);
-    }
-
-    public static ContainerTag kbd(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("kbd").with(dc), shortAttr);
-    }
-
-    public static ContainerTag label() {
-        return new ContainerTag("label");
-    }
-
-    public static ContainerTag label(String text) {
-        return new ContainerTag("label").withText(text);
-    }
-
-    public static ContainerTag label(DomContent... dc) {
-        return new ContainerTag("label").with(dc);
-    }
-
-    public static ContainerTag label(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("label"), shortAttr);
-    }
-
-    public static ContainerTag label(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("label").withText(text), shortAttr);
-    }
-
-    public static ContainerTag label(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("label").with(dc), shortAttr);
-    }
-
-    public static ContainerTag legend() {
-        return new ContainerTag("legend");
-    }
-
-    public static ContainerTag legend(String text) {
-        return new ContainerTag("legend").withText(text);
-    }
-
-    public static ContainerTag legend(DomContent... dc) {
-        return new ContainerTag("legend").with(dc);
-    }
-
-    public static ContainerTag legend(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("legend"), shortAttr);
-    }
-
-    public static ContainerTag legend(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("legend").withText(text), shortAttr);
-    }
-
-    public static ContainerTag legend(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("legend").with(dc), shortAttr);
-    }
-
-    public static ContainerTag li() {
-        return new ContainerTag("li");
-    }
-
-    public static ContainerTag li(String text) {
-        return new ContainerTag("li").withText(text);
-    }
-
-    public static ContainerTag li(DomContent... dc) {
-        return new ContainerTag("li").with(dc);
-    }
-
-    public static ContainerTag li(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("li"), shortAttr);
-    }
-
-    public static ContainerTag li(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("li").withText(text), shortAttr);
-    }
-
-    public static ContainerTag li(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("li").with(dc), shortAttr);
-    }
-
-    public static ContainerTag main() {
-        return new ContainerTag("main");
-    }
-
-    public static ContainerTag main(String text) {
-        return new ContainerTag("main").withText(text);
-    }
-
-    public static ContainerTag main(DomContent... dc) {
-        return new ContainerTag("main").with(dc);
-    }
-
-    public static ContainerTag main(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("main"), shortAttr);
-    }
-
-    public static ContainerTag main(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("main").withText(text), shortAttr);
-    }
-
-    public static ContainerTag main(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("main").with(dc), shortAttr);
-    }
-
-    public static ContainerTag map() {
-        return new ContainerTag("map");
-    }
-
-    public static ContainerTag map(String text) {
-        return new ContainerTag("map").withText(text);
-    }
-
-    public static ContainerTag map(DomContent... dc) {
-        return new ContainerTag("map").with(dc);
-    }
-
-    public static ContainerTag map(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("map"), shortAttr);
-    }
-
-    public static ContainerTag map(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("map").withText(text), shortAttr);
-    }
-
-    public static ContainerTag map(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("map").with(dc), shortAttr);
-    }
-
-    public static ContainerTag mark() {
-        return new ContainerTag("mark");
-    }
-
-    public static ContainerTag mark(String text) {
-        return new ContainerTag("mark").withText(text);
-    }
-
-    public static ContainerTag mark(DomContent... dc) {
-        return new ContainerTag("mark").with(dc);
-    }
-
-    public static ContainerTag mark(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("mark"), shortAttr);
-    }
-
-    public static ContainerTag mark(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("mark").withText(text), shortAttr);
-    }
-
-    public static ContainerTag mark(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("mark").with(dc), shortAttr);
-    }
-
-    public static ContainerTag menu() {
-        return new ContainerTag("menu");
-    }
-
-    public static ContainerTag menu(String text) {
-        return new ContainerTag("menu").withText(text);
-    }
-
-    public static ContainerTag menu(DomContent... dc) {
-        return new ContainerTag("menu").with(dc);
-    }
-
-    public static ContainerTag menu(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("menu"), shortAttr);
-    }
-
-    public static ContainerTag menu(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("menu").withText(text), shortAttr);
-    }
-
-    public static ContainerTag menu(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("menu").with(dc), shortAttr);
-    }
-
-    public static ContainerTag menuitem() {
-        return new ContainerTag("menuitem");
-    }
-
-    public static ContainerTag menuitem(String text) {
-        return new ContainerTag("menuitem").withText(text);
-    }
-
-    public static ContainerTag menuitem(DomContent... dc) {
-        return new ContainerTag("menuitem").with(dc);
-    }
-
-    public static ContainerTag menuitem(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("menuitem"), shortAttr);
-    }
-
-    public static ContainerTag menuitem(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("menuitem").withText(text), shortAttr);
-    }
-
-    public static ContainerTag menuitem(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("menuitem").with(dc), shortAttr);
-    }
-
-    public static ContainerTag meter() {
-        return new ContainerTag("meter");
-    }
-
-    public static ContainerTag meter(String text) {
-        return new ContainerTag("meter").withText(text);
-    }
-
-    public static ContainerTag meter(DomContent... dc) {
-        return new ContainerTag("meter").with(dc);
-    }
-
-    public static ContainerTag meter(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("meter"), shortAttr);
-    }
-
-    public static ContainerTag meter(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("meter").withText(text), shortAttr);
-    }
-
-    public static ContainerTag meter(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("meter").with(dc), shortAttr);
-    }
-
-    public static ContainerTag nav() {
-        return new ContainerTag("nav");
-    }
-
-    public static ContainerTag nav(String text) {
-        return new ContainerTag("nav").withText(text);
-    }
-
-    public static ContainerTag nav(DomContent... dc) {
-        return new ContainerTag("nav").with(dc);
-    }
-
-    public static ContainerTag nav(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("nav"), shortAttr);
-    }
-
-    public static ContainerTag nav(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("nav").withText(text), shortAttr);
-    }
-
-    public static ContainerTag nav(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("nav").with(dc), shortAttr);
-    }
-
-    public static ContainerTag noscript() {
-        return new ContainerTag("noscript");
-    }
-
-    public static ContainerTag noscript(String text) {
-        return new ContainerTag("noscript").withText(text);
-    }
-
-    public static ContainerTag noscript(DomContent... dc) {
-        return new ContainerTag("noscript").with(dc);
-    }
-
-    public static ContainerTag noscript(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("noscript"), shortAttr);
-    }
-
-    public static ContainerTag noscript(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("noscript").withText(text), shortAttr);
-    }
-
-    public static ContainerTag noscript(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("noscript").with(dc), shortAttr);
-    }
-
-    public static ContainerTag object() {
-        return new ContainerTag("object");
-    }
-
-    public static ContainerTag object(String text) {
-        return new ContainerTag("object").withText(text);
-    }
-
-    public static ContainerTag object(DomContent... dc) {
-        return new ContainerTag("object").with(dc);
-    }
-
-    public static ContainerTag object(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("object"), shortAttr);
-    }
-
-    public static ContainerTag object(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("object").withText(text), shortAttr);
-    }
-
-    public static ContainerTag object(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("object").with(dc), shortAttr);
-    }
-
-    public static ContainerTag ol() {
-        return new ContainerTag("ol");
-    }
-
-    public static ContainerTag ol(String text) {
-        return new ContainerTag("ol").withText(text);
-    }
-
-    public static ContainerTag ol(DomContent... dc) {
-        return new ContainerTag("ol").with(dc);
-    }
-
-    public static ContainerTag ol(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("ol"), shortAttr);
-    }
-
-    public static ContainerTag ol(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("ol").withText(text), shortAttr);
-    }
-
-    public static ContainerTag ol(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("ol").with(dc), shortAttr);
-    }
-
-    public static ContainerTag optgroup() {
-        return new ContainerTag("optgroup");
-    }
-
-    public static ContainerTag optgroup(String text) {
-        return new ContainerTag("optgroup").withText(text);
-    }
-
-    public static ContainerTag optgroup(DomContent... dc) {
-        return new ContainerTag("optgroup").with(dc);
-    }
-
-    public static ContainerTag optgroup(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("optgroup"), shortAttr);
-    }
-
-    public static ContainerTag optgroup(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("optgroup").withText(text), shortAttr);
-    }
-
-    public static ContainerTag optgroup(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("optgroup").with(dc), shortAttr);
-    }
-
-    public static ContainerTag option() {
-        return new ContainerTag("option");
-    }
-
-    public static ContainerTag option(String text) {
-        return new ContainerTag("option").withText(text);
-    }
-
-    public static ContainerTag option(DomContent... dc) {
-        return new ContainerTag("option").with(dc);
-    }
-
-    public static ContainerTag option(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("option"), shortAttr);
-    }
-
-    public static ContainerTag option(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("option").withText(text), shortAttr);
-    }
-
-    public static ContainerTag option(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("option").with(dc), shortAttr);
-    }
-
-    public static ContainerTag output() {
-        return new ContainerTag("output");
-    }
-
-    public static ContainerTag output(String text) {
-        return new ContainerTag("output").withText(text);
-    }
-
-    public static ContainerTag output(DomContent... dc) {
-        return new ContainerTag("output").with(dc);
-    }
-
-    public static ContainerTag output(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("output"), shortAttr);
-    }
-
-    public static ContainerTag output(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("output").withText(text), shortAttr);
-    }
-
-    public static ContainerTag output(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("output").with(dc), shortAttr);
-    }
-
-    public static ContainerTag p() {
-        return new ContainerTag("p");
-    }
-
-    public static ContainerTag p(String text) {
-        return new ContainerTag("p").withText(text);
-    }
-
-    public static ContainerTag p(DomContent... dc) {
-        return new ContainerTag("p").with(dc);
-    }
-
-    public static ContainerTag p(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("p"), shortAttr);
-    }
-
-    public static ContainerTag p(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("p").withText(text), shortAttr);
-    }
-
-    public static ContainerTag p(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("p").with(dc), shortAttr);
-    }
-
-    public static ContainerTag pre() {
-        return new ContainerTag("pre");
-    }
-
-    public static ContainerTag pre(String text) {
-        return new ContainerTag("pre").withText(text);
-    }
-
-    public static ContainerTag pre(DomContent... dc) {
-        return new ContainerTag("pre").with(dc);
-    }
-
-    public static ContainerTag pre(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("pre"), shortAttr);
-    }
-
-    public static ContainerTag pre(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("pre").withText(text), shortAttr);
-    }
-
-    public static ContainerTag pre(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("pre").with(dc), shortAttr);
-    }
-
-    public static ContainerTag progress() {
-        return new ContainerTag("progress");
-    }
-
-    public static ContainerTag progress(String text) {
-        return new ContainerTag("progress").withText(text);
-    }
-
-    public static ContainerTag progress(DomContent... dc) {
-        return new ContainerTag("progress").with(dc);
-    }
-
-    public static ContainerTag progress(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("progress"), shortAttr);
-    }
-
-    public static ContainerTag progress(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("progress").withText(text), shortAttr);
-    }
-
-    public static ContainerTag progress(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("progress").with(dc), shortAttr);
-    }
-
-    public static ContainerTag q() {
-        return new ContainerTag("q");
-    }
-
-    public static ContainerTag q(String text) {
-        return new ContainerTag("q").withText(text);
-    }
-
-    public static ContainerTag q(DomContent... dc) {
-        return new ContainerTag("q").with(dc);
-    }
-
-    public static ContainerTag q(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("q"), shortAttr);
-    }
-
-    public static ContainerTag q(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("q").withText(text), shortAttr);
-    }
-
-    public static ContainerTag q(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("q").with(dc), shortAttr);
-    }
-
-    public static ContainerTag rp() {
-        return new ContainerTag("rp");
-    }
-
-    public static ContainerTag rp(String text) {
-        return new ContainerTag("rp").withText(text);
-    }
-
-    public static ContainerTag rp(DomContent... dc) {
-        return new ContainerTag("rp").with(dc);
-    }
-
-    public static ContainerTag rp(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("rp"), shortAttr);
-    }
-
-    public static ContainerTag rp(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("rp").withText(text), shortAttr);
-    }
-
-    public static ContainerTag rp(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("rp").with(dc), shortAttr);
-    }
-
-    public static ContainerTag rt() {
-        return new ContainerTag("rt");
-    }
-
-    public static ContainerTag rt(String text) {
-        return new ContainerTag("rt").withText(text);
-    }
-
-    public static ContainerTag rt(DomContent... dc) {
-        return new ContainerTag("rt").with(dc);
-    }
-
-    public static ContainerTag rt(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("rt"), shortAttr);
-    }
-
-    public static ContainerTag rt(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("rt").withText(text), shortAttr);
-    }
-
-    public static ContainerTag rt(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("rt").with(dc), shortAttr);
-    }
-
-    public static ContainerTag ruby() {
-        return new ContainerTag("ruby");
-    }
-
-    public static ContainerTag ruby(String text) {
-        return new ContainerTag("ruby").withText(text);
-    }
-
-    public static ContainerTag ruby(DomContent... dc) {
-        return new ContainerTag("ruby").with(dc);
-    }
-
-    public static ContainerTag ruby(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("ruby"), shortAttr);
-    }
-
-    public static ContainerTag ruby(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("ruby").withText(text), shortAttr);
-    }
-
-    public static ContainerTag ruby(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("ruby").with(dc), shortAttr);
-    }
-
-    public static ContainerTag s() {
-        return new ContainerTag("s");
-    }
-
-    public static ContainerTag s(String text) {
-        return new ContainerTag("s").withText(text);
-    }
-
-    public static ContainerTag s(DomContent... dc) {
-        return new ContainerTag("s").with(dc);
-    }
-
-    public static ContainerTag s(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("s"), shortAttr);
-    }
-
-    public static ContainerTag s(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("s").withText(text), shortAttr);
-    }
-
-    public static ContainerTag s(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("s").with(dc), shortAttr);
-    }
-
-    public static ContainerTag samp() {
-        return new ContainerTag("samp");
-    }
-
-    public static ContainerTag samp(String text) {
-        return new ContainerTag("samp").withText(text);
-    }
-
-    public static ContainerTag samp(DomContent... dc) {
-        return new ContainerTag("samp").with(dc);
-    }
-
-    public static ContainerTag samp(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("samp"), shortAttr);
-    }
-
-    public static ContainerTag samp(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("samp").withText(text), shortAttr);
-    }
-
-    public static ContainerTag samp(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("samp").with(dc), shortAttr);
-    }
-
-    public static ContainerTag script() {
-        return new ContainerTag("script");
-    }
-
-    public static ContainerTag script(String text) {
-        return new ContainerTag("script").withText(text);
-    }
-
-    public static ContainerTag script(DomContent... dc) {
-        return new ContainerTag("script").with(dc);
-    }
-
-    public static ContainerTag script(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("script"), shortAttr);
-    }
-
-    public static ContainerTag script(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("script").withText(text), shortAttr);
-    }
-
-    public static ContainerTag script(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("script").with(dc), shortAttr);
-    }
-
-    public static ContainerTag section() {
-        return new ContainerTag("section");
-    }
-
-    public static ContainerTag section(String text) {
-        return new ContainerTag("section").withText(text);
-    }
-
-    public static ContainerTag section(DomContent... dc) {
-        return new ContainerTag("section").with(dc);
-    }
-
-    public static ContainerTag section(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("section"), shortAttr);
-    }
-
-    public static ContainerTag section(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("section").withText(text), shortAttr);
-    }
-
-    public static ContainerTag section(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("section").with(dc), shortAttr);
-    }
-
-    public static ContainerTag select() {
-        return new ContainerTag("select");
-    }
-
-    public static ContainerTag select(String text) {
-        return new ContainerTag("select").withText(text);
-    }
-
-    public static ContainerTag select(DomContent... dc) {
-        return new ContainerTag("select").with(dc);
-    }
-
-    public static ContainerTag select(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("select"), shortAttr);
-    }
-
-    public static ContainerTag select(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("select").withText(text), shortAttr);
-    }
-
-    public static ContainerTag select(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("select").with(dc), shortAttr);
-    }
-
-    public static ContainerTag small() {
-        return new ContainerTag("small");
-    }
-
-    public static ContainerTag small(String text) {
-        return new ContainerTag("small").withText(text);
-    }
-
-    public static ContainerTag small(DomContent... dc) {
-        return new ContainerTag("small").with(dc);
-    }
-
-    public static ContainerTag small(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("small"), shortAttr);
-    }
-
-    public static ContainerTag small(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("small").withText(text), shortAttr);
-    }
-
-    public static ContainerTag small(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("small").with(dc), shortAttr);
-    }
-
-    public static ContainerTag span() {
-        return new ContainerTag("span");
-    }
-
-    public static ContainerTag span(String text) {
-        return new ContainerTag("span").withText(text);
-    }
-
-    public static ContainerTag span(DomContent... dc) {
-        return new ContainerTag("span").with(dc);
-    }
-
-    public static ContainerTag span(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("span"), shortAttr);
-    }
-
-    public static ContainerTag span(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("span").withText(text), shortAttr);
-    }
-
-    public static ContainerTag span(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("span").with(dc), shortAttr);
-    }
-
-    public static ContainerTag strong() {
-        return new ContainerTag("strong");
-    }
-
-    public static ContainerTag strong(String text) {
-        return new ContainerTag("strong").withText(text);
-    }
-
-    public static ContainerTag strong(DomContent... dc) {
-        return new ContainerTag("strong").with(dc);
-    }
-
-    public static ContainerTag strong(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("strong"), shortAttr);
-    }
-
-    public static ContainerTag strong(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("strong").withText(text), shortAttr);
-    }
-
-    public static ContainerTag strong(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("strong").with(dc), shortAttr);
-    }
-
-    public static ContainerTag style() {
-        return new ContainerTag("style");
-    }
-
-    public static ContainerTag style(String text) {
-        return new ContainerTag("style").withText(text);
-    }
-
-    public static ContainerTag style(DomContent... dc) {
-        return new ContainerTag("style").with(dc);
-    }
-
-    public static ContainerTag style(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("style"), shortAttr);
-    }
-
-    public static ContainerTag style(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("style").withText(text), shortAttr);
-    }
-
-    public static ContainerTag style(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("style").with(dc), shortAttr);
-    }
-
-    public static ContainerTag sub() {
-        return new ContainerTag("sub");
-    }
-
-    public static ContainerTag sub(String text) {
-        return new ContainerTag("sub").withText(text);
-    }
-
-    public static ContainerTag sub(DomContent... dc) {
-        return new ContainerTag("sub").with(dc);
-    }
-
-    public static ContainerTag sub(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("sub"), shortAttr);
-    }
-
-    public static ContainerTag sub(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("sub").withText(text), shortAttr);
-    }
-
-    public static ContainerTag sub(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("sub").with(dc), shortAttr);
-    }
-
-    public static ContainerTag summary() {
-        return new ContainerTag("summary");
-    }
-
-    public static ContainerTag summary(String text) {
-        return new ContainerTag("summary").withText(text);
-    }
-
-    public static ContainerTag summary(DomContent... dc) {
-        return new ContainerTag("summary").with(dc);
-    }
-
-    public static ContainerTag summary(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("summary"), shortAttr);
-    }
-
-    public static ContainerTag summary(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("summary").withText(text), shortAttr);
-    }
-
-    public static ContainerTag summary(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("summary").with(dc), shortAttr);
-    }
-
-    public static ContainerTag sup() {
-        return new ContainerTag("sup");
-    }
-
-    public static ContainerTag sup(String text) {
-        return new ContainerTag("sup").withText(text);
-    }
-
-    public static ContainerTag sup(DomContent... dc) {
-        return new ContainerTag("sup").with(dc);
-    }
-
-    public static ContainerTag sup(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("sup"), shortAttr);
-    }
-
-    public static ContainerTag sup(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("sup").withText(text), shortAttr);
-    }
-
-    public static ContainerTag sup(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("sup").with(dc), shortAttr);
-    }
-
-    public static ContainerTag table() {
-        return new ContainerTag("table");
-    }
-
-    public static ContainerTag table(String text) {
-        return new ContainerTag("table").withText(text);
-    }
-
-    public static ContainerTag table(DomContent... dc) {
-        return new ContainerTag("table").with(dc);
-    }
-
-    public static ContainerTag table(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("table"), shortAttr);
-    }
-
-    public static ContainerTag table(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("table").withText(text), shortAttr);
-    }
-
-    public static ContainerTag table(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("table").with(dc), shortAttr);
-    }
-
-    public static ContainerTag tbody() {
-        return new ContainerTag("tbody");
-    }
-
-    public static ContainerTag tbody(String text) {
-        return new ContainerTag("tbody").withText(text);
-    }
-
-    public static ContainerTag tbody(DomContent... dc) {
-        return new ContainerTag("tbody").with(dc);
-    }
-
-    public static ContainerTag tbody(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("tbody"), shortAttr);
-    }
-
-    public static ContainerTag tbody(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("tbody").withText(text), shortAttr);
-    }
-
-    public static ContainerTag tbody(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("tbody").with(dc), shortAttr);
-    }
-
-    public static ContainerTag td() {
-        return new ContainerTag("td");
-    }
-
-    public static ContainerTag td(String text) {
-        return new ContainerTag("td").withText(text);
-    }
-
-    public static ContainerTag td(DomContent... dc) {
-        return new ContainerTag("td").with(dc);
-    }
-
-    public static ContainerTag td(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("td"), shortAttr);
-    }
-
-    public static ContainerTag td(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("td").withText(text), shortAttr);
-    }
-
-    public static ContainerTag td(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("td").with(dc), shortAttr);
-    }
-
-    public static ContainerTag textarea() {
-        return new ContainerTag("textarea");
-    }
-
-    public static ContainerTag textarea(String text) {
-        return new ContainerTag("textarea").withText(text);
-    }
-
-    public static ContainerTag textarea(DomContent... dc) {
-        return new ContainerTag("textarea").with(dc);
-    }
-
-    public static ContainerTag textarea(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("textarea"), shortAttr);
-    }
-
-    public static ContainerTag textarea(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("textarea").withText(text), shortAttr);
-    }
-
-    public static ContainerTag textarea(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("textarea").with(dc), shortAttr);
-    }
-
-    public static ContainerTag tfoot() {
-        return new ContainerTag("tfoot");
-    }
-
-    public static ContainerTag tfoot(String text) {
-        return new ContainerTag("tfoot").withText(text);
-    }
-
-    public static ContainerTag tfoot(DomContent... dc) {
-        return new ContainerTag("tfoot").with(dc);
-    }
-
-    public static ContainerTag tfoot(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("tfoot"), shortAttr);
-    }
-
-    public static ContainerTag tfoot(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("tfoot").withText(text), shortAttr);
-    }
-
-    public static ContainerTag tfoot(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("tfoot").with(dc), shortAttr);
-    }
-
-    public static ContainerTag th() {
-        return new ContainerTag("th");
-    }
-
-    public static ContainerTag th(String text) {
-        return new ContainerTag("th").withText(text);
-    }
-
-    public static ContainerTag th(DomContent... dc) {
-        return new ContainerTag("th").with(dc);
-    }
-
-    public static ContainerTag th(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("th"), shortAttr);
-    }
-
-    public static ContainerTag th(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("th").withText(text), shortAttr);
-    }
-
-    public static ContainerTag th(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("th").with(dc), shortAttr);
-    }
-
-    public static ContainerTag thead() {
-        return new ContainerTag("thead");
-    }
-
-    public static ContainerTag thead(String text) {
-        return new ContainerTag("thead").withText(text);
-    }
-
-    public static ContainerTag thead(DomContent... dc) {
-        return new ContainerTag("thead").with(dc);
-    }
-
-    public static ContainerTag thead(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("thead"), shortAttr);
-    }
-
-    public static ContainerTag thead(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("thead").withText(text), shortAttr);
-    }
-
-    public static ContainerTag thead(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("thead").with(dc), shortAttr);
-    }
-
-    public static ContainerTag time() {
-        return new ContainerTag("time");
-    }
-
-    public static ContainerTag time(String text) {
-        return new ContainerTag("time").withText(text);
-    }
-
-    public static ContainerTag time(DomContent... dc) {
-        return new ContainerTag("time").with(dc);
-    }
-
-    public static ContainerTag time(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("time"), shortAttr);
-    }
-
-    public static ContainerTag time(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("time").withText(text), shortAttr);
-    }
-
-    public static ContainerTag time(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("time").with(dc), shortAttr);
-    }
-
-    public static ContainerTag title() {
-        return new ContainerTag("title");
-    }
-
-    public static ContainerTag title(String text) {
-        return new ContainerTag("title").withText(text);
-    }
 
-    public static ContainerTag title(DomContent... dc) {
-        return new ContainerTag("title").with(dc);
+    public static BodyTag body() {
+        return new BodyTag();
     }
 
-    public static ContainerTag title(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("title"), shortAttr);
+    public static BodyTag body(String text) {
+        return (BodyTag)new BodyTag().withText(text);
     }
 
-    public static ContainerTag title(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("title").withText(text), shortAttr);
+    public static BodyTag body(DomContent... dc) {
+        return (BodyTag)new BodyTag().with(dc);
     }
 
-    public static ContainerTag title(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("title").with(dc), shortAttr);
+    public static BodyTag body(Attr.ShortForm shortAttr) {
+        return (BodyTag)Attr.addTo(new BodyTag(), shortAttr);
     }
 
-    public static ContainerTag tr() {
-        return new ContainerTag("tr");
+    public static BodyTag body(Attr.ShortForm shortAttr, String text) {
+        return (BodyTag)Attr.addTo(new BodyTag().withText(text), shortAttr);
     }
 
-    public static ContainerTag tr(String text) {
-        return new ContainerTag("tr").withText(text);
+    public static BodyTag body(Attr.ShortForm shortAttr, DomContent... dc) {
+        return (BodyTag)Attr.addTo(new BodyTag().with(dc), shortAttr);
     }
 
-    public static ContainerTag tr(DomContent... dc) {
-        return new ContainerTag("tr").with(dc);
+    public static HeadTag head() {
+        return new HeadTag();
     }
 
-    public static ContainerTag tr(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("tr"), shortAttr);
+    public static HeadTag head(String text) {
+        return (HeadTag)new HeadTag().withText(text);
     }
 
-    public static ContainerTag tr(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("tr").withText(text), shortAttr);
+    public static HeadTag head(DomContent... dc) {
+        return (HeadTag)new HeadTag().with(dc);
     }
 
-    public static ContainerTag tr(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("tr").with(dc), shortAttr);
+    public static HeadTag head(Attr.ShortForm shortAttr) {
+        return (HeadTag)Attr.addTo(new HeadTag(), shortAttr);
     }
 
-    public static ContainerTag u() {
-        return new ContainerTag("u");
+    public static HeadTag head(Attr.ShortForm shortAttr, String text) {
+        return (HeadTag)Attr.addTo(new HeadTag().withText(text), shortAttr);
     }
 
-    public static ContainerTag u(String text) {
-        return new ContainerTag("u").withText(text);
+    public static HeadTag head(Attr.ShortForm shortAttr, DomContent... dc) {
+        return (HeadTag)Attr.addTo(new HeadTag().with(dc), shortAttr);
     }
 
-    public static ContainerTag u(DomContent... dc) {
-        return new ContainerTag("u").with(dc);
-    }
+    // -- end of manually managed tags --
 
-    public static ContainerTag u(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("u"), shortAttr);
-    }
 
-    public static ContainerTag u(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("u").withText(text), shortAttr);
-    }
 
-    public static ContainerTag u(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("u").with(dc), shortAttr);
-    }
 
-    public static ContainerTag ul() {
-        return new ContainerTag("ul");
-    }
 
-    public static ContainerTag ul(String text) {
-        return new ContainerTag("ul").withText(text);
-    }
 
-    public static ContainerTag ul(DomContent... dc) {
-        return new ContainerTag("ul").with(dc);
-    }
 
-    public static ContainerTag ul(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("ul"), shortAttr);
-    }
+    // EmptyTags, generated in class j2html.tags.generators.TagCreatorCodeGenerator
+    public static AreaTag area ()                                                   { return  new AreaTag(); }
+    public static AreaTag area (Attr.ShortForm shortAttr)                           {  return (AreaTag)  Attr.addTo( new AreaTag(), shortAttr); }
 
-    public static ContainerTag ul(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("ul").withText(text), shortAttr);
-    }
+    public static BaseTag base ()                                                   { return  new BaseTag(); }
+    public static BaseTag base (Attr.ShortForm shortAttr)                           {  return (BaseTag)  Attr.addTo( new BaseTag(), shortAttr); }
 
-    public static ContainerTag ul(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("ul").with(dc), shortAttr);
-    }
+    public static BrTag br ()                                                       { return  new BrTag(); }
+    public static BrTag br (Attr.ShortForm shortAttr)                               {  return (BrTag)  Attr.addTo( new BrTag(), shortAttr); }
 
-    public static ContainerTag var() {
-        return new ContainerTag("var");
-    }
+    public static ColTag col ()                                                     { return  new ColTag(); }
+    public static ColTag col (Attr.ShortForm shortAttr)                             {  return (ColTag)  Attr.addTo( new ColTag(), shortAttr); }
 
-    public static ContainerTag var(String text) {
-        return new ContainerTag("var").withText(text);
-    }
+    public static EmbedTag embed ()                                                 { return  new EmbedTag(); }
+    public static EmbedTag embed (Attr.ShortForm shortAttr)                         {  return (EmbedTag)  Attr.addTo( new EmbedTag(), shortAttr); }
 
-    public static ContainerTag var(DomContent... dc) {
-        return new ContainerTag("var").with(dc);
-    }
+    public static HrTag hr ()                                                       { return  new HrTag(); }
+    public static HrTag hr (Attr.ShortForm shortAttr)                               {  return (HrTag)  Attr.addTo( new HrTag(), shortAttr); }
 
-    public static ContainerTag var(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("var"), shortAttr);
-    }
+    public static ImgTag img ()                                                     { return  new ImgTag(); }
+    public static ImgTag img (Attr.ShortForm shortAttr)                             {  return (ImgTag)  Attr.addTo( new ImgTag(), shortAttr); }
 
-    public static ContainerTag var(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("var").withText(text), shortAttr);
-    }
+    public static InputTag input ()                                                 { return  new InputTag(); }
+    public static InputTag input (Attr.ShortForm shortAttr)                         {  return (InputTag)  Attr.addTo( new InputTag(), shortAttr); }
 
-    public static ContainerTag var(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("var").with(dc), shortAttr);
-    }
+    public static KeygenTag keygen ()                                               { return  new KeygenTag(); }
+    public static KeygenTag keygen (Attr.ShortForm shortAttr)                       {  return (KeygenTag)  Attr.addTo( new KeygenTag(), shortAttr); }
 
-    public static ContainerTag video() {
-        return new ContainerTag("video");
-    }
+    public static LinkTag link ()                                                   { return  new LinkTag(); }
+    public static LinkTag link (Attr.ShortForm shortAttr)                           {  return (LinkTag)  Attr.addTo( new LinkTag(), shortAttr); }
 
-    public static ContainerTag video(String text) {
-        return new ContainerTag("video").withText(text);
-    }
+    public static MetaTag meta ()                                                   { return  new MetaTag(); }
+    public static MetaTag meta (Attr.ShortForm shortAttr)                           {  return (MetaTag)  Attr.addTo( new MetaTag(), shortAttr); }
 
-    public static ContainerTag video(DomContent... dc) {
-        return new ContainerTag("video").with(dc);
-    }
+    public static ParamTag param ()                                                 { return  new ParamTag(); }
+    public static ParamTag param (Attr.ShortForm shortAttr)                         {  return (ParamTag)  Attr.addTo( new ParamTag(), shortAttr); }
 
-    public static ContainerTag video(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new ContainerTag("video"), shortAttr);
-    }
+    public static SourceTag source ()                                               { return  new SourceTag(); }
+    public static SourceTag source (Attr.ShortForm shortAttr)                       {  return (SourceTag)  Attr.addTo( new SourceTag(), shortAttr); }
 
-    public static ContainerTag video(Attr.ShortForm shortAttr, String text) {
-        return Attr.addTo(new ContainerTag("video").withText(text), shortAttr);
-    }
+    public static TrackTag track ()                                                 { return  new TrackTag(); }
+    public static TrackTag track (Attr.ShortForm shortAttr)                         {  return (TrackTag)  Attr.addTo( new TrackTag(), shortAttr); }
 
-    public static ContainerTag video(Attr.ShortForm shortAttr, DomContent... dc) {
-        return Attr.addTo(new ContainerTag("video").with(dc), shortAttr);
-    }
+    public static WbrTag wbr ()                                                     { return  new WbrTag(); }
+    public static WbrTag wbr (Attr.ShortForm shortAttr)                             {  return (WbrTag)  Attr.addTo( new WbrTag(), shortAttr); }
+
+    // ContainerTags, generated in class j2html.tags.generators.TagCreatorCodeGenerator
+    public static ATag a ()                                                         {  return (ATag)  new ATag(); }
+    public static ATag a (String text)                                              {  return (ATag)  new ATag().withText(text); }
+    public static ATag a (DomContent... dc)                                         {  return (ATag)  new ATag().with(dc); }
+    public static ATag a (Attr.ShortForm shortAttr)                                 {  return (ATag)  Attr.addTo( new ATag(), shortAttr); }
+    public static ATag a (Attr.ShortForm shortAttr, String text)                    {  return (ATag)  Attr.addTo( new ATag().withText(text), shortAttr); }
+    public static ATag a (Attr.ShortForm shortAttr, DomContent... dc)               {  return (ATag)  Attr.addTo( new ATag().with(dc), shortAttr); }
+
+    public static AbbrTag abbr ()                                                   {  return (AbbrTag)  new AbbrTag(); }
+    public static AbbrTag abbr (String text)                                        {  return (AbbrTag)  new AbbrTag().withText(text); }
+    public static AbbrTag abbr (DomContent... dc)                                   {  return (AbbrTag)  new AbbrTag().with(dc); }
+    public static AbbrTag abbr (Attr.ShortForm shortAttr)                           {  return (AbbrTag)  Attr.addTo( new AbbrTag(), shortAttr); }
+    public static AbbrTag abbr (Attr.ShortForm shortAttr, String text)              {  return (AbbrTag)  Attr.addTo( new AbbrTag().withText(text), shortAttr); }
+    public static AbbrTag abbr (Attr.ShortForm shortAttr, DomContent... dc)         {  return (AbbrTag)  Attr.addTo( new AbbrTag().with(dc), shortAttr); }
+
+    public static AddressTag address ()                                             {  return (AddressTag)  new AddressTag(); }
+    public static AddressTag address (String text)                                  {  return (AddressTag)  new AddressTag().withText(text); }
+    public static AddressTag address (DomContent... dc)                             {  return (AddressTag)  new AddressTag().with(dc); }
+    public static AddressTag address (Attr.ShortForm shortAttr)                     {  return (AddressTag)  Attr.addTo( new AddressTag(), shortAttr); }
+    public static AddressTag address (Attr.ShortForm shortAttr, String text)        {  return (AddressTag)  Attr.addTo( new AddressTag().withText(text), shortAttr); }
+    public static AddressTag address (Attr.ShortForm shortAttr, DomContent... dc)   {  return (AddressTag)  Attr.addTo( new AddressTag().with(dc), shortAttr); }
+
+    public static ArticleTag article ()                                             {  return (ArticleTag)  new ArticleTag(); }
+    public static ArticleTag article (String text)                                  {  return (ArticleTag)  new ArticleTag().withText(text); }
+    public static ArticleTag article (DomContent... dc)                             {  return (ArticleTag)  new ArticleTag().with(dc); }
+    public static ArticleTag article (Attr.ShortForm shortAttr)                     {  return (ArticleTag)  Attr.addTo( new ArticleTag(), shortAttr); }
+    public static ArticleTag article (Attr.ShortForm shortAttr, String text)        {  return (ArticleTag)  Attr.addTo( new ArticleTag().withText(text), shortAttr); }
+    public static ArticleTag article (Attr.ShortForm shortAttr, DomContent... dc)   {  return (ArticleTag)  Attr.addTo( new ArticleTag().with(dc), shortAttr); }
+
+    public static AsideTag aside ()                                                 {  return (AsideTag)  new AsideTag(); }
+    public static AsideTag aside (String text)                                      {  return (AsideTag)  new AsideTag().withText(text); }
+    public static AsideTag aside (DomContent... dc)                                 {  return (AsideTag)  new AsideTag().with(dc); }
+    public static AsideTag aside (Attr.ShortForm shortAttr)                         {  return (AsideTag)  Attr.addTo( new AsideTag(), shortAttr); }
+    public static AsideTag aside (Attr.ShortForm shortAttr, String text)            {  return (AsideTag)  Attr.addTo( new AsideTag().withText(text), shortAttr); }
+    public static AsideTag aside (Attr.ShortForm shortAttr, DomContent... dc)       {  return (AsideTag)  Attr.addTo( new AsideTag().with(dc), shortAttr); }
+
+    public static AudioTag audio ()                                                 {  return (AudioTag)  new AudioTag(); }
+    public static AudioTag audio (String text)                                      {  return (AudioTag)  new AudioTag().withText(text); }
+    public static AudioTag audio (DomContent... dc)                                 {  return (AudioTag)  new AudioTag().with(dc); }
+    public static AudioTag audio (Attr.ShortForm shortAttr)                         {  return (AudioTag)  Attr.addTo( new AudioTag(), shortAttr); }
+    public static AudioTag audio (Attr.ShortForm shortAttr, String text)            {  return (AudioTag)  Attr.addTo( new AudioTag().withText(text), shortAttr); }
+    public static AudioTag audio (Attr.ShortForm shortAttr, DomContent... dc)       {  return (AudioTag)  Attr.addTo( new AudioTag().with(dc), shortAttr); }
+
+    public static BTag b ()                                                         {  return (BTag)  new BTag(); }
+    public static BTag b (String text)                                              {  return (BTag)  new BTag().withText(text); }
+    public static BTag b (DomContent... dc)                                         {  return (BTag)  new BTag().with(dc); }
+    public static BTag b (Attr.ShortForm shortAttr)                                 {  return (BTag)  Attr.addTo( new BTag(), shortAttr); }
+    public static BTag b (Attr.ShortForm shortAttr, String text)                    {  return (BTag)  Attr.addTo( new BTag().withText(text), shortAttr); }
+    public static BTag b (Attr.ShortForm shortAttr, DomContent... dc)               {  return (BTag)  Attr.addTo( new BTag().with(dc), shortAttr); }
+
+    public static BdiTag bdi ()                                                     {  return (BdiTag)  new BdiTag(); }
+    public static BdiTag bdi (String text)                                          {  return (BdiTag)  new BdiTag().withText(text); }
+    public static BdiTag bdi (DomContent... dc)                                     {  return (BdiTag)  new BdiTag().with(dc); }
+    public static BdiTag bdi (Attr.ShortForm shortAttr)                             {  return (BdiTag)  Attr.addTo( new BdiTag(), shortAttr); }
+    public static BdiTag bdi (Attr.ShortForm shortAttr, String text)                {  return (BdiTag)  Attr.addTo( new BdiTag().withText(text), shortAttr); }
+    public static BdiTag bdi (Attr.ShortForm shortAttr, DomContent... dc)           {  return (BdiTag)  Attr.addTo( new BdiTag().with(dc), shortAttr); }
+
+    public static BdoTag bdo ()                                                     {  return (BdoTag)  new BdoTag(); }
+    public static BdoTag bdo (String text)                                          {  return (BdoTag)  new BdoTag().withText(text); }
+    public static BdoTag bdo (DomContent... dc)                                     {  return (BdoTag)  new BdoTag().with(dc); }
+    public static BdoTag bdo (Attr.ShortForm shortAttr)                             {  return (BdoTag)  Attr.addTo( new BdoTag(), shortAttr); }
+    public static BdoTag bdo (Attr.ShortForm shortAttr, String text)                {  return (BdoTag)  Attr.addTo( new BdoTag().withText(text), shortAttr); }
+    public static BdoTag bdo (Attr.ShortForm shortAttr, DomContent... dc)           {  return (BdoTag)  Attr.addTo( new BdoTag().with(dc), shortAttr); }
+
+    public static BlockquoteTag blockquote ()                                       {  return (BlockquoteTag)  new BlockquoteTag(); }
+    public static BlockquoteTag blockquote (String text)                            {  return (BlockquoteTag)  new BlockquoteTag().withText(text); }
+    public static BlockquoteTag blockquote (DomContent... dc)                       {  return (BlockquoteTag)  new BlockquoteTag().with(dc); }
+    public static BlockquoteTag blockquote (Attr.ShortForm shortAttr)               {  return (BlockquoteTag)  Attr.addTo( new BlockquoteTag(), shortAttr); }
+    public static BlockquoteTag blockquote (Attr.ShortForm shortAttr, String text)  {  return (BlockquoteTag)  Attr.addTo( new BlockquoteTag().withText(text), shortAttr); }
+    public static BlockquoteTag blockquote (Attr.ShortForm shortAttr, DomContent... dc){  return (BlockquoteTag)  Attr.addTo( new BlockquoteTag().with(dc), shortAttr); }
+
+    public static ButtonTag button ()                                               {  return (ButtonTag)  new ButtonTag(); }
+    public static ButtonTag button (String text)                                    {  return (ButtonTag)  new ButtonTag().withText(text); }
+    public static ButtonTag button (DomContent... dc)                               {  return (ButtonTag)  new ButtonTag().with(dc); }
+    public static ButtonTag button (Attr.ShortForm shortAttr)                       {  return (ButtonTag)  Attr.addTo( new ButtonTag(), shortAttr); }
+    public static ButtonTag button (Attr.ShortForm shortAttr, String text)          {  return (ButtonTag)  Attr.addTo( new ButtonTag().withText(text), shortAttr); }
+    public static ButtonTag button (Attr.ShortForm shortAttr, DomContent... dc)     {  return (ButtonTag)  Attr.addTo( new ButtonTag().with(dc), shortAttr); }
+
+    public static CanvasTag canvas ()                                               {  return (CanvasTag)  new CanvasTag(); }
+    public static CanvasTag canvas (String text)                                    {  return (CanvasTag)  new CanvasTag().withText(text); }
+    public static CanvasTag canvas (DomContent... dc)                               {  return (CanvasTag)  new CanvasTag().with(dc); }
+    public static CanvasTag canvas (Attr.ShortForm shortAttr)                       {  return (CanvasTag)  Attr.addTo( new CanvasTag(), shortAttr); }
+    public static CanvasTag canvas (Attr.ShortForm shortAttr, String text)          {  return (CanvasTag)  Attr.addTo( new CanvasTag().withText(text), shortAttr); }
+    public static CanvasTag canvas (Attr.ShortForm shortAttr, DomContent... dc)     {  return (CanvasTag)  Attr.addTo( new CanvasTag().with(dc), shortAttr); }
+
+    public static CaptionTag caption ()                                             {  return (CaptionTag)  new CaptionTag(); }
+    public static CaptionTag caption (String text)                                  {  return (CaptionTag)  new CaptionTag().withText(text); }
+    public static CaptionTag caption (DomContent... dc)                             {  return (CaptionTag)  new CaptionTag().with(dc); }
+    public static CaptionTag caption (Attr.ShortForm shortAttr)                     {  return (CaptionTag)  Attr.addTo( new CaptionTag(), shortAttr); }
+    public static CaptionTag caption (Attr.ShortForm shortAttr, String text)        {  return (CaptionTag)  Attr.addTo( new CaptionTag().withText(text), shortAttr); }
+    public static CaptionTag caption (Attr.ShortForm shortAttr, DomContent... dc)   {  return (CaptionTag)  Attr.addTo( new CaptionTag().with(dc), shortAttr); }
+
+    public static CiteTag cite ()                                                   {  return (CiteTag)  new CiteTag(); }
+    public static CiteTag cite (String text)                                        {  return (CiteTag)  new CiteTag().withText(text); }
+    public static CiteTag cite (DomContent... dc)                                   {  return (CiteTag)  new CiteTag().with(dc); }
+    public static CiteTag cite (Attr.ShortForm shortAttr)                           {  return (CiteTag)  Attr.addTo( new CiteTag(), shortAttr); }
+    public static CiteTag cite (Attr.ShortForm shortAttr, String text)              {  return (CiteTag)  Attr.addTo( new CiteTag().withText(text), shortAttr); }
+    public static CiteTag cite (Attr.ShortForm shortAttr, DomContent... dc)         {  return (CiteTag)  Attr.addTo( new CiteTag().with(dc), shortAttr); }
+
+    public static CodeTag code ()                                                   {  return (CodeTag)  new CodeTag(); }
+    public static CodeTag code (String text)                                        {  return (CodeTag)  new CodeTag().withText(text); }
+    public static CodeTag code (DomContent... dc)                                   {  return (CodeTag)  new CodeTag().with(dc); }
+    public static CodeTag code (Attr.ShortForm shortAttr)                           {  return (CodeTag)  Attr.addTo( new CodeTag(), shortAttr); }
+    public static CodeTag code (Attr.ShortForm shortAttr, String text)              {  return (CodeTag)  Attr.addTo( new CodeTag().withText(text), shortAttr); }
+    public static CodeTag code (Attr.ShortForm shortAttr, DomContent... dc)         {  return (CodeTag)  Attr.addTo( new CodeTag().with(dc), shortAttr); }
+
+    public static ColgroupTag colgroup ()                                           {  return (ColgroupTag)  new ColgroupTag(); }
+    public static ColgroupTag colgroup (String text)                                {  return (ColgroupTag)  new ColgroupTag().withText(text); }
+    public static ColgroupTag colgroup (DomContent... dc)                           {  return (ColgroupTag)  new ColgroupTag().with(dc); }
+    public static ColgroupTag colgroup (Attr.ShortForm shortAttr)                   {  return (ColgroupTag)  Attr.addTo( new ColgroupTag(), shortAttr); }
+    public static ColgroupTag colgroup (Attr.ShortForm shortAttr, String text)      {  return (ColgroupTag)  Attr.addTo( new ColgroupTag().withText(text), shortAttr); }
+    public static ColgroupTag colgroup (Attr.ShortForm shortAttr, DomContent... dc) {  return (ColgroupTag)  Attr.addTo( new ColgroupTag().with(dc), shortAttr); }
+
+    public static DatalistTag datalist ()                                           {  return (DatalistTag)  new DatalistTag(); }
+    public static DatalistTag datalist (String text)                                {  return (DatalistTag)  new DatalistTag().withText(text); }
+    public static DatalistTag datalist (DomContent... dc)                           {  return (DatalistTag)  new DatalistTag().with(dc); }
+    public static DatalistTag datalist (Attr.ShortForm shortAttr)                   {  return (DatalistTag)  Attr.addTo( new DatalistTag(), shortAttr); }
+    public static DatalistTag datalist (Attr.ShortForm shortAttr, String text)      {  return (DatalistTag)  Attr.addTo( new DatalistTag().withText(text), shortAttr); }
+    public static DatalistTag datalist (Attr.ShortForm shortAttr, DomContent... dc) {  return (DatalistTag)  Attr.addTo( new DatalistTag().with(dc), shortAttr); }
+
+    public static DdTag dd ()                                                       {  return (DdTag)  new DdTag(); }
+    public static DdTag dd (String text)                                            {  return (DdTag)  new DdTag().withText(text); }
+    public static DdTag dd (DomContent... dc)                                       {  return (DdTag)  new DdTag().with(dc); }
+    public static DdTag dd (Attr.ShortForm shortAttr)                               {  return (DdTag)  Attr.addTo( new DdTag(), shortAttr); }
+    public static DdTag dd (Attr.ShortForm shortAttr, String text)                  {  return (DdTag)  Attr.addTo( new DdTag().withText(text), shortAttr); }
+    public static DdTag dd (Attr.ShortForm shortAttr, DomContent... dc)             {  return (DdTag)  Attr.addTo( new DdTag().with(dc), shortAttr); }
+
+    public static DelTag del ()                                                     {  return (DelTag)  new DelTag(); }
+    public static DelTag del (String text)                                          {  return (DelTag)  new DelTag().withText(text); }
+    public static DelTag del (DomContent... dc)                                     {  return (DelTag)  new DelTag().with(dc); }
+    public static DelTag del (Attr.ShortForm shortAttr)                             {  return (DelTag)  Attr.addTo( new DelTag(), shortAttr); }
+    public static DelTag del (Attr.ShortForm shortAttr, String text)                {  return (DelTag)  Attr.addTo( new DelTag().withText(text), shortAttr); }
+    public static DelTag del (Attr.ShortForm shortAttr, DomContent... dc)           {  return (DelTag)  Attr.addTo( new DelTag().with(dc), shortAttr); }
+
+    public static DetailsTag details ()                                             {  return (DetailsTag)  new DetailsTag(); }
+    public static DetailsTag details (String text)                                  {  return (DetailsTag)  new DetailsTag().withText(text); }
+    public static DetailsTag details (DomContent... dc)                             {  return (DetailsTag)  new DetailsTag().with(dc); }
+    public static DetailsTag details (Attr.ShortForm shortAttr)                     {  return (DetailsTag)  Attr.addTo( new DetailsTag(), shortAttr); }
+    public static DetailsTag details (Attr.ShortForm shortAttr, String text)        {  return (DetailsTag)  Attr.addTo( new DetailsTag().withText(text), shortAttr); }
+    public static DetailsTag details (Attr.ShortForm shortAttr, DomContent... dc)   {  return (DetailsTag)  Attr.addTo( new DetailsTag().with(dc), shortAttr); }
+
+    public static DfnTag dfn ()                                                     {  return (DfnTag)  new DfnTag(); }
+    public static DfnTag dfn (String text)                                          {  return (DfnTag)  new DfnTag().withText(text); }
+    public static DfnTag dfn (DomContent... dc)                                     {  return (DfnTag)  new DfnTag().with(dc); }
+    public static DfnTag dfn (Attr.ShortForm shortAttr)                             {  return (DfnTag)  Attr.addTo( new DfnTag(), shortAttr); }
+    public static DfnTag dfn (Attr.ShortForm shortAttr, String text)                {  return (DfnTag)  Attr.addTo( new DfnTag().withText(text), shortAttr); }
+    public static DfnTag dfn (Attr.ShortForm shortAttr, DomContent... dc)           {  return (DfnTag)  Attr.addTo( new DfnTag().with(dc), shortAttr); }
+
+    public static DialogTag dialog ()                                               {  return (DialogTag)  new DialogTag(); }
+    public static DialogTag dialog (String text)                                    {  return (DialogTag)  new DialogTag().withText(text); }
+    public static DialogTag dialog (DomContent... dc)                               {  return (DialogTag)  new DialogTag().with(dc); }
+    public static DialogTag dialog (Attr.ShortForm shortAttr)                       {  return (DialogTag)  Attr.addTo( new DialogTag(), shortAttr); }
+    public static DialogTag dialog (Attr.ShortForm shortAttr, String text)          {  return (DialogTag)  Attr.addTo( new DialogTag().withText(text), shortAttr); }
+    public static DialogTag dialog (Attr.ShortForm shortAttr, DomContent... dc)     {  return (DialogTag)  Attr.addTo( new DialogTag().with(dc), shortAttr); }
+
+    public static DivTag div ()                                                     {  return (DivTag)  new DivTag(); }
+    public static DivTag div (String text)                                          {  return (DivTag)  new DivTag().withText(text); }
+    public static DivTag div (DomContent... dc)                                     {  return (DivTag)  new DivTag().with(dc); }
+    public static DivTag div (Attr.ShortForm shortAttr)                             {  return (DivTag)  Attr.addTo( new DivTag(), shortAttr); }
+    public static DivTag div (Attr.ShortForm shortAttr, String text)                {  return (DivTag)  Attr.addTo( new DivTag().withText(text), shortAttr); }
+    public static DivTag div (Attr.ShortForm shortAttr, DomContent... dc)           {  return (DivTag)  Attr.addTo( new DivTag().with(dc), shortAttr); }
+
+    public static DlTag dl ()                                                       {  return (DlTag)  new DlTag(); }
+    public static DlTag dl (String text)                                            {  return (DlTag)  new DlTag().withText(text); }
+    public static DlTag dl (DomContent... dc)                                       {  return (DlTag)  new DlTag().with(dc); }
+    public static DlTag dl (Attr.ShortForm shortAttr)                               {  return (DlTag)  Attr.addTo( new DlTag(), shortAttr); }
+    public static DlTag dl (Attr.ShortForm shortAttr, String text)                  {  return (DlTag)  Attr.addTo( new DlTag().withText(text), shortAttr); }
+    public static DlTag dl (Attr.ShortForm shortAttr, DomContent... dc)             {  return (DlTag)  Attr.addTo( new DlTag().with(dc), shortAttr); }
+
+    public static DtTag dt ()                                                       {  return (DtTag)  new DtTag(); }
+    public static DtTag dt (String text)                                            {  return (DtTag)  new DtTag().withText(text); }
+    public static DtTag dt (DomContent... dc)                                       {  return (DtTag)  new DtTag().with(dc); }
+    public static DtTag dt (Attr.ShortForm shortAttr)                               {  return (DtTag)  Attr.addTo( new DtTag(), shortAttr); }
+    public static DtTag dt (Attr.ShortForm shortAttr, String text)                  {  return (DtTag)  Attr.addTo( new DtTag().withText(text), shortAttr); }
+    public static DtTag dt (Attr.ShortForm shortAttr, DomContent... dc)             {  return (DtTag)  Attr.addTo( new DtTag().with(dc), shortAttr); }
+
+    public static EmTag em ()                                                       {  return (EmTag)  new EmTag(); }
+    public static EmTag em (String text)                                            {  return (EmTag)  new EmTag().withText(text); }
+    public static EmTag em (DomContent... dc)                                       {  return (EmTag)  new EmTag().with(dc); }
+    public static EmTag em (Attr.ShortForm shortAttr)                               {  return (EmTag)  Attr.addTo( new EmTag(), shortAttr); }
+    public static EmTag em (Attr.ShortForm shortAttr, String text)                  {  return (EmTag)  Attr.addTo( new EmTag().withText(text), shortAttr); }
+    public static EmTag em (Attr.ShortForm shortAttr, DomContent... dc)             {  return (EmTag)  Attr.addTo( new EmTag().with(dc), shortAttr); }
+
+    public static FieldsetTag fieldset ()                                           {  return (FieldsetTag)  new FieldsetTag(); }
+    public static FieldsetTag fieldset (String text)                                {  return (FieldsetTag)  new FieldsetTag().withText(text); }
+    public static FieldsetTag fieldset (DomContent... dc)                           {  return (FieldsetTag)  new FieldsetTag().with(dc); }
+    public static FieldsetTag fieldset (Attr.ShortForm shortAttr)                   {  return (FieldsetTag)  Attr.addTo( new FieldsetTag(), shortAttr); }
+    public static FieldsetTag fieldset (Attr.ShortForm shortAttr, String text)      {  return (FieldsetTag)  Attr.addTo( new FieldsetTag().withText(text), shortAttr); }
+    public static FieldsetTag fieldset (Attr.ShortForm shortAttr, DomContent... dc) {  return (FieldsetTag)  Attr.addTo( new FieldsetTag().with(dc), shortAttr); }
+
+    public static FigcaptionTag figcaption ()                                       {  return (FigcaptionTag)  new FigcaptionTag(); }
+    public static FigcaptionTag figcaption (String text)                            {  return (FigcaptionTag)  new FigcaptionTag().withText(text); }
+    public static FigcaptionTag figcaption (DomContent... dc)                       {  return (FigcaptionTag)  new FigcaptionTag().with(dc); }
+    public static FigcaptionTag figcaption (Attr.ShortForm shortAttr)               {  return (FigcaptionTag)  Attr.addTo( new FigcaptionTag(), shortAttr); }
+    public static FigcaptionTag figcaption (Attr.ShortForm shortAttr, String text)  {  return (FigcaptionTag)  Attr.addTo( new FigcaptionTag().withText(text), shortAttr); }
+    public static FigcaptionTag figcaption (Attr.ShortForm shortAttr, DomContent... dc){  return (FigcaptionTag)  Attr.addTo( new FigcaptionTag().with(dc), shortAttr); }
+
+    public static FigureTag figure ()                                               {  return (FigureTag)  new FigureTag(); }
+    public static FigureTag figure (String text)                                    {  return (FigureTag)  new FigureTag().withText(text); }
+    public static FigureTag figure (DomContent... dc)                               {  return (FigureTag)  new FigureTag().with(dc); }
+    public static FigureTag figure (Attr.ShortForm shortAttr)                       {  return (FigureTag)  Attr.addTo( new FigureTag(), shortAttr); }
+    public static FigureTag figure (Attr.ShortForm shortAttr, String text)          {  return (FigureTag)  Attr.addTo( new FigureTag().withText(text), shortAttr); }
+    public static FigureTag figure (Attr.ShortForm shortAttr, DomContent... dc)     {  return (FigureTag)  Attr.addTo( new FigureTag().with(dc), shortAttr); }
+
+    public static FooterTag footer ()                                               {  return (FooterTag)  new FooterTag(); }
+    public static FooterTag footer (String text)                                    {  return (FooterTag)  new FooterTag().withText(text); }
+    public static FooterTag footer (DomContent... dc)                               {  return (FooterTag)  new FooterTag().with(dc); }
+    public static FooterTag footer (Attr.ShortForm shortAttr)                       {  return (FooterTag)  Attr.addTo( new FooterTag(), shortAttr); }
+    public static FooterTag footer (Attr.ShortForm shortAttr, String text)          {  return (FooterTag)  Attr.addTo( new FooterTag().withText(text), shortAttr); }
+    public static FooterTag footer (Attr.ShortForm shortAttr, DomContent... dc)     {  return (FooterTag)  Attr.addTo( new FooterTag().with(dc), shortAttr); }
+
+    public static FormTag form ()                                                   {  return (FormTag)  new FormTag(); }
+    public static FormTag form (String text)                                        {  return (FormTag)  new FormTag().withText(text); }
+    public static FormTag form (DomContent... dc)                                   {  return (FormTag)  new FormTag().with(dc); }
+    public static FormTag form (Attr.ShortForm shortAttr)                           {  return (FormTag)  Attr.addTo( new FormTag(), shortAttr); }
+    public static FormTag form (Attr.ShortForm shortAttr, String text)              {  return (FormTag)  Attr.addTo( new FormTag().withText(text), shortAttr); }
+    public static FormTag form (Attr.ShortForm shortAttr, DomContent... dc)         {  return (FormTag)  Attr.addTo( new FormTag().with(dc), shortAttr); }
+
+    public static H1Tag h1 ()                                                       {  return (H1Tag)  new H1Tag(); }
+    public static H1Tag h1 (String text)                                            {  return (H1Tag)  new H1Tag().withText(text); }
+    public static H1Tag h1 (DomContent... dc)                                       {  return (H1Tag)  new H1Tag().with(dc); }
+    public static H1Tag h1 (Attr.ShortForm shortAttr)                               {  return (H1Tag)  Attr.addTo( new H1Tag(), shortAttr); }
+    public static H1Tag h1 (Attr.ShortForm shortAttr, String text)                  {  return (H1Tag)  Attr.addTo( new H1Tag().withText(text), shortAttr); }
+    public static H1Tag h1 (Attr.ShortForm shortAttr, DomContent... dc)             {  return (H1Tag)  Attr.addTo( new H1Tag().with(dc), shortAttr); }
+
+    public static H2Tag h2 ()                                                       {  return (H2Tag)  new H2Tag(); }
+    public static H2Tag h2 (String text)                                            {  return (H2Tag)  new H2Tag().withText(text); }
+    public static H2Tag h2 (DomContent... dc)                                       {  return (H2Tag)  new H2Tag().with(dc); }
+    public static H2Tag h2 (Attr.ShortForm shortAttr)                               {  return (H2Tag)  Attr.addTo( new H2Tag(), shortAttr); }
+    public static H2Tag h2 (Attr.ShortForm shortAttr, String text)                  {  return (H2Tag)  Attr.addTo( new H2Tag().withText(text), shortAttr); }
+    public static H2Tag h2 (Attr.ShortForm shortAttr, DomContent... dc)             {  return (H2Tag)  Attr.addTo( new H2Tag().with(dc), shortAttr); }
+
+    public static H3Tag h3 ()                                                       {  return (H3Tag)  new H3Tag(); }
+    public static H3Tag h3 (String text)                                            {  return (H3Tag)  new H3Tag().withText(text); }
+    public static H3Tag h3 (DomContent... dc)                                       {  return (H3Tag)  new H3Tag().with(dc); }
+    public static H3Tag h3 (Attr.ShortForm shortAttr)                               {  return (H3Tag)  Attr.addTo( new H3Tag(), shortAttr); }
+    public static H3Tag h3 (Attr.ShortForm shortAttr, String text)                  {  return (H3Tag)  Attr.addTo( new H3Tag().withText(text), shortAttr); }
+    public static H3Tag h3 (Attr.ShortForm shortAttr, DomContent... dc)             {  return (H3Tag)  Attr.addTo( new H3Tag().with(dc), shortAttr); }
+
+    public static H4Tag h4 ()                                                       {  return (H4Tag)  new H4Tag(); }
+    public static H4Tag h4 (String text)                                            {  return (H4Tag)  new H4Tag().withText(text); }
+    public static H4Tag h4 (DomContent... dc)                                       {  return (H4Tag)  new H4Tag().with(dc); }
+    public static H4Tag h4 (Attr.ShortForm shortAttr)                               {  return (H4Tag)  Attr.addTo( new H4Tag(), shortAttr); }
+    public static H4Tag h4 (Attr.ShortForm shortAttr, String text)                  {  return (H4Tag)  Attr.addTo( new H4Tag().withText(text), shortAttr); }
+    public static H4Tag h4 (Attr.ShortForm shortAttr, DomContent... dc)             {  return (H4Tag)  Attr.addTo( new H4Tag().with(dc), shortAttr); }
+
+    public static H5Tag h5 ()                                                       {  return (H5Tag)  new H5Tag(); }
+    public static H5Tag h5 (String text)                                            {  return (H5Tag)  new H5Tag().withText(text); }
+    public static H5Tag h5 (DomContent... dc)                                       {  return (H5Tag)  new H5Tag().with(dc); }
+    public static H5Tag h5 (Attr.ShortForm shortAttr)                               {  return (H5Tag)  Attr.addTo( new H5Tag(), shortAttr); }
+    public static H5Tag h5 (Attr.ShortForm shortAttr, String text)                  {  return (H5Tag)  Attr.addTo( new H5Tag().withText(text), shortAttr); }
+    public static H5Tag h5 (Attr.ShortForm shortAttr, DomContent... dc)             {  return (H5Tag)  Attr.addTo( new H5Tag().with(dc), shortAttr); }
+
+    public static H6Tag h6 ()                                                       {  return (H6Tag)  new H6Tag(); }
+    public static H6Tag h6 (String text)                                            {  return (H6Tag)  new H6Tag().withText(text); }
+    public static H6Tag h6 (DomContent... dc)                                       {  return (H6Tag)  new H6Tag().with(dc); }
+    public static H6Tag h6 (Attr.ShortForm shortAttr)                               {  return (H6Tag)  Attr.addTo( new H6Tag(), shortAttr); }
+    public static H6Tag h6 (Attr.ShortForm shortAttr, String text)                  {  return (H6Tag)  Attr.addTo( new H6Tag().withText(text), shortAttr); }
+    public static H6Tag h6 (Attr.ShortForm shortAttr, DomContent... dc)             {  return (H6Tag)  Attr.addTo( new H6Tag().with(dc), shortAttr); }
+
+    public static HeaderTag header ()                                               {  return (HeaderTag)  new HeaderTag(); }
+    public static HeaderTag header (String text)                                    {  return (HeaderTag)  new HeaderTag().withText(text); }
+    public static HeaderTag header (DomContent... dc)                               {  return (HeaderTag)  new HeaderTag().with(dc); }
+    public static HeaderTag header (Attr.ShortForm shortAttr)                       {  return (HeaderTag)  Attr.addTo( new HeaderTag(), shortAttr); }
+    public static HeaderTag header (Attr.ShortForm shortAttr, String text)          {  return (HeaderTag)  Attr.addTo( new HeaderTag().withText(text), shortAttr); }
+    public static HeaderTag header (Attr.ShortForm shortAttr, DomContent... dc)     {  return (HeaderTag)  Attr.addTo( new HeaderTag().with(dc), shortAttr); }
+
+    public static ITag i ()                                                         {  return (ITag)  new ITag(); }
+    public static ITag i (String text)                                              {  return (ITag)  new ITag().withText(text); }
+    public static ITag i (DomContent... dc)                                         {  return (ITag)  new ITag().with(dc); }
+    public static ITag i (Attr.ShortForm shortAttr)                                 {  return (ITag)  Attr.addTo( new ITag(), shortAttr); }
+    public static ITag i (Attr.ShortForm shortAttr, String text)                    {  return (ITag)  Attr.addTo( new ITag().withText(text), shortAttr); }
+    public static ITag i (Attr.ShortForm shortAttr, DomContent... dc)               {  return (ITag)  Attr.addTo( new ITag().with(dc), shortAttr); }
+
+    public static IframeTag iframe ()                                               {  return (IframeTag)  new IframeTag(); }
+    public static IframeTag iframe (String text)                                    {  return (IframeTag)  new IframeTag().withText(text); }
+    public static IframeTag iframe (DomContent... dc)                               {  return (IframeTag)  new IframeTag().with(dc); }
+    public static IframeTag iframe (Attr.ShortForm shortAttr)                       {  return (IframeTag)  Attr.addTo( new IframeTag(), shortAttr); }
+    public static IframeTag iframe (Attr.ShortForm shortAttr, String text)          {  return (IframeTag)  Attr.addTo( new IframeTag().withText(text), shortAttr); }
+    public static IframeTag iframe (Attr.ShortForm shortAttr, DomContent... dc)     {  return (IframeTag)  Attr.addTo( new IframeTag().with(dc), shortAttr); }
+
+    public static InsTag ins ()                                                     {  return (InsTag)  new InsTag(); }
+    public static InsTag ins (String text)                                          {  return (InsTag)  new InsTag().withText(text); }
+    public static InsTag ins (DomContent... dc)                                     {  return (InsTag)  new InsTag().with(dc); }
+    public static InsTag ins (Attr.ShortForm shortAttr)                             {  return (InsTag)  Attr.addTo( new InsTag(), shortAttr); }
+    public static InsTag ins (Attr.ShortForm shortAttr, String text)                {  return (InsTag)  Attr.addTo( new InsTag().withText(text), shortAttr); }
+    public static InsTag ins (Attr.ShortForm shortAttr, DomContent... dc)           {  return (InsTag)  Attr.addTo( new InsTag().with(dc), shortAttr); }
+
+    public static KbdTag kbd ()                                                     {  return (KbdTag)  new KbdTag(); }
+    public static KbdTag kbd (String text)                                          {  return (KbdTag)  new KbdTag().withText(text); }
+    public static KbdTag kbd (DomContent... dc)                                     {  return (KbdTag)  new KbdTag().with(dc); }
+    public static KbdTag kbd (Attr.ShortForm shortAttr)                             {  return (KbdTag)  Attr.addTo( new KbdTag(), shortAttr); }
+    public static KbdTag kbd (Attr.ShortForm shortAttr, String text)                {  return (KbdTag)  Attr.addTo( new KbdTag().withText(text), shortAttr); }
+    public static KbdTag kbd (Attr.ShortForm shortAttr, DomContent... dc)           {  return (KbdTag)  Attr.addTo( new KbdTag().with(dc), shortAttr); }
+
+    public static LabelTag label ()                                                 {  return (LabelTag)  new LabelTag(); }
+    public static LabelTag label (String text)                                      {  return (LabelTag)  new LabelTag().withText(text); }
+    public static LabelTag label (DomContent... dc)                                 {  return (LabelTag)  new LabelTag().with(dc); }
+    public static LabelTag label (Attr.ShortForm shortAttr)                         {  return (LabelTag)  Attr.addTo( new LabelTag(), shortAttr); }
+    public static LabelTag label (Attr.ShortForm shortAttr, String text)            {  return (LabelTag)  Attr.addTo( new LabelTag().withText(text), shortAttr); }
+    public static LabelTag label (Attr.ShortForm shortAttr, DomContent... dc)       {  return (LabelTag)  Attr.addTo( new LabelTag().with(dc), shortAttr); }
+
+    public static LegendTag legend ()                                               {  return (LegendTag)  new LegendTag(); }
+    public static LegendTag legend (String text)                                    {  return (LegendTag)  new LegendTag().withText(text); }
+    public static LegendTag legend (DomContent... dc)                               {  return (LegendTag)  new LegendTag().with(dc); }
+    public static LegendTag legend (Attr.ShortForm shortAttr)                       {  return (LegendTag)  Attr.addTo( new LegendTag(), shortAttr); }
+    public static LegendTag legend (Attr.ShortForm shortAttr, String text)          {  return (LegendTag)  Attr.addTo( new LegendTag().withText(text), shortAttr); }
+    public static LegendTag legend (Attr.ShortForm shortAttr, DomContent... dc)     {  return (LegendTag)  Attr.addTo( new LegendTag().with(dc), shortAttr); }
+
+    public static LiTag li ()                                                       {  return (LiTag)  new LiTag(); }
+    public static LiTag li (String text)                                            {  return (LiTag)  new LiTag().withText(text); }
+    public static LiTag li (DomContent... dc)                                       {  return (LiTag)  new LiTag().with(dc); }
+    public static LiTag li (Attr.ShortForm shortAttr)                               {  return (LiTag)  Attr.addTo( new LiTag(), shortAttr); }
+    public static LiTag li (Attr.ShortForm shortAttr, String text)                  {  return (LiTag)  Attr.addTo( new LiTag().withText(text), shortAttr); }
+    public static LiTag li (Attr.ShortForm shortAttr, DomContent... dc)             {  return (LiTag)  Attr.addTo( new LiTag().with(dc), shortAttr); }
+
+    public static MainTag main ()                                                   {  return (MainTag)  new MainTag(); }
+    public static MainTag main (String text)                                        {  return (MainTag)  new MainTag().withText(text); }
+    public static MainTag main (DomContent... dc)                                   {  return (MainTag)  new MainTag().with(dc); }
+    public static MainTag main (Attr.ShortForm shortAttr)                           {  return (MainTag)  Attr.addTo( new MainTag(), shortAttr); }
+    public static MainTag main (Attr.ShortForm shortAttr, String text)              {  return (MainTag)  Attr.addTo( new MainTag().withText(text), shortAttr); }
+    public static MainTag main (Attr.ShortForm shortAttr, DomContent... dc)         {  return (MainTag)  Attr.addTo( new MainTag().with(dc), shortAttr); }
+
+    public static MapTag map ()                                                     {  return (MapTag)  new MapTag(); }
+    public static MapTag map (String text)                                          {  return (MapTag)  new MapTag().withText(text); }
+    public static MapTag map (DomContent... dc)                                     {  return (MapTag)  new MapTag().with(dc); }
+    public static MapTag map (Attr.ShortForm shortAttr)                             {  return (MapTag)  Attr.addTo( new MapTag(), shortAttr); }
+    public static MapTag map (Attr.ShortForm shortAttr, String text)                {  return (MapTag)  Attr.addTo( new MapTag().withText(text), shortAttr); }
+    public static MapTag map (Attr.ShortForm shortAttr, DomContent... dc)           {  return (MapTag)  Attr.addTo( new MapTag().with(dc), shortAttr); }
+
+    public static MarkTag mark ()                                                   {  return (MarkTag)  new MarkTag(); }
+    public static MarkTag mark (String text)                                        {  return (MarkTag)  new MarkTag().withText(text); }
+    public static MarkTag mark (DomContent... dc)                                   {  return (MarkTag)  new MarkTag().with(dc); }
+    public static MarkTag mark (Attr.ShortForm shortAttr)                           {  return (MarkTag)  Attr.addTo( new MarkTag(), shortAttr); }
+    public static MarkTag mark (Attr.ShortForm shortAttr, String text)              {  return (MarkTag)  Attr.addTo( new MarkTag().withText(text), shortAttr); }
+    public static MarkTag mark (Attr.ShortForm shortAttr, DomContent... dc)         {  return (MarkTag)  Attr.addTo( new MarkTag().with(dc), shortAttr); }
+
+    public static MenuTag menu ()                                                   {  return (MenuTag)  new MenuTag(); }
+    public static MenuTag menu (String text)                                        {  return (MenuTag)  new MenuTag().withText(text); }
+    public static MenuTag menu (DomContent... dc)                                   {  return (MenuTag)  new MenuTag().with(dc); }
+    public static MenuTag menu (Attr.ShortForm shortAttr)                           {  return (MenuTag)  Attr.addTo( new MenuTag(), shortAttr); }
+    public static MenuTag menu (Attr.ShortForm shortAttr, String text)              {  return (MenuTag)  Attr.addTo( new MenuTag().withText(text), shortAttr); }
+    public static MenuTag menu (Attr.ShortForm shortAttr, DomContent... dc)         {  return (MenuTag)  Attr.addTo( new MenuTag().with(dc), shortAttr); }
+
+    public static MenuitemTag menuitem ()                                           {  return (MenuitemTag)  new MenuitemTag(); }
+    public static MenuitemTag menuitem (String text)                                {  return (MenuitemTag)  new MenuitemTag().withText(text); }
+    public static MenuitemTag menuitem (DomContent... dc)                           {  return (MenuitemTag)  new MenuitemTag().with(dc); }
+    public static MenuitemTag menuitem (Attr.ShortForm shortAttr)                   {  return (MenuitemTag)  Attr.addTo( new MenuitemTag(), shortAttr); }
+    public static MenuitemTag menuitem (Attr.ShortForm shortAttr, String text)      {  return (MenuitemTag)  Attr.addTo( new MenuitemTag().withText(text), shortAttr); }
+    public static MenuitemTag menuitem (Attr.ShortForm shortAttr, DomContent... dc) {  return (MenuitemTag)  Attr.addTo( new MenuitemTag().with(dc), shortAttr); }
+
+    public static MeterTag meter ()                                                 {  return (MeterTag)  new MeterTag(); }
+    public static MeterTag meter (String text)                                      {  return (MeterTag)  new MeterTag().withText(text); }
+    public static MeterTag meter (DomContent... dc)                                 {  return (MeterTag)  new MeterTag().with(dc); }
+    public static MeterTag meter (Attr.ShortForm shortAttr)                         {  return (MeterTag)  Attr.addTo( new MeterTag(), shortAttr); }
+    public static MeterTag meter (Attr.ShortForm shortAttr, String text)            {  return (MeterTag)  Attr.addTo( new MeterTag().withText(text), shortAttr); }
+    public static MeterTag meter (Attr.ShortForm shortAttr, DomContent... dc)       {  return (MeterTag)  Attr.addTo( new MeterTag().with(dc), shortAttr); }
+
+    public static NavTag nav ()                                                     {  return (NavTag)  new NavTag(); }
+    public static NavTag nav (String text)                                          {  return (NavTag)  new NavTag().withText(text); }
+    public static NavTag nav (DomContent... dc)                                     {  return (NavTag)  new NavTag().with(dc); }
+    public static NavTag nav (Attr.ShortForm shortAttr)                             {  return (NavTag)  Attr.addTo( new NavTag(), shortAttr); }
+    public static NavTag nav (Attr.ShortForm shortAttr, String text)                {  return (NavTag)  Attr.addTo( new NavTag().withText(text), shortAttr); }
+    public static NavTag nav (Attr.ShortForm shortAttr, DomContent... dc)           {  return (NavTag)  Attr.addTo( new NavTag().with(dc), shortAttr); }
+
+    public static NoscriptTag noscript ()                                           {  return (NoscriptTag)  new NoscriptTag(); }
+    public static NoscriptTag noscript (String text)                                {  return (NoscriptTag)  new NoscriptTag().withText(text); }
+    public static NoscriptTag noscript (DomContent... dc)                           {  return (NoscriptTag)  new NoscriptTag().with(dc); }
+    public static NoscriptTag noscript (Attr.ShortForm shortAttr)                   {  return (NoscriptTag)  Attr.addTo( new NoscriptTag(), shortAttr); }
+    public static NoscriptTag noscript (Attr.ShortForm shortAttr, String text)      {  return (NoscriptTag)  Attr.addTo( new NoscriptTag().withText(text), shortAttr); }
+    public static NoscriptTag noscript (Attr.ShortForm shortAttr, DomContent... dc) {  return (NoscriptTag)  Attr.addTo( new NoscriptTag().with(dc), shortAttr); }
+
+    public static ObjectTag object ()                                               {  return (ObjectTag)  new ObjectTag(); }
+    public static ObjectTag object (String text)                                    {  return (ObjectTag)  new ObjectTag().withText(text); }
+    public static ObjectTag object (DomContent... dc)                               {  return (ObjectTag)  new ObjectTag().with(dc); }
+    public static ObjectTag object (Attr.ShortForm shortAttr)                       {  return (ObjectTag)  Attr.addTo( new ObjectTag(), shortAttr); }
+    public static ObjectTag object (Attr.ShortForm shortAttr, String text)          {  return (ObjectTag)  Attr.addTo( new ObjectTag().withText(text), shortAttr); }
+    public static ObjectTag object (Attr.ShortForm shortAttr, DomContent... dc)     {  return (ObjectTag)  Attr.addTo( new ObjectTag().with(dc), shortAttr); }
+
+    public static OlTag ol ()                                                       {  return (OlTag)  new OlTag(); }
+    public static OlTag ol (String text)                                            {  return (OlTag)  new OlTag().withText(text); }
+    public static OlTag ol (DomContent... dc)                                       {  return (OlTag)  new OlTag().with(dc); }
+    public static OlTag ol (Attr.ShortForm shortAttr)                               {  return (OlTag)  Attr.addTo( new OlTag(), shortAttr); }
+    public static OlTag ol (Attr.ShortForm shortAttr, String text)                  {  return (OlTag)  Attr.addTo( new OlTag().withText(text), shortAttr); }
+    public static OlTag ol (Attr.ShortForm shortAttr, DomContent... dc)             {  return (OlTag)  Attr.addTo( new OlTag().with(dc), shortAttr); }
+
+    public static OptgroupTag optgroup ()                                           {  return (OptgroupTag)  new OptgroupTag(); }
+    public static OptgroupTag optgroup (String text)                                {  return (OptgroupTag)  new OptgroupTag().withText(text); }
+    public static OptgroupTag optgroup (DomContent... dc)                           {  return (OptgroupTag)  new OptgroupTag().with(dc); }
+    public static OptgroupTag optgroup (Attr.ShortForm shortAttr)                   {  return (OptgroupTag)  Attr.addTo( new OptgroupTag(), shortAttr); }
+    public static OptgroupTag optgroup (Attr.ShortForm shortAttr, String text)      {  return (OptgroupTag)  Attr.addTo( new OptgroupTag().withText(text), shortAttr); }
+    public static OptgroupTag optgroup (Attr.ShortForm shortAttr, DomContent... dc) {  return (OptgroupTag)  Attr.addTo( new OptgroupTag().with(dc), shortAttr); }
+
+    public static OptionTag option ()                                               {  return (OptionTag)  new OptionTag(); }
+    public static OptionTag option (String text)                                    {  return (OptionTag)  new OptionTag().withText(text); }
+    public static OptionTag option (DomContent... dc)                               {  return (OptionTag)  new OptionTag().with(dc); }
+    public static OptionTag option (Attr.ShortForm shortAttr)                       {  return (OptionTag)  Attr.addTo( new OptionTag(), shortAttr); }
+    public static OptionTag option (Attr.ShortForm shortAttr, String text)          {  return (OptionTag)  Attr.addTo( new OptionTag().withText(text), shortAttr); }
+    public static OptionTag option (Attr.ShortForm shortAttr, DomContent... dc)     {  return (OptionTag)  Attr.addTo( new OptionTag().with(dc), shortAttr); }
+
+    public static OutputTag output ()                                               {  return (OutputTag)  new OutputTag(); }
+    public static OutputTag output (String text)                                    {  return (OutputTag)  new OutputTag().withText(text); }
+    public static OutputTag output (DomContent... dc)                               {  return (OutputTag)  new OutputTag().with(dc); }
+    public static OutputTag output (Attr.ShortForm shortAttr)                       {  return (OutputTag)  Attr.addTo( new OutputTag(), shortAttr); }
+    public static OutputTag output (Attr.ShortForm shortAttr, String text)          {  return (OutputTag)  Attr.addTo( new OutputTag().withText(text), shortAttr); }
+    public static OutputTag output (Attr.ShortForm shortAttr, DomContent... dc)     {  return (OutputTag)  Attr.addTo( new OutputTag().with(dc), shortAttr); }
+
+    public static PTag p ()                                                         {  return (PTag)  new PTag(); }
+    public static PTag p (String text)                                              {  return (PTag)  new PTag().withText(text); }
+    public static PTag p (DomContent... dc)                                         {  return (PTag)  new PTag().with(dc); }
+    public static PTag p (Attr.ShortForm shortAttr)                                 {  return (PTag)  Attr.addTo( new PTag(), shortAttr); }
+    public static PTag p (Attr.ShortForm shortAttr, String text)                    {  return (PTag)  Attr.addTo( new PTag().withText(text), shortAttr); }
+    public static PTag p (Attr.ShortForm shortAttr, DomContent... dc)               {  return (PTag)  Attr.addTo( new PTag().with(dc), shortAttr); }
+
+    public static PreTag pre ()                                                     {  return (PreTag)  new PreTag(); }
+    public static PreTag pre (String text)                                          {  return (PreTag)  new PreTag().withText(text); }
+    public static PreTag pre (DomContent... dc)                                     {  return (PreTag)  new PreTag().with(dc); }
+    public static PreTag pre (Attr.ShortForm shortAttr)                             {  return (PreTag)  Attr.addTo( new PreTag(), shortAttr); }
+    public static PreTag pre (Attr.ShortForm shortAttr, String text)                {  return (PreTag)  Attr.addTo( new PreTag().withText(text), shortAttr); }
+    public static PreTag pre (Attr.ShortForm shortAttr, DomContent... dc)           {  return (PreTag)  Attr.addTo( new PreTag().with(dc), shortAttr); }
+
+    public static ProgressTag progress ()                                           {  return (ProgressTag)  new ProgressTag(); }
+    public static ProgressTag progress (String text)                                {  return (ProgressTag)  new ProgressTag().withText(text); }
+    public static ProgressTag progress (DomContent... dc)                           {  return (ProgressTag)  new ProgressTag().with(dc); }
+    public static ProgressTag progress (Attr.ShortForm shortAttr)                   {  return (ProgressTag)  Attr.addTo( new ProgressTag(), shortAttr); }
+    public static ProgressTag progress (Attr.ShortForm shortAttr, String text)      {  return (ProgressTag)  Attr.addTo( new ProgressTag().withText(text), shortAttr); }
+    public static ProgressTag progress (Attr.ShortForm shortAttr, DomContent... dc) {  return (ProgressTag)  Attr.addTo( new ProgressTag().with(dc), shortAttr); }
+
+    public static QTag q ()                                                         {  return (QTag)  new QTag(); }
+    public static QTag q (String text)                                              {  return (QTag)  new QTag().withText(text); }
+    public static QTag q (DomContent... dc)                                         {  return (QTag)  new QTag().with(dc); }
+    public static QTag q (Attr.ShortForm shortAttr)                                 {  return (QTag)  Attr.addTo( new QTag(), shortAttr); }
+    public static QTag q (Attr.ShortForm shortAttr, String text)                    {  return (QTag)  Attr.addTo( new QTag().withText(text), shortAttr); }
+    public static QTag q (Attr.ShortForm shortAttr, DomContent... dc)               {  return (QTag)  Attr.addTo( new QTag().with(dc), shortAttr); }
+
+    public static RpTag rp ()                                                       {  return (RpTag)  new RpTag(); }
+    public static RpTag rp (String text)                                            {  return (RpTag)  new RpTag().withText(text); }
+    public static RpTag rp (DomContent... dc)                                       {  return (RpTag)  new RpTag().with(dc); }
+    public static RpTag rp (Attr.ShortForm shortAttr)                               {  return (RpTag)  Attr.addTo( new RpTag(), shortAttr); }
+    public static RpTag rp (Attr.ShortForm shortAttr, String text)                  {  return (RpTag)  Attr.addTo( new RpTag().withText(text), shortAttr); }
+    public static RpTag rp (Attr.ShortForm shortAttr, DomContent... dc)             {  return (RpTag)  Attr.addTo( new RpTag().with(dc), shortAttr); }
+
+    public static RtTag rt ()                                                       {  return (RtTag)  new RtTag(); }
+    public static RtTag rt (String text)                                            {  return (RtTag)  new RtTag().withText(text); }
+    public static RtTag rt (DomContent... dc)                                       {  return (RtTag)  new RtTag().with(dc); }
+    public static RtTag rt (Attr.ShortForm shortAttr)                               {  return (RtTag)  Attr.addTo( new RtTag(), shortAttr); }
+    public static RtTag rt (Attr.ShortForm shortAttr, String text)                  {  return (RtTag)  Attr.addTo( new RtTag().withText(text), shortAttr); }
+    public static RtTag rt (Attr.ShortForm shortAttr, DomContent... dc)             {  return (RtTag)  Attr.addTo( new RtTag().with(dc), shortAttr); }
+
+    public static RubyTag ruby ()                                                   {  return (RubyTag)  new RubyTag(); }
+    public static RubyTag ruby (String text)                                        {  return (RubyTag)  new RubyTag().withText(text); }
+    public static RubyTag ruby (DomContent... dc)                                   {  return (RubyTag)  new RubyTag().with(dc); }
+    public static RubyTag ruby (Attr.ShortForm shortAttr)                           {  return (RubyTag)  Attr.addTo( new RubyTag(), shortAttr); }
+    public static RubyTag ruby (Attr.ShortForm shortAttr, String text)              {  return (RubyTag)  Attr.addTo( new RubyTag().withText(text), shortAttr); }
+    public static RubyTag ruby (Attr.ShortForm shortAttr, DomContent... dc)         {  return (RubyTag)  Attr.addTo( new RubyTag().with(dc), shortAttr); }
+
+    public static STag s ()                                                         {  return (STag)  new STag(); }
+    public static STag s (String text)                                              {  return (STag)  new STag().withText(text); }
+    public static STag s (DomContent... dc)                                         {  return (STag)  new STag().with(dc); }
+    public static STag s (Attr.ShortForm shortAttr)                                 {  return (STag)  Attr.addTo( new STag(), shortAttr); }
+    public static STag s (Attr.ShortForm shortAttr, String text)                    {  return (STag)  Attr.addTo( new STag().withText(text), shortAttr); }
+    public static STag s (Attr.ShortForm shortAttr, DomContent... dc)               {  return (STag)  Attr.addTo( new STag().with(dc), shortAttr); }
+
+    public static SampTag samp ()                                                   {  return (SampTag)  new SampTag(); }
+    public static SampTag samp (String text)                                        {  return (SampTag)  new SampTag().withText(text); }
+    public static SampTag samp (DomContent... dc)                                   {  return (SampTag)  new SampTag().with(dc); }
+    public static SampTag samp (Attr.ShortForm shortAttr)                           {  return (SampTag)  Attr.addTo( new SampTag(), shortAttr); }
+    public static SampTag samp (Attr.ShortForm shortAttr, String text)              {  return (SampTag)  Attr.addTo( new SampTag().withText(text), shortAttr); }
+    public static SampTag samp (Attr.ShortForm shortAttr, DomContent... dc)         {  return (SampTag)  Attr.addTo( new SampTag().with(dc), shortAttr); }
+
+    public static ScriptTag script ()                                               {  return (ScriptTag)  new ScriptTag(); }
+    public static ScriptTag script (String text)                                    {  return (ScriptTag)  new ScriptTag().withText(text); }
+    public static ScriptTag script (DomContent... dc)                               {  return (ScriptTag)  new ScriptTag().with(dc); }
+    public static ScriptTag script (Attr.ShortForm shortAttr)                       {  return (ScriptTag)  Attr.addTo( new ScriptTag(), shortAttr); }
+    public static ScriptTag script (Attr.ShortForm shortAttr, String text)          {  return (ScriptTag)  Attr.addTo( new ScriptTag().withText(text), shortAttr); }
+    public static ScriptTag script (Attr.ShortForm shortAttr, DomContent... dc)     {  return (ScriptTag)  Attr.addTo( new ScriptTag().with(dc), shortAttr); }
+
+    public static SectionTag section ()                                             {  return (SectionTag)  new SectionTag(); }
+    public static SectionTag section (String text)                                  {  return (SectionTag)  new SectionTag().withText(text); }
+    public static SectionTag section (DomContent... dc)                             {  return (SectionTag)  new SectionTag().with(dc); }
+    public static SectionTag section (Attr.ShortForm shortAttr)                     {  return (SectionTag)  Attr.addTo( new SectionTag(), shortAttr); }
+    public static SectionTag section (Attr.ShortForm shortAttr, String text)        {  return (SectionTag)  Attr.addTo( new SectionTag().withText(text), shortAttr); }
+    public static SectionTag section (Attr.ShortForm shortAttr, DomContent... dc)   {  return (SectionTag)  Attr.addTo( new SectionTag().with(dc), shortAttr); }
+
+    public static SelectTag select ()                                               {  return (SelectTag)  new SelectTag(); }
+    public static SelectTag select (String text)                                    {  return (SelectTag)  new SelectTag().withText(text); }
+    public static SelectTag select (DomContent... dc)                               {  return (SelectTag)  new SelectTag().with(dc); }
+    public static SelectTag select (Attr.ShortForm shortAttr)                       {  return (SelectTag)  Attr.addTo( new SelectTag(), shortAttr); }
+    public static SelectTag select (Attr.ShortForm shortAttr, String text)          {  return (SelectTag)  Attr.addTo( new SelectTag().withText(text), shortAttr); }
+    public static SelectTag select (Attr.ShortForm shortAttr, DomContent... dc)     {  return (SelectTag)  Attr.addTo( new SelectTag().with(dc), shortAttr); }
+
+    public static SmallTag small ()                                                 {  return (SmallTag)  new SmallTag(); }
+    public static SmallTag small (String text)                                      {  return (SmallTag)  new SmallTag().withText(text); }
+    public static SmallTag small (DomContent... dc)                                 {  return (SmallTag)  new SmallTag().with(dc); }
+    public static SmallTag small (Attr.ShortForm shortAttr)                         {  return (SmallTag)  Attr.addTo( new SmallTag(), shortAttr); }
+    public static SmallTag small (Attr.ShortForm shortAttr, String text)            {  return (SmallTag)  Attr.addTo( new SmallTag().withText(text), shortAttr); }
+    public static SmallTag small (Attr.ShortForm shortAttr, DomContent... dc)       {  return (SmallTag)  Attr.addTo( new SmallTag().with(dc), shortAttr); }
+
+    public static SpanTag span ()                                                   {  return (SpanTag)  new SpanTag(); }
+    public static SpanTag span (String text)                                        {  return (SpanTag)  new SpanTag().withText(text); }
+    public static SpanTag span (DomContent... dc)                                   {  return (SpanTag)  new SpanTag().with(dc); }
+    public static SpanTag span (Attr.ShortForm shortAttr)                           {  return (SpanTag)  Attr.addTo( new SpanTag(), shortAttr); }
+    public static SpanTag span (Attr.ShortForm shortAttr, String text)              {  return (SpanTag)  Attr.addTo( new SpanTag().withText(text), shortAttr); }
+    public static SpanTag span (Attr.ShortForm shortAttr, DomContent... dc)         {  return (SpanTag)  Attr.addTo( new SpanTag().with(dc), shortAttr); }
+
+    public static StrongTag strong ()                                               {  return (StrongTag)  new StrongTag(); }
+    public static StrongTag strong (String text)                                    {  return (StrongTag)  new StrongTag().withText(text); }
+    public static StrongTag strong (DomContent... dc)                               {  return (StrongTag)  new StrongTag().with(dc); }
+    public static StrongTag strong (Attr.ShortForm shortAttr)                       {  return (StrongTag)  Attr.addTo( new StrongTag(), shortAttr); }
+    public static StrongTag strong (Attr.ShortForm shortAttr, String text)          {  return (StrongTag)  Attr.addTo( new StrongTag().withText(text), shortAttr); }
+    public static StrongTag strong (Attr.ShortForm shortAttr, DomContent... dc)     {  return (StrongTag)  Attr.addTo( new StrongTag().with(dc), shortAttr); }
+
+    public static StyleTag style ()                                                 {  return (StyleTag)  new StyleTag(); }
+    public static StyleTag style (String text)                                      {  return (StyleTag)  new StyleTag().withText(text); }
+    public static StyleTag style (DomContent... dc)                                 {  return (StyleTag)  new StyleTag().with(dc); }
+    public static StyleTag style (Attr.ShortForm shortAttr)                         {  return (StyleTag)  Attr.addTo( new StyleTag(), shortAttr); }
+    public static StyleTag style (Attr.ShortForm shortAttr, String text)            {  return (StyleTag)  Attr.addTo( new StyleTag().withText(text), shortAttr); }
+    public static StyleTag style (Attr.ShortForm shortAttr, DomContent... dc)       {  return (StyleTag)  Attr.addTo( new StyleTag().with(dc), shortAttr); }
+
+    public static SubTag sub ()                                                     {  return (SubTag)  new SubTag(); }
+    public static SubTag sub (String text)                                          {  return (SubTag)  new SubTag().withText(text); }
+    public static SubTag sub (DomContent... dc)                                     {  return (SubTag)  new SubTag().with(dc); }
+    public static SubTag sub (Attr.ShortForm shortAttr)                             {  return (SubTag)  Attr.addTo( new SubTag(), shortAttr); }
+    public static SubTag sub (Attr.ShortForm shortAttr, String text)                {  return (SubTag)  Attr.addTo( new SubTag().withText(text), shortAttr); }
+    public static SubTag sub (Attr.ShortForm shortAttr, DomContent... dc)           {  return (SubTag)  Attr.addTo( new SubTag().with(dc), shortAttr); }
+
+    public static SummaryTag summary ()                                             {  return (SummaryTag)  new SummaryTag(); }
+    public static SummaryTag summary (String text)                                  {  return (SummaryTag)  new SummaryTag().withText(text); }
+    public static SummaryTag summary (DomContent... dc)                             {  return (SummaryTag)  new SummaryTag().with(dc); }
+    public static SummaryTag summary (Attr.ShortForm shortAttr)                     {  return (SummaryTag)  Attr.addTo( new SummaryTag(), shortAttr); }
+    public static SummaryTag summary (Attr.ShortForm shortAttr, String text)        {  return (SummaryTag)  Attr.addTo( new SummaryTag().withText(text), shortAttr); }
+    public static SummaryTag summary (Attr.ShortForm shortAttr, DomContent... dc)   {  return (SummaryTag)  Attr.addTo( new SummaryTag().with(dc), shortAttr); }
+
+    public static SupTag sup ()                                                     {  return (SupTag)  new SupTag(); }
+    public static SupTag sup (String text)                                          {  return (SupTag)  new SupTag().withText(text); }
+    public static SupTag sup (DomContent... dc)                                     {  return (SupTag)  new SupTag().with(dc); }
+    public static SupTag sup (Attr.ShortForm shortAttr)                             {  return (SupTag)  Attr.addTo( new SupTag(), shortAttr); }
+    public static SupTag sup (Attr.ShortForm shortAttr, String text)                {  return (SupTag)  Attr.addTo( new SupTag().withText(text), shortAttr); }
+    public static SupTag sup (Attr.ShortForm shortAttr, DomContent... dc)           {  return (SupTag)  Attr.addTo( new SupTag().with(dc), shortAttr); }
+
+    public static TableTag table ()                                                 {  return (TableTag)  new TableTag(); }
+    public static TableTag table (String text)                                      {  return (TableTag)  new TableTag().withText(text); }
+    public static TableTag table (DomContent... dc)                                 {  return (TableTag)  new TableTag().with(dc); }
+    public static TableTag table (Attr.ShortForm shortAttr)                         {  return (TableTag)  Attr.addTo( new TableTag(), shortAttr); }
+    public static TableTag table (Attr.ShortForm shortAttr, String text)            {  return (TableTag)  Attr.addTo( new TableTag().withText(text), shortAttr); }
+    public static TableTag table (Attr.ShortForm shortAttr, DomContent... dc)       {  return (TableTag)  Attr.addTo( new TableTag().with(dc), shortAttr); }
+
+    public static TbodyTag tbody ()                                                 {  return (TbodyTag)  new TbodyTag(); }
+    public static TbodyTag tbody (String text)                                      {  return (TbodyTag)  new TbodyTag().withText(text); }
+    public static TbodyTag tbody (DomContent... dc)                                 {  return (TbodyTag)  new TbodyTag().with(dc); }
+    public static TbodyTag tbody (Attr.ShortForm shortAttr)                         {  return (TbodyTag)  Attr.addTo( new TbodyTag(), shortAttr); }
+    public static TbodyTag tbody (Attr.ShortForm shortAttr, String text)            {  return (TbodyTag)  Attr.addTo( new TbodyTag().withText(text), shortAttr); }
+    public static TbodyTag tbody (Attr.ShortForm shortAttr, DomContent... dc)       {  return (TbodyTag)  Attr.addTo( new TbodyTag().with(dc), shortAttr); }
+
+    public static TdTag td ()                                                       {  return (TdTag)  new TdTag(); }
+    public static TdTag td (String text)                                            {  return (TdTag)  new TdTag().withText(text); }
+    public static TdTag td (DomContent... dc)                                       {  return (TdTag)  new TdTag().with(dc); }
+    public static TdTag td (Attr.ShortForm shortAttr)                               {  return (TdTag)  Attr.addTo( new TdTag(), shortAttr); }
+    public static TdTag td (Attr.ShortForm shortAttr, String text)                  {  return (TdTag)  Attr.addTo( new TdTag().withText(text), shortAttr); }
+    public static TdTag td (Attr.ShortForm shortAttr, DomContent... dc)             {  return (TdTag)  Attr.addTo( new TdTag().with(dc), shortAttr); }
+
+    public static TextareaTag textarea ()                                           {  return (TextareaTag)  new TextareaTag(); }
+    public static TextareaTag textarea (String text)                                {  return (TextareaTag)  new TextareaTag().withText(text); }
+    public static TextareaTag textarea (DomContent... dc)                           {  return (TextareaTag)  new TextareaTag().with(dc); }
+    public static TextareaTag textarea (Attr.ShortForm shortAttr)                   {  return (TextareaTag)  Attr.addTo( new TextareaTag(), shortAttr); }
+    public static TextareaTag textarea (Attr.ShortForm shortAttr, String text)      {  return (TextareaTag)  Attr.addTo( new TextareaTag().withText(text), shortAttr); }
+    public static TextareaTag textarea (Attr.ShortForm shortAttr, DomContent... dc) {  return (TextareaTag)  Attr.addTo( new TextareaTag().with(dc), shortAttr); }
+
+    public static TfootTag tfoot ()                                                 {  return (TfootTag)  new TfootTag(); }
+    public static TfootTag tfoot (String text)                                      {  return (TfootTag)  new TfootTag().withText(text); }
+    public static TfootTag tfoot (DomContent... dc)                                 {  return (TfootTag)  new TfootTag().with(dc); }
+    public static TfootTag tfoot (Attr.ShortForm shortAttr)                         {  return (TfootTag)  Attr.addTo( new TfootTag(), shortAttr); }
+    public static TfootTag tfoot (Attr.ShortForm shortAttr, String text)            {  return (TfootTag)  Attr.addTo( new TfootTag().withText(text), shortAttr); }
+    public static TfootTag tfoot (Attr.ShortForm shortAttr, DomContent... dc)       {  return (TfootTag)  Attr.addTo( new TfootTag().with(dc), shortAttr); }
+
+    public static ThTag th ()                                                       {  return (ThTag)  new ThTag(); }
+    public static ThTag th (String text)                                            {  return (ThTag)  new ThTag().withText(text); }
+    public static ThTag th (DomContent... dc)                                       {  return (ThTag)  new ThTag().with(dc); }
+    public static ThTag th (Attr.ShortForm shortAttr)                               {  return (ThTag)  Attr.addTo( new ThTag(), shortAttr); }
+    public static ThTag th (Attr.ShortForm shortAttr, String text)                  {  return (ThTag)  Attr.addTo( new ThTag().withText(text), shortAttr); }
+    public static ThTag th (Attr.ShortForm shortAttr, DomContent... dc)             {  return (ThTag)  Attr.addTo( new ThTag().with(dc), shortAttr); }
+
+    public static TheadTag thead ()                                                 {  return (TheadTag)  new TheadTag(); }
+    public static TheadTag thead (String text)                                      {  return (TheadTag)  new TheadTag().withText(text); }
+    public static TheadTag thead (DomContent... dc)                                 {  return (TheadTag)  new TheadTag().with(dc); }
+    public static TheadTag thead (Attr.ShortForm shortAttr)                         {  return (TheadTag)  Attr.addTo( new TheadTag(), shortAttr); }
+    public static TheadTag thead (Attr.ShortForm shortAttr, String text)            {  return (TheadTag)  Attr.addTo( new TheadTag().withText(text), shortAttr); }
+    public static TheadTag thead (Attr.ShortForm shortAttr, DomContent... dc)       {  return (TheadTag)  Attr.addTo( new TheadTag().with(dc), shortAttr); }
+
+    public static TimeTag time ()                                                   {  return (TimeTag)  new TimeTag(); }
+    public static TimeTag time (String text)                                        {  return (TimeTag)  new TimeTag().withText(text); }
+    public static TimeTag time (DomContent... dc)                                   {  return (TimeTag)  new TimeTag().with(dc); }
+    public static TimeTag time (Attr.ShortForm shortAttr)                           {  return (TimeTag)  Attr.addTo( new TimeTag(), shortAttr); }
+    public static TimeTag time (Attr.ShortForm shortAttr, String text)              {  return (TimeTag)  Attr.addTo( new TimeTag().withText(text), shortAttr); }
+    public static TimeTag time (Attr.ShortForm shortAttr, DomContent... dc)         {  return (TimeTag)  Attr.addTo( new TimeTag().with(dc), shortAttr); }
+
+    public static TitleTag title ()                                                 {  return (TitleTag)  new TitleTag(); }
+    public static TitleTag title (String text)                                      {  return (TitleTag)  new TitleTag().withText(text); }
+    public static TitleTag title (DomContent... dc)                                 {  return (TitleTag)  new TitleTag().with(dc); }
+    public static TitleTag title (Attr.ShortForm shortAttr)                         {  return (TitleTag)  Attr.addTo( new TitleTag(), shortAttr); }
+    public static TitleTag title (Attr.ShortForm shortAttr, String text)            {  return (TitleTag)  Attr.addTo( new TitleTag().withText(text), shortAttr); }
+    public static TitleTag title (Attr.ShortForm shortAttr, DomContent... dc)       {  return (TitleTag)  Attr.addTo( new TitleTag().with(dc), shortAttr); }
+
+    public static TrTag tr ()                                                       {  return (TrTag)  new TrTag(); }
+    public static TrTag tr (String text)                                            {  return (TrTag)  new TrTag().withText(text); }
+    public static TrTag tr (DomContent... dc)                                       {  return (TrTag)  new TrTag().with(dc); }
+    public static TrTag tr (Attr.ShortForm shortAttr)                               {  return (TrTag)  Attr.addTo( new TrTag(), shortAttr); }
+    public static TrTag tr (Attr.ShortForm shortAttr, String text)                  {  return (TrTag)  Attr.addTo( new TrTag().withText(text), shortAttr); }
+    public static TrTag tr (Attr.ShortForm shortAttr, DomContent... dc)             {  return (TrTag)  Attr.addTo( new TrTag().with(dc), shortAttr); }
+
+    public static UTag u ()                                                         {  return (UTag)  new UTag(); }
+    public static UTag u (String text)                                              {  return (UTag)  new UTag().withText(text); }
+    public static UTag u (DomContent... dc)                                         {  return (UTag)  new UTag().with(dc); }
+    public static UTag u (Attr.ShortForm shortAttr)                                 {  return (UTag)  Attr.addTo( new UTag(), shortAttr); }
+    public static UTag u (Attr.ShortForm shortAttr, String text)                    {  return (UTag)  Attr.addTo( new UTag().withText(text), shortAttr); }
+    public static UTag u (Attr.ShortForm shortAttr, DomContent... dc)               {  return (UTag)  Attr.addTo( new UTag().with(dc), shortAttr); }
+
+    public static UlTag ul ()                                                       {  return (UlTag)  new UlTag(); }
+    public static UlTag ul (String text)                                            {  return (UlTag)  new UlTag().withText(text); }
+    public static UlTag ul (DomContent... dc)                                       {  return (UlTag)  new UlTag().with(dc); }
+    public static UlTag ul (Attr.ShortForm shortAttr)                               {  return (UlTag)  Attr.addTo( new UlTag(), shortAttr); }
+    public static UlTag ul (Attr.ShortForm shortAttr, String text)                  {  return (UlTag)  Attr.addTo( new UlTag().withText(text), shortAttr); }
+    public static UlTag ul (Attr.ShortForm shortAttr, DomContent... dc)             {  return (UlTag)  Attr.addTo( new UlTag().with(dc), shortAttr); }
+
+    public static VarTag var ()                                                     {  return (VarTag)  new VarTag(); }
+    public static VarTag var (String text)                                          {  return (VarTag)  new VarTag().withText(text); }
+    public static VarTag var (DomContent... dc)                                     {  return (VarTag)  new VarTag().with(dc); }
+    public static VarTag var (Attr.ShortForm shortAttr)                             {  return (VarTag)  Attr.addTo( new VarTag(), shortAttr); }
+    public static VarTag var (Attr.ShortForm shortAttr, String text)                {  return (VarTag)  Attr.addTo( new VarTag().withText(text), shortAttr); }
+    public static VarTag var (Attr.ShortForm shortAttr, DomContent... dc)           {  return (VarTag)  Attr.addTo( new VarTag().with(dc), shortAttr); }
+
+    public static VideoTag video ()                                                 {  return (VideoTag)  new VideoTag(); }
+    public static VideoTag video (String text)                                      {  return (VideoTag)  new VideoTag().withText(text); }
+    public static VideoTag video (DomContent... dc)                                 {  return (VideoTag)  new VideoTag().with(dc); }
+    public static VideoTag video (Attr.ShortForm shortAttr)                         {  return (VideoTag)  Attr.addTo( new VideoTag(), shortAttr); }
+    public static VideoTag video (Attr.ShortForm shortAttr, String text)            {  return (VideoTag)  Attr.addTo( new VideoTag().withText(text), shortAttr); }
+    public static VideoTag video (Attr.ShortForm shortAttr, DomContent... dc)       {  return (VideoTag)  Attr.addTo( new VideoTag().with(dc), shortAttr); }
 
 }

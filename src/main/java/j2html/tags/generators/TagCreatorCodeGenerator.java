@@ -1,4 +1,4 @@
-package j2html.tags;
+package j2html.tags.generators;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,33 +6,51 @@ import java.util.List;
 class TagCreatorCodeGenerator {
 
     public static void main(String[] args) {
+
         System.out.println("// EmptyTags, generated in " + TagCreatorCodeGenerator.class);
+
         for (String tag : emptyTags()) {
-            String emptyA1 = "public static EmptyTag " + tag + "()";
-            String emptyA2 = "{ return new EmptyTag(\"" + tag + "\"); }";
+            final String className = SpecializedTagClassCodeGenerator.classNameFromTag(tag);
+            final String publicstaticTypeMethod = "public static "+className+" "+tag+" ";
+            final String castReturn = " return ("+className+") ";
+            final String construct = " new "+className+"()";
+
+            String emptyA1 = publicstaticTypeMethod + "()";
+            String emptyA2 = "{ return "+construct+"; }";
             // Attr shorthands
-            String emptyB1 = "public static EmptyTag " + tag + "(Attr.ShortForm shortAttr)";
-            String emptyB2 = "{ return Attr.addTo(new EmptyTag(\"" + tag + "\"), shortAttr); }";
+            String emptyB1 = publicstaticTypeMethod + "(Attr.ShortForm shortAttr)";
+            String emptyB2 = "{ "+castReturn+" Attr.addTo("+construct+", shortAttr); }";
             // Print
             System.out.println(String.format("%-80s%1s", emptyA1, emptyA2));
             System.out.println(String.format("%-80s%1s", emptyB1, emptyB2));
             System.out.println("");
         }
+
         System.out.println("// ContainerTags, generated in " + TagCreatorCodeGenerator.class);
+
         for (String tag : containerTags()) {
-            String containerA1 = "public static ContainerTag " + tag + "()";
-            String containerA2 = "{ return new ContainerTag(\"" + tag + "\"); }";
-            String containerB1 = "public static ContainerTag " + tag + "(String text)";
-            String containerB2 = "{ return new ContainerTag(\"" + tag + "\").withText(text); }";
-            String containerC1 = "public static ContainerTag " + tag + "(DomContent... dc)";
-            String containerC2 = "{ return new ContainerTag(\"" + tag + "\").with(dc); }";
+            final String className = SpecializedTagClassCodeGenerator.classNameFromTag(tag);
+            final String publicstaticTypeMethod = "public static "+className+" "+tag+" ";
+            final String castReturn = " return ("+className+") ";
+            final String construct = " new "+className+"()";
+
+            String containerA1 = publicstaticTypeMethod+ "()";
+            String containerA2 = "{ "+castReturn + construct + "; }";
+
+            String containerB1 = publicstaticTypeMethod + "(String text)";
+            String containerB2 = "{ "+castReturn + construct + ".withText(text); }";
+
+            String containerC1 = publicstaticTypeMethod + "(DomContent... dc)";
+            String containerC2 = "{ "+castReturn + construct+".with(dc); }";
             // Attr shorthands
-            String containerD1 = "public static ContainerTag " + tag + "(Attr.ShortForm shortAttr)";
-            String containerD2 = "{ return Attr.addTo(new ContainerTag(\"" + tag + "\"), shortAttr); }";
-            String containerE1 = "public static ContainerTag " + tag + "(Attr.ShortForm shortAttr, String text)";
-            String containerE2 = "{ return Attr.addTo(new ContainerTag(\"" + tag + "\").withText(text), shortAttr); }";
-            String containerF1 = "public static ContainerTag " + tag + "(Attr.ShortForm shortAttr, DomContent... dc)";
-            String containerF2 = "{ return Attr.addTo(new ContainerTag(\"" + tag + "\").with(dc), shortAttr); }";
+            String containerD1 = publicstaticTypeMethod + "(Attr.ShortForm shortAttr)";
+            String containerD2 = "{ "+castReturn+" Attr.addTo("+construct+", shortAttr); }";
+
+            String containerE1 = publicstaticTypeMethod + "(Attr.ShortForm shortAttr, String text)";
+            String containerE2 = "{ "+castReturn+" Attr.addTo("+construct+".withText(text), shortAttr); }";
+
+            String containerF1 = publicstaticTypeMethod + "(Attr.ShortForm shortAttr, DomContent... dc)";
+            String containerF2 = "{ "+castReturn+" Attr.addTo("+construct+".with(dc), shortAttr); }";
             // Print
             System.out.println(String.format("%-80s%1s", containerA1, containerA2));
             System.out.println(String.format("%-80s%1s", containerB1, containerB2));
@@ -45,7 +63,7 @@ class TagCreatorCodeGenerator {
     }
 
     //  This is a method that contains all ContainerTags, there is nothing below it
-    private static List<String> emptyTags() {
+    static List<String> emptyTags() {
         return Arrays.asList(
             "area",
             "base",
@@ -66,7 +84,7 @@ class TagCreatorCodeGenerator {
         );
     }
 
-    private static List<String> containerTags() {
+    static List<String> containerTags() {
         return Arrays.asList(
             "a",
             "abbr",
@@ -78,6 +96,7 @@ class TagCreatorCodeGenerator {
             "bdi",
             "bdo",
             "blockquote",
+            //"body" BodyTag is managed manually,
             "button",
             "canvas",
             "caption",
@@ -105,7 +124,9 @@ class TagCreatorCodeGenerator {
             "h4",
             "h5",
             "h6",
+            //"head", HeadTag is managed manually
             "header",
+            //"html" HtmlTag is managed manually
             "i",
             "iframe",
             "ins",
