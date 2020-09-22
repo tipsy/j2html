@@ -148,19 +148,19 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
         }
     }
 
-    private String renderFormatted(int lvl) throws IOException {
-        // Do not render children tags formatted, if this tag is self-formatting
-        final ThrowingBiFunction<ContainerTag, Integer, String, IOException> render = (tag, level) -> {
-            if (this.isSelfFormattingTag()) return tag.render();
-            else return tag.renderFormatted(level);
-        };
-        // Will only indent strings, if the tag isn't self-formatting
-        final ThrowingBiFunction<Integer, String, String, IOException> indent = (level, str) -> {
-            if (this.isSelfFormattingTag()) return str;
-            else return Config.indenter.indent(level, str);
-        };
+    private static void indent(Appendable appendable, int level) throws IOException {
+        appendable.append(Config.indenter.indent(level, ""));
+    }
 
+    private String renderFormatted(int lvl) throws IOException {
         StringBuilder sb = new StringBuilder();
+        renderFormatted(lvl, sb);
+        return sb.toString();
+    }
+
+
+    private void renderFormatted(int lvl, Appendable sb) throws IOException {
+
         renderOpenTag(sb, null);
         if (hasTagName() && !isSelfFormattingTag()) {
             sb.append("\n");
@@ -170,12 +170,25 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
                 lvl++;
                 if (c instanceof ContainerTag) {
                     if (((ContainerTag) c).hasTagName()) {
-                        sb.append(indent.apply(lvl, render.apply((ContainerTag) c, lvl)));
+                        if (this.isSelfFormattingTag()) {
+                            c.render(sb);
+                        } else {
+                            indent(sb, lvl);
+                            ((ContainerTag<?>) c).renderFormatted(lvl, sb);
+                        }
                     } else {
-                        sb.append(indent.apply(lvl - 1, render.apply((ContainerTag) c, lvl - 1)));
+                        if (this.isSelfFormattingTag()) {
+                            c.render(sb);
+                        } else {
+                            indent(sb, lvl-1);
+                            ((ContainerTag<?>) c).renderFormatted(lvl-1, sb);
+                        }
                     }
                 } else {
-                    sb.append(indent.apply(lvl, c.render()));
+                    if (!this.isSelfFormattingTag()) {
+                        indent(sb, lvl);
+                    }
+                    c.render(sb);
                     if (!this.isSelfFormattingTag()) {
                         sb.append("\n");
                     }
@@ -183,12 +196,13 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
                 lvl--;
             }
         }
-        sb.append(indent.apply(lvl, ""));
+        if (!this.isSelfFormattingTag()) {
+            indent(sb, lvl);
+        }
         renderCloseTag(sb);
         if (hasTagName()) {
             sb.append("\n");
         }
-        return sb.toString();
     }
 
     private boolean isSelfFormattingTag() {
