@@ -10,7 +10,7 @@ public class Attribute implements Renderable {
 
     public Attribute(String name, String value) {
         this.name = name;
-        this.value = Config.textEscaper.escape(value);
+        this.value = value;
     }
 
     public Attribute(String name) {
@@ -23,12 +23,12 @@ public class Attribute implements Renderable {
         if (name == null) {
             return;
         }
-        writer.append(" ");
+        writer.append(' ');
         writer.append(name);
         if (value != null) {
             writer.append("=\"");
-            writer.append(value);
-            writer.append("\"");
+            writer.append(Config.textEscaper.escape(value));
+            writer.append('"');
         }
     }
 
