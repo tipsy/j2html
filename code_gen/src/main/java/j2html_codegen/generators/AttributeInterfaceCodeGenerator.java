@@ -1,5 +1,9 @@
-package j2html.tags.generators;
+package j2html_codegen.generators;
 
+import j2html_codegen.model.AttrD;
+import j2html_codegen.model.AttributesList;
+
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -9,38 +13,38 @@ import java.util.Optional;
 
 public final class AttributeInterfaceCodeGenerator {
 
-    public static void main(String[] args){
-        try {
-            final boolean delete = false;
+    public static void generate(final Path absPath, final boolean delete) throws IOException {
 
-            for (final AttrD attr : AttributesList.attributesDescriptive()) {
-                final Path path = makePath(attr.attr);
-                final String interfaceName = interfaceNameFromAttribute(attr.attr)+"<T extends Tag>";
+        for (final AttrD attr : AttributesList.attributesDescriptive()) {
+            final Path path = makePath(attr.attr, absPath);
+            final String interfaceName = interfaceNameFromAttribute(attr.attr)+"<T extends Tag>";
+            /*
+            IFormAction<T extends Tag> extends IInstance<T>
 
-                /*
-                IFormAction<T extends Tag> extends IInstance<T>
-
-                default T withFormAction(String formAction){
-                    get().attr("formaction", formAction);
-                    return get();
-                }
-                 */
-
-                final String interfaceStr = getInterfaceTemplate(
-                    interfaceName,
-                    Optional.of("IInstance<T>"),
-                    Arrays.asList("j2html.tags.Tag"),
-                    interfaceNameFromAttribute(attr.attr).substring(1),
-                    attr
-                );
-
-                if (delete) {
-                    Files.delete(path);
-                }else{
-                    Files.write(path, interfaceStr.getBytes());
-                }
+            default T withFormAction(String formAction){
+                get().attr("formaction", formAction);
+                return get();
             }
-        }catch (Exception ignored){}
+             */
+            final String interfaceStr = getInterfaceTemplate(
+                interfaceName,
+                Optional.of("IInstance<T>"),
+                Arrays.asList("j2html.tags.Tag"),
+                interfaceNameFromAttribute(attr.attr).substring(1),
+                attr
+            );
+
+            if (delete) {
+                if(Files.exists(path)) {
+                    System.out.println("deleting " + path);
+                    Files.delete(path);
+                }
+            }else{
+                System.out.println("writing to "+path);
+                Files.write(path, interfaceStr.getBytes());
+            }
+        }
+
     }
 
     private static String getPackage(){
@@ -178,9 +182,9 @@ public final class AttributeInterfaceCodeGenerator {
         return "I" + res;
     }
 
-    private static Path makePath(String tagLowerCase){
+    private static Path makePath(String tagLowerCase, final Path absPath){
         final String filename = interfaceNameFromAttribute(tagLowerCase)+".java";
-        return Paths.get("src/main/java/j2html/tags/attributes/"+filename);
+        return Paths.get(absPath.toString(),"tags/attributes/",filename);
     }
 
 }
