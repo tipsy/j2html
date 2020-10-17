@@ -1,15 +1,14 @@
-package j2html.tags.generators;
+package j2html_codegen.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public final class AttributesList {
 
     //https://www.w3schools.com/tags/ref_attributes.asp
 
-    static List<String> getCustomAttributesForHtmlTag(final String tagLowercase){
+    public static List<String> getCustomAttributesForHtmlTag(final String tagLowercase){
 
         final List<String> attrs = new ArrayList<>();
         for(AttrD attrD : attributesDescriptive()){
@@ -22,7 +21,7 @@ public final class AttributesList {
         return attrs;
     }
 
-    static List<AttrD> attributesDescriptive() {
+    public static List<AttrD> attributesDescriptive() {
         return Arrays.asList(
             new AttrD("accept", true, "input"),
             //new AttrD("accept-charset","form"), //contains dashes, TODO

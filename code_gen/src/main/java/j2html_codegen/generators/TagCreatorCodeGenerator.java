@@ -1,11 +1,11 @@
-package j2html.tags.generators;
+package j2html_codegen.generators;
 
 import java.util.Arrays;
 import java.util.List;
 
-class TagCreatorCodeGenerator {
+public final class TagCreatorCodeGenerator {
 
-    public static void main(String[] args) {
+    public static void print() {
 
         System.out.println("// EmptyTags, generated in " + TagCreatorCodeGenerator.class);
 
@@ -134,7 +134,7 @@ class TagCreatorCodeGenerator {
             "label",
             "legend",
             "li",
-            "main",
+            "generate",
             "map",
             "mark",
             "menu",

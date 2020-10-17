@@ -1,6 +1,6 @@
-package j2html.tags.generators;
+package j2html_codegen.model;
 
-final class AttrD {
+public final class AttrD {
     //attribute descriptor
 
     public final String attr;
