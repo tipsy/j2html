@@ -8,7 +8,8 @@ import j2html.tags.EmptyTag;
 import j2html.tags.InlineStaticResource;
 import j2html.tags.Text;
 import j2html.tags.UnescapedText;
-import j2html.tags.specialized.*;
+import j2html.tags.specialized.manual.*;
+import j2html.tags.specialized.generated.*;
 
 import java.util.Collection;
 import java.util.List;

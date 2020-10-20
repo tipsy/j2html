@@ -1,6 +1,7 @@
 package j2html_codegen.generators;
 
 
+import j2html_codegen.GeneratorUtil;
 import j2html_codegen.model.AttributesList;
 
 import java.io.IOException;
@@ -17,7 +18,13 @@ import static j2html_codegen.generators.TagCreatorCodeGenerator.emptyTags;
 
 public final class SpecializedTagClassCodeGenerator {
 
+    private static final String relPath = "tags/specialized/generated";
+
     public static void generate(final Path absPath, final boolean delete) throws IOException {
+
+        //delete all files in the directory for fresh generation
+        final Path dir = Paths.get(absPath.toString(),relPath);
+        GeneratorUtil.deleteAllFilesInDir(dir);
 
         //the delete argument serves to give the possibility
         //to delete the classes that were written before
@@ -47,12 +54,7 @@ public final class SpecializedTagClassCodeGenerator {
             }
             */
 
-            if(delete){
-                if(Files.exists(path)) {
-                    System.out.println("deleting " + path);
-                    Files.delete(path);
-                }
-            }else {
+            if(!delete){
                 System.out.println("writing to "+path);
                 Files.write(path, classString.getBytes());
             }
@@ -96,11 +98,11 @@ public final class SpecializedTagClassCodeGenerator {
 
     private static Path makePath(final Path absPath, String tagLowerCase){
         final String filename = classNameFromTag(tagLowerCase)+".java";
-        return Paths.get(absPath.toString(),"tags/specialized/",filename);
+        return Paths.get(absPath.toString(),relPath,filename);
     }
 
     private static String getPackage(){
-        return "package j2html.tags.specialized;\n";
+        return "package j2html.tags.specialized.generated;\n";
     }
 
     private static String getClassTemplate(

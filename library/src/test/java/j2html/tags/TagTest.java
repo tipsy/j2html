@@ -5,7 +5,7 @@ import j2html.model.DynamicHrefAttribute;
 import java.io.File;
 import java.io.FileWriter;
 
-import j2html.tags.specialized.HtmlTag;
+import j2html.tags.specialized.manual.HtmlTag;
 import org.junit.Test;
 import static j2html.TagCreator.body;
 import static j2html.TagCreator.div;
