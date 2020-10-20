@@ -1,8 +1,10 @@
 package j2html_codegen.generators;
 
+import j2html_codegen.GeneratorUtil;
 import j2html_codegen.model.AttrD;
 import j2html_codegen.model.AttributesList;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,7 +15,13 @@ import java.util.Optional;
 
 public final class AttributeInterfaceCodeGenerator {
 
+    private static final String relPath = "tags/attributes/";
+
     public static void generate(final Path absPath, final boolean delete) throws IOException {
+
+        //delete all files in the directory for fresh generation
+        final Path dir = Paths.get(absPath.toString(),relPath);
+        GeneratorUtil.deleteAllFilesInDir(dir);
 
         for (final AttrD attr : AttributesList.attributesDescriptive()) {
             final Path path = makePath(attr.attr, absPath);
@@ -29,17 +37,12 @@ public final class AttributeInterfaceCodeGenerator {
             final String interfaceStr = getInterfaceTemplate(
                 interfaceName,
                 Optional.of("IInstance<T>"),
-                Arrays.asList("j2html.tags.Tag"),
+                Arrays.asList("j2html.tags.Tag","j2html.tags.IInstance"),
                 interfaceNameFromAttribute(attr.attr).substring(1),
                 attr
             );
 
-            if (delete) {
-                if(Files.exists(path)) {
-                    System.out.println("deleting " + path);
-                    Files.delete(path);
-                }
-            }else{
+            if (!delete) {
                 System.out.println("writing to "+path);
                 Files.write(path, interfaceStr.getBytes());
             }
@@ -184,7 +187,7 @@ public final class AttributeInterfaceCodeGenerator {
 
     private static Path makePath(String tagLowerCase, final Path absPath){
         final String filename = interfaceNameFromAttribute(tagLowerCase)+".java";
-        return Paths.get(absPath.toString(),"tags/attributes/",filename);
+        return Paths.get(absPath.toString(),relPath,filename);
     }
 
 }

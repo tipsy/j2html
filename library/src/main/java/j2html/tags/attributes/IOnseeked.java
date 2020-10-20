@@ -1,5 +1,6 @@
 package j2html.tags.attributes;
 
+import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
 public interface IOnseeked<T extends Tag> extends IInstance<T> {
