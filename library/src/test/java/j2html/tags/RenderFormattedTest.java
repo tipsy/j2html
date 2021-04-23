@@ -67,4 +67,23 @@ public class RenderFormattedTest {
         ));
     }
 
+    @Test
+    public void testFormattedTags_nestedEach() throws Exception {
+        assertThat(div(ul(each(asList(1, 2, 3), i -> li("Number " + i)))).renderFormatted(), is(
+            "<div>\n" +
+                "    <ul>\n" +
+                "        <li>\n" +
+                "            Number 1\n" +
+                "        </li>\n" +
+                "        <li>\n" +
+                "            Number 2\n" +
+                "        </li>\n" +
+                "        <li>\n" +
+                "            Number 3\n" +
+                "        </li>\n" +
+                "    </ul>\n" +
+                "</div>\n"
+        ));
+    }
+
 }
