@@ -181,7 +181,6 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
                         if (this.isSelfFormattingTag()) {
                             c.render(sb);
                         } else {
-                            indent(sb, lvl-1);
                             ((ContainerTag<?>) c).renderFormatted(lvl-1, sb);
                         }
                     }
@@ -197,7 +196,7 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
                 lvl--;
             }
         }
-        if (!this.isSelfFormattingTag()) {
+        if (hasTagName() && !this.isSelfFormattingTag()) {
             indent(sb, lvl);
         }
         renderCloseTag(sb);
