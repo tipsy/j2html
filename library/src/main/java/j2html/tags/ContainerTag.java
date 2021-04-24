@@ -1,13 +1,14 @@
 package j2html.tags;
 
 import j2html.Config;
+import j2html.attributes.Attribute;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
 public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
-//public class ContainerTag extends Tag<ContainerTag> {
 
     private List<DomContent> children;
 
@@ -209,6 +210,26 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
         return "textarea".equals(tagName) || "pre".equals(tagName);
     }
 
+    protected void renderOpenTag(Appendable writer, Object model) throws IOException {
+        if (!hasTagName()) { // avoid <null> and <> tags
+            return;
+        }
+        writer.append("<").append(tagName);
+        for (Attribute attribute : getAttributes()) {
+            attribute.renderModel(writer, model);
+        }
+        writer.append(">");
+    }
+
+    protected void renderCloseTag(Appendable writer) throws IOException {
+        if (!hasTagName()) { // avoid <null> and <> tags
+            return;
+        }
+        writer.append("</");
+        writer.append(tagName);
+        writer.append(">");
+    }
+
     @Override
     public void renderModel(Appendable writer, Object model) throws IOException {
         renderOpenTag(writer, model);
@@ -219,12 +240,4 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
         }
         renderCloseTag(writer);
     }
-
-    @FunctionalInterface
-    private interface ThrowingBiFunction<T, U, R, E extends Exception> {
-
-        R apply(final T t, final U u) throws E;
-
-    }
-
 }
