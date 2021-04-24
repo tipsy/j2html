@@ -5,10 +5,15 @@ import j2html.attributes.Attribute;
 import java.io.IOException;
 
 public class EmptyTag<T extends EmptyTag<T>> extends Tag<T> {
-//public class EmptyTag extends Tag<EmptyTag> {
 
     public EmptyTag(String tagName) {
         super(tagName);
+        if(tagName == null){
+            throw new IllegalArgumentException("Illegal tag name: null");
+        }
+        if("".equals(tagName)){
+            throw new IllegalArgumentException("Illegal tag name: \"\"");
+        }
     }
 
     @Override
