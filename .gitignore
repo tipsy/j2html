@@ -9,3 +9,6 @@ hs_err_pid*
 .project
 .settings/
 buildNumber.properties
+
+### IntelliJ ###
+.idea/
