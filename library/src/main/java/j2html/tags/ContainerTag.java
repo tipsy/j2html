@@ -1,16 +1,15 @@
 package j2html.tags;
 
-import j2html.Config;
-import j2html.attributes.Attribute;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import j2html.attributes.Attribute;
+
 public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
 
-    private List<DomContent> children;
+    private final List<DomContent> children;
 
     public ContainerTag(String tagName) {
         super(tagName);
@@ -134,74 +133,37 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
         return children.size();
     }
 
-    /**
-     * Render the ContainerTag and its children, adding newlines before each
-     * child and using Config.indenter to indent child based on how deep
-     * in the tree it is
-     *
-     * @return the rendered and formatted string
-     */
-    public String renderFormatted() {
-        try {
-            return renderFormatted(0);
-        } catch (IOException e) {
-            throw new RuntimeException(e.getMessage(), e);
+    @Override
+    public void renderFormatted(final Appendable writer) throws IOException {
+        renderFormatted(writer, 0);
+    }
+
+    protected void renderFormatted(Appendable writer, int level) throws IOException {
+        final boolean selfFormattingTag = isSelfFormattingTag();
+        if (hasTagName()) {
+            indent(writer, level);
+            renderOpenTag(writer, null);
+            if (!selfFormattingTag) {
+                writer.append("\n");
+            }
+        } else {
+            level--;
         }
-    }
 
-    private static void indent(Appendable appendable, int level) throws IOException {
-        appendable.append(Config.indenter.indent(level, ""));
-    }
-
-    private String renderFormatted(int lvl) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        renderFormatted(lvl, sb);
-        return sb.toString();
-    }
-
-
-    private void renderFormatted(int lvl, Appendable sb) throws IOException {
-
-        renderOpenTag(sb, null);
-        if (hasTagName() && !isSelfFormattingTag()) {
-            sb.append("\n");
-        }
-        if (!children.isEmpty()) {
-            for (DomContent c : children) {
-                lvl++;
-                if (c instanceof ContainerTag) {
-                    if (((ContainerTag) c).hasTagName()) {
-                        if (this.isSelfFormattingTag()) {
-                            c.render(sb);
-                        } else {
-                            indent(sb, lvl);
-                            ((ContainerTag<?>) c).renderFormatted(lvl, sb);
-                        }
-                    } else {
-                        if (this.isSelfFormattingTag()) {
-                            c.render(sb);
-                        } else {
-                            ((ContainerTag<?>) c).renderFormatted(lvl-1, sb);
-                        }
-                    }
-                } else {
-                    if (!this.isSelfFormattingTag()) {
-                        indent(sb, lvl);
-                    }
-                    c.render(sb);
-                    if (!this.isSelfFormattingTag()) {
-                        sb.append("\n");
-                    }
-                }
-                lvl--;
+        for (DomContent c : children) {
+            if (selfFormattingTag) {
+                c.render(writer);
+            } else {
+                c.renderFormatted(writer, level + 1);
             }
         }
-        if (hasTagName() && !this.isSelfFormattingTag()) {
-            indent(sb, lvl);
-        }
-        renderCloseTag(sb);
+
         if (hasTagName()) {
-            sb.append("\n");
+            if (!selfFormattingTag) {
+                indent(writer, level);
+            }
+            renderCloseTag(writer);
+            writer.append("\n");
         }
     }
 
