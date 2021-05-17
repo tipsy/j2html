@@ -1,5 +1,9 @@
 package j2html.tags;
 
+import j2html.Config;
+import j2html.rendering.FlatHtml;
+import j2html.rendering.HtmlBuilder;
+
 import java.io.IOException;
 
 public class UnescapedText extends DomContent {
@@ -11,13 +15,19 @@ public class UnescapedText extends DomContent {
     }
 
     @Override
-    public void render(Appendable writer) throws IOException {
-        renderModel(writer, null);
+    public <T extends Appendable> T render(HtmlBuilder<T> builder, Object model) throws IOException {
+        builder.appendUnescapedText(text);
+        return builder.output();
     }
 
     @Override
+    @Deprecated
     public void renderModel(Appendable writer, Object model) throws IOException {
-        writer.append(text);
+        HtmlBuilder builder = (writer instanceof HtmlBuilder)
+            ? (HtmlBuilder) writer
+            : FlatHtml.into(writer, Config.global());
+
+        render(builder, model);
     }
 
 }

@@ -1,7 +1,9 @@
 package j2html.attributes;
 
 import j2html.Config;
+import j2html.rendering.TagBuilder;
 import j2html.tags.Renderable;
+
 import java.io.IOException;
 
 public class Attribute implements Renderable {
@@ -19,17 +21,33 @@ public class Attribute implements Renderable {
     }
 
     @Override
+    @Deprecated
     public void renderModel(Appendable writer, Object model) throws IOException {
-        if (name == null) {
-            return;
+        if (writer instanceof TagBuilder) {
+            if (name != null) {
+                if (value != null) {
+                    ((TagBuilder) writer).appendAttribute(name, value);
+                } else {
+                    ((TagBuilder) writer).appendBooleanAttribute(name);
+                }
+            }
+        } else {
+            if (name == null) {
+                return;
+            }
+            writer.append(' ');
+            writer.append(name);
+            if (value != null) {
+                writer.append("=\"");
+                writer.append(Config.textEscaper.escape(value));
+                writer.append('"');
+            }
         }
-        writer.append(' ');
-        writer.append(name);
-        if (value != null) {
-            writer.append("=\"");
-            writer.append(Config.textEscaper.escape(value));
-            writer.append('"');
-        }
+    }
+
+    public void render(TagBuilder builder, Object model) throws IOException {
+        // Maintain compatibility with classes that extend Attribute, for now...
+        renderModel(builder, model);
     }
 
     public String getName() {
@@ -40,8 +58,7 @@ public class Attribute implements Renderable {
         this.value = value;
     }
 
-    public String getValue()
-    {
+    public String getValue() {
         return value;
     }
 }

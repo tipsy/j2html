@@ -1,9 +1,15 @@
 package j2html.tags.specialized.manual;
 
-import j2html.tags.ContainerTag;
+import j2html.Config;
+import j2html.attributes.Attribute;
+import j2html.rendering.TagBuilder;
+import j2html.rendering.FlatHtml;
+import j2html.rendering.HtmlBuilder;
+import j2html.rendering.IndentedHtml;
 import j2html.tags.Tag;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.Optional;
 
 public final class HtmlTag extends Tag<HtmlTag> {
@@ -36,29 +42,42 @@ public final class HtmlTag extends Tag<HtmlTag> {
         this.body = Optional.of(body);
     }
 
-    private ContainerTag makeContainerTagForRendering() {
-        return new ContainerTag("html").with(
-            this.head.orElse(null),
-            this.body.orElse(null)
-        );
-    }
-
     @Override
-    public String render() {
-        return makeContainerTagForRendering().render();
-    }
+    public <T extends Appendable> T render(HtmlBuilder<T> builder, Object model) throws IOException {
+        TagBuilder tagBuilder = builder.appendStartTag("html");
+        for(Attribute attribute : getAttributes()){
+            attribute.render(tagBuilder, model);
+        }
+        tagBuilder.completeTag();
 
-    @Override
-    public void render(Appendable writer) throws IOException {
-        makeContainerTagForRendering().render(writer);
-    }
+        if(head.isPresent()){
+            head.get().render(builder, model);
+        }
 
-    @Override
-    public void renderModel(Appendable writer, Object model) throws IOException {
-        makeContainerTagForRendering().renderModel(writer, model);
+        if(body.isPresent()){
+            body.get().render(builder, model);
+        }
+
+        builder.appendEndTag("html");
+
+        return builder.output();
     }
 
     public String renderFormatted() {
-        return makeContainerTagForRendering().renderFormatted();
+        try {
+            return render(IndentedHtml.into(new StringBuilder(), Config.global())).toString();
+        }catch (IOException e){
+            throw new UncheckedIOException(e);
+        }
+    }
+
+    @Override
+    @Deprecated
+    public void renderModel(Appendable writer, Object model) throws IOException {
+        HtmlBuilder builder = (writer instanceof HtmlBuilder)
+            ? (HtmlBuilder) writer
+            : FlatHtml.into(writer, Config.global());
+
+        render(builder, model);
     }
 }
