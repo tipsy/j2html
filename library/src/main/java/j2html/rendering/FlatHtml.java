@@ -101,7 +101,7 @@ public class FlatHtml<T extends Appendable> implements HtmlBuilder<T> {
     }
 
     @Override
-    public HtmlBuilder appendEndTag(String name) throws IOException {
+    public HtmlBuilder<T> appendEndTag(String name) throws IOException {
         out.append("</").append(name).append(">");
         return this;
     }
