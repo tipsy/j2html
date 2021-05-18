@@ -165,7 +165,7 @@ public class IndentedHtml<T extends Appendable> implements HtmlBuilder<T> {
 
     @Override
     @Deprecated
-    public HtmlBuilder append(CharSequence csq) throws IOException {
+    public HtmlBuilder<T> append(CharSequence csq) throws IOException {
         out.append(csq);
         return this;
     }
