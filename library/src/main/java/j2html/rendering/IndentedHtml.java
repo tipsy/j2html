@@ -179,7 +179,7 @@ public class IndentedHtml<T extends Appendable> implements HtmlBuilder<T> {
 
     @Override
     @Deprecated
-    public HtmlBuilder append(char c) throws IOException {
+    public HtmlBuilder<T> append(char c) throws IOException {
         out.append(c);
         return this;
     }
