@@ -81,7 +81,7 @@ public interface HtmlBuilder<T extends Appendable> extends Appendable {
 
     @Override
     @Deprecated
-    HtmlBuilder append(CharSequence csq, int start, int end) throws IOException;
+    HtmlBuilder<T> append(CharSequence csq, int start, int end) throws IOException;
 
     @Override
     @Deprecated
