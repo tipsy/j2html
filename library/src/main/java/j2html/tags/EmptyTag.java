@@ -21,7 +21,7 @@ public class EmptyTag<T extends EmptyTag<T>> extends Tag<T> {
     }
 
     @Override
-    public <T extends Appendable> T render(HtmlBuilder<T> builder, Object model) throws IOException {
+    public <A extends Appendable> A render(HtmlBuilder<A> builder, Object model) throws IOException {
         TagBuilder attrs = builder.appendEmptyTag(getTagName());
         for (Attribute attr : getAttributes()) {
             attr.render(attrs, model);

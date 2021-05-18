@@ -154,7 +154,7 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
     }
 
     @Override
-    public <T extends Appendable> T render(HtmlBuilder<T> builder, Object model) throws IOException {
+    public <A extends Appendable> A render(HtmlBuilder<A> builder, Object model) throws IOException {
         if (hasTagName()) {
             TagBuilder tagBuilder = builder.appendStartTag(getTagName());
             for(Attribute attribute : getAttributes()){
