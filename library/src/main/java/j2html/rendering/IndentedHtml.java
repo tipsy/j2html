@@ -105,7 +105,7 @@ public class IndentedHtml<T extends Appendable> implements HtmlBuilder<T> {
     }
 
     @Override
-    public HtmlBuilder appendEndTag(String name) throws IOException {
+    public HtmlBuilder<T> appendEndTag(String name) throws IOException {
         if (!name.equals(trace.peek())) {
             throw new RuntimeException("Incorrect element closed: " + name + ".  Expected: " + trace.peek());
         }
