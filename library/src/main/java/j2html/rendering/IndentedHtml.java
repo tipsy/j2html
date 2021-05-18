@@ -58,7 +58,7 @@ public class IndentedHtml<T extends Appendable> implements HtmlBuilder<T> {
      * @param <T>    The type of the Appendable to which HTML will be appended.
      * @return An HtmlBuilder for indented HTML.
      */
-    public static final <T extends Appendable> IndentedHtml inMemory(Config config) {
+    public static final IndentedHtml<StringBuilder> inMemory(Config config) {
         return into(new StringBuilder(), config);
     }
 
