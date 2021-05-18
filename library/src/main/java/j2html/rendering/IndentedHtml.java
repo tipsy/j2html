@@ -5,7 +5,8 @@ import j2html.utils.Indenter;
 import j2html.utils.TextEscaper;
 
 import java.io.IOException;
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * Composes HTML with lines breaks and indentation between tags and text.
@@ -43,7 +44,6 @@ public class IndentedHtml<T extends Appendable> implements HtmlBuilder<T> {
      * Returns an HtmlBuilder that will generate indented HTML in memory using
      * Config defaults.
      *
-     * @param <T> The type of the Appendable to which HTML will be appended.
      * @return An HtmlBuilder for indented HTML.
      */
     public static final IndentedHtml<StringBuilder> inMemory() {
@@ -55,7 +55,6 @@ public class IndentedHtml<T extends Appendable> implements HtmlBuilder<T> {
      * the given Config.
      *
      * @param config The Config which will specify indentation, text escapement, tag closing, etc.
-     * @param <T>    The type of the Appendable to which HTML will be appended.
      * @return An HtmlBuilder for indented HTML.
      */
     public static final IndentedHtml<StringBuilder> inMemory(Config config) {
@@ -74,7 +73,7 @@ public class IndentedHtml<T extends Appendable> implements HtmlBuilder<T> {
     // as those tags are closed.  Determining whether or not we are
     // currently rendering into a preformatted element is as simple as
     // asking if any tags on the stack match a preformatted element name.
-    private Stack<String> trace = new Stack<>();
+    private final Deque<String> trace = new ArrayDeque<>();
 
     private IndentedHtml(T out, Config config) {
         this.out = out;

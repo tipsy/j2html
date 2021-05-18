@@ -33,8 +33,8 @@ public class EmptyTag<T extends EmptyTag<T>> extends Tag<T> {
     @Override
     @Deprecated
     public void renderModel(Appendable writer, Object model) throws IOException {
-        HtmlBuilder builder = (writer instanceof HtmlBuilder)
-            ? (HtmlBuilder) writer
+        HtmlBuilder<?> builder = (writer instanceof HtmlBuilder)
+            ? (HtmlBuilder<?>) writer
             : FlatHtml.into(writer, Config.global());
 
         render(builder, model);
