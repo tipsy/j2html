@@ -113,7 +113,7 @@ public class FlatHtml<T extends Appendable> implements HtmlBuilder<T> {
     }
 
     @Override
-    public HtmlBuilder appendEscapedText(String txt) throws IOException {
+    public HtmlBuilder<T> appendEscapedText(String txt) throws IOException {
         out.append(textEscaper.escape(txt));
         return this;
     }
