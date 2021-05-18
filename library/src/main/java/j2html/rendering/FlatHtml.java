@@ -33,8 +33,8 @@ public class FlatHtml<T extends Appendable> implements HtmlBuilder<T> {
      * @param <T>    The type of the Appendable to which HTML will be appended.
      * @return An HtmlBuilder for flat HTML.
      */
-    public static final <T extends Appendable> FlatHtml into(T out, Config config) {
-        return new FlatHtml(out, config);
+    public static final <T extends Appendable> FlatHtml<T> into(T out, Config config) {
+        return new FlatHtml<>(out, config);
     }
 
     /**
