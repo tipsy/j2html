@@ -41,7 +41,7 @@ public interface TagBuilder extends Appendable {
      * @return An HtmlBuilder that can continue appending HTML to the output.
      * @throws IOException When the Appendable throws an IOException.
      */
-    HtmlBuilder completeTag() throws IOException;
+    HtmlBuilder<? extends Appendable> completeTag() throws IOException;
 
     @Override
     @Deprecated
