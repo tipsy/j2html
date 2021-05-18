@@ -153,7 +153,7 @@ public class IndentedHtml<T extends Appendable> implements HtmlBuilder<T> {
     }
 
     @Override
-    public HtmlBuilder appendUnescapedText(String txt) throws IOException {
+    public HtmlBuilder<T> appendUnescapedText(String txt) throws IOException {
         appendLines(txt);
         return this;
     }
