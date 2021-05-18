@@ -210,7 +210,7 @@ public class IndentedHtml<T extends Appendable> implements HtmlBuilder<T> {
         }
 
         @Override
-        public HtmlBuilder completeTag() throws IOException {
+        public HtmlBuilder<T> completeTag() throws IOException {
             if (closeTag) {
                 out.append("/");
             }
