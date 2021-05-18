@@ -22,8 +22,8 @@ public class IndentedHtml<T extends Appendable> implements HtmlBuilder<T> {
      * @param <T> The type of the Appendable to which HTML will be appended.
      * @return An HtmlBuilder for indented HTML.
      */
-    public static final <T extends Appendable> IndentedHtml into(T out) {
-        return new IndentedHtml(out, Config.defaults());
+    public static final <T extends Appendable> IndentedHtml<T> into(T out) {
+        return new IndentedHtml<>(out, Config.defaults());
     }
 
     /**
