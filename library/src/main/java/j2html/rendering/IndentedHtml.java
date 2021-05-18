@@ -147,7 +147,7 @@ public class IndentedHtml<T extends Appendable> implements HtmlBuilder<T> {
     }
 
     @Override
-    public HtmlBuilder appendEscapedText(String txt) throws IOException {
+    public HtmlBuilder<T> appendEscapedText(String txt) throws IOException {
         appendLines(textEscaper.escape(txt));
         return this;
     }
