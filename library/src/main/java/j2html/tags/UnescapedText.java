@@ -16,7 +16,7 @@ public class UnescapedText extends DomContent {
 
     @Override
     public <T extends Appendable> T render(HtmlBuilder<T> builder, Object model) throws IOException {
-        builder.appendUnescapedText(text);
+        builder.appendUnescapedText(String.valueOf(text));
         return builder.output();
     }
 

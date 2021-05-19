@@ -16,7 +16,7 @@ public class Text extends DomContent {
 
     @Override
     public <T extends Appendable> T render(HtmlBuilder<T> builder, Object model) throws IOException {
-        builder.appendEscapedText(text);
+        builder.appendEscapedText(String.valueOf(text));
         return builder.output();
     }
 
