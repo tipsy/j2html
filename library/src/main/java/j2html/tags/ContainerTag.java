@@ -2,6 +2,10 @@ package j2html.tags;
 
 import j2html.Config;
 import j2html.attributes.Attribute;
+import j2html.rendering.TagBuilder;
+import j2html.rendering.FlatHtml;
+import j2html.rendering.HtmlBuilder;
+import j2html.rendering.IndentedHtml;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +14,7 @@ import java.util.stream.Stream;
 
 public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
 
-    private List<DomContent> children;
+    protected List<DomContent> children;
 
     public ContainerTag(String tagName) {
         super(tagName);
@@ -143,100 +147,40 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
      */
     public String renderFormatted() {
         try {
-            return renderFormatted(0);
-        } catch (IOException e) {
+            return render(IndentedHtml.into(new StringBuilder(), Config.global())).toString();
+        }catch (IOException e) {
             throw new RuntimeException(e.getMessage(), e);
         }
     }
 
-    private static void indent(Appendable appendable, int level) throws IOException {
-        appendable.append(Config.indenter.indent(level, ""));
-    }
-
-    private String renderFormatted(int lvl) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        renderFormatted(lvl, sb);
-        return sb.toString();
-    }
-
-
-    private void renderFormatted(int lvl, Appendable sb) throws IOException {
-
-        renderOpenTag(sb, null);
-        if (hasTagName() && !isSelfFormattingTag()) {
-            sb.append("\n");
-        }
-        if (!children.isEmpty()) {
-            for (DomContent c : children) {
-                lvl++;
-                if (c instanceof ContainerTag) {
-                    if (((ContainerTag) c).hasTagName()) {
-                        if (this.isSelfFormattingTag()) {
-                            c.render(sb);
-                        } else {
-                            indent(sb, lvl);
-                            ((ContainerTag<?>) c).renderFormatted(lvl, sb);
-                        }
-                    } else {
-                        if (this.isSelfFormattingTag()) {
-                            c.render(sb);
-                        } else {
-                            ((ContainerTag<?>) c).renderFormatted(lvl-1, sb);
-                        }
-                    }
-                } else {
-                    if (!this.isSelfFormattingTag()) {
-                        indent(sb, lvl);
-                    }
-                    c.render(sb);
-                    if (!this.isSelfFormattingTag()) {
-                        sb.append("\n");
-                    }
-                }
-                lvl--;
-            }
-        }
-        if (hasTagName() && !this.isSelfFormattingTag()) {
-            indent(sb, lvl);
-        }
-        renderCloseTag(sb);
+    @Override
+    public <A extends Appendable> A render(HtmlBuilder<A> builder, Object model) throws IOException {
         if (hasTagName()) {
-            sb.append("\n");
+            TagBuilder tagBuilder = builder.appendStartTag(getTagName());
+            for(Attribute attribute : getAttributes()){
+                attribute.render(tagBuilder, model);
+            }
+            tagBuilder.completeTag();
         }
-    }
 
-    private boolean isSelfFormattingTag() {
-        return "textarea".equals(tagName) || "pre".equals(tagName);
-    }
+        for(DomContent child : children){
+            child.render(builder, model);
+        }
 
-    protected void renderOpenTag(Appendable writer, Object model) throws IOException {
-        if (!hasTagName()) { // avoid <null> and <> tags
-            return;
+        if(hasTagName()) {
+            builder.appendEndTag(getTagName());
         }
-        writer.append("<").append(tagName);
-        for (Attribute attribute : getAttributes()) {
-            attribute.renderModel(writer, model);
-        }
-        writer.append(">");
-    }
 
-    protected void renderCloseTag(Appendable writer) throws IOException {
-        if (!hasTagName()) { // avoid <null> and <> tags
-            return;
-        }
-        writer.append("</");
-        writer.append(tagName);
-        writer.append(">");
+        return builder.output();
     }
 
     @Override
+    @Deprecated
     public void renderModel(Appendable writer, Object model) throws IOException {
-        renderOpenTag(writer, model);
-        if (children != null && !children.isEmpty()) {
-            for (DomContent child : children) {
-                child.renderModel(writer, model);
-            }
-        }
-        renderCloseTag(writer);
+        HtmlBuilder<?> builder = (writer instanceof HtmlBuilder)
+            ? (HtmlBuilder<?>) writer
+            : FlatHtml.into(writer, Config.global());
+
+        render(builder, model);
     }
 }

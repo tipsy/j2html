@@ -24,6 +24,8 @@ public class TagCreatorTest {
 
     @Before
     public void setUp() {
+        Config.closeEmptyTags = false;
+
         employeeMap.put(1, new Employee(1, "Name 1", "Title 1"));
         employeeMap.put(2, new Employee(2, "Name 2", "Title 2"));
         employeeMap.put(3, new Employee(3, "Name 3", "Title 3"));

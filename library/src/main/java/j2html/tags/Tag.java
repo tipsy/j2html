@@ -2,7 +2,6 @@ package j2html.tags;
 
 import j2html.attributes.Attr;
 import j2html.attributes.Attribute;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 

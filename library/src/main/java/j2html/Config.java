@@ -6,6 +6,7 @@ import j2html.utils.Indenter;
 import j2html.utils.JSMin;
 import j2html.utils.Minifier;
 import j2html.utils.TextEscaper;
+
 import java.util.Collections;
 
 public class Config {
@@ -38,7 +39,110 @@ public class Config {
     public static Indenter indenter = (level, text) -> String.join("", Collections.nCopies(level, FOUR_SPACES)) + text;
 
 
-    private Config() {
+    private TextEscaper _textEscaper;
+    private Minifier _cssMinifier;
+    private Minifier _jsMinifier;
+    private boolean _closeEmptyTags;
+    private Indenter _indenter;
+
+
+    private Config(
+        TextEscaper _textEscaper,
+        Minifier _cssMinifier,
+        Minifier _jsMinifier,
+        boolean _closeEmptyTags,
+        Indenter _indenter
+    ) {
+        this._textEscaper = _textEscaper;
+        this._cssMinifier = _cssMinifier;
+        this._jsMinifier = _jsMinifier;
+        this._closeEmptyTags = _closeEmptyTags;
+        this._indenter = _indenter;
+    }
+
+    /**
+     * A copy constructor.
+     *
+     * @param original The Config to copy fields from.
+     */
+    private Config(Config original) {
+        this._textEscaper = original._textEscaper;
+        this._cssMinifier = original._cssMinifier;
+        this._jsMinifier = original._jsMinifier;
+        this._closeEmptyTags = original._closeEmptyTags;
+        this._indenter = original._indenter;
+    }
+
+    public TextEscaper textEscaper() {
+        return _textEscaper;
+    }
+
+    public Minifier cssMinifier() {
+        return _cssMinifier;
+    }
+
+    public Minifier jsMinifier() {
+        return _jsMinifier;
+    }
+
+    public boolean closeEmptyTags() {
+        return _closeEmptyTags;
+    }
+
+    public Indenter indenter() {
+        return _indenter;
+    }
+
+    public Config withTextEscaper(TextEscaper textEscaper){
+        Config copy = new Config(this);
+        copy._textEscaper = textEscaper;
+        return copy;
+    }
+
+    public Config withCssMinifier(Minifier cssMinifier){
+        Config copy = new Config(this);
+        copy._cssMinifier = cssMinifier;
+        return copy;
+    }
+
+    public Config withJsMinifier(Minifier jsMinifier){
+        Config copy = new Config(this);
+        copy._jsMinifier = jsMinifier;
+        return copy;
+    }
+
+    public Config withEmptyTagsClosed(boolean closeEmptyTags){
+        Config copy = new Config(this);
+        copy._closeEmptyTags = closeEmptyTags;
+        return copy;
+    }
+
+    public Config withIndenter(Indenter indenter){
+        Config copy = new Config(this);
+        copy._indenter = indenter;
+        return copy;
+    }
+
+    private static final Config DEFAULTS = new Config(
+        EscapeUtil::escape,
+        CSSMin::compressCss,
+        JSMin::compressJs,
+        false,
+        (level, text) -> String.join("", Collections.nCopies(level, FOUR_SPACES)) + text
+    );
+
+    public static final Config defaults() {
+        return DEFAULTS;
+    }
+
+    public static final Config global() {
+        return new Config(
+            textEscaper,
+            cssMinifier,
+            jsMinifier,
+            closeEmptyTags,
+            indenter
+        );
     }
 
 }

@@ -1,5 +1,6 @@
 package j2html.model;
 
+import j2html.rendering.HtmlBuilder;
 import j2html.tags.DomContent;
 import java.io.IOException;
 
@@ -12,4 +13,10 @@ public abstract class Template<T> extends DomContent {
     }
 
     public abstract void renderTemplate(Appendable writer, T model) throws IOException;
+
+    @Override
+    public <T extends Appendable> T render(HtmlBuilder<T> builder, Object model) throws IOException{
+        renderModel(builder.output(), model);
+        return builder.output();
+    }
 }
