@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IOnstorage<T extends Tag> extends IInstance<T> {
+public interface IOnstorage<T extends Tag<T>> extends IInstance<T> {
     default T withOnstorage(final String onstorage_) {
-        get().attr("onstorage", onstorage_);
-        return get();
+        return self().attr("onstorage", onstorage_);
     }
 
     default T withCondOnstorage(final boolean enable, final String onstorage_) {
         if (enable) {
-            get().attr("onstorage", onstorage_);
+            self().attr("onstorage", onstorage_);
         }
-        return get();
+        return self();
     }
 }

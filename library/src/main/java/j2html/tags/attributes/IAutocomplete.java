@@ -3,16 +3,16 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IAutocomplete<T extends Tag> extends IInstance<T> {
+public interface IAutocomplete<T extends Tag<T>> extends IInstance<T> {
     default T isAutocomplete() {
-        get().attr("autocomplete", "on");
-        return get();
+        self().attr("autocomplete", "on");
+        return self();
     }
 
     default T withCondAutocomplete(final boolean enable) {
         if (enable) {
-            get().attr("autocomplete", "on");
+            self().attr("autocomplete", "on");
         }
-        return get();
+        return self();
     }
 }

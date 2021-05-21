@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IOnbeforeunload<T extends Tag> extends IInstance<T> {
+public interface IOnbeforeunload<T extends Tag<T>> extends IInstance<T> {
     default T withOnbeforeunload(final String onbeforeunload_) {
-        get().attr("onbeforeunload", onbeforeunload_);
-        return get();
+        return self().attr("onbeforeunload", onbeforeunload_);
     }
 
     default T withCondOnbeforeunload(final boolean enable, final String onbeforeunload_) {
         if (enable) {
-            get().attr("onbeforeunload", onbeforeunload_);
+            self().attr("onbeforeunload", onbeforeunload_);
         }
-        return get();
+        return self();
     }
 }

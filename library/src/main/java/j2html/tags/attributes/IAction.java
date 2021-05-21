@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IAction<T extends Tag> extends IInstance<T> {
+public interface IAction<T extends Tag<T>> extends IInstance<T> {
     default T withAction(final String action_) {
-        get().attr("action", action_);
-        return get();
+        return self().attr("action", action_);
     }
 
     default T withCondAction(final boolean enable, final String action_) {
         if (enable) {
-            get().attr("action", action_);
+            self().attr("action", action_);
         }
-        return get();
+        return self();
     }
 }

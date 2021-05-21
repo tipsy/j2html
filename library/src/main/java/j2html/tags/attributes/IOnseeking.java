@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IOnseeking<T extends Tag> extends IInstance<T> {
+public interface IOnseeking<T extends Tag<T>> extends IInstance<T> {
     default T withOnseeking(final String onseeking_) {
-        get().attr("onseeking", onseeking_);
-        return get();
+        return self().attr("onseeking", onseeking_);
     }
 
     default T withCondOnseeking(final boolean enable, final String onseeking_) {
         if (enable) {
-            get().attr("onseeking", onseeking_);
+            self().attr("onseeking", onseeking_);
         }
-        return get();
+        return self();
     }
 }

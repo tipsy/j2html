@@ -3,16 +3,16 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IChecked<T extends Tag> extends IInstance<T> {
+public interface IChecked<T extends Tag<T>> extends IInstance<T> {
     default T isChecked() {
-        get().attr("checked");
-        return get();
+        self().attr("checked");
+        return self();
     }
 
     default T withCondChecked(final boolean enable) {
         if (enable) {
-            get().attr("checked");
+            self().attr("checked");
         }
-        return get();
+        return self();
     }
 }

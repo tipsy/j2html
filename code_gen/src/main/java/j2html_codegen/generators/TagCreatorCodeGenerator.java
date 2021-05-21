@@ -23,7 +23,7 @@ public final class TagCreatorCodeGenerator {
             // Print
             System.out.println(String.format("%-80s%1s", emptyA1, emptyA2));
             System.out.println(String.format("%-80s%1s", emptyB1, emptyB2));
-            System.out.println("");
+            System.out.println();
         }
 
         System.out.println("// ContainerTags, generated in " + TagCreatorCodeGenerator.class);
@@ -58,7 +58,7 @@ public final class TagCreatorCodeGenerator {
             System.out.println(String.format("%-80s%1s", containerD1, containerD2));
             System.out.println(String.format("%-80s%1s", containerE1, containerE2));
             System.out.println(String.format("%-80s%1s", containerF1, containerF2));
-            System.out.println("");
+            System.out.println();
         }
     }
 
@@ -135,6 +135,7 @@ public final class TagCreatorCodeGenerator {
             "legend",
             "li",
             "generate",
+            "main",
             "map",
             "mark",
             "menu",

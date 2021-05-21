@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IWidth<T extends Tag> extends IInstance<T> {
+public interface IWidth<T extends Tag<T>> extends IInstance<T> {
     default T withWidth(final String width_) {
-        get().attr("width", width_);
-        return get();
+        return self().attr("width", width_);
     }
 
     default T withCondWidth(final boolean enable, final String width_) {
         if (enable) {
-            get().attr("width", width_);
+            self().attr("width", width_);
         }
-        return get();
+        return self();
     }
 }

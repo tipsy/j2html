@@ -3,16 +3,16 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface ILoop<T extends Tag> extends IInstance<T> {
+public interface ILoop<T extends Tag<T>> extends IInstance<T> {
     default T isLoop() {
-        get().attr("loop");
-        return get();
+        self().attr("loop");
+        return self();
     }
 
     default T withCondLoop(final boolean enable) {
         if (enable) {
-            get().attr("loop");
+            self().attr("loop");
         }
-        return get();
+        return self();
     }
 }

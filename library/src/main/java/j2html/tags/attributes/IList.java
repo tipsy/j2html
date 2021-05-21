@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IList<T extends Tag> extends IInstance<T> {
+public interface IList<T extends Tag<T>> extends IInstance<T> {
     default T withList(final String list_) {
-        get().attr("list", list_);
-        return get();
+        return self().attr("list", list_);
     }
 
     default T withCondList(final boolean enable, final String list_) {
         if (enable) {
-            get().attr("list", list_);
+            self().attr("list", list_);
         }
-        return get();
+        return self();
     }
 }

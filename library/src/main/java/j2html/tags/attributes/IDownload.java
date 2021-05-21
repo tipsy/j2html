@@ -3,16 +3,16 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IDownload<T extends Tag> extends IInstance<T> {
+public interface IDownload<T extends Tag<T>> extends IInstance<T> {
     default T isDownload() {
-        get().attr("download");
-        return get();
+        self().attr("download");
+        return self();
     }
 
     default T withCondDownload(final boolean enable) {
         if (enable) {
-            get().attr("download");
+            self().attr("download");
         }
-        return get();
+        return self();
     }
 }

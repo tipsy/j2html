@@ -5,9 +5,9 @@ import j2html.attributes.Attribute;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public abstract class Tag<T extends Tag<T>> extends DomContent {
-    protected String tagName;
-    private ArrayList<Attribute> attributes;
+public abstract class Tag<T extends Tag<T>> extends DomContent implements IInstance<T> {
+    private final String tagName;
+    private final ArrayList<Attribute> attributes;
 
     protected Tag(String tagName) {
         this.tagName = tagName;
@@ -54,7 +54,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
      */
     public T attr(String attribute, Object value) {
         setAttribute(attribute, value == null ? null : String.valueOf(value));
-        return (T) this;
+        return self();
     }
 
     /**
@@ -76,7 +76,7 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
             }
         }
         attributes.add(attribute);
-        return (T) this;
+        return self();
     }
 
     /**
@@ -100,15 +100,15 @@ public abstract class Tag<T extends Tag<T>> extends DomContent {
      * @return itself for easy chaining
      */
     public T condAttr(boolean condition, String attribute, String value) {
-        return (condition ? attr(attribute, value) : (T) this);
+        return (condition ? attr(attribute, value) : self());
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null || !(obj instanceof Tag)) {
+        if (!(obj instanceof Tag)) {
             return false;
         }
-        return ((Tag) obj).render().equals(this.render());
+        return ((Tag<?>) obj).render().equals(this.render());
     }
 
     /**

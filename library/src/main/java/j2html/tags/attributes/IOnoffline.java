@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IOnoffline<T extends Tag> extends IInstance<T> {
+public interface IOnoffline<T extends Tag<T>> extends IInstance<T> {
     default T withOnoffline(final String onoffline_) {
-        get().attr("onoffline", onoffline_);
-        return get();
+        return self().attr("onoffline", onoffline_);
     }
 
     default T withCondOnoffline(final boolean enable, final String onoffline_) {
         if (enable) {
-            get().attr("onoffline", onoffline_);
+            self().attr("onoffline", onoffline_);
         }
-        return get();
+        return self();
     }
 }

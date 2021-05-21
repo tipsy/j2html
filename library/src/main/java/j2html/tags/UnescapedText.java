@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class UnescapedText extends DomContent {
 
-    private String text;
+    private final String text;
 
     public UnescapedText(String text) {
         this.text = text;

@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IMaxlength<T extends Tag> extends IInstance<T> {
+public interface IMaxlength<T extends Tag<T>> extends IInstance<T> {
     default T withMaxlength(final String maxlength_) {
-        get().attr("maxlength", maxlength_);
-        return get();
+        return self().attr("maxlength", maxlength_);
     }
 
     default T withCondMaxlength(final boolean enable, final String maxlength_) {
         if (enable) {
-            get().attr("maxlength", maxlength_);
+            self().attr("maxlength", maxlength_);
         }
-        return get();
+        return self();
     }
 }

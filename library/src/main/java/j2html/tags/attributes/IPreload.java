@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IPreload<T extends Tag> extends IInstance<T> {
+public interface IPreload<T extends Tag<T>> extends IInstance<T> {
     default T withPreload(final String preload_) {
-        get().attr("preload", preload_);
-        return get();
+        return self().attr("preload", preload_);
     }
 
     default T withCondPreload(final boolean enable, final String preload_) {
         if (enable) {
-            get().attr("preload", preload_);
+            self().attr("preload", preload_);
         }
-        return get();
+        return self();
     }
 }

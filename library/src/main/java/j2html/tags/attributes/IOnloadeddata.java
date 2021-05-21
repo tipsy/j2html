@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IOnloadeddata<T extends Tag> extends IInstance<T> {
+public interface IOnloadeddata<T extends Tag<T>> extends IInstance<T> {
     default T withOnloadeddata(final String onloadeddata_) {
-        get().attr("onloadeddata", onloadeddata_);
-        return get();
+        return self().attr("onloadeddata", onloadeddata_);
     }
 
     default T withCondOnloadeddata(final boolean enable, final String onloadeddata_) {
         if (enable) {
-            get().attr("onloadeddata", onloadeddata_);
+            self().attr("onloadeddata", onloadeddata_);
         }
-        return get();
+        return self();
     }
 }

@@ -32,11 +32,11 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
         if (this == child) {
             throw new RuntimeException("Cannot append a tag to itself.");
         }
-        if (child == null) {
-            return (T)this; // in some cases, like when using iff(), we ignore null children
+        if (child != null) {
+            // in some cases, like when using iff(), we ignore null children
+            children.add(child);
         }
-        children.add(child);
-        return (T)this;
+        return self();
     }
 
 
@@ -49,7 +49,7 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
      * @return itself for easy chaining
      */
     public T condWith(boolean condition, DomContent child) {
-        return condition ? this.with(child) : (T)this;
+        return condition ? this.with(child) : self();
     }
 
 
@@ -65,7 +65,7 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
                 this.with(child);
             }
         }
-        return (T)this;
+        return self();
     }
 
 
@@ -78,7 +78,7 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
      * @return itself for easy chaining
      */
     public T condWith(boolean condition, Iterable<? extends DomContent> children) {
-        return condition ? this.with(children) : (T)this;
+        return condition ? this.with(children) : self();
     }
 
 
@@ -92,7 +92,7 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
         for (DomContent child : children) {
             with(child);
         }
-        return (T)this;
+        return self();
     }
 
 
@@ -104,7 +104,7 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
      */
     public T with(Stream<DomContent> children) {
         children.forEach(this::with);
-        return (T)this;
+        return self();
     }
 
 
@@ -117,7 +117,7 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
      * @return itself for easy chaining
      */
     public T condWith(boolean condition, DomContent... children) {
-        return condition ? this.with(children) : (T)this;
+        return condition ? this.with(children) : self();
     }
 
 
