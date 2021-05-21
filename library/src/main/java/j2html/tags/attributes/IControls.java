@@ -3,16 +3,16 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IControls<T extends Tag> extends IInstance<T> {
+public interface IControls<T extends Tag<T>> extends IInstance<T> {
     default T isControls() {
-        get().attr("controls");
-        return get();
+        self().attr("controls");
+        return self();
     }
 
     default T withCondControls(final boolean enable) {
         if (enable) {
-            get().attr("controls");
+            self().attr("controls");
         }
-        return get();
+        return self();
     }
 }

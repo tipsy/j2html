@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IOnreset<T extends Tag> extends IInstance<T> {
+public interface IOnreset<T extends Tag<T>> extends IInstance<T> {
     default T withOnreset(final String onreset_) {
-        get().attr("onreset", onreset_);
-        return get();
+        return self().attr("onreset", onreset_);
     }
 
     default T withCondOnreset(final boolean enable, final String onreset_) {
         if (enable) {
-            get().attr("onreset", onreset_);
+            self().attr("onreset", onreset_);
         }
-        return get();
+        return self();
     }
 }

@@ -3,8 +3,6 @@ package j2html_codegen.generators;
 import j2html_codegen.GeneratorUtil;
 import j2html_codegen.model.AttrD;
 import j2html_codegen.model.AttributesList;
-
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,13 +23,12 @@ public final class AttributeInterfaceCodeGenerator {
 
         for (final AttrD attr : AttributesList.attributesDescriptive()) {
             final Path path = makePath(attr.attr, absPath);
-            final String interfaceName = interfaceNameFromAttribute(attr.attr)+"<T extends Tag>";
+            final String interfaceName = interfaceNameFromAttribute(attr.attr)+"<T extends Tag<T>>";
             /*
-            IFormAction<T extends Tag> extends IInstance<T>
+            IFormAction<T extends Tag<T>> extends IInstance<T>
 
             default T withFormAction(String formAction){
-                get().attr("formaction", formAction);
-                return get();
+                return self().attr("formaction", formAction);
             }
              */
             final String interfaceStr = getInterfaceTemplate(
@@ -78,10 +75,7 @@ public final class AttributeInterfaceCodeGenerator {
         sb.append("public interface ")
             .append(interfaceName);
 
-        if(optExtends.isPresent()) {
-            sb.append(" extends ").append(optExtends.get())
-                .append(" ");
-        }
+        optExtends.ifPresent(ext -> sb.append(" extends ").append(ext).append(" "));
 
         sb.append(" {\n");
 
@@ -90,8 +84,7 @@ public final class AttributeInterfaceCodeGenerator {
         IFormAction<T extends Tag> extends IInstance<T>
 
         default T withFormAction(String formAction){
-            get().attr("formaction", formAction);
-            return get();
+            return self().attr("formaction", formAction);
         }
          */
         //IMPORTANT: '_' added as suffix to mitigate problems
@@ -119,11 +112,10 @@ public final class AttributeInterfaceCodeGenerator {
         //there are some special attributes
         //which do take an argument, but where the argument
         //is boolean (meaning on/off, yes/no and the like)
-        sb.append("get().attr(\"");
-        if(attrName.equals("autocomplete")){
+        sb.append("self().attr(\"");
+        if (attrName.equals("autocomplete")){
             sb.append(attrName).append("\",\"on\"");
-        }else {
-
+        } else {
             sb.append(attrName).append("\"");
         }
         sb.append(");\n");
@@ -139,10 +131,10 @@ public final class AttributeInterfaceCodeGenerator {
             sb.append("(final boolean enable, final String ").append(paramName).append(") {");
 
                 sb.append("if (enable){\n");
-                    sb.append("get().attr(\"").append(attrName).append("\", "+ paramName +");\n");
+                    sb.append("self().attr(\"").append(attrName).append("\", ").append(paramName).append(");\n");
                 sb.append("}\n");
 
-                sb.append("return get();\n");
+                sb.append("return self();\n");
         }else{
             //add a variant where you can toggle the attribute
 
@@ -150,7 +142,7 @@ public final class AttributeInterfaceCodeGenerator {
                 sb.append("if (enable){\n");
                     addAttributeNoArg(sb, attrName);
                 sb.append("}\n");
-                sb.append("return get();\n");
+                sb.append("return self();\n");
         }
         sb.append("}\n");
     }
@@ -166,8 +158,7 @@ public final class AttributeInterfaceCodeGenerator {
 
             sb.append("(final String ").append(paramName).append(") {")
 
-                .append("get().attr(\"").append(attrName).append("\", "+ paramName +");\n")
-                .append("return get();\n");
+                .append("return self().attr(\"").append(attrName).append("\", ").append(paramName).append(");\n");
         }else{
             //add a variant where you can toggle the attribute
 
@@ -175,7 +166,7 @@ public final class AttributeInterfaceCodeGenerator {
 
                 addAttributeNoArg(sb, attrName);
 
-                sb.append("return get();\n");
+                sb.append("return self();\n");
         }
         sb.append("}\n");
     }

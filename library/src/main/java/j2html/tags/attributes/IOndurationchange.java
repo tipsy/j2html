@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IOndurationchange<T extends Tag> extends IInstance<T> {
+public interface IOndurationchange<T extends Tag<T>> extends IInstance<T> {
     default T withOndurationchange(final String ondurationchange_) {
-        get().attr("ondurationchange", ondurationchange_);
-        return get();
+        return self().attr("ondurationchange", ondurationchange_);
     }
 
     default T withCondOndurationchange(final boolean enable, final String ondurationchange_) {
         if (enable) {
-            get().attr("ondurationchange", ondurationchange_);
+            self().attr("ondurationchange", ondurationchange_);
         }
-        return get();
+        return self();
     }
 }

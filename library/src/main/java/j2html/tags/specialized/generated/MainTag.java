@@ -1,4 +1,4 @@
-package j2html.tags.specialized.manual;
+package j2html.tags.specialized.generated;
 
 import j2html.tags.ContainerTag;
 

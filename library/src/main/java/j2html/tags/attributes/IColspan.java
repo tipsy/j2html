@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IColspan<T extends Tag> extends IInstance<T> {
+public interface IColspan<T extends Tag<T>> extends IInstance<T> {
     default T withColspan(final String colspan_) {
-        get().attr("colspan", colspan_);
-        return get();
+        return self().attr("colspan", colspan_);
     }
 
     default T withCondColspan(final boolean enable, final String colspan_) {
         if (enable) {
-            get().attr("colspan", colspan_);
+            self().attr("colspan", colspan_);
         }
-        return get();
+        return self();
     }
 }

@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IStart<T extends Tag> extends IInstance<T> {
+public interface IStart<T extends Tag<T>> extends IInstance<T> {
     default T withStart(final String start_) {
-        get().attr("start", start_);
-        return get();
+        return self().attr("start", start_);
     }
 
     default T withCondStart(final boolean enable, final String start_) {
         if (enable) {
-            get().attr("start", start_);
+            self().attr("start", start_);
         }
-        return get();
+        return self();
     }
 }

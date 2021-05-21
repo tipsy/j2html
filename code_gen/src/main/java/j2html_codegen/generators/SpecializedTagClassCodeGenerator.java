@@ -126,10 +126,7 @@ public final class SpecializedTagClassCodeGenerator {
             .append(className)
             .append(" ");
 
-        if(optExtends.isPresent()) {
-                sb.append("extends ").append(optExtends.get())
-                .append(" ");
-        }
+        optExtends.ifPresent(ext -> sb.append("extends ").append(ext).append(" "));
 
         //add the 'implements' clause
         if(!interfaces.isEmpty()) {

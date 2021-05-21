@@ -4,13 +4,14 @@ import j2html.Config;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Scanner;
+
 import static j2html.TagCreator.rawHtml;
 import static j2html.TagCreator.script;
 import static j2html.TagCreator.style;
 
 public class InlineStaticResource {
 
-    public static ContainerTag get(String path, TargetFormat format) {
+    public static ContainerTag<? extends Tag<?>> get(String path, TargetFormat format) {
         String fileString = getFileAsString(path);
         switch (format) {
             case CSS_MIN:

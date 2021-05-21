@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IDirname<T extends Tag> extends IInstance<T> {
+public interface IDirname<T extends Tag<T>> extends IInstance<T> {
     default T withDirname(final String dirname_) {
-        get().attr("dirname", dirname_);
-        return get();
+        return self().attr("dirname", dirname_);
     }
 
     default T withCondDirname(final boolean enable, final String dirname_) {
         if (enable) {
-            get().attr("dirname", dirname_);
+            self().attr("dirname", dirname_);
         }
-        return get();
+        return self();
     }
 }

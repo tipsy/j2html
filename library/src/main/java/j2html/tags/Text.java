@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class Text extends DomContent {
 
-    private String text;
+    private final String text;
 
     public Text(String text) {
         this.text = text;

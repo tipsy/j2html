@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface ILow<T extends Tag> extends IInstance<T> {
+public interface ILow<T extends Tag<T>> extends IInstance<T> {
     default T withLow(final String low_) {
-        get().attr("low", low_);
-        return get();
+        return self().attr("low", low_);
     }
 
     default T withCondLow(final boolean enable, final String low_) {
         if (enable) {
-            get().attr("low", low_);
+            self().attr("low", low_);
         }
-        return get();
+        return self();
     }
 }

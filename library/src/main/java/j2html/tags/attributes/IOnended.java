@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IOnended<T extends Tag> extends IInstance<T> {
+public interface IOnended<T extends Tag<T>> extends IInstance<T> {
     default T withOnended(final String onended_) {
-        get().attr("onended", onended_);
-        return get();
+        return self().attr("onended", onended_);
     }
 
     default T withCondOnended(final boolean enable, final String onended_) {
         if (enable) {
-            get().attr("onended", onended_);
+            self().attr("onended", onended_);
         }
-        return get();
+        return self();
     }
 }

@@ -3,16 +3,15 @@ package j2html.tags.attributes;
 import j2html.tags.IInstance;
 import j2html.tags.Tag;
 
-public interface IOnpopstate<T extends Tag> extends IInstance<T> {
+public interface IOnpopstate<T extends Tag<T>> extends IInstance<T> {
     default T withOnpopstate(final String onpopstate_) {
-        get().attr("onpopstate", onpopstate_);
-        return get();
+        return self().attr("onpopstate", onpopstate_);
     }
 
     default T withCondOnpopstate(final boolean enable, final String onpopstate_) {
         if (enable) {
-            get().attr("onpopstate", onpopstate_);
+            self().attr("onpopstate", onpopstate_);
         }
-        return get();
+        return self();
     }
 }
