@@ -30,4 +30,11 @@ public class UnescapedText extends DomContent {
         render(builder, model);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof UnescapedText)) {
+            return false;
+        }
+        return ((UnescapedText) obj).render().equals(this.render());
+    }
 }
