@@ -319,4 +319,28 @@ public class TagCreatorTest {
         assertThat(video().render(), is("<video></video>"));
     }
 
+    @Test
+    public void script_factories_do_not_escape_text_parameters() {
+        assertEquals(
+            "<script>var test = 'Hello, world!';</script>",
+            script("var test = 'Hello, world!';").render()
+        );
+        assertEquals(
+            "<script id=\"x\">var test = 'Hello, world!';</script>",
+            script(attrs("#x"), "var test = 'Hello, world!';").render()
+        );
+    }
+
+    @Test
+    public void style_factories_do_not_escape_text_parameters() {
+        assertEquals(
+            "<style>.test>a {}</style>",
+            style(".test>a {}").render()
+        );
+        assertEquals(
+            "<style id=\"x\">.test>a {}</style>",
+            style(attrs("#x"),".test>a {}").render()
+        );
+    }
+
 }
