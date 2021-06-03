@@ -820,10 +820,10 @@ public class TagCreator {
     public static SampTag samp (Attr.ShortForm shortAttr, DomContent... dc)         {  return Attr.addTo( new SampTag().with(dc), shortAttr); }
 
     public static ScriptTag script ()                                               {  return new ScriptTag(); }
-    public static ScriptTag script (String text)                                    {  return new ScriptTag().withText(text); }
+    public static ScriptTag script (String text)                                    {  return new ScriptTag().with(new UnescapedText(text)); }
     public static ScriptTag script (DomContent... dc)                               {  return new ScriptTag().with(dc); }
     public static ScriptTag script (Attr.ShortForm shortAttr)                       {  return Attr.addTo( new ScriptTag(), shortAttr); }
-    public static ScriptTag script (Attr.ShortForm shortAttr, String text)          {  return Attr.addTo( new ScriptTag().withText(text), shortAttr); }
+    public static ScriptTag script (Attr.ShortForm shortAttr, String text)          {  return Attr.addTo( new ScriptTag().with(new UnescapedText(text)), shortAttr); }
     public static ScriptTag script (Attr.ShortForm shortAttr, DomContent... dc)     {  return Attr.addTo( new ScriptTag().with(dc), shortAttr); }
 
     public static SectionTag section ()                                             {  return new SectionTag(); }
@@ -862,10 +862,10 @@ public class TagCreator {
     public static StrongTag strong (Attr.ShortForm shortAttr, DomContent... dc)     {  return Attr.addTo( new StrongTag().with(dc), shortAttr); }
 
     public static StyleTag style ()                                                 {  return new StyleTag(); }
-    public static StyleTag style (String text)                                      {  return new StyleTag().withText(text); }
+    public static StyleTag style (String text)                                      {  return new StyleTag().with(new UnescapedText(text)); }
     public static StyleTag style (DomContent... dc)                                 {  return new StyleTag().with(dc); }
     public static StyleTag style (Attr.ShortForm shortAttr)                         {  return Attr.addTo( new StyleTag(), shortAttr); }
-    public static StyleTag style (Attr.ShortForm shortAttr, String text)            {  return Attr.addTo( new StyleTag().withText(text), shortAttr); }
+    public static StyleTag style (Attr.ShortForm shortAttr, String text)            {  return Attr.addTo( new StyleTag().with(new UnescapedText(text)), shortAttr); }
     public static StyleTag style (Attr.ShortForm shortAttr, DomContent... dc)       {  return Attr.addTo( new StyleTag().with(dc), shortAttr); }
 
     public static SubTag sub ()                                                     {  return new SubTag(); }
