@@ -89,6 +89,17 @@ public class TagCreator {
     }
 
     /**
+     * Creates a group of DomContent objects (that may be used with {@link #iff(boolean, Object)} or returned from a
+     * method call).
+     *
+     * @param contents the DomContent elements
+     * @return DomContent containing the given elements
+     */
+    public static DomContent each(DomContent... contents) {
+        return new ContainerTag<>(null).with(contents);
+    }
+
+    /**
      * Creates a DomContent object containing HTML elements from a stream.
      * Intended usage: {@literal each(numbers.stream().map(n -> li(n.toString())))}
      *
@@ -113,7 +124,7 @@ public class TagCreator {
     }
 
     public static <I, T> DomContent each(final Map<I, T> map, final Function<Entry<I, T>, DomContent> mapper) {
-        return rawHtml(map.entrySet().stream().map(mapper.andThen(DomContent::render)).collect(Collectors.joining()));
+        return each(map.entrySet().stream().map(mapper));
     }
 
     /**
@@ -127,7 +138,7 @@ public class TagCreator {
      * @return DomContent containing mapped data {@literal (ex. docs: [li(1 Tom), li(2 Dick), li(3 Harry)])}
      */
     public static <I, T> DomContent each(final Map<I, T> map, final BiFunction<I, T, DomContent> mapper) {
-        return rawHtml(map.entrySet().stream().map(entry -> mapper.andThen(DomContent::render).apply(entry.getKey(), entry.getValue())).collect(Collectors.joining()));
+        return each(map.entrySet().stream().map(entry -> mapper.apply(entry.getKey(), entry.getValue())));
     }
 
     /**
