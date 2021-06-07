@@ -98,29 +98,28 @@ Dissecting ```IAccept.java```:
 ```
 public interface IAccept<T extends Tag> extends IInstance<T> {
     default T withAccept(final String accept_) {
-        get().attr("accept", accept_);
-        return get();
+        return self().attr("accept", accept_);
     }
 
     default T withCondAccept(final boolean enable, final String accept_) {
         if (enable) {
-            get().attr("accept", accept_);
+            self().attr("accept", accept_);
         }
-        return get();
+        return self();
     }
 }
 ```
 
-As you can see, **IAccept** extends ```IInstance<T>``` which provides only the ```get()``` Method to access an instance of type ```T```.
+As you can see, **IAccept** extends ```IInstance<T>``` which provides only the ```self()``` Method to access an instance of type ```T```.
 All attribute-specific interfaces extend ```IInstance<T>```.
 
 ```
 public interface IInstance<T> {
-    default T get() {  return (T) this;  }
+    default T self() {  return (T) this;  }
 }
 ```
 
-```IInstance<T>``` is cheating the type system because ```get()``` returns an instance of type ```T```, but the implementing class
+```IInstance<T>``` is cheating the type system because ```self()``` returns an instance of type ```T```, but the implementing class
 technically does not have to supply it's own type as the type argument. But by convention, in this Project, the implementing class 
 always supplies it's own type as the type argument.
 
