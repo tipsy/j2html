@@ -1,0 +1,7 @@
+#include("/path/to/header")
+#setTitle("Signup page")
+<h1>Please sign up</h1>
+<form>
+...
+</form>
+#include("/path/to/footer")
