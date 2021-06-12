@@ -1,6 +1,6 @@
 package j2html.comparison.j2html;
 
-import j2html.tags.specialized.manual.HtmlTag;
+import j2html.tags.specialized.generated.HtmlTag;
 
 import static j2html.TagCreator.attrs;
 import static j2html.TagCreator.body;

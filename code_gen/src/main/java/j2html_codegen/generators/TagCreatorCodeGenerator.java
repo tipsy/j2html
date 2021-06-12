@@ -96,7 +96,7 @@ public final class TagCreatorCodeGenerator {
             "bdi",
             "bdo",
             "blockquote",
-            //"body" BodyTag is managed manually,
+            "body",
             "button",
             "canvas",
             "caption",
@@ -124,9 +124,9 @@ public final class TagCreatorCodeGenerator {
             "h4",
             "h5",
             "h6",
-            //"head", HeadTag is managed manually
+            "head",
             "header",
-            //"html" HtmlTag is managed manually
+            "html",
             "i",
             "iframe",
             "ins",

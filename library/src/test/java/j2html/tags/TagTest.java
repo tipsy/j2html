@@ -3,13 +3,13 @@ package j2html.tags;
 import j2html.Config;
 import j2html.attributes.Attribute;
 import j2html.model.DynamicHrefAttribute;
+import j2html.tags.specialized.generated.HtmlTag;
 import java.io.File;
 import java.io.FileWriter;
-
-import j2html.tags.specialized.manual.HtmlTag;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import static j2html.TagCreator.body;
 import static j2html.TagCreator.div;
 import static j2html.TagCreator.footer;
