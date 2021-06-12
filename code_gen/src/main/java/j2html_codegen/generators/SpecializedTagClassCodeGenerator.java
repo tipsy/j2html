@@ -18,7 +18,7 @@ import static j2html_codegen.generators.TagCreatorCodeGenerator.emptyTags;
 
 public final class SpecializedTagClassCodeGenerator {
 
-    private static final String relPath = "tags/specialized/generated";
+    private static final String relPath = "tags/specialized";
 
     public static void generate(final Path absPath, final boolean delete) throws IOException {
 
@@ -102,7 +102,7 @@ public final class SpecializedTagClassCodeGenerator {
     }
 
     private static String getPackage(){
-        return "package j2html.tags.specialized.generated;\n";
+        return "package j2html.tags.specialized;\n";
     }
 
     private static String getClassTemplate(

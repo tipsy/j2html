@@ -80,7 +80,7 @@ html(
 Each HTML Tag has it's own class, which makes it possible for each Tag to have
 the correct Attributes and Methods to set those Attributes.
 
-The classes are located in `library/src/main/java/j2html/tags/specialized/generated` and follow the naming convention `tag_name + 'Tag.java'`, e.g. `BodyTag.java`.
+The classes are located in `library/src/main/java/j2html/tags/specialized` and follow the naming convention `tag_name + 'Tag.java'`, e.g. `BodyTag.java`.
 Notice that the first letter of the Tag is in uppercase.
 
 Each Tag-specific class `implements` interfaces which correspond to the Attributes that can be set on these Tags.

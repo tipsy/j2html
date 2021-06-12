@@ -9,7 +9,7 @@ import j2html.tags.InlineStaticResource;
 import j2html.tags.Tag;
 import j2html.tags.Text;
 import j2html.tags.UnescapedText;
-import j2html.tags.specialized.generated.*;
+import j2html.tags.specialized.*;
 
 import java.util.Collection;
 import java.util.List;
