@@ -1,7 +1,7 @@
 package j2html.comparison.j2html;
 
 import j2html.comparison.ComparisonData;
-import j2html.tags.specialized.generated.UlTag;
+import j2html.tags.specialized.UlTag;
 
 import static j2html.TagCreator.each;
 import static j2html.TagCreator.li;

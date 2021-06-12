@@ -3,7 +3,7 @@ package j2html.tags;
 import j2html.Config;
 import j2html.attributes.Attribute;
 import j2html.model.DynamicHrefAttribute;
-import j2html.tags.specialized.generated.HtmlTag;
+import j2html.tags.specialized.HtmlTag;
 import java.io.File;
 import java.io.FileWriter;
 import org.junit.After;
