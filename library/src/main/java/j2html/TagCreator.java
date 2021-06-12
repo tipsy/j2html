@@ -9,7 +9,6 @@ import j2html.tags.InlineStaticResource;
 import j2html.tags.Tag;
 import j2html.tags.Text;
 import j2html.tags.UnescapedText;
-import j2html.tags.specialized.manual.*;
 import j2html.tags.specialized.generated.*;
 
 import java.util.Collection;
@@ -220,43 +219,26 @@ public class TagCreator {
     public static DomContent document() {
         return rawHtml("<!DOCTYPE html>");
     }
-    // -- start of manually managed tags --
 
-    // EmptyTags
-
-    //ContainerTags
     public static HtmlTag html() {
         return new HtmlTag();
     }
 
+    public static HtmlTag html(String text) { return html().withText(text); }
+
+    public static HtmlTag html(DomContent... dc) { return html().with(dc); }
+
     public static HtmlTag html(Attr.ShortForm shortAttr) {
-        return Attr.addTo(new HtmlTag(), shortAttr);
+        return Attr.addTo(html(), shortAttr);
     }
 
-    public static HtmlTag html(HeadTag head){
-        return new HtmlTag(head);
+    public static HtmlTag html(Attr.ShortForm shortAttr, String text) {
+        return Attr.addTo(html(text), shortAttr);
     }
 
-    public static HtmlTag html(BodyTag body){
-        return new HtmlTag(body);
+    public static HtmlTag html(Attr.ShortForm shortAttr, DomContent... dc) {
+        return Attr.addTo(html(dc), shortAttr);
     }
-
-    public static HtmlTag html(HeadTag head, BodyTag body){
-        return new HtmlTag(head, body);
-    }
-
-    public static HtmlTag html(Attr.ShortForm shortAttr, HeadTag head){
-        return Attr.addTo(new HtmlTag(head), shortAttr);
-    }
-
-    public static HtmlTag html(Attr.ShortForm shortAttr, BodyTag body){
-        return Attr.addTo(new HtmlTag(body), shortAttr);
-    }
-
-    public static HtmlTag html(Attr.ShortForm shortAttr, HeadTag head, BodyTag body){
-        return Attr.addTo(new HtmlTag(head, body), shortAttr);
-    }
-
 
     public static BodyTag body() {
         return new BodyTag();
@@ -305,14 +287,6 @@ public class TagCreator {
     public static HeadTag head(Attr.ShortForm shortAttr, DomContent... dc) {
         return Attr.addTo(new HeadTag().with(dc), shortAttr);
     }
-
-    // -- end of manually managed tags --
-
-
-
-
-
-
 
     // EmptyTags, generated in class j2html.tags.generators.TagCreatorCodeGenerator
     public static AreaTag area ()                                                   { return  new AreaTag(); }
