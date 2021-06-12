@@ -2,8 +2,16 @@ package app.views;
 
 import j2html.tags.ContainerTag;
 import j2html.tags.Text;
-
-import static j2html.TagCreator.*;
+import static j2html.TagCreator.a;
+import static j2html.TagCreator.attrs;
+import static j2html.TagCreator.code;
+import static j2html.TagCreator.div;
+import static j2html.TagCreator.fileAsEscapedString;
+import static j2html.TagCreator.join;
+import static j2html.TagCreator.li;
+import static j2html.TagCreator.p;
+import static j2html.TagCreator.pre;
+import static j2html.TagCreator.ul;
 
 public class Partials {
 
@@ -23,12 +31,12 @@ public class Partials {
             ),
             pre(attrs(".nowith-pre"),
                 code(attrs(".language-java"),
-                     fileAsEscapedString("/codeExamples/" + filename + "_new.java")
+                    fileAsEscapedString("/codeExamples/" + filename + "_new.java")
                 )
             ),
             pre(attrs(".with-pre"),
                 code(attrs(".language-java"),
-                     fileAsEscapedString("/codeExamples/" + filename + ".java")
+                    fileAsEscapedString("/codeExamples/" + filename + ".java")
                 )
             )
         );

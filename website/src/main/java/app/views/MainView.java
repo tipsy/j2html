@@ -1,8 +1,32 @@
 package app.views;
 
 import j2html.tags.DomContent;
-
-import static j2html.TagCreator.*;
+import static j2html.TagCreator.a;
+import static j2html.TagCreator.attrs;
+import static j2html.TagCreator.body;
+import static j2html.TagCreator.br;
+import static j2html.TagCreator.div;
+import static j2html.TagCreator.document;
+import static j2html.TagCreator.fileAsString;
+import static j2html.TagCreator.footer;
+import static j2html.TagCreator.h1;
+import static j2html.TagCreator.head;
+import static j2html.TagCreator.header;
+import static j2html.TagCreator.html;
+import static j2html.TagCreator.img;
+import static j2html.TagCreator.join;
+import static j2html.TagCreator.li;
+import static j2html.TagCreator.link;
+import static j2html.TagCreator.main;
+import static j2html.TagCreator.meta;
+import static j2html.TagCreator.nav;
+import static j2html.TagCreator.p;
+import static j2html.TagCreator.scriptWithInlineFile;
+import static j2html.TagCreator.scriptWithInlineFile_min;
+import static j2html.TagCreator.span;
+import static j2html.TagCreator.styleWithInlineFile_min;
+import static j2html.TagCreator.title;
+import static j2html.TagCreator.ul;
 
 public class MainView {
 
@@ -23,24 +47,24 @@ public class MainView {
                     fileAsString("/html/googleTagManager.html"),
                     fileAsString("/html/githubBanner.html"),
                     header(attrs(".top-header"),
-                           nav(attrs(".width-limit"),
-                               a().withId("logo").withHref("/").with(
-                                   span(img().withSrc("/img/logo.svg").withAlt("j2html logo"))
-                               ),
-                               ul(
-                                   li(a("Home").withHref("/")),
-                                   li(a("Download").withHref("/download.html")),
-                                   li(a("Examples").withHref("/examples.html")),
-                                   li(a("News").withHref("/news.html"))
-                               )
-                           )
+                        nav(attrs(".width-limit"),
+                            a().withId("logo").withHref("/").with(
+                                span(img().withSrc("/img/logo.svg").withAlt("j2html logo"))
+                            ),
+                            ul(
+                                li(a("Home").withHref("/")),
+                                li(a("Download").withHref("/download.html")),
+                                li(a("Examples").withHref("/examples.html")),
+                                li(a("News").withHref("/news.html"))
+                            )
+                        )
 
                     ),
                     header(attrs(".banner"),
-                           h1(attrs(".width-limit"), heading)
+                        h1(attrs(".width-limit"), heading)
                     ),
                     main(attrs(".width-limit"),
-                         tags //content from other template
+                        tags //content from other template
                     ),
                     div(attrs("#javalin-suggestion"), join(
                         span("✖").withClass("close"),
