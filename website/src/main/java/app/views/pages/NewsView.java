@@ -34,7 +34,7 @@ public class NewsView {
             mavenLink(version),
             p("Changes:"),
             ul(
-                each(list, TagCreator::li)
+                each(list, el -> TagCreator.li(el))
             ));
     }
 
