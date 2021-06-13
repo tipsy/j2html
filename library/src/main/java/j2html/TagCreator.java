@@ -11,12 +11,8 @@ import j2html.tags.Text;
 import j2html.tags.UnescapedText;
 import j2html.tags.specialized.*;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -120,6 +116,24 @@ public class TagCreator {
      */
     public static <T> DomContent each(Collection<T> collection, Function<? super T, DomContent> mapper) {
         return tag(null).with(collection.stream().map(mapper));
+    }
+
+    /**
+     * Creates a DomContent object containing HTML using a mapping BiFunction on a collection
+     * Intended usage: {@literal each(names, (index, name) -> li(index + " " + name))}
+     *
+     * @param <T>        The derived generic parameter type
+     * @param collection the collection to iterate over, ex: a list of values [ "Tom", "Dick", "Harry" ]
+     * @param mapper     the mapping BiFunction, ex: {@literal "(index, name) -> li(index + " " + name)"}
+     * @return DomContent containing mapped data {@literal (ex. docs: [li(0 Tom), li(1 Dick), li(2 Harry)])}
+     */
+    public static <T> DomContent each(Collection<T> collection, BiFunction<Integer, ? super T, DomContent> mapper) {
+        ContainerTag<?> dom = tag(null);
+        int i = 0;
+        for(T t : collection){
+            dom.with(mapper.apply(i++, t));
+        }
+        return dom;
     }
 
     public static <I, T> DomContent each(final Map<I, T> map, final Function<Entry<I, T>, DomContent> mapper) {
