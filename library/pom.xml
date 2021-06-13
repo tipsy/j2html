@@ -10,7 +10,7 @@
 
     <groupId>com.j2html</groupId>
     <artifactId>j2html</artifactId>
-    <version>1.4.1-SNAPSHOT</version>
+    <version>1.5.0</version>
 
     <name>j2html</name>
     <description>Java to HTML builder with a fluent API</description>
@@ -27,7 +27,7 @@
         <connection>scm:git:git@github.com:tipsy/j2html.git</connection>
         <developerConnection>scm:git:git@github.com:tipsy/j2html.git</developerConnection>
         <url>https://github.com/tipsy/j2html.git</url>
-        <tag>HEAD</tag>
+        <tag>j2html-1.5.0</tag>
     </scm>
     <developers>
         <developer>
