@@ -105,6 +105,20 @@ public class TagCreatorTest {
     }
 
     @Test
+    public void each_provides_the_collection_index_to_bifunctions(){
+        assertThat(
+            table(
+                each(employees, (index, employee) -> tr(
+                    td(Integer.toString(index)),
+                    td(employee.name),
+                    td(employee.title)
+                ))
+            ).render(),
+            is("<table><tr><td>0</td><td>Name 1</td><td>Title 1</td></tr><tr><td>1</td><td>Name 2</td><td>Title 2</td></tr><tr><td>2</td><td>Name 3</td><td>Title 3</td></tr></table>")
+        );
+    }
+
+    @Test
     public void testEachWithMap() {
         final String j2htmlMap = ul().with(
             li("Begin list"),
