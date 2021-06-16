@@ -165,6 +165,29 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.revapi</groupId>
+                <artifactId>revapi-maven-plugin</artifactId>
+                <version>0.14.3</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.revapi</groupId>
+                        <artifactId>revapi-java</artifactId>
+                        <version>0.24.2</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <oldArtifacts>
+                        <artifact>com.j2html:j2html:1.5.0</artifact>
+                    </oldArtifacts>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>check</id>
+                        <goals><goal>check</goal></goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
