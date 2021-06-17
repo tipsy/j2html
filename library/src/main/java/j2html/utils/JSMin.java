@@ -288,13 +288,13 @@ public class JSMin {
         out.flush();
     }
 
-    private class UnterminatedCommentException extends Exception {
+    public class UnterminatedCommentException extends Exception {
     }
 
-    private class UnterminatedStringLiteralException extends Exception {
+    public class UnterminatedStringLiteralException extends Exception {
     }
 
-    private class UnterminatedRegExpLiteralException extends Exception {
+    public class UnterminatedRegExpLiteralException extends Exception {
     }
 
 }
