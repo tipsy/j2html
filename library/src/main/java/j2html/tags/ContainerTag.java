@@ -2,11 +2,9 @@ package j2html.tags;
 
 import j2html.Config;
 import j2html.attributes.Attribute;
-import j2html.rendering.TagBuilder;
-import j2html.rendering.FlatHtml;
+import j2html.rendering.DefaultHtmlBuilder;
 import j2html.rendering.HtmlBuilder;
-import j2html.rendering.IndentedHtml;
-
+import j2html.rendering.TagBuilder;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -145,9 +143,10 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
      *
      * @return the rendered and formatted string
      */
+    @SuppressWarnings("deprecation")
     public String renderFormatted() {
         try {
-            return render(IndentedHtml.into(new StringBuilder(), Config.global())).toString();
+            return render(DefaultHtmlBuilder.withConfig(Config.global()).indented(true).inMemory()).toString();
         }catch (IOException e) {
             throw new RuntimeException(e.getMessage(), e);
         }
@@ -179,7 +178,7 @@ public class ContainerTag<T extends ContainerTag<T>> extends Tag<T> {
     public void renderModel(Appendable writer, Object model) throws IOException {
         HtmlBuilder<?> builder = (writer instanceof HtmlBuilder)
             ? (HtmlBuilder<?>) writer
-            : FlatHtml.into(writer, Config.global());
+            : DefaultHtmlBuilder.withConfig(Config.global()).into(writer);
 
         render(builder, model);
     }

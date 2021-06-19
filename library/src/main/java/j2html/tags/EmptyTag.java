@@ -2,10 +2,9 @@ package j2html.tags;
 
 import j2html.Config;
 import j2html.attributes.Attribute;
-import j2html.rendering.TagBuilder;
-import j2html.rendering.FlatHtml;
+import j2html.rendering.DefaultHtmlBuilder;
 import j2html.rendering.HtmlBuilder;
-
+import j2html.rendering.TagBuilder;
 import java.io.IOException;
 
 public class EmptyTag<T extends EmptyTag<T>> extends Tag<T> {
@@ -35,7 +34,7 @@ public class EmptyTag<T extends EmptyTag<T>> extends Tag<T> {
     public void renderModel(Appendable writer, Object model) throws IOException {
         HtmlBuilder<?> builder = (writer instanceof HtmlBuilder)
             ? (HtmlBuilder<?>) writer
-            : FlatHtml.into(writer, Config.global());
+            : DefaultHtmlBuilder.withConfig(Config.global()).into(writer);
 
         render(builder, model);
     }
