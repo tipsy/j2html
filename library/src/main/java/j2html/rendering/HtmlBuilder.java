@@ -7,6 +7,9 @@ import java.io.IOException;
  * Appendable, and support appending HTML-specific character
  * sequences to that Appendable.
  * <p>
+ * This library provides configurable implementations for flat and
+ * indented HTML, which can be obtained from the {@link DefaultHtmlBuilder}.
+ * <p>
  * Note:  HtmlBuilder extends Appendable for compatibility with
  * previous version of this library.  This extension will probably be
  * removed in the future, so avoid relying on the deprecated methods

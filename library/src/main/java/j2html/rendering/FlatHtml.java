@@ -9,7 +9,10 @@ import java.io.IOException;
  * Composes HTML without any extra line breaks or indentation.
  *
  * @param <T> The type of the Appendable to which HTML will be appended.
+ *
+ * @deprecated in favor of {@link DefaultHtmlBuilder}
  */
+// should be made package private in 2.0
 public class FlatHtml<T extends Appendable> implements HtmlBuilder<T> {
 
     /**
@@ -20,6 +23,7 @@ public class FlatHtml<T extends Appendable> implements HtmlBuilder<T> {
      * @param <T> The type of the Appendable to which HTML will be appended.
      * @return An HtmlBuilder for flat HTML.
      */
+    @Deprecated
     public static final <T extends Appendable> FlatHtml<T> into(T out) {
         return new FlatHtml<>(out, Config.defaults());
     }
@@ -43,6 +47,7 @@ public class FlatHtml<T extends Appendable> implements HtmlBuilder<T> {
      *
      * @return An HtmlBuilder for flat HTML.
      */
+    @Deprecated
     public static final FlatHtml<StringBuilder> inMemory() {
         return into(new StringBuilder());
     }
@@ -53,6 +58,7 @@ public class FlatHtml<T extends Appendable> implements HtmlBuilder<T> {
      * @param config The Config which will specify text escapement, tag closing, etc.
      * @return An HtmlBuilder for flat HTML.
      */
+    @Deprecated
     public static final FlatHtml<StringBuilder> inMemory(Config config) {
         return into(new StringBuilder(), config);
     }

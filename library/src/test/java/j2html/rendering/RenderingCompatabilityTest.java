@@ -68,7 +68,7 @@ public class RenderingCompatabilityTest {
 
         // Rendering with an HtmlBuilder defers to the original methods.
         assertThat(
-            dom.render(FlatHtml.inMemory(), "success").toString(),
+            dom.render(DefaultHtmlBuilder.inMemory(), "success").toString(),
             is("<div>success</div>")
         );
     }
@@ -85,19 +85,19 @@ public class RenderingCompatabilityTest {
         assertThat(stringBuilder.toString(), is(" mock=\"null\""));
 
         assertThat(
-            mock.render(FlatHtml.inMemory(), "success").toString(),
+            mock.render(DefaultHtmlBuilder.inMemory(), "success").toString(),
             is(" mock=\"success\"")
         );
 
         // In empty tags.
         assertThat(
-            input().attr(mock).render(FlatHtml.inMemory(), "success").toString(),
+            input().attr(mock).render(DefaultHtmlBuilder.inMemory(), "success").toString(),
             is("<input mock=\"success\">")
         );
 
         // In container tags.
         assertThat(
-            div().attr(mock).render(FlatHtml.inMemory(), "success").toString(),
+            div().attr(mock).render(DefaultHtmlBuilder.inMemory(), "success").toString(),
             is("<div mock=\"success\"></div>")
         );
     }

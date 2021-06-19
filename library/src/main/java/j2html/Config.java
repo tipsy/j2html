@@ -7,14 +7,14 @@ import j2html.utils.JSMin;
 import j2html.utils.Minifier;
 import j2html.utils.TextEscaper;
 
-import java.util.Collections;
-
 public class Config {
 
     /**
      * Change this to configure text-escaping
      * For example, to disable escaping, do <code>{@code Config.textEscaper = text -> text;}</code>
+     * @deprecated in favor of {@link j2html.rendering.DefaultHtmlBuilder#withTextEscaper(TextEscaper)}
      */
+    @Deprecated
     public static TextEscaper textEscaper = EscapeUtil::escape;
     /**
      * Change this to configure css-minification.
@@ -29,14 +29,18 @@ public class Config {
     /**
      * Change this to configure enable/disable closing empty tags
      * The default is to NOT close them
+     * @deprecated in favor of {@link j2html.rendering.DefaultHtmlBuilder#withEmptyTagsClosed(boolean)}
      */
+    @Deprecated
     public static boolean closeEmptyTags = false;
-    private static String FOUR_SPACES = "    ";
+
     /**
      * Change this to configure indentation when rendering formatted html
      * The default is four spaces
+     * @deprecated in favor of {@link j2html.rendering.DefaultHtmlBuilder#withIndenter(Indenter)}
      */
-    public static Indenter indenter = (level, text) -> String.join("", Collections.nCopies(level, FOUR_SPACES)) + text;
+    @Deprecated
+    public static Indenter indenter = Indenter.defaults();
 
 
     private TextEscaper _textEscaper;
@@ -93,6 +97,10 @@ public class Config {
         return _indenter;
     }
 
+    /**
+     * @deprecated in favor of {@link j2html.rendering.DefaultHtmlBuilder#withTextEscaper(TextEscaper)}
+     */
+    @Deprecated
     public Config withTextEscaper(TextEscaper textEscaper){
         Config copy = new Config(this);
         copy._textEscaper = textEscaper;
@@ -111,12 +119,20 @@ public class Config {
         return copy;
     }
 
+    /**
+     * @deprecated in favor of {@link j2html.rendering.DefaultHtmlBuilder#withEmptyTagsClosed(boolean)}
+     */
+    @Deprecated
     public Config withEmptyTagsClosed(boolean closeEmptyTags){
         Config copy = new Config(this);
         copy._closeEmptyTags = closeEmptyTags;
         return copy;
     }
 
+    /**
+     * @deprecated in favor of {@link j2html.rendering.DefaultHtmlBuilder#withIndenter(Indenter)}
+     */
+    @Deprecated
     public Config withIndenter(Indenter indenter){
         Config copy = new Config(this);
         copy._indenter = indenter;
@@ -128,7 +144,7 @@ public class Config {
         CSSMin::compressCss,
         JSMin::compressJs,
         false,
-        (level, text) -> String.join("", Collections.nCopies(level, FOUR_SPACES)) + text
+        Indenter.defaults()
     );
 
     public static final Config defaults() {

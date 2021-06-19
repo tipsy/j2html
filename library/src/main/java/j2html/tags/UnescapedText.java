@@ -1,9 +1,8 @@
 package j2html.tags;
 
 import j2html.Config;
-import j2html.rendering.FlatHtml;
+import j2html.rendering.DefaultHtmlBuilder;
 import j2html.rendering.HtmlBuilder;
-
 import java.io.IOException;
 
 public class UnescapedText extends DomContent {
@@ -25,7 +24,7 @@ public class UnescapedText extends DomContent {
     public void renderModel(Appendable writer, Object model) throws IOException {
         HtmlBuilder<?> builder = (writer instanceof HtmlBuilder)
             ? (HtmlBuilder<?>) writer
-            : FlatHtml.into(writer, Config.global());
+            : DefaultHtmlBuilder.withConfig(Config.global()).into(writer);
 
         render(builder, model);
     }
