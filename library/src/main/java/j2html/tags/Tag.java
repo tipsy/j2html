@@ -4,6 +4,7 @@ import j2html.attributes.Attr;
 import j2html.attributes.Attribute;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.StringTokenizer;
 
 public abstract class Tag<T extends Tag<T>> extends DomContent implements IInstance<T> {
     private final String tagName;
@@ -56,37 +57,88 @@ public abstract class Tag<T extends Tag<T>> extends DomContent implements IInsta
         setAttribute(attribute, value == null ? null : String.valueOf(value));
         return self();
     }
+
+    /**
+     * Sets a data prefixed attribute
+     *
+     * @param attribute the attribute name to be prefixed with "data-"
+     * @param value     the attribute value
+     * @return itself for easy chaining
+     */
+    public T dataAttr(String attribute, Object value) {
+        setAttribute("data-" + attribute, value == null ? null : String.valueOf(value));
+        return self();
+    }
+
     /**
      * appends a attribute value to an existing list of value/s
      *
-     * @param name the attribute name
-     * @param value     the attribute value
+     * @param name  the attribute name
+     * @param value the attribute value
      * @return itself for easy chaining
      */
     public T appendAttrValue(String name, String value) {
         if (value == null) {
             return self();
         }
-        if (attributes.size()==0){
-            attributes.add(new Attribute(name,value));
+        if (attributes.size() == 0) {
+            attributes.add(new Attribute(name, value));
             return self();
         }
         for (Attribute attribute : attributes) {
             if (attribute.getName().equals(name)) {
                 String attributeValue = attribute.getValue();
-                String [] attrValues = attributeValue.split(" ");
-               for (String attrValue :attrValues)
-               {
-                   if (value.equals(attrValue)){
-                       return self();
-                   }
-               }
-               attribute.setValue( attributeValue+" "+value);
+                StringTokenizer st = new StringTokenizer(attributeValue, " ");
+                while (st.hasMoreTokens()) {
+                    if (value.equals(st.nextToken())) {
+                        return self();
+                    }
+                }
+                attribute.setValue(attributeValue + " " + value);
+                break;
             }
         }
 
         return self();
     }
+
+    /**
+     * appends a attribute value to an existing list of value/s
+     *
+     * @param name  the attribute name
+     * @param value the attribute value
+     * @return itself for easy chaining
+     */
+    public T removeAttrValue(String name, String value) {
+        if (value == null) {
+            return self();
+        }
+        if (attributes.size() == 0) {
+            return self();
+        }
+        for (Attribute attribute : attributes) {
+            if (attribute.getName().equals(name)) {
+                String attributeValue = attribute.getValue();
+                StringTokenizer st = new StringTokenizer(attributeValue, " ");
+                StringBuilder newValue = new StringBuilder(attributeValue.length());
+                while (st.hasMoreTokens()) {
+                    String currentToken = st.nextToken();
+                    if (value.equals(currentToken)) {
+                        //skip
+                    } else {
+                        newValue.append(currentToken);
+                        if (st.hasMoreTokens())
+                            newValue.append(" ");
+                    }
+                }
+                attribute.setValue(newValue.toString());
+                break;
+            }
+        }
+
+        return self();
+    }
+
     /**
      * Adds the specified attribute. If the Tag previously contained an attribute with the same name, the old attribute is replaced by the specified attribute.
      *

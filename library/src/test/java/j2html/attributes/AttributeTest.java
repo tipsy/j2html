@@ -27,5 +27,42 @@ public class AttributeTest {
         testTag.attr("href", "http://example.org");
         assertThat(testTag.render(), is("<a href=\"http://example.org\"></a>"));
     }
+    @Test
+    public void testSetDataAttribute() throws Exception {
+        ContainerTag testTag = new ContainerTag("a");
+        testTag.dataAttr("href", "http://example.com");
+        testTag.dataAttr("href", "http://example.org");
+        assertThat(testTag.render(), is("<a data-href=\"http://example.org\"></a>"));
+    }
 
+    @Test
+    public void testAppendAttributeValue() throws Exception {
+        ContainerTag testTag = new ContainerTag("a");
+        testTag.appendAttrValue("class", null);
+        testTag.appendAttrValue("class", "css1");
+        testTag.appendAttrValue("class", "css2");
+        assertThat(testTag.render(), is("<a class=\"css1 css2\"></a>"));
+    }
+    @Test
+    public void testRemoveAttributeValue() throws Exception {
+        ContainerTag testTag = new ContainerTag("a");
+        testTag.appendAttrValue("class", "css1");
+        testTag.appendAttrValue("class", "css2");
+        testTag.appendAttrValue("class", "css3");
+        assertThat(testTag.render(), is("<a class=\"css1 css2 css3\"></a>"));
+        testTag.removeAttrValue("class", "css2");
+        assertThat(testTag.render(), is("<a class=\"css1 css3\"></a>"));
+    }
+    @Test
+    public void testRemoveAttributeValueFromEmpty() throws Exception {
+        ContainerTag testTag = new ContainerTag("a");
+        testTag.removeAttrValue("class", "css2");
+        assertThat(testTag.render(), is("<a></a>"));
+    }
+    @Test
+    public void testRemoveAttributeValueFromNotExisting() throws Exception {
+        ContainerTag testTag = new ContainerTag("a");
+        testTag.removeAttrValue("clazz", "css2");
+        assertThat(testTag.render(), is("<a></a>"));
+    }
 }
