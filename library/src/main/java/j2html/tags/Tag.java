@@ -56,7 +56,37 @@ public abstract class Tag<T extends Tag<T>> extends DomContent implements IInsta
         setAttribute(attribute, value == null ? null : String.valueOf(value));
         return self();
     }
+    /**
+     * appends a attribute value to an existing list of value/s
+     *
+     * @param name the attribute name
+     * @param value     the attribute value
+     * @return itself for easy chaining
+     */
+    public T appendAttrValue(String name, String value) {
+        if (value == null) {
+            return self();
+        }
+        if (attributes.size()==0){
+            attributes.add(new Attribute(name,value));
+            return self();
+        }
+        for (Attribute attribute : attributes) {
+            if (attribute.getName().equals(name)) {
+                String attributeValue = attribute.getValue();
+                String [] attrValues = attributeValue.split(" ");
+               for (String attrValue :attrValues)
+               {
+                   if (value.equals(attrValue)){
+                       return self();
+                   }
+               }
+               attribute.setValue( attributeValue+" "+value);
+            }
+        }
 
+        return self();
+    }
     /**
      * Adds the specified attribute. If the Tag previously contained an attribute with the same name, the old attribute is replaced by the specified attribute.
      *
