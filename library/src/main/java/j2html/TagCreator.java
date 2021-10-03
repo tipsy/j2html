@@ -762,6 +762,13 @@ public class TagCreator {
     public static PTag p (Attr.ShortForm shortAttr, String text)                    {  return Attr.addTo( new PTag().withText(text), shortAttr); }
     public static PTag p (Attr.ShortForm shortAttr, DomContent... dc)               {  return Attr.addTo( new PTag().with(dc), shortAttr); }
 
+    public static PictureTag picture ()                                             {  return new PictureTag(); }
+    public static PictureTag picture (String text)                                  {  return new PictureTag().withText(text); }
+    public static PictureTag picture (DomContent... dc)                             {  return new PictureTag().with(dc); }
+    public static PictureTag picture (Attr.ShortForm shortAttr)                     {  return Attr.addTo( new PictureTag(), shortAttr); }
+    public static PictureTag picture (Attr.ShortForm shortAttr, String text)        {  return Attr.addTo( new PictureTag().withText(text), shortAttr); }
+    public static PictureTag picture (Attr.ShortForm shortAttr, DomContent... dc)   {  return Attr.addTo( new PictureTag().with(dc), shortAttr); }
+
     public static PreTag pre ()                                                     {  return new PreTag(); }
     public static PreTag pre (String text)                                          {  return new PreTag().withText(text); }
     public static PreTag pre (DomContent... dc)                                     {  return new PreTag().with(dc); }

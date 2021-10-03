@@ -149,6 +149,7 @@ public final class TagCreatorCodeGenerator {
             "option",
             "output",
             "p",
+            "picture",
             "pre",
             "progress",
             "q",
