@@ -21,7 +21,7 @@ public class DownloadView {
                         join("Change return types from", code("Tag"), ",", code("ContainerTag"), "or", code("EmptyTag"), "to the specific tag being returned.")
                     ),
                     li(
-                        join("Change method calls from", code("withRole(\"value\")"), "to", code(".attr(\"role\", \"value\")"), ".")
+                        join("Change missing method calls on tags, such as", code("withRole(\"value\")"), "to", code(".attr(\"role\", \"value\")"), ".")
                     ),
                     li(
                         join("Method parameters of", code("Tag"), ",", code("ContainerTag"), "or", code("EmptyTag"), "should have a wildcard (&lt;?&gt;) added, or be changed to a specific tag.")
