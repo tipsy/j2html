@@ -45,8 +45,12 @@
 import static j2html.TagCreator.*; // Use static star import
 
 
-Config.class // Static config class which holds all configuration
-Config.closeEmptyTags = true // all options are public and static, assign using &#x27;=&#x27; operator
+Config.class // Holds all configuration.  Offers global configuration or customizable instances
+Config.closeEmptyTags = true // Global options are public, static and mutable.
+Config.global() // Copy all static Config fields into an instance.  Instances are immutable
+Config.defaults() // A Config with defaults that are independent of global options
+Config.global().withEmptyTagsClosed(true) // A Config that is different from the global options
+Config.defaults().withEmptyTagsClosed(true) // A Config that is different from the default options
 
 
 TagCreator.join() // Method for joining small snippets, like:
@@ -64,6 +68,17 @@ div().withClasses(&quot;menu-element&quot;, iffElse(isActive, &quot;active&quot;
 Tag.class // Is extended by ContainerTag (ex &lt;div&gt;&lt;/div&gt; and EmptyTag (ex &lt;br&gt;)
 Tag.attr(String attribute, Object value) // Set an attribute on the tag
 Tag.withXyz(String value) // Calls attr with predefined attribute (ex .withId, .withClass, etc.)
+Tag.render(HtmlBuilder builder) // Render HTML using the given builder.
+Tag.render() // Shortcut for rendering flat HTML into a string using global Config.
+ContainerTag.renderFormatted() // Shortcut for rendering indented HTML into a string using global Config.
+
+HtmlBuilder.class // Interface for composing HTML. Implemented by FlatHtml and IndentedHtml
+FlatHtml.into(Appendable) // Render into a stream, file, etc. without indentation or line breaks
+FlatHtml.into(Appendable appendable, Config config) // Customize rendering of flat html
+IndentedHtml.into(Appendable) // Render human-readable HTML into an stream, file, etc.
+IndentedHtml.into(Appendable appendable, Config config) // Customize rendering of intended html
+ul(li(&quot;one&quot;), li(&quot;two&quot;)).render(IndentedHtml.inMemory()).toString() // Similar to renderFormatted()
+ul(li(&quot;one&quot;), li(&quot;two&quot;)).render(IndentedHtml.into(filewriter)) // Write HTML into a file
 </code></pre><h2 id="loops">Loops, each() and filter()</h2><p>Using Java 8&#x27;s lambda syntax, you can write loops (via streams) inside your HTML-builder:</p><div class="code-compare nowith"><ul><li class="nowith-switch active">version 1.0.0 +</li><li class="with-switch">earlier versions</li></ul><pre class="nowith-pre"><code class="language-java">body(
     div(attrs(&quot;#employees&quot;),
         employees.stream().map(employee -&gt;
