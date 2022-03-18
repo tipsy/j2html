@@ -10,7 +10,7 @@ Website is available on http://localhost:8888/.
 In order to "deploy" the website, the static files in the `j2html/docs` must be updated.
 You can either download the files manually from your browser, or use curl:
 
-```
+```sh
 curl "http://localhost:8888/" > index.html
 curl "http://localhost:8888/download.html" > download.html
 curl "http://localhost:8888/examples.html" > examples.html
