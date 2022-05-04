@@ -63,7 +63,7 @@ public final class TagCreatorCodeGenerator {
     }
 
     //  This is a method that contains all ContainerTags, there is nothing below it
-    static List<String> emptyTags() {
+    public static List<String> emptyTags() {
         return Arrays.asList(
             "area",
             "base",
@@ -84,7 +84,7 @@ public final class TagCreatorCodeGenerator {
         );
     }
 
-    static List<String> containerTags() {
+    public static List<String> containerTags() {
         return Arrays.asList(
             "a",
             "abbr",
