@@ -222,6 +222,7 @@ public class TagCreatorTest {
         assertThat(cite("Text").render(), is("<cite>Text</cite>"));
         assertThat(code().render(), is("<code></code>"));
         assertThat(colgroup().render(), is("<colgroup></colgroup>"));
+        assertThat(data().render(), is("<data></data>"));
         assertThat(datalist().render(), is("<datalist></datalist>"));
         assertThat(dd().render(), is("<dd></dd>"));
         assertThat(dd("Text").render(), is("<dd>Text</dd>"));
@@ -287,6 +288,7 @@ public class TagCreatorTest {
         assertThat(output().render(), is("<output></output>"));
         assertThat(p().render(), is("<p></p>"));
         assertThat(p("Text").render(), is("<p>Text</p>"));
+        assertThat(picture().render(), is("<picture></picture>"));
         assertThat(pre().render(), is("<pre></pre>"));
         assertThat(progress().render(), is("<progress></progress>"));
         assertThat(q().render(), is("<q></q>"));
@@ -300,6 +302,8 @@ public class TagCreatorTest {
         assertThat(script().render(), is("<script></script>"));
         assertThat(section().render(), is("<section></section>"));
         assertThat(select().render(), is("<select></select>"));
+        assertThat(slot().render(), is("<slot></slot>"));
+        assertThat(slot("Text").render(), is("<slot>Text</slot>"));
         assertThat(small().render(), is("<small></small>"));
         assertThat(small("Text").render(), is("<small>Text</small>"));
         assertThat(span().render(), is("<span></span>"));
@@ -317,6 +321,7 @@ public class TagCreatorTest {
         assertThat(tbody().render(), is("<tbody></tbody>"));
         assertThat(td().render(), is("<td></td>"));
         assertThat(td("Text").render(), is("<td>Text</td>"));
+        assertThat(template("Text").render(), is("<template>Text</template>"));
         assertThat(textarea().render(), is("<textarea></textarea>"));
         assertThat(tfoot().render(), is("<tfoot></tfoot>"));
         assertThat(th().render(), is("<th></th>"));

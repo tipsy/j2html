@@ -162,7 +162,11 @@ public abstract class Tag<T extends Tag<T>> extends DomContent implements IInsta
 
     public T withId(String id) { return attr(Attr.ID, id); }
 
+    public T withIs(String element){ return attr(Attr.IS, element); }
+
     public T withLang(String lang) { return attr(Attr.LANG, lang); }
+
+    public T withSlot(String name){ return attr(Attr.SLOT, name); }
 
     public T isSpellcheck(){ return attr(Attr.SPELLCHECK, "true"); }
 
@@ -191,7 +195,11 @@ public abstract class Tag<T extends Tag<T>> extends DomContent implements IInsta
 
     public T withCondId(boolean condition, String id) { return condAttr(condition, Attr.ID, id); }
 
+    public T withCondIs(boolean condition, String element){ return condAttr(condition, Attr.IS, element); }
+
     public T withCondLang(boolean condition, String lang) { return condAttr(condition, Attr.LANG, lang); }
+
+    public T withCondSlot(boolean condition, String name){ return condAttr(condition, Attr.SLOT, name); }
 
     public T withCondSpellcheck(boolean condition){ return attr(Attr.SPELLCHECK, (condition)?"true":"false"); }
 

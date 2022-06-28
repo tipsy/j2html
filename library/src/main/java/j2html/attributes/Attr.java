@@ -53,6 +53,7 @@ public abstract class Attr {
     public static final String HTTP_EQUIV = "http-equiv";
     public static final String ICON = "icon";
     public static final String ID = "id";
+    public static final String IS = "is";
     public static final String ISMAP = "ismap";
     public static final String ITEMPROP = "itemprop";
     public static final String KEYTYPE = "keytype";
@@ -96,6 +97,7 @@ public abstract class Attr {
     public static final String SHAPE = "shape";
     public static final String SIZE = "size";
     public static final String SIZES = "sizes";
+    public static final String SLOT = "slot";
     public static final String SPAN = "span";
     public static final String SPELLCHECK = "spellcheck";
     public static final String SRC = "src";
