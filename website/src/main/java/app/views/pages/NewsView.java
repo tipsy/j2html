@@ -41,6 +41,17 @@ public class NewsView {
             section(attrs("#news"),
 
                 newsPost(
+                    "j2html 1.6.0 adds support for web components and newer HTML elements. (Jun 2022)",
+                    "1.6.0",
+                    false,
+                    join("Added", code("TagCreator::data"), "to provide machine-readable translations."),
+                    join("Added", code("TagCreator::picture"), "to provide alternative versions of an image for different display/device scenarios."),
+                    join("Added", code("TagCreator::slot"), "to provide placeholders for web components."),
+                    join("Added", code("TagCreator::template"), "to provide templating of content fragments for web components."),
+                    join("Added global attributes used for web components.")
+                ),
+
+                newsPost(
                     "j2html 1.5.0 enhances factory methods and class types, overhauls HTML rendering, introduces support for Java modules and fixes several bugs (Jun 2021)",
                     "1.5.0",
                     true,

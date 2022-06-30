@@ -461,6 +461,13 @@ public class TagCreator {
     public static ColgroupTag colgroup (Attr.ShortForm shortAttr, String text)      {  return Attr.addTo( new ColgroupTag().withText(text), shortAttr); }
     public static ColgroupTag colgroup (Attr.ShortForm shortAttr, DomContent... dc) {  return Attr.addTo( new ColgroupTag().with(dc), shortAttr); }
 
+    public static DataTag data ()                                           {  return new DataTag(); }
+    public static DataTag data (String text)                                {  return new DataTag().withText(text); }
+    public static DataTag data (DomContent... dc)                           {  return new DataTag().with(dc); }
+    public static DataTag data (Attr.ShortForm shortAttr)                   {  return Attr.addTo( new DataTag(), shortAttr); }
+    public static DataTag data (Attr.ShortForm shortAttr, String text)      {  return Attr.addTo( new DataTag().withText(text), shortAttr); }
+    public static DataTag data (Attr.ShortForm shortAttr, DomContent... dc) {  return Attr.addTo( new DataTag().with(dc), shortAttr); }
+
     public static DatalistTag datalist ()                                           {  return new DatalistTag(); }
     public static DatalistTag datalist (String text)                                {  return new DatalistTag().withText(text); }
     public static DatalistTag datalist (DomContent... dc)                           {  return new DatalistTag().with(dc); }
@@ -846,6 +853,13 @@ public class TagCreator {
     public static SelectTag select (Attr.ShortForm shortAttr, String text)          {  return Attr.addTo( new SelectTag().withText(text), shortAttr); }
     public static SelectTag select (Attr.ShortForm shortAttr, DomContent... dc)     {  return Attr.addTo( new SelectTag().with(dc), shortAttr); }
 
+    public static SlotTag slot ()                                                 {  return new SlotTag(); }
+    public static SlotTag slot (String text)                                      {  return new SlotTag().withText(text); }
+    public static SlotTag slot (DomContent... dc)                                 {  return new SlotTag().with(dc); }
+    public static SlotTag slot (Attr.ShortForm shortAttr)                         {  return Attr.addTo( new SlotTag(), shortAttr); }
+    public static SlotTag slot (Attr.ShortForm shortAttr, String text)            {  return Attr.addTo( new SlotTag().withText(text), shortAttr); }
+    public static SlotTag slot (Attr.ShortForm shortAttr, DomContent... dc)       {  return Attr.addTo( new SlotTag().with(dc), shortAttr); }
+
     public static SmallTag small ()                                                 {  return new SmallTag(); }
     public static SmallTag small (String text)                                      {  return new SmallTag().withText(text); }
     public static SmallTag small (DomContent... dc)                                 {  return new SmallTag().with(dc); }
@@ -915,6 +929,13 @@ public class TagCreator {
     public static TdTag td (Attr.ShortForm shortAttr)                               {  return Attr.addTo( new TdTag(), shortAttr); }
     public static TdTag td (Attr.ShortForm shortAttr, String text)                  {  return Attr.addTo( new TdTag().withText(text), shortAttr); }
     public static TdTag td (Attr.ShortForm shortAttr, DomContent... dc)             {  return Attr.addTo( new TdTag().with(dc), shortAttr); }
+
+    public static TemplateTag template ()                                           {  return new TemplateTag(); }
+    public static TemplateTag template (String text)                                {  return new TemplateTag().withText(text); }
+    public static TemplateTag template (DomContent... dc)                           {  return new TemplateTag().with(dc); }
+    public static TemplateTag template (Attr.ShortForm shortAttr)                   {  return Attr.addTo( new TemplateTag(), shortAttr); }
+    public static TemplateTag template (Attr.ShortForm shortAttr, String text)      {  return Attr.addTo( new TemplateTag().withText(text), shortAttr); }
+    public static TemplateTag template (Attr.ShortForm shortAttr, DomContent... dc) {  return Attr.addTo( new TemplateTag().with(dc), shortAttr); }
 
     public static TextareaTag textarea ()                                           {  return new TextareaTag(); }
     public static TextareaTag textarea (String text)                                {  return new TextareaTag().withText(text); }

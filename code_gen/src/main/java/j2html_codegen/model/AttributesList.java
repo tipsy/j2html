@@ -80,7 +80,7 @@ public final class AttributesList {
             new AttrD("min", true, "input","meter"),
             new AttrD("multiple", false, "input","select"),
             new AttrD("muted", false, "video","audio"),
-            new AttrD("name", true, "button","fieldset","form","iframe","input","map","meta","object","output","param","select","textarea"),
+            new AttrD("name", true, "button","fieldset","form","iframe","input","map","meta","object","output","param","select","slot","textarea"),
             new AttrD("novalidate", false, "form"),
             new AttrD("onabort", true, "audio","embed","img","object","video"),
             new AttrD("onafterprint", true, "body"),
@@ -174,7 +174,7 @@ public final class AttributesList {
             //new AttrD("translate"),// global attribute
             new AttrD("type", true, "a","button","embed","input","link","menu","object","script","source","style"),
             new AttrD("usemap", true, "img","object"),
-            new AttrD("value", true, "button","input","li","option","meter","progress","param"),
+            new AttrD("value", true, "button","data","input","li","option","meter","progress","param"),
             new AttrD("width", true, "canvas","embed","iframe","img","input","object","video"),
             new AttrD("wrap", true, "textarea")
         );
