@@ -178,7 +178,7 @@
                 </dependencies>
                 <configuration>
                     <oldArtifacts>
-                        <artifact>com.j2html:j2html:1.5.0</artifact>
+                        <artifact>com.j2html:j2html:1.6.0</artifact>
                     </oldArtifacts>
                     <analysisConfiguration>
                         <revapi.differences>
