@@ -73,6 +73,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.javascript</groupId>
+            <artifactId>closure-compiler</artifactId>
+            <version>v20211006</version>
+        </dependency>
     </dependencies>
 
     <packaging>jar</packaging>
