@@ -1,9 +1,8 @@
 package j2html.tags;
 
 import j2html.Config;
-import j2html.rendering.FlatHtml;
+import j2html.rendering.DefaultHtmlBuilder;
 import j2html.rendering.HtmlBuilder;
-
 import java.io.IOException;
 import java.io.UncheckedIOException;
 
@@ -42,9 +41,10 @@ public interface Renderable {
      * Create a StringBuilder and use it to render the Renderable and it's
      * children
      */
+    @SuppressWarnings("deprecation")
     default String render() {
         try {
-            return render(FlatHtml.into(new StringBuilder(), Config.global())).toString();
+            return render(DefaultHtmlBuilder.withConfig(Config.global()).inMemory()).toString();
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
@@ -60,7 +60,7 @@ public interface Renderable {
         if (writer instanceof HtmlBuilder) {
             render((HtmlBuilder<? extends Appendable>) writer);
         } else {
-            render(FlatHtml.into(writer, Config.global()));
+            render(DefaultHtmlBuilder.withConfig(Config.global()).into(writer));
         }
     }
 

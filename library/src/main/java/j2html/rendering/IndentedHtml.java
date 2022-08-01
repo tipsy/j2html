@@ -12,7 +12,10 @@ import java.util.Deque;
  * Composes HTML with lines breaks and indentation between tags and text.
  *
  * @param <T> The type of the Appendable to which HTML will be appended.
+ *
+ * @deprecated in favor of {@link DefaultHtmlBuilder}
  */
+// should be made package private in 2.0
 public class IndentedHtml<T extends Appendable> implements HtmlBuilder<T> {
 
     /**
@@ -23,6 +26,7 @@ public class IndentedHtml<T extends Appendable> implements HtmlBuilder<T> {
      * @param <T> The type of the Appendable to which HTML will be appended.
      * @return An HtmlBuilder for indented HTML.
      */
+    @Deprecated
     public static final <T extends Appendable> IndentedHtml<T> into(T out) {
         return new IndentedHtml<>(out, Config.defaults());
     }
@@ -46,6 +50,7 @@ public class IndentedHtml<T extends Appendable> implements HtmlBuilder<T> {
      *
      * @return An HtmlBuilder for indented HTML.
      */
+    @Deprecated
     public static final IndentedHtml<StringBuilder> inMemory() {
         return into(new StringBuilder());
     }
@@ -57,6 +62,7 @@ public class IndentedHtml<T extends Appendable> implements HtmlBuilder<T> {
      * @param config The Config which will specify indentation, text escapement, tag closing, etc.
      * @return An HtmlBuilder for indented HTML.
      */
+    @Deprecated
     public static final IndentedHtml<StringBuilder> inMemory(Config config) {
         return into(new StringBuilder(), config);
     }
