@@ -191,17 +191,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
                     <version>3.2.2</version>
-                    <configuration>
-                        <archive>
-                            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-                            <manifest>
-                                <addClasspath>true</addClasspath>
-                            </manifest>
-                            <manifestEntries>
-                                <Automatic-Module-Name>com.j2html</Automatic-Module-Name>
-                            </manifestEntries>
-                        </archive>
-                    </configuration>
                 </plugin>
 
                 <plugin>
