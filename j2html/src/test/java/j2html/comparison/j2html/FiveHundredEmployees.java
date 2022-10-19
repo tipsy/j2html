@@ -6,13 +6,14 @@ import j2html.tags.specialized.UlTag;
 import static j2html.TagCreator.each;
 import static j2html.TagCreator.li;
 import static j2html.TagCreator.ul;
-import static org.apache.commons.lang3.StringUtils.join;
+import static java.lang.String.join;
+import static java.lang.String.valueOf;
 
 public class FiveHundredEmployees {
 
     public static UlTag tag = ul(
         each(ComparisonData.fiveHundredEmployees(), employee ->
-            li(join(employee.getId(), employee.getName(), employee.getTitle()))
+            li(join(" ", valueOf(employee.getId()), employee.getName(), employee.getTitle()))
         )
     );
 
