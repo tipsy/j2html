@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>j2html-codegen</artifactId>
+    <packaging>pom</packaging>
 
     <name>j2html-codegen</name>
 
