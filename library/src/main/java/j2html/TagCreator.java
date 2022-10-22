@@ -27,9 +27,12 @@ public class TagCreator {
     /**
      * Generic if-expression to do if'ing inside method calls
      *
-     * @param <T>       The derived generic parameter type
-     * @param condition the condition to if-on
-     * @param ifValue   the value to return if condition is true
+     * @param <T>
+     *     The derived generic parameter type
+     * @param condition
+     *     the condition to if-on
+     * @param ifValue
+     *     the value to return if condition is true
      * @return value if condition is true, null otherwise
      */
     public static <T> T iff(boolean condition, T ifValue) {
@@ -39,10 +42,14 @@ public class TagCreator {
     /**
      * Generic if-expression to if'ing inside method calls
      *
-     * @param optional   The item that may be present
-     * @param ifFunction The function that will be called if that optional is present
-     * @param <T>        The derived generic parameter type
-     * @param <U>        The supplying generic parameter type
+     * @param optional
+     *     The item that may be present
+     * @param ifFunction
+     *     The function that will be called if that optional is present
+     * @param <T>
+     *     The derived generic parameter type
+     * @param <U>
+     *     The supplying generic parameter type
      * @return transformed value if condition is true, null otherwise
      */
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
@@ -302,7 +309,7 @@ public class TagCreator {
         return Attr.addTo(new HeadTag().with(dc), shortAttr);
     }
 
-    // EmptyTags, generated in class j2html.tags.generators.TagCreatorCodeGenerator
+    // EmptyTags, generated in class j2html_codegen.generators.TagCreatorCodeGenerator
     public static AreaTag area ()                                                   { return  new AreaTag(); }
     public static AreaTag area (Attr.ShortForm shortAttr)                           {  return Attr.addTo( new AreaTag(), shortAttr); }
 
@@ -348,7 +355,7 @@ public class TagCreator {
     public static WbrTag wbr ()                                                     { return  new WbrTag(); }
     public static WbrTag wbr (Attr.ShortForm shortAttr)                             {  return Attr.addTo( new WbrTag(), shortAttr); }
 
-    // ContainerTags, generated in class j2html.tags.generators.TagCreatorCodeGenerator
+    // ContainerTags, generated in class j2html_codegen.generators.TagCreatorCodeGenerator
     public static ATag a ()                                                         {  return new ATag(); }
     public static ATag a (String text)                                              {  return new ATag().withText(text); }
     public static ATag a (DomContent... dc)                                         {  return new ATag().with(dc); }
@@ -369,6 +376,13 @@ public class TagCreator {
     public static AddressTag address (Attr.ShortForm shortAttr)                     {  return Attr.addTo( new AddressTag(), shortAttr); }
     public static AddressTag address (Attr.ShortForm shortAttr, String text)        {  return Attr.addTo( new AddressTag().withText(text), shortAttr); }
     public static AddressTag address (Attr.ShortForm shortAttr, DomContent... dc)   {  return Attr.addTo( new AddressTag().with(dc), shortAttr); }
+
+    public static AnnotationTag annotation ()                                       {  return new AnnotationTag(); }
+    public static AnnotationTag annotation (String text)                            {  return new AnnotationTag().withText(text); }
+    public static AnnotationTag annotation (DomContent... dc)                       {  return new AnnotationTag().with(dc); }
+    public static AnnotationTag annotation (Attr.ShortForm shortAttr)               {  return Attr.addTo( new AnnotationTag(), shortAttr); }
+    public static AnnotationTag annotation (Attr.ShortForm shortAttr, String text)  {  return Attr.addTo( new AnnotationTag().withText(text), shortAttr); }
+    public static AnnotationTag annotation (Attr.ShortForm shortAttr, DomContent... dc){  return Attr.addTo( new AnnotationTag().with(dc), shortAttr); }
 
     public static ArticleTag article ()                                             {  return new ArticleTag(); }
     public static ArticleTag article (String text)                                  {  return new ArticleTag().withText(text); }
@@ -461,12 +475,12 @@ public class TagCreator {
     public static ColgroupTag colgroup (Attr.ShortForm shortAttr, String text)      {  return Attr.addTo( new ColgroupTag().withText(text), shortAttr); }
     public static ColgroupTag colgroup (Attr.ShortForm shortAttr, DomContent... dc) {  return Attr.addTo( new ColgroupTag().with(dc), shortAttr); }
 
-    public static DataTag data ()                                           {  return new DataTag(); }
-    public static DataTag data (String text)                                {  return new DataTag().withText(text); }
-    public static DataTag data (DomContent... dc)                           {  return new DataTag().with(dc); }
-    public static DataTag data (Attr.ShortForm shortAttr)                   {  return Attr.addTo( new DataTag(), shortAttr); }
-    public static DataTag data (Attr.ShortForm shortAttr, String text)      {  return Attr.addTo( new DataTag().withText(text), shortAttr); }
-    public static DataTag data (Attr.ShortForm shortAttr, DomContent... dc) {  return Attr.addTo( new DataTag().with(dc), shortAttr); }
+    public static DataTag data ()                                                   {  return new DataTag(); }
+    public static DataTag data (String text)                                        {  return new DataTag().withText(text); }
+    public static DataTag data (DomContent... dc)                                   {  return new DataTag().with(dc); }
+    public static DataTag data (Attr.ShortForm shortAttr)                           {  return Attr.addTo( new DataTag(), shortAttr); }
+    public static DataTag data (Attr.ShortForm shortAttr, String text)              {  return Attr.addTo( new DataTag().withText(text), shortAttr); }
+    public static DataTag data (Attr.ShortForm shortAttr, DomContent... dc)         {  return Attr.addTo( new DataTag().with(dc), shortAttr); }
 
     public static DatalistTag datalist ()                                           {  return new DatalistTag(); }
     public static DatalistTag datalist (String text)                                {  return new DatalistTag().withText(text); }
@@ -671,6 +685,13 @@ public class TagCreator {
     public static LiTag li (Attr.ShortForm shortAttr, String text)                  {  return Attr.addTo( new LiTag().withText(text), shortAttr); }
     public static LiTag li (Attr.ShortForm shortAttr, DomContent... dc)             {  return Attr.addTo( new LiTag().with(dc), shortAttr); }
 
+    public static MactionTag maction ()                                             {  return new MactionTag(); }
+    public static MactionTag maction (String text)                                  {  return new MactionTag().withText(text); }
+    public static MactionTag maction (DomContent... dc)                             {  return new MactionTag().with(dc); }
+    public static MactionTag maction (Attr.ShortForm shortAttr)                     {  return Attr.addTo( new MactionTag(), shortAttr); }
+    public static MactionTag maction (Attr.ShortForm shortAttr, String text)        {  return Attr.addTo( new MactionTag().withText(text), shortAttr); }
+    public static MactionTag maction (Attr.ShortForm shortAttr, DomContent... dc)   {  return Attr.addTo( new MactionTag().with(dc), shortAttr); }
+
     public static MainTag main ()                                                   {  return new MainTag(); }
     public static MainTag main (String text)                                        {  return new MainTag().withText(text); }
     public static MainTag main (DomContent... dc)                                   {  return new MainTag().with(dc); }
@@ -692,6 +713,13 @@ public class TagCreator {
     public static MarkTag mark (Attr.ShortForm shortAttr, String text)              {  return Attr.addTo( new MarkTag().withText(text), shortAttr); }
     public static MarkTag mark (Attr.ShortForm shortAttr, DomContent... dc)         {  return Attr.addTo( new MarkTag().with(dc), shortAttr); }
 
+    public static MathTag math ()                                                   {  return new MathTag(); }
+    public static MathTag math (String text)                                        {  return new MathTag().withText(text); }
+    public static MathTag math (DomContent... dc)                                   {  return new MathTag().with(dc); }
+    public static MathTag math (Attr.ShortForm shortAttr)                           {  return Attr.addTo( new MathTag(), shortAttr); }
+    public static MathTag math (Attr.ShortForm shortAttr, String text)              {  return Attr.addTo( new MathTag().withText(text), shortAttr); }
+    public static MathTag math (Attr.ShortForm shortAttr, DomContent... dc)         {  return Attr.addTo( new MathTag().with(dc), shortAttr); }
+
     public static MenuTag menu ()                                                   {  return new MenuTag(); }
     public static MenuTag menu (String text)                                        {  return new MenuTag().withText(text); }
     public static MenuTag menu (DomContent... dc)                                   {  return new MenuTag().with(dc); }
@@ -706,6 +734,13 @@ public class TagCreator {
     public static MenuitemTag menuitem (Attr.ShortForm shortAttr, String text)      {  return Attr.addTo( new MenuitemTag().withText(text), shortAttr); }
     public static MenuitemTag menuitem (Attr.ShortForm shortAttr, DomContent... dc) {  return Attr.addTo( new MenuitemTag().with(dc), shortAttr); }
 
+    public static MerrorTag merror ()                                               {  return new MerrorTag(); }
+    public static MerrorTag merror (String text)                                    {  return new MerrorTag().withText(text); }
+    public static MerrorTag merror (DomContent... dc)                               {  return new MerrorTag().with(dc); }
+    public static MerrorTag merror (Attr.ShortForm shortAttr)                       {  return Attr.addTo( new MerrorTag(), shortAttr); }
+    public static MerrorTag merror (Attr.ShortForm shortAttr, String text)          {  return Attr.addTo( new MerrorTag().withText(text), shortAttr); }
+    public static MerrorTag merror (Attr.ShortForm shortAttr, DomContent... dc)     {  return Attr.addTo( new MerrorTag().with(dc), shortAttr); }
+
     public static MeterTag meter ()                                                 {  return new MeterTag(); }
     public static MeterTag meter (String text)                                      {  return new MeterTag().withText(text); }
     public static MeterTag meter (DomContent... dc)                                 {  return new MeterTag().with(dc); }
@@ -713,12 +748,187 @@ public class TagCreator {
     public static MeterTag meter (Attr.ShortForm shortAttr, String text)            {  return Attr.addTo( new MeterTag().withText(text), shortAttr); }
     public static MeterTag meter (Attr.ShortForm shortAttr, DomContent... dc)       {  return Attr.addTo( new MeterTag().with(dc), shortAttr); }
 
+    public static MfracTag mfrac ()                                                 {  return new MfracTag(); }
+    public static MfracTag mfrac (String text)                                      {  return new MfracTag().withText(text); }
+    public static MfracTag mfrac (DomContent... dc)                                 {  return new MfracTag().with(dc); }
+    public static MfracTag mfrac (Attr.ShortForm shortAttr)                         {  return Attr.addTo( new MfracTag(), shortAttr); }
+    public static MfracTag mfrac (Attr.ShortForm shortAttr, String text)            {  return Attr.addTo( new MfracTag().withText(text), shortAttr); }
+    public static MfracTag mfrac (Attr.ShortForm shortAttr, DomContent... dc)       {  return Attr.addTo( new MfracTag().with(dc), shortAttr); }
+
+    public static MiTag mi ()                                                       {  return new MiTag(); }
+    public static MiTag mi (String text)                                            {  return new MiTag().withText(text); }
+    public static MiTag mi (DomContent... dc)                                       {  return new MiTag().with(dc); }
+    public static MiTag mi (Attr.ShortForm shortAttr)                               {  return Attr.addTo( new MiTag(), shortAttr); }
+    public static MiTag mi (Attr.ShortForm shortAttr, String text)                  {  return Attr.addTo( new MiTag().withText(text), shortAttr); }
+    public static MiTag mi (Attr.ShortForm shortAttr, DomContent... dc)             {  return Attr.addTo( new MiTag().with(dc), shortAttr); }
+
+    public static MmultiscriptsTag mmultiscripts ()                                 {  return new MmultiscriptsTag(); }
+    public static MmultiscriptsTag mmultiscripts (String text)                      {  return new MmultiscriptsTag().withText(text); }
+    public static MmultiscriptsTag mmultiscripts (DomContent... dc)                 {  return new MmultiscriptsTag().with(dc); }
+    public static MmultiscriptsTag mmultiscripts (Attr.ShortForm shortAttr)         {  return Attr.addTo( new MmultiscriptsTag(), shortAttr); }
+    public static MmultiscriptsTag mmultiscripts (Attr.ShortForm shortAttr, String text){  return Attr.addTo( new MmultiscriptsTag().withText(text), shortAttr); }
+    public static MmultiscriptsTag mmultiscripts (Attr.ShortForm shortAttr, DomContent... dc){  return Attr.addTo( new MmultiscriptsTag().with(dc), shortAttr); }
+
+    public static MnTag mn ()                                                       {  return new MnTag(); }
+    public static MnTag mn (String text)                                            {  return new MnTag().withText(text); }
+    public static MnTag mn (DomContent... dc)                                       {  return new MnTag().with(dc); }
+    public static MnTag mn (Attr.ShortForm shortAttr)                               {  return Attr.addTo( new MnTag(), shortAttr); }
+    public static MnTag mn (Attr.ShortForm shortAttr, String text)                  {  return Attr.addTo( new MnTag().withText(text), shortAttr); }
+    public static MnTag mn (Attr.ShortForm shortAttr, DomContent... dc)             {  return Attr.addTo( new MnTag().with(dc), shortAttr); }
+
+    public static MoTag mo ()                                                       {  return new MoTag(); }
+    public static MoTag mo (String text)                                            {  return new MoTag().withText(text); }
+    public static MoTag mo (DomContent... dc)                                       {  return new MoTag().with(dc); }
+    public static MoTag mo (Attr.ShortForm shortAttr)                               {  return Attr.addTo( new MoTag(), shortAttr); }
+    public static MoTag mo (Attr.ShortForm shortAttr, String text)                  {  return Attr.addTo( new MoTag().withText(text), shortAttr); }
+    public static MoTag mo (Attr.ShortForm shortAttr, DomContent... dc)             {  return Attr.addTo( new MoTag().with(dc), shortAttr); }
+
+    public static MoverTag mover ()                                                 {  return new MoverTag(); }
+    public static MoverTag mover (String text)                                      {  return new MoverTag().withText(text); }
+    public static MoverTag mover (DomContent... dc)                                 {  return new MoverTag().with(dc); }
+    public static MoverTag mover (Attr.ShortForm shortAttr)                         {  return Attr.addTo( new MoverTag(), shortAttr); }
+    public static MoverTag mover (Attr.ShortForm shortAttr, String text)            {  return Attr.addTo( new MoverTag().withText(text), shortAttr); }
+    public static MoverTag mover (Attr.ShortForm shortAttr, DomContent... dc)       {  return Attr.addTo( new MoverTag().with(dc), shortAttr); }
+
+    public static MpaddedTag mpadded ()                                             {  return new MpaddedTag(); }
+    public static MpaddedTag mpadded (String text)                                  {  return new MpaddedTag().withText(text); }
+    public static MpaddedTag mpadded (DomContent... dc)                             {  return new MpaddedTag().with(dc); }
+    public static MpaddedTag mpadded (Attr.ShortForm shortAttr)                     {  return Attr.addTo( new MpaddedTag(), shortAttr); }
+    public static MpaddedTag mpadded (Attr.ShortForm shortAttr, String text)        {  return Attr.addTo( new MpaddedTag().withText(text), shortAttr); }
+    public static MpaddedTag mpadded (Attr.ShortForm shortAttr, DomContent... dc)   {  return Attr.addTo( new MpaddedTag().with(dc), shortAttr); }
+
+    public static MphantomTag mphantom ()                                           {  return new MphantomTag(); }
+    public static MphantomTag mphantom (String text)                                {  return new MphantomTag().withText(text); }
+    public static MphantomTag mphantom (DomContent... dc)                           {  return new MphantomTag().with(dc); }
+    public static MphantomTag mphantom (Attr.ShortForm shortAttr)                   {  return Attr.addTo( new MphantomTag(), shortAttr); }
+    public static MphantomTag mphantom (Attr.ShortForm shortAttr, String text)      {  return Attr.addTo( new MphantomTag().withText(text), shortAttr); }
+    public static MphantomTag mphantom (Attr.ShortForm shortAttr, DomContent... dc) {  return Attr.addTo( new MphantomTag().with(dc), shortAttr); }
+
+    public static MprescriptsTag mprescripts ()                                     {  return new MprescriptsTag(); }
+    public static MprescriptsTag mprescripts (String text)                          {  return new MprescriptsTag().withText(text); }
+    public static MprescriptsTag mprescripts (DomContent... dc)                     {  return new MprescriptsTag().with(dc); }
+    public static MprescriptsTag mprescripts (Attr.ShortForm shortAttr)             {  return Attr.addTo( new MprescriptsTag(), shortAttr); }
+    public static MprescriptsTag mprescripts (Attr.ShortForm shortAttr, String text){  return Attr.addTo( new MprescriptsTag().withText(text), shortAttr); }
+    public static MprescriptsTag mprescripts (Attr.ShortForm shortAttr, DomContent... dc){  return Attr.addTo( new MprescriptsTag().with(dc), shortAttr); }
+
+    public static MrootTag mroot ()                                                 {  return new MrootTag(); }
+    public static MrootTag mroot (String text)                                      {  return new MrootTag().withText(text); }
+    public static MrootTag mroot (DomContent... dc)                                 {  return new MrootTag().with(dc); }
+    public static MrootTag mroot (Attr.ShortForm shortAttr)                         {  return Attr.addTo( new MrootTag(), shortAttr); }
+    public static MrootTag mroot (Attr.ShortForm shortAttr, String text)            {  return Attr.addTo( new MrootTag().withText(text), shortAttr); }
+    public static MrootTag mroot (Attr.ShortForm shortAttr, DomContent... dc)       {  return Attr.addTo( new MrootTag().with(dc), shortAttr); }
+
+    public static MrowTag mrow ()                                                   {  return new MrowTag(); }
+    public static MrowTag mrow (String text)                                        {  return new MrowTag().withText(text); }
+    public static MrowTag mrow (DomContent... dc)                                   {  return new MrowTag().with(dc); }
+    public static MrowTag mrow (Attr.ShortForm shortAttr)                           {  return Attr.addTo( new MrowTag(), shortAttr); }
+    public static MrowTag mrow (Attr.ShortForm shortAttr, String text)              {  return Attr.addTo( new MrowTag().withText(text), shortAttr); }
+    public static MrowTag mrow (Attr.ShortForm shortAttr, DomContent... dc)         {  return Attr.addTo( new MrowTag().with(dc), shortAttr); }
+
+    public static MsTag ms ()                                                       {  return new MsTag(); }
+    public static MsTag ms (String text)                                            {  return new MsTag().withText(text); }
+    public static MsTag ms (DomContent... dc)                                       {  return new MsTag().with(dc); }
+    public static MsTag ms (Attr.ShortForm shortAttr)                               {  return Attr.addTo( new MsTag(), shortAttr); }
+    public static MsTag ms (Attr.ShortForm shortAttr, String text)                  {  return Attr.addTo( new MsTag().withText(text), shortAttr); }
+    public static MsTag ms (Attr.ShortForm shortAttr, DomContent... dc)             {  return Attr.addTo( new MsTag().with(dc), shortAttr); }
+
+    public static MspaceTag mspace ()                                               {  return new MspaceTag(); }
+    public static MspaceTag mspace (String text)                                    {  return new MspaceTag().withText(text); }
+    public static MspaceTag mspace (DomContent... dc)                               {  return new MspaceTag().with(dc); }
+    public static MspaceTag mspace (Attr.ShortForm shortAttr)                       {  return Attr.addTo( new MspaceTag(), shortAttr); }
+    public static MspaceTag mspace (Attr.ShortForm shortAttr, String text)          {  return Attr.addTo( new MspaceTag().withText(text), shortAttr); }
+    public static MspaceTag mspace (Attr.ShortForm shortAttr, DomContent... dc)     {  return Attr.addTo( new MspaceTag().with(dc), shortAttr); }
+
+    public static MsqrtTag msqrt ()                                                 {  return new MsqrtTag(); }
+    public static MsqrtTag msqrt (String text)                                      {  return new MsqrtTag().withText(text); }
+    public static MsqrtTag msqrt (DomContent... dc)                                 {  return new MsqrtTag().with(dc); }
+    public static MsqrtTag msqrt (Attr.ShortForm shortAttr)                         {  return Attr.addTo( new MsqrtTag(), shortAttr); }
+    public static MsqrtTag msqrt (Attr.ShortForm shortAttr, String text)            {  return Attr.addTo( new MsqrtTag().withText(text), shortAttr); }
+    public static MsqrtTag msqrt (Attr.ShortForm shortAttr, DomContent... dc)       {  return Attr.addTo( new MsqrtTag().with(dc), shortAttr); }
+
+    public static MstyleTag mstyle ()                                               {  return new MstyleTag(); }
+    public static MstyleTag mstyle (String text)                                    {  return new MstyleTag().withText(text); }
+    public static MstyleTag mstyle (DomContent... dc)                               {  return new MstyleTag().with(dc); }
+    public static MstyleTag mstyle (Attr.ShortForm shortAttr)                       {  return Attr.addTo( new MstyleTag(), shortAttr); }
+    public static MstyleTag mstyle (Attr.ShortForm shortAttr, String text)          {  return Attr.addTo( new MstyleTag().withText(text), shortAttr); }
+    public static MstyleTag mstyle (Attr.ShortForm shortAttr, DomContent... dc)     {  return Attr.addTo( new MstyleTag().with(dc), shortAttr); }
+
+    public static MsubTag msub ()                                                   {  return new MsubTag(); }
+    public static MsubTag msub (String text)                                        {  return new MsubTag().withText(text); }
+    public static MsubTag msub (DomContent... dc)                                   {  return new MsubTag().with(dc); }
+    public static MsubTag msub (Attr.ShortForm shortAttr)                           {  return Attr.addTo( new MsubTag(), shortAttr); }
+    public static MsubTag msub (Attr.ShortForm shortAttr, String text)              {  return Attr.addTo( new MsubTag().withText(text), shortAttr); }
+    public static MsubTag msub (Attr.ShortForm shortAttr, DomContent... dc)         {  return Attr.addTo( new MsubTag().with(dc), shortAttr); }
+
+    public static MsubsupTag msubsup ()                                             {  return new MsubsupTag(); }
+    public static MsubsupTag msubsup (String text)                                  {  return new MsubsupTag().withText(text); }
+    public static MsubsupTag msubsup (DomContent... dc)                             {  return new MsubsupTag().with(dc); }
+    public static MsubsupTag msubsup (Attr.ShortForm shortAttr)                     {  return Attr.addTo( new MsubsupTag(), shortAttr); }
+    public static MsubsupTag msubsup (Attr.ShortForm shortAttr, String text)        {  return Attr.addTo( new MsubsupTag().withText(text), shortAttr); }
+    public static MsubsupTag msubsup (Attr.ShortForm shortAttr, DomContent... dc)   {  return Attr.addTo( new MsubsupTag().with(dc), shortAttr); }
+
+    public static MsupTag msup ()                                                   {  return new MsupTag(); }
+    public static MsupTag msup (String text)                                        {  return new MsupTag().withText(text); }
+    public static MsupTag msup (DomContent... dc)                                   {  return new MsupTag().with(dc); }
+    public static MsupTag msup (Attr.ShortForm shortAttr)                           {  return Attr.addTo( new MsupTag(), shortAttr); }
+    public static MsupTag msup (Attr.ShortForm shortAttr, String text)              {  return Attr.addTo( new MsupTag().withText(text), shortAttr); }
+    public static MsupTag msup (Attr.ShortForm shortAttr, DomContent... dc)         {  return Attr.addTo( new MsupTag().with(dc), shortAttr); }
+
+    public static MtableTag mtable ()                                               {  return new MtableTag(); }
+    public static MtableTag mtable (String text)                                    {  return new MtableTag().withText(text); }
+    public static MtableTag mtable (DomContent... dc)                               {  return new MtableTag().with(dc); }
+    public static MtableTag mtable (Attr.ShortForm shortAttr)                       {  return Attr.addTo( new MtableTag(), shortAttr); }
+    public static MtableTag mtable (Attr.ShortForm shortAttr, String text)          {  return Attr.addTo( new MtableTag().withText(text), shortAttr); }
+    public static MtableTag mtable (Attr.ShortForm shortAttr, DomContent... dc)     {  return Attr.addTo( new MtableTag().with(dc), shortAttr); }
+
+    public static MtdTag mtd ()                                                     {  return new MtdTag(); }
+    public static MtdTag mtd (String text)                                          {  return new MtdTag().withText(text); }
+    public static MtdTag mtd (DomContent... dc)                                     {  return new MtdTag().with(dc); }
+    public static MtdTag mtd (Attr.ShortForm shortAttr)                             {  return Attr.addTo( new MtdTag(), shortAttr); }
+    public static MtdTag mtd (Attr.ShortForm shortAttr, String text)                {  return Attr.addTo( new MtdTag().withText(text), shortAttr); }
+    public static MtdTag mtd (Attr.ShortForm shortAttr, DomContent... dc)           {  return Attr.addTo( new MtdTag().with(dc), shortAttr); }
+
+    public static MtextTag mtext ()                                                 {  return new MtextTag(); }
+    public static MtextTag mtext (String text)                                      {  return new MtextTag().withText(text); }
+    public static MtextTag mtext (DomContent... dc)                                 {  return new MtextTag().with(dc); }
+    public static MtextTag mtext (Attr.ShortForm shortAttr)                         {  return Attr.addTo( new MtextTag(), shortAttr); }
+    public static MtextTag mtext (Attr.ShortForm shortAttr, String text)            {  return Attr.addTo( new MtextTag().withText(text), shortAttr); }
+    public static MtextTag mtext (Attr.ShortForm shortAttr, DomContent... dc)       {  return Attr.addTo( new MtextTag().with(dc), shortAttr); }
+
+    public static MtrTag mtr ()                                                     {  return new MtrTag(); }
+    public static MtrTag mtr (String text)                                          {  return new MtrTag().withText(text); }
+    public static MtrTag mtr (DomContent... dc)                                     {  return new MtrTag().with(dc); }
+    public static MtrTag mtr (Attr.ShortForm shortAttr)                             {  return Attr.addTo( new MtrTag(), shortAttr); }
+    public static MtrTag mtr (Attr.ShortForm shortAttr, String text)                {  return Attr.addTo( new MtrTag().withText(text), shortAttr); }
+    public static MtrTag mtr (Attr.ShortForm shortAttr, DomContent... dc)           {  return Attr.addTo( new MtrTag().with(dc), shortAttr); }
+
+    public static MunderTag munder ()                                               {  return new MunderTag(); }
+    public static MunderTag munder (String text)                                    {  return new MunderTag().withText(text); }
+    public static MunderTag munder (DomContent... dc)                               {  return new MunderTag().with(dc); }
+    public static MunderTag munder (Attr.ShortForm shortAttr)                       {  return Attr.addTo( new MunderTag(), shortAttr); }
+    public static MunderTag munder (Attr.ShortForm shortAttr, String text)          {  return Attr.addTo( new MunderTag().withText(text), shortAttr); }
+    public static MunderTag munder (Attr.ShortForm shortAttr, DomContent... dc)     {  return Attr.addTo( new MunderTag().with(dc), shortAttr); }
+
+    public static MunderoverTag munderover ()                                       {  return new MunderoverTag(); }
+    public static MunderoverTag munderover (String text)                            {  return new MunderoverTag().withText(text); }
+    public static MunderoverTag munderover (DomContent... dc)                       {  return new MunderoverTag().with(dc); }
+    public static MunderoverTag munderover (Attr.ShortForm shortAttr)               {  return Attr.addTo( new MunderoverTag(), shortAttr); }
+    public static MunderoverTag munderover (Attr.ShortForm shortAttr, String text)  {  return Attr.addTo( new MunderoverTag().withText(text), shortAttr); }
+    public static MunderoverTag munderover (Attr.ShortForm shortAttr, DomContent... dc){  return Attr.addTo( new MunderoverTag().with(dc), shortAttr); }
+
     public static NavTag nav ()                                                     {  return new NavTag(); }
     public static NavTag nav (String text)                                          {  return new NavTag().withText(text); }
     public static NavTag nav (DomContent... dc)                                     {  return new NavTag().with(dc); }
     public static NavTag nav (Attr.ShortForm shortAttr)                             {  return Attr.addTo( new NavTag(), shortAttr); }
     public static NavTag nav (Attr.ShortForm shortAttr, String text)                {  return Attr.addTo( new NavTag().withText(text), shortAttr); }
     public static NavTag nav (Attr.ShortForm shortAttr, DomContent... dc)           {  return Attr.addTo( new NavTag().with(dc), shortAttr); }
+
+    public static NoneTag none ()                                                   {  return new NoneTag(); }
+    public static NoneTag none (String text)                                        {  return new NoneTag().withText(text); }
+    public static NoneTag none (DomContent... dc)                                   {  return new NoneTag().with(dc); }
+    public static NoneTag none (Attr.ShortForm shortAttr)                           {  return Attr.addTo( new NoneTag(), shortAttr); }
+    public static NoneTag none (Attr.ShortForm shortAttr, String text)              {  return Attr.addTo( new NoneTag().withText(text), shortAttr); }
+    public static NoneTag none (Attr.ShortForm shortAttr, DomContent... dc)         {  return Attr.addTo( new NoneTag().with(dc), shortAttr); }
 
     public static NoscriptTag noscript ()                                           {  return new NoscriptTag(); }
     public static NoscriptTag noscript (String text)                                {  return new NoscriptTag().withText(text); }
@@ -853,12 +1063,19 @@ public class TagCreator {
     public static SelectTag select (Attr.ShortForm shortAttr, String text)          {  return Attr.addTo( new SelectTag().withText(text), shortAttr); }
     public static SelectTag select (Attr.ShortForm shortAttr, DomContent... dc)     {  return Attr.addTo( new SelectTag().with(dc), shortAttr); }
 
-    public static SlotTag slot ()                                                 {  return new SlotTag(); }
-    public static SlotTag slot (String text)                                      {  return new SlotTag().withText(text); }
-    public static SlotTag slot (DomContent... dc)                                 {  return new SlotTag().with(dc); }
-    public static SlotTag slot (Attr.ShortForm shortAttr)                         {  return Attr.addTo( new SlotTag(), shortAttr); }
-    public static SlotTag slot (Attr.ShortForm shortAttr, String text)            {  return Attr.addTo( new SlotTag().withText(text), shortAttr); }
-    public static SlotTag slot (Attr.ShortForm shortAttr, DomContent... dc)       {  return Attr.addTo( new SlotTag().with(dc), shortAttr); }
+    public static SemanticsTag semantics ()                                         {  return new SemanticsTag(); }
+    public static SemanticsTag semantics (String text)                              {  return new SemanticsTag().withText(text); }
+    public static SemanticsTag semantics (DomContent... dc)                         {  return new SemanticsTag().with(dc); }
+    public static SemanticsTag semantics (Attr.ShortForm shortAttr)                 {  return Attr.addTo( new SemanticsTag(), shortAttr); }
+    public static SemanticsTag semantics (Attr.ShortForm shortAttr, String text)    {  return Attr.addTo( new SemanticsTag().withText(text), shortAttr); }
+    public static SemanticsTag semantics (Attr.ShortForm shortAttr, DomContent... dc){  return Attr.addTo( new SemanticsTag().with(dc), shortAttr); }
+
+    public static SlotTag slot ()                                                   {  return new SlotTag(); }
+    public static SlotTag slot (String text)                                        {  return new SlotTag().withText(text); }
+    public static SlotTag slot (DomContent... dc)                                   {  return new SlotTag().with(dc); }
+    public static SlotTag slot (Attr.ShortForm shortAttr)                           {  return Attr.addTo( new SlotTag(), shortAttr); }
+    public static SlotTag slot (Attr.ShortForm shortAttr, String text)              {  return Attr.addTo( new SlotTag().withText(text), shortAttr); }
+    public static SlotTag slot (Attr.ShortForm shortAttr, DomContent... dc)         {  return Attr.addTo( new SlotTag().with(dc), shortAttr); }
 
     public static SmallTag small ()                                                 {  return new SmallTag(); }
     public static SmallTag small (String text)                                      {  return new SmallTag().withText(text); }
