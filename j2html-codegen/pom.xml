@@ -10,27 +10,77 @@
         <version>1.6.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>j2html-codegen</artifactId>
-    <packaging>pom</packaging>
-
     <name>j2html-codegen</name>
+    <artifactId>j2html-codegen-maven-plugin</artifactId>
+    <packaging>maven-plugin</packaging>
 
     <dependencies>
         <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>3.8.4</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>3.6.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-project</artifactId>
+            <version>2.2.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--
+          Note:  The use of version properties below is to avoid
+          redefining these versions when using this maven plugin
+          in other projects.  Using the more concise dependency-
+          management strategy for versioning doesn't work when
+          another project tries to detect this plugin's dependency
+          versions.
+        -->
+        <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
+            <version>${jsoup.version}</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>com.squareup</groupId>
             <artifactId>javapoet</artifactId>
+            <version>${javapoet.version}</version>
         </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-plugin-plugin</artifactId>
+                    <version>3.6.4</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
 </project>

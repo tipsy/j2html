@@ -9,9 +9,8 @@
         <version>1.6.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>j2html</artifactId>
-
     <name>j2html</name>
+    <artifactId>j2html</artifactId>
 
     <dependencies>
         <dependency>
@@ -49,6 +48,24 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>com.j2html</groupId>
+                <artifactId>j2html-codegen-maven-plugin</artifactId>
+                <version>1.6.1-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate-source-files</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <modelFile>${project.basedir}/src/main/models/html.model</modelFile>
+                    <attributePackage>j2html.tags.attributes</attributePackage>
+                    <tagPackage>j2html.tags.specialized</tagPackage>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
