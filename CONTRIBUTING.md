@@ -33,7 +33,7 @@ If you are on Windows, there should be no Problems.
 ### Reformatting of generated Java Code
 
 As this Projects makes use of Code-Generation techniques in order to generate a more typesafe API without too much manual Work,
-there is the `code_gen/` directory which contains everything needed to generate the code.
+there is the `j2html-codegen/` directory which contains everything needed to generate the code.
 
 For simplicity (and also to avoid extra dependencies), they do not format the code correctly. 
 
@@ -51,7 +51,7 @@ The workflow (most of the time) consists of:
 
 ## Project Architecture
 
-### library/src/main/java/j2html/TagCreator.java
+### j2html/src/main/java/j2html/TagCreator.java
 
 This is **the** central class in J2HTML. It provides the methods 
 for users of J2HTML to generate all HTML Tags.
@@ -80,7 +80,7 @@ html(
 Each HTML Tag has it's own class, which makes it possible for each Tag to have
 the correct Attributes and Methods to set those Attributes.
 
-The classes are located in `library/src/main/java/j2html/tags/specialized` and follow the naming convention `tag_name + 'Tag.java'`, e.g. `BodyTag.java`.
+The classes are located in `j2html/src/main/java/j2html/tags/specialized` and follow the naming convention `tag_name + 'Tag.java'`, e.g. `BodyTag.java`.
 Notice that the first letter of the Tag is in uppercase.
 
 Each Tag-specific class `implements` interfaces which correspond to the Attributes that can be set on these Tags.
@@ -128,7 +128,7 @@ If you find a way, that would be a great PR.
 
 ### Special classes/interfaces besides TagCreator.java
 
-There are 3 classes which contain code-generating methods in `code_gen/src/main/java/j2html_codegen/generators/`:
+There are 3 classes which contain code-generating methods in `j2html-codegen/src/main/java/j2html_codegen/generators/`:
 
 - `AttributeInterfaceCodeGenerator.java` (generating the interfaces for the attributes)
 - `SpecializedTagClassCodeGenerator.java` (generating the classes for the tags)
@@ -147,7 +147,7 @@ Attributes differ in their 'type' . Some of them can be set with numbers (which 
 Others can only be set or not set, others still have 3 states: set, unset, and not present. 
 To model these propertise, a single Attribute can be described by an instance of **AttrD.java**.
 
-`library/src/main/java/j2html/tags/generators/AttributesList.java`  contains the different Attributes, their properties,
+`j2html/src/main/java/j2html/tags/generators/AttributesList.java`  contains the different Attributes, their properties,
 and the Tags they can be set on. It is the starting point for adding new Attributes and customizing their properties.
 
 
