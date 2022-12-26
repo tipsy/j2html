@@ -53,6 +53,7 @@
     <modules>
         <module>j2html</module>
         <module>j2html-codegen</module>
+        <module>j2html-ext-mathml</module>
         <module>j2html-website</module>
     </modules>
 
