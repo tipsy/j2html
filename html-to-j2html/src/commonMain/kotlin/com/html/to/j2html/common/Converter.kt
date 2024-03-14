@@ -125,7 +125,7 @@ fun sanitizeWhitespace(text: String): String{
 
     // If we don't detect any newlines we assume unformatted input and leave any excess whitespace in
     if ( ! text.contains("\n")){
-        return text;
+        return text
     }
     else {
         // if we detect newlines, we strip out the unnecessary whitespace from the inputs
@@ -141,12 +141,10 @@ fun sanitizeWhitespace(text: String): String{
 
         var sanitized = text
 
-        // meant to keep " text" as is but change "\n    text" into "text"
         if(startsWithReturn){
             sanitized = sanitized.trimStart('\n', ' ')
         }
 
-        // meant to keep "text " as is but change "text\n    " into "text"
         if(endsWithReturnAndMaybeSpace){
             sanitized = sanitized.trimEnd('\n', ' ')
         }
@@ -160,7 +158,6 @@ fun sanitizeWhitespace(text: String): String{
         // pre or pre-wrap set. (Or in XHTML, the xml:space="preserve" attribute.)
         sanitized =  sanitized.replace("\\s+".toRegex(), " ")
 
-
         return sanitized
 
     }
@@ -169,10 +166,6 @@ fun sanitizeWhitespace(text: String): String{
 
 fun printRawHtmlReturnsAndIndents() : Boolean {
     return true
-}
-
-fun maxCharactersBeforeSwitchingToMultiline(): Int {
-    return 150
 }
 
 fun outputTag(tag: Tag, indentationLevel : Int, tab : String) : String {
@@ -396,16 +389,8 @@ private fun outputStringValue(singleTextValue: Boolean, tab: String, indentation
     if (!singleTextValue || inWithBlock) {
         output += "text("
     }
-    if (false && childString.contains("\n") || childString.length >= maxCharactersBeforeSwitchingToMultiline()) {
-        // triple quotes if long or several lines
-        output += "\n"
-        output += tab.repeat(indentationLevel) + "\"\"\"\n"
-        output += tab.repeat(indentationLevel)
-        output += "${escapeSoThatJavaPrintsItLikeItIsInTheInput(childString)}\n"
-        output += tab.repeat(indentationLevel) + "\"\"\""
-    } else {
-        output += "\"${escapeSoThatJavaPrintsItLikeItIsInTheInput(childString)}\""
-    }
+    output += "\"${escapeSoThatJavaPrintsItLikeItIsInTheInput(childString)}\""
+
     // closing the text()
     if (!singleTextValue || inWithBlock) {
         output += ")"
