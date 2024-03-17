@@ -420,14 +420,8 @@ class ConverterTests {
                         h3("Accordions"), 
                         details(
                             summary("Accordion 1"), 
-                            p(
-                              ""${'"'}
-                              n \\n \\\\n \\\\\\n \\\\\\\\n f \\f \\\\f \\\\\\f \\\\\\\\f Lorem ipsum dolor sit amet\\\", consectetur ad\"ipiscing elit. Pelle\\\"ntesque urna diam, \" \\\" \\\\\" \\\\\\\" \\\\\\\\\" tincidunt nec port\"a sed, auctor id veli\\t. Et\"iam ve\\\\nenatis nisl ut \"orci consequat, vitae tempus quam commodo. Nulla non mauris ipsum. Aliquam eu posuere orci. Nulla co\\\\\\\\nvallis lectus rutrum quam hendrerit, in facilisis elit sollicitu\"din. Ma\"uri\"s pulvinar pulvinar mi, dictum tr\"istique elit auctor quis. Maecenas ac ipsum u\\\\\"ltrices, porta turpis sit amet, congue turpis.
-                              ""${'"'}), 
-                            p(
-                              ""${'"'}
-                              n \\n \\\\n \\\\\\n \\\\\\\\n f \\f \\\\f \\\\\\f \\\\\\\\f Lorem ipsum dolor sit amet\\\", consectetur ad\"ipiscing elit. Pelle\\\"ntesque urna diam, \" \\\" \\\\\" \\\\\\\" \\\\\\\\\" tincidunt nec port\"a sed, auctor id veli\\t. Et\"iam ve\\\\nenatis nisl ut \"orci consequat, vitae tempus quam commodo. Nulla non mauris ipsum. Aliquam eu posuere orci. Nulla co\\\\\\\\nvallis lectus rutrum quam hendrerit, in facilisis elit sollicitu\"din. Ma\"uri\"s pulvinar pulvinar mi, dictum tr\"istique elit auctor quis. Maecenas ac ipsum u\\\\\"ltrices, porta turpis sit amet, congue turpis.
-                              ""${'"'})
+                            p("n \\n \\\\n \\\\\\n \\\\\\\\n f \\f \\\\f \\\\\\f \\\\\\\\f Lorem ipsum dolor sit amet\\\", consectetur ad\"ipiscing elit. Pelle\\\"ntesque urna diam, \" \\\" \\\\\" \\\\\\\" \\\\\\\\\" tincidunt nec port\"a sed, auctor id veli\\t. Et\"iam ve\\\\nenatis nisl ut \"orci consequat, vitae tempus quam commodo. Nulla non mauris ipsum. Aliquam eu posuere orci. Nulla co\\\\\\\\nvallis lectus rutrum quam hendrerit, in facilisis elit sollicitu\"din. Ma\"uri\"s pulvinar pulvinar mi, dictum tr\"istique elit auctor quis. Maecenas ac ipsum u\\\\\"ltrices, porta turpis sit amet, congue turpis."), 
+                            p("n \\n \\\\n \\\\\\n \\\\\\\\n f \\f \\\\f \\\\\\f \\\\\\\\f Lorem ipsum dolor sit amet\\\", consectetur ad\"ipiscing elit. Pelle\\\"ntesque urna diam, \" \\\" \\\\\" \\\\\\\" \\\\\\\\\" tincidunt nec port\"a sed, auctor id veli\\t. Et\"iam ve\\\\nenatis nisl ut \"orci consequat, vitae tempus quam commodo. Nulla non mauris ipsum. Aliquam eu posuere orci. Nulla co\\\\\\\\nvallis lectus rutrum quam hendrerit, in facilisis elit sollicitu\"din. Ma\"uri\"s pulvinar pulvinar mi, dictum tr\"istique elit auctor quis. Maecenas ac ipsum u\\\\\"ltrices, porta turpis sit amet, congue turpis.")
                         ), 
                         details().withCondOpen(true)
                           .with(
@@ -460,6 +454,13 @@ class ConverterTests {
                 <!-- drawer component -->
                 <div id="drawer-example" class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-label">
                    <h5 id="drawer-label" class="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400"><svg class="w-4 h-4 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    in an unsupported tag
+                    <div>
+                        in an unsupported tag
+                        <p>
+                            in an unsupported tag
+                        </p>
+                    </div>
                     <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
                   </svg>Info</h5>
                 </div>
@@ -481,12 +482,14 @@ class ConverterTests {
                       .withId("drawer-label")
                       .withClasses("inline-flex", "items-center", "mb-4", "text-base", "font-semibold", "text-gray-500", "dark:text-gray-400")
                       .with(
-                        rawHtml(
-                        ""${'"'}
-                          <svg class="w-4 h-4 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 20 20">
-                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                          </svg>
-                        ""${'"'}), 
+                        rawHtml("<svg class=\"w-4 h-4 me-2.5\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"currentColor\" viewbox=\"0 0 20 20\">"),
+                            text("in an unsupported tag"), 
+                            div(
+                                text("in an unsupported tag"), 
+                                p("in an unsupported tag")
+                            ), 
+                            rawHtml("<path d=\"M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z\"/>"),
+                        rawHtml("</svg>"), 
                         text("Info")
                     )
                 )
@@ -498,9 +501,34 @@ class ConverterTests {
         assertEquals(expectedOutput, output)
     }
 
+    @Test
+    fun svgTest(){
+        val svgSnippet = """
+            <svg class="w-4 h-4 me-2.5">
+                in an unsupported tag
+                <div>
+                    in an unsupported tag
+                    <p>
+                        in an unsupported tag
+                    </p>
+                </div>
+            </svg>
+        """.trimIndent()
 
+        val expectedOutput = """
+            rawHtml("<svg class=\"w-4 h-4 me-2.5\">"),
+                text("in an unsupported tag"), 
+                div(
+                    text("in an unsupported tag"), 
+                    p("in an unsupported tag")
+                ),
+            rawHtml("</svg>")
+        """.trimIndent()
 
+        val output = convert(svgSnippet)
 
+        assertEquals(expectedOutput, output)
+    }
 
     @Test
     fun inputSnippetWithCharactersThatNeedEscapingWhileInAUnsupportedTagTest() {
@@ -532,16 +560,13 @@ class ConverterTests {
                   .withClasses("flex", "items-center", "w-full", "max-w-xs", "p-4", "space-x-4", "rtl:space-x-reverse", "text-gray-500", "bg-white", "divide-x", "rtl:divide-x-reverse", "divide-gray-200", "rounded-lg", "shadow", "dark:text-gray-400", "dark:divide-gray-700", "space-x", "dark:bg-gray-800")
                   .attr("role", "alert")
                   .with(
-                    rawHtml(
-                    ""${'"'}
-                      <svg class="w-5 h-5 text-blue-600 dark:text-blue-500 rotate-45" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 18 20">
-                        <li>n \\n \\\\n \\\\\\n \\\\\\\\n  Nunc quis eros vel odio pretium tincidunt nec quis neque.</li>
-                        <li>f \\f \\\\f \\\\\\f \\\\\\\\f Quisque sed eros non eros ornare elementum.</li>
-                        <li>\" \\\" \\\\\" \\\\\\\" \\\\\\\\\" Cras sed libero aliquet, porta dolor quis, dapibus ipsum.</li>
-                        <li>' \\' \\\\' \\\\\\' \\\\\\\\' Cras sed libero aliquet, porta dolor quis, dapibus ipsum.</li>
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 17 8 2L9 1 1 19l8-2Zm0 0V9"/>
-                      </svg>
-                    ""${'"'}), 
+                    rawHtml("<svg class=\"w-5 h-5 text-blue-600 dark:text-blue-500 rotate-45\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewbox=\"0 0 18 20\">"),
+                        li("n \\n \\\\n \\\\\\n \\\\\\\\n  Nunc quis eros vel odio pretium tincidunt nec quis neque."), 
+                        li("f \\f \\\\f \\\\\\f \\\\\\\\f Quisque sed eros non eros ornare elementum."), 
+                        li("\" \\\" \\\\\" \\\\\\\" \\\\\\\\\" Cras sed libero aliquet, porta dolor quis, dapibus ipsum."), 
+                        li("' \\' \\\\' \\\\\\' \\\\\\\\' Cras sed libero aliquet, porta dolor quis, dapibus ipsum."), 
+                        rawHtml("<path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m9 17 8 2L9 1 1 19l8-2Zm0 0V9\"/>"),
+                    rawHtml("</svg>"), 
                     div().withClasses("ps-4", "text-sm", "font-normal")
                       .with(text("Message sent successfully."))
                 )

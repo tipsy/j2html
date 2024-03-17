@@ -4,7 +4,11 @@ import com.mohamedrejeb.ksoup.html.parser.KsoupHtmlParser
 
 data class Tag(val name : String, val attributes : Map<String, String>, val children : MutableList<TagOrString>, val parent: Tag?) {
     override fun toString(): String {
-        return " name($name), attributes($attributes}, children($children)"
+        // basically just useful for debug
+        return "{name=$name, attributes=$attributes, children=$children}"
+    }
+    fun isComment() : Boolean {
+        return "comment" == name
     }
 }
 
@@ -18,9 +22,14 @@ class TagOrString private constructor(private val tag: Tag?, private val string:
         return string
     }
     override fun toString(): String {
+        // basically just useful for debug
         val s1 : String = string ?: ""
         val s2 : String = tag?.toString() ?: ""
         return "$s1$s2"
+    }
+    fun isComment() : Boolean {
+        return tag != null
+            && tag.isComment()
     }
 }
 
@@ -31,7 +40,7 @@ fun convert(input: String): String {
     val tabStr = "  "
 
     var output = ""
-    val howManyNonCommentTagsOrStringsWeHave = mainLevelTagsOrStrings.filter { "comment" != it.getTag()?.name }.size
+    val howManyNonCommentTagsOrStringsWeHave = mainLevelTagsOrStrings.filter { !it.isComment() }.size
     var nonCommentIndex = 0
 
     for ((index, mainLevelTagOrString) in mainLevelTagsOrStrings.withIndex()) {
@@ -50,15 +59,17 @@ fun convert(input: String): String {
 
         }
 
-        if (!isLastNonComment && "comment" != mainLevelTagOrString.getTag()?.name) {
-            output += ","
-        }
-        if (!isLast && "comment" != mainLevelTagOrString.getTag()?.name) {
-            output += "\n"
-        }
-        if ("comment" != mainLevelTagOrString.getTag()?.name) {
+        if(!mainLevelTagOrString.isComment()){
+            if (!isLastNonComment) {
+                output += ","
+            }
+            if (!isLast) {
+                output += "\n"
+            }
             nonCommentIndex++
         }
+
+
     }
 
     return output
@@ -74,7 +85,7 @@ private fun extractAndSanitize(input: String): List<TagOrString> {
         .onOpenTag { name, attributes, _ ->
 
             if (currentTag != null
-                && "comment" != currentTag!!.name
+                && !currentTag!!.isComment()
             ) {
                 val newTag = Tag(name, attributes, mutableListOf(), currentTag)
                 currentTag!!.children += TagOrString(newTag)
@@ -101,7 +112,7 @@ private fun extractAndSanitize(input: String): List<TagOrString> {
                 val tagOrString = TagOrString(sanitizeWhitespace(text))
 
                 if (currentTag != null
-                    && "comment" != currentTag!!.name
+                    && !currentTag!!.isComment()
                 ) {
                     currentTag!!.children += tagOrString
                 } else {
@@ -128,16 +139,11 @@ fun sanitizeWhitespace(text: String): String{
         return text
     }
     else {
-        // if we detect newlines, we strip out the unnecessary whitespace from the inputs
+        // if we detect newlines, we strip out the probably unnecessary whitespace from the inputs
 
-        // this seems to work, but it's hard to not lose a space when they're meant to be there
-        // while removing all the html indentation spaces for every case
         val startsWithReturn = text.startsWith("\n")
         val lines = text.split("\n")
-        var endsWithReturnAndMaybeSpace = false
-        if(lines.isNotEmpty()){
-            endsWithReturnAndMaybeSpace = lines.last().isBlank()
-        }
+        val endsWithReturnAndMaybeSpace = lines.isNotEmpty() && lines.last().isBlank()
 
         var sanitized = text
 
@@ -149,13 +155,6 @@ fun sanitizeWhitespace(text: String): String{
             sanitized = sanitized.trimEnd('\n', ' ')
         }
 
-        // meant to keep the browser-rendered html identical between the input html and the html produced by j2html
-        // either though render() or renderFormatter()
-        // https://stackoverflow.com/questions/588356/why-does-the-browser-renders-a-newline-as-space
-        // Browsers condense multiple whitespace characters (including newlines)
-        // to a single space when rendering. The only exception is within <pre> elements
-        // or those that have the CSS property white-space set to
-        // pre or pre-wrap set. (Or in XHTML, the xml:space="preserve" attribute.)
         sanitized =  sanitized.replace("\\s+".toRegex(), " ")
 
         return sanitized
@@ -164,14 +163,10 @@ fun sanitizeWhitespace(text: String): String{
 
 }
 
-fun printRawHtmlReturnsAndIndents() : Boolean {
-    return true
-}
-
 fun outputTag(tag: Tag, indentationLevel : Int, tab : String) : String {
     var output = ""
-    if ("comment" == tag.name) {
-        // we print each line of multi-line comments on a separate java comment
+    if (tag.isComment()) {
+        // we output each line of multi-line comments on a separate java comment
         for( commentLine in tag.children[0].getString()!!.split("\n") ){
             output += tab.repeat(indentationLevel) + "// " + commentLine.trimStart(' ') + "\n"
         }
@@ -180,21 +175,15 @@ fun outputTag(tag: Tag, indentationLevel : Int, tab : String) : String {
         // currently unsupported tags such as <svg>
         // we have to do a rawHtml("<unsupportedtag></unsupportedtag>")
 
-        output += tab.repeat(indentationLevel) + "rawHtml(\n"
-        output += tab.repeat(indentationLevel) + "\"\"\"\n"
-        output += printRawHtml(tag, tab, indentationLevel + 1, printRawHtmlReturnsAndIndents())
-        if (!printRawHtmlReturnsAndIndents()) {
-            output += "\n"
-        }
-        output += tab.repeat(indentationLevel) + "\"\"\")"
+        output += outputRawHtml(tag, tab, indentationLevel, true)
 
 
     } else if (tag.attributes.isEmpty()) {
-        // no attributes -> we do the children directly the tag declaration block
+        // no attributes -> we do the children directly in the tag declaration block
         // div(bla, bla, bla)
 
         output += tab.repeat(indentationLevel) + tag.name
-        output += outputChildren(tag.children, indentationLevel + 1, tab, false)
+        output += outputChildren(tag.children, indentationLevel + 1, tab, false, true)
 
 
     } else {
@@ -209,66 +198,62 @@ fun outputTag(tag: Tag, indentationLevel : Int, tab : String) : String {
         if (tag.children.isNotEmpty()) {
             output += "\n"
             output += tab.repeat(indentationLevel + 1) + ".with"
-            output += outputChildren(tag.children, indentationLevel + 1, tab, true)
+            output += outputChildren(tag.children, indentationLevel + 1, tab, true, true)
         }
     }
     return output
 }
 
-fun printRawHtml(tag : Tag, tab : String, indentationLevel: Int, printReturnsAndIndent : Boolean) : String {
+fun outputRawHtml(tag : Tag, tab : String, indentationLevel: Int, mainLevelRawHtml : Boolean) : String {
     var output = ""
-    if("comment" == tag.name) {
-        if(printReturnsAndIndent){
-            output += tab.repeat(indentationLevel)
-        }
+
+
+    if(tag.isComment()) {
+        output += tab.repeat(indentationLevel)
+        output += "rawHtml(\""
         output += "<-- "
-        output += tag.children[0].getString()
+        output += escapeSoThatJavaPrintsItLikeItIsInTheInput(tag.children[0].getString() ?: "")
         output += " -->"
-        if(printReturnsAndIndent){
-            output += "\n"
-        }
+        output += "\")"
+        output += "\n"
     }
     else {
-        if(printReturnsAndIndent){
-            output += tab.repeat(indentationLevel)
-        }
+        output += tab.repeat(indentationLevel)
+        output += "rawHtml(\""
         output += "<${tag.name}"
         for (attribute in tag.attributes) {
-            output += " "
-            output += attribute.key
-            output += "=\""
-            output += attribute.value
-            output += "\""
-        }
-        if(tag.children.isNotEmpty()){
-            output += ">"
-            if(printReturnsAndIndent && notAllChildrenAreText(tag.children)){
-                output += "\n"
-            }
+            output += escapeSoThatJavaPrintsItLikeItIsInTheInput(" ${attribute.key}=\"${attribute.value}\"")
         }
 
         if(tag.children.isEmpty()) {
             output += "/>"
         }
         else {
-            for (child in tag.children) {
-                if (child.getString() != null) {
-                    output += escapeSoThatJavaPrintsItLikeItIsInTheInput(child.getString()!!)
-                } else if (child.getTag() != null) {
-                    output += printRawHtml(child.getTag()!!, tab, indentationLevel + 1, printReturnsAndIndent)
-                }
+            output += ">"
 
+            if(notAllChildrenAreText(tag.children)){
+                output += "\"),"
             }
-            if(printReturnsAndIndent && notAllChildrenAreText(tag.children)){
-                output += tab.repeat(indentationLevel)
+
+            if(tag.children.isNotEmpty()){
+                output += outputChildren(tag.children, indentationLevel + 1, tab, true, false )
+            }
+            else{
+                output += "\n"
+            }
+
+            if(notAllChildrenAreText(tag.children)){
+                output += "rawHtml(\""
             }
             output += "</${tag.name}>"
         }
-        if(printReturnsAndIndent){
-            output += "\n"
+        output += "\")"
+        // avoid double commas after the rawhtml calls
+        if(!mainLevelRawHtml){
+            output += ","
         }
-    }
 
+    }
 
     return output
 }
@@ -335,34 +320,48 @@ fun parseBooleanFromAttribute(attribute : Map.Entry<String, String>) : Boolean {
 
 }
 
-fun outputChildren(children: MutableList<TagOrString>, indentationLevel : Int, tab : String, inWithBlock : Boolean): String{
+fun outputChildren(
+    children: MutableList<TagOrString>,
+    indentationLevel : Int,
+    tab : String,
+    addTextCallsToStrings : Boolean,
+    outputTheChildrenInANewParenthesesBlock : Boolean): String{
 
     var output = ""
     if(children.isEmpty()) {
-        output += "()"
+        if(outputTheChildrenInANewParenthesesBlock){
+            output += "()"
+        }
     }
     else {
         val singleTextValue = children.size == 1 && children[0].getString() != null
 
-        output += "("
+        if(outputTheChildrenInANewParenthesesBlock) {
+            output += "("
+        }
         if (!singleTextValue) {
             output += "\n"
         }
         var nonCommentChildIndex = 0
         for (child: TagOrString in children) {
-            val isLast = nonCommentChildIndex >= (children.filter { "comment" != it.getTag()?.name }.size - 1)
+            val isLast = nonCommentChildIndex >= (children.filter { !it.isComment() }.size - 1)
 
             if (child.getTag() != null) {
                 output += outputTag(child.getTag()!!, indentationLevel + 1, tab)
             } else if (child.getString() != null) {
-                output += outputStringValue(singleTextValue, tab, indentationLevel, inWithBlock, child.getString()!!)
+                output += outputStringValue(singleTextValue, tab, indentationLevel, addTextCallsToStrings, child.getString()!!)
             }
 
-            if (!isLast && "comment" != child.getTag()?.name) {
+            if ( (!isLast && !child.isComment())) {
                 output += ", " + "\n"
             }
+            else if ( !outputTheChildrenInANewParenthesesBlock ){
+                // if we don't want the children in a newParenthesesBlock, we're already in a list of
+                // arguments with stuff coming after us
+                output += ","
+            }
 
-            if ("comment" != child.getTag()?.name) {
+            if (!child.isComment()) {
                 nonCommentChildIndex++
             }
 
@@ -371,7 +370,9 @@ fun outputChildren(children: MutableList<TagOrString>, indentationLevel : Int, t
             output += "\n"
             output += tab.repeat(indentationLevel - 1)
         }
-        output += ")"
+        if(outputTheChildrenInANewParenthesesBlock) {
+            output += ")"
+        }
 
     }
     return output
@@ -384,7 +385,7 @@ private fun outputStringValue(singleTextValue: Boolean, tab: String, indentation
     }
     // we're only allowed to only allowed to do p("message"), not p().withId("id").with("message")
     // so if we had attributes, we're in a with block, we
-    // need a 'text' call to do h2().withId("id").with(text("message"))
+    // need a 'text' call to do p().withId("id").with(text("message"))
     // since we've kept the attributes before the values like in the html
     if (!singleTextValue || inWithBlock) {
         output += "text("
