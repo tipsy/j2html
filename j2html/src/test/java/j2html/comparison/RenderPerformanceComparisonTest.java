@@ -17,18 +17,18 @@ public class RenderPerformanceComparisonTest {
 
     @Test
     public void j2htmlPerformance() throws Exception {
-        TestJ2html.helloWorld();
-        TestJ2html.fiveHundredEmployees();
-        TestJ2html.macros();
-        TestJ2html.multiplicationTable();
+        TestOptionsForJ2html.helloWorld();
+        TestOptionsForJ2html.fiveHundredEmployees();
+        TestOptionsForJ2html.macros();
+        TestOptionsForJ2html.multiplicationTable();
     }
 
     @Test
     public void velocityPerformance() throws Exception {
-        TestVelocity.helloWorld();
-        TestVelocity.fiveHundredEmployees();
-        TestVelocity.macros();
-        TestVelocity.multiplicationTable();
+        TestOptionsForVelocity.helloWorld();
+        TestOptionsForVelocity.fiveHundredEmployees();
+        TestOptionsForVelocity.macros();
+        TestOptionsForVelocity.multiplicationTable();
     }
 
 }

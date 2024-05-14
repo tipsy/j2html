@@ -7,9 +7,12 @@ import java.util.Map;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 
-public class TestVelocity {
+/**
+ * Options are used in {@link RenderPerformanceComparisonTest}
+ */
+class TestOptionsForVelocity {
 
-    private static VelocityEngine velocityEngine;
+    private static final VelocityEngine velocityEngine;
 
     static {
         velocityEngine = new VelocityEngine();
@@ -44,6 +47,8 @@ public class TestVelocity {
         model.put("tableNumbers", ComparisonData.tableNumbers);
         return render("/comparison/velocity/multiplicationTable.vm", model);
     }
+
+
 
     public static void main(String[] args) {
         System.out.println(multiplicationTable());

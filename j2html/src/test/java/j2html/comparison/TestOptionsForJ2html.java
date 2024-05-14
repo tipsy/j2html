@@ -5,7 +5,10 @@ import j2html.comparison.j2html.HelloWorld;
 import j2html.comparison.j2html.Macros;
 import j2html.comparison.j2html.MultiplicationTable;
 
-public class TestJ2html {
+/**
+ * Options are used in {@link RenderPerformanceComparisonTest}
+ */
+class TestOptionsForJ2html {
 
     public static String helloWorld() {
         return HelloWorld.tag.render();
