@@ -69,7 +69,7 @@
         <junit.version>4.13.1</junit.version>
         <mockito.version>4.8.1</mockito.version>
         <hamcrest-library.version>1.3</hamcrest-library.version>
-        <commons-lang3.version>3.0</commons-lang3.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
         <junit-benchmarks.version>0.7.2</junit-benchmarks.version>
         <apache-velocity.version>1.7</apache-velocity.version>
         <jsoup.version>1.14.3</jsoup.version>
