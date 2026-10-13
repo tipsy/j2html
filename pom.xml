@@ -72,7 +72,7 @@
         <commons-lang3.version>3.0</commons-lang3.version>
         <junit-benchmarks.version>0.7.2</junit-benchmarks.version>
         <apache-velocity.version>1.7</apache-velocity.version>
-        <jsoup.version>1.14.3</jsoup.version>
+        <jsoup.version>1.23.2</jsoup.version>
         <javapoet.version>1.9.0</javapoet.version>
         <javalin.version>4.0.0.ALPHA2</javalin.version>
         <slf4j-simple.version>1.7.26</slf4j-simple.version>
